@@ -1,0 +1,28 @@
+{
+    "name": "snbot",
+    "version": "1.0.8",
+    "description": "A bot framework",
+    "main": "./autobot.js",
+    "types": "./autobot.d.ts",
+    "private": true,
+    "scripts": {
+        "test": "mocha --require ts-node/register test/**/*.ts",
+        "start": "node index.js"
+    },
+    "author": "Einys",
+    "license": "MIT",
+    "dependencies": {
+        "aws-sdk": "^2.457.0",
+        "debug": "~2.6.9",
+        "dotenv": "^8.0.0",
+        "grabity": "^1.0.5",
+        "jimp": "^0.6.1",
+        "mongoose": "^5.5.4",
+        "twit": "^2.2.11"
+    },
+    "devDependencies": {
+        "@types/dotenv": "^6.1.1",
+        "@types/mongoose": "^5.3.26",
+        "@types/twit": "^2.2.21"
+    }
+}

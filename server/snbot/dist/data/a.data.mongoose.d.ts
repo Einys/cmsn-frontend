@@ -1,0 +1,14 @@
+import * as Mongoose from "mongoose";
+import Item, * as item from './model.item';
+import User, * as user from './model.user';
+import Req, * as req from './model.req';
+import Bot, * as bot from './model.bot';
+import Blacklist, * as blacklist from './model.blacklist';
+import Report, * as report from './model.report';
+import Auth, * as auth from './model.auth';
+import Data, * as data from './model.data';
+import Chat, * as chat from './model.chat';
+export { Mongoose, Item, User, Req, Bot, Blacklist, Report, Auth, Data, Chat };
+export { item, user, req, bot, blacklist, report, auth, data, chat };
+export declare function connect(uri: string): Promise<void>;
+export declare function disconnect(): Promise<void>;

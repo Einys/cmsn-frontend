@@ -1,0 +1,50 @@
+html,
+body {
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+body, html {
+padding: 0;
+margin: 0;
+width: 100%;
+min-height: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+h3 {
+color: rgb(70, 89, 139);
+padding: 10px 0;
+}

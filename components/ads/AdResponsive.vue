@@ -1,37 +1,32 @@
 <template>
-<div class="ad-res">
-    <div class="ad-wrapper">
-<ins
-     class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9523902096267561"
-     :data-ad-slot="slot"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-     </ins>
-    </div>
-</div>
+	<div class="ad-res">
+		<div class="ad-wrapper">
+			<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9523902096267561" :data-ad-slot="slot" data-ad-format="auto" data-full-width-responsive="true">
+			</ins>
+		</div>
+	</div>
 
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-            id: Math.floor(Math.random() * 99999999) + 1,
-            slot: "9405479595"
-        }
-    },
-    mounted(){
-        console.log('Ad ', this.slot, "Mounted id: " , this.id);
+  data() {
+    return {
+      id: Math.floor(Math.random() * 99999999) + 1,
+      slot: "9405479595"
+    };
+  },
+  mounted() {
+    console.log("Ad ", this.slot, "Mounted id: ", this.id);
 
-            process.nextTick(function(){
-                (window.adsbygoogle || []).push({});
-            })
-    },
-    watch:{
-        '$route'( to, from ){
-
+    process.nextTick(function() {
+      (window.adsbygoogle || []).push({});
+    });
+  },
+  watch: {
+    $route(to, from) {
+      /*
+      //작동안되는 코드
             console.log("Route change detected. Reload Ad ", this.slot );
             this.id = Math.floor(Math.random() * 99999999) + 1
             this.$forceUpdate();
@@ -39,17 +34,16 @@ export default {
             process.nextTick(function(){
                 (window.adsbygoogle || []).push({});
             })
-
-        }
-
+      */
     }
-}
+  }
+};
 </script>
 
 <style scoped>
-.ad-res{
-    display: inline-block;
-    margin: 10px 0px;
+.ad-res {
+  display: inline-block;
+  margin: 10px 0px;
   position: relative;
   width: 100%;
   padding-bottom: 100%;

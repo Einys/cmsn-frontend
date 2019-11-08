@@ -5,7 +5,7 @@
 			<v-toolbar-title @click="$router.push('/')" style="cursor:pointer">CM-SN.ART</v-toolbar-title>
 			<v-spacer></v-spacer>
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
-			<v-btn text v-if="!searchDrawer" @click="searchDrawer = !searchDrawer"><span class="body-1">카테고리</span></v-btn>
+			<v-btn text v-if="!$vuetify.breakpoint.mdAndUp" @click="searchDrawer = !searchDrawer"><span class="body-1">카테고리</span></v-btn>
 
 			<v-btn v-if="false" outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank"><v-icon left>mdi-twitter</v-icon>로그인</v-btn>
 		</v-app-bar>

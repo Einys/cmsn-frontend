@@ -128,7 +128,7 @@
         </v-layout>
 			</v-container>
       <br>
-      <ad-vt300 v-if="isRightDrawerPermanent"></ad-vt300>
+      <ad-vt300></ad-vt300>
 
 		</v-navigation-drawer>
 

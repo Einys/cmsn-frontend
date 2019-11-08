@@ -84,8 +84,9 @@
 		</v-navigation-drawer>
 
 		<!-- 오른쪽 서랍 -->
-		<v-navigation-drawer app width="320" :permanent="$vuetify.breakpoint.mdAndUp" right color="background"
+		<v-navigation-drawer app width="320" :permanent="isRightDrawerPermanent" right color="background"
     v-model="searchDrawer" style="overflow:hidden">
+    <v-btn v-if="!isRightDrawerPermanent" absolute top right text @click="searchDrawer=false"><v-icon>mdi-close</v-icon></v-btn>
 			<v-container justify-center style="text-align:center">
 				<h3 class="font-weight-light mt-1">커미션 열었어요</h3>
 				<v-layout row align-center justify-space-around style="font-size: 20px;">
@@ -127,7 +128,7 @@
         </v-layout>
 			</v-container>
       <br>
-      <ad-vt300 v-if="$vuetify.breakpoint.mdAndUp"></ad-vt300>
+      <ad-vt300 v-if="isRightDrawerPermanent"></ad-vt300>
 
 		</v-navigation-drawer>
 
@@ -200,6 +201,11 @@ export default Vue.extend({
     objectFitImages(); /* IE, Edge, Safari Polyfill */
     //this.$vuetify.theme.dark = true
     console.log(process.env.NODE_ENV, "node env");
+  },
+  computed: {
+    isRightDrawerPermanent(){
+      return this.$vuetify.breakpoint.mdAndUp
+    }
   },
   watch: {
     $route(to, from) {

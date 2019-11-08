@@ -1,6 +1,6 @@
 <template>
 	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
-		<v-app-bar app clipped-right>
+		<v-app-bar app>
 			<v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 			<v-toolbar-title @click="$router.push('/')" style="cursor:pointer">CM-SN.ART</v-toolbar-title>
 			<v-spacer></v-spacer>
@@ -84,7 +84,7 @@
 		</v-navigation-drawer>
 
 		<!-- 오른쪽 서랍 -->
-		<v-navigation-drawer app clipped width="320" :permanent="$vuetify.breakpoint.mdAndUp" right color="background" v-model="searchDrawer">
+		<v-navigation-drawer app width="320" :permanent="$vuetify.breakpoint.mdAndUp" right color="background" v-model="searchDrawer">
 			<v-container justify-center style="text-align:center">
 				<h3 class="font-weight-light mt-1">커미션 열었어요</h3>
 				<v-layout row align-center justify-space-around style="font-size: 20px;">

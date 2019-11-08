@@ -31,7 +31,7 @@
   });
 
   googletag.cmd.push(function () {
-    googletag.defineSlot('/21750020995/lg-banner', [[728, 90], [970, 90]], 'div-gpt-ad-1571325317379-0').addService(googletag.pubads());
+    googletag.defineSlot('/21750020995/lg-banner', [[970, 90], [728, 90]], 'div-gpt-ad-1571325317379-0').addService(googletag.pubads());
 
   });
 

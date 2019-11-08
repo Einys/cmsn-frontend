@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- ad banner -->
-		<ad-320x100 v-if="$vuetify.breakpoint.smAndDown"></ad-320x100>
+		<ad-320x100 v-if="$vuetify.breakpoint.xs"></ad-320x100>
     <ad-lg-banner v-else></ad-lg-banner>
 
 		<div class="wrapper">
@@ -41,7 +41,7 @@
 		</div>
 
 		<!-- ad banner -->
-		<ad-xs-banner v-if="$vuetify.breakpoint.smAndDown"></ad-xs-banner>
+		<ad-xs-banner v-if="$vuetify.breakpoint.xs"></ad-xs-banner>
     <ad-lg-banner v-else></ad-lg-banner>
 
 	</div>

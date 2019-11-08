@@ -24,7 +24,7 @@
 					</div>
 				</v-flex>
 				<v-flex xs12 sm4>
-					<v-text-field class="search mt-2" solo flat color="orange" prepend-inner-icon="mdi-magnify" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" />
+					<v-text-field class="search mt-2" solo flat clearable color="orange" prepend-inner-icon="mdi-magnify" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" />
 				</v-flex>
         <v-flex xs12 v-if="cat === 'all'">
           <cat-horiz :cat="cat" :intent="intent"></cat-horiz>

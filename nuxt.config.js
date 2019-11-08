@@ -84,6 +84,7 @@ module.exports = {
    * axios
    */
   axios: {
+    baseURL: 'https://mevn-try.herokuapp.com/'
     // proxyHeaders: false
   },
   /**

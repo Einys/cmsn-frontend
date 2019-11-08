@@ -12,9 +12,6 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
-    "@nuxt/typescript": "^2.8.1",
-    "@nuxtjs/axios": "^5.8.0",
-    "@nuxtjs/toast": "^3.3.0",
     "aws-sdk": "^2.457.0",
     "axios": "^0.18.0",
     "connect-mongo": "^3.0.0",
@@ -39,6 +36,9 @@
     "twit": "^2.2.11"
   },
   "devDependencies": {
+    "@nuxt/typescript": "^2.8.1",
+    "@nuxtjs/axios": "^5.8.0",
+    "@nuxtjs/toast": "^3.3.0",
     "@nuxt/typescript-build": "^0.3.3",
     "@nuxtjs/vuetify": "^1.0.0",
     "nodemon": "^1.18.9",

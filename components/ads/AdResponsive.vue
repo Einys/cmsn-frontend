@@ -51,7 +51,6 @@ export default {
     display: inline-block;
     margin: 10px 0px;
   position: relative;
-  background-color: #eeeeee;
   width: 100%;
   padding-bottom: 100%;
 }

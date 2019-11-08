@@ -9,18 +9,18 @@
       align-center
     >
 
-      <v-card text>
-        <v-img src="https://images.unsplash.com/photo-1535696588143-945e1379f1b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"></v-img>
+      <v-card flat>
+        <v-img max-width="420" src="https://images.unsplash.com/photo-1535696588143-945e1379f1b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"></v-img>
 
         <v-card-title>
           <h1 v-if="error.statusCode === 404">
-            <v-icon>error</v-icon> CODE 404 Page not found
+            <v-icon>mdi-alert</v-icon> CODE 404 Page not found
           </h1>
           <h1 v-else>An Error occurred</h1>
         </v-card-title>
         <v-card-text>
           <p>
-            어...? 예상치 못한 일이 일어났습니다.
+            어..? 예상치 못한 일이 일어났습니다.
           </p>
           <v-divider></v-divider>
 
@@ -49,7 +49,7 @@
             <v-btn
               text
               color="cyan darken-1"
-            > 홈으로 돌아가기 </v-btn>
+            > 메인으로<v-icon right>mdi-home</v-icon> </v-btn>
           </NuxtLink>
         </v-card-actions>
 
@@ -89,9 +89,11 @@ export default {
       otherError: 'An error occurred'
     }
   },
-      reload() {
+  methods: {
+        reload() {
       window.location.reload(true);
     }
+  }
 }
 </script>
 

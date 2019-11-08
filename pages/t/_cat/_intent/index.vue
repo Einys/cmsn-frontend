@@ -92,7 +92,13 @@ import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
       if (intent === "open") return "열었어요";
       else if (intent === "find") return "찾습니다";
     }
-  }
+  },
+  async asyncData({ $axios, query, params }){
+    const {list, next} = await $axios.$get('/1.0/data/items/list', {})
+    console.log(list)
+    return {list: list, next: next}
+  },
+  watchQuery: ["page"]
 })
 export default class Card extends Vue {
   @Prop()
@@ -118,7 +124,7 @@ export default class Card extends Vue {
   @Watch("$route.query")
   private onQueryChanged(newPage: string, page: string) {
     console.log("query changed ", page, newPage);
-    this.fetchData();
+    //this.fetchData();
   }
 
   content = {
@@ -144,7 +150,7 @@ export default class Card extends Vue {
 
   created() {}
   mounted() {
-    this.fetchData();
+    //this.fetchData();
   }
 
   fetchData() {

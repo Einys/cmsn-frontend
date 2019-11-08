@@ -12,26 +12,25 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s',
+    title: '커미션 사이트 세메센(CMSN)',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: 'SNS 트위터와 연동되는 커미션 홍보 사이트' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
       {src:'https://securepubads.g.doubleclick.net/tag/js/gpt.js', async:'async'},
-      {src:'/js/googleads.js'}
-      //    <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+      {src:'/js/googleads.js'} // static/js
     ]
   },
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#aaa' },
   /*
   ** Global CSS
   */
@@ -42,13 +41,14 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/masonry', ssr: false }
+    { src: '~/plugins/masonry', ssr: false },
+    { src: '~/plugins/main', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxtjs/vuetify', '@nuxt/typescript-build'
+    '@nuxtjs/vuetify', '@nuxt/typescript-build', '@nuxtjs/axios'
   ],
   /*
   ** Nuxt.js modules
@@ -71,9 +71,20 @@ module.exports = {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
+        },
+        light: {
+          gold:'#c08028',
+          silver: '#707592',
+          background:'#f5f4f4'
         }
       }
     }
+  },
+  /**
+   * axios
+   */
+  axios: {    
+    // proxyHeaders: false  
   },
   /*
   ** Build configuration

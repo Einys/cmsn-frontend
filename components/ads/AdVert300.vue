@@ -1,6 +1,8 @@
+
+
 <template>
-<!-- /21750020995/squ-200-a -->
-<div id='div-gpt-ad-1573235351291-0' style='width: 200px; height: 200px; margin:0 auto; text-align:center'>
+<!-- /21750020995/vert-w300 -->
+<div id='div-gpt-ad-1573237100486-0' style='margin:0 auto; text-align:center'>
 
 </div>
 </template>
@@ -11,7 +13,7 @@ export default {
 
     },
     mounted(){
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1573235351291-0'); });
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1573237100486-0'); });
     },
     updated(){
         console.log('Mobile Banner Ad Updated');

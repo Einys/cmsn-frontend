@@ -84,42 +84,47 @@
 		</v-navigation-drawer>
 
 		<!-- 오른쪽 서랍 -->
-		<v-navigation-drawer app clipped :permanent="$vuetify.breakpoint.mdAndUp" right color="background" v-model="searchDrawer">
+		<v-navigation-drawer app clipped width="320" :permanent="$vuetify.breakpoint.mdAndUp" right color="background" v-model="searchDrawer">
 			<v-container justify-center style="text-align:center">
-				<h2 class="font-weight-light mt-3">커미션 열었어요</h2>
-				<v-layout row wrap align-center justify-space-around style="font-size: 20px;">
-					<v-btn color="blue-grey" text x-large :to="{path:'/t/art/open'}">
+				<h3 class="font-weight-light mt-1">커미션 열었어요</h3>
+				<v-layout row align-center justify-space-around style="font-size: 20px;">
+					<v-btn color="blue-grey" text  :to="{path:'/t/art/open'}">
 						<v-icon left>mdi-satellite</v-icon>그림
 					</v-btn>
-					<v-btn color="blue-grey darken-2" text x-large :to="{path:'/t/wri/open'}">
+					<v-btn color="blue-grey darken-2" text  :to="{path:'/t/wri/open'}">
 						<v-icon left>mdi-text</v-icon> 글..
-					</v-btn>
-					<v-btn color="blue-grey darken-2" text x-large :to="{path:'/t/des/open'}">
-						<v-icon left>mdi-shape</v-icon> 디자인..
-					</v-btn>
-					<v-btn color="blue-grey" text x-large :to="{path:'/t/mus/open'}">
-						<v-icon left>mdi-music-note</v-icon> 음악..
 					</v-btn>
 
 				</v-layout>
-				<v-divider></v-divider>
-				<h2 class="font-weight-light mt-5">커미션 찾습니다</h2>
-				<v-layout row wrap align-center justify-space-around>
-					<v-btn color="blue-grey" text x-large :to="{path:'/t/art/find'}">
-						<v-icon left>mdi-satellite</v-icon>그림
-					</v-btn>
-					<v-btn color="blue-grey darken-2" text x-large :to="{path:'/t/wri/find'}">
-						<v-icon left>mdi-text</v-icon> 글..
-					</v-btn>
-					<v-btn color="blue-grey darken-2" text x-large :to="{path:'/t/des/find'}">
+        <v-layout row align-center justify-space-around style="font-size: 20px;">
+          					<v-btn color="blue-grey darken-2" text  :to="{path:'/t/des/open'}">
 						<v-icon left>mdi-shape</v-icon> 디자인..
 					</v-btn>
-					<v-btn color="blue-grey" text x-large :to="{path:'/t/mus/find'}">
+					<v-btn color="blue-grey" text :to="{path:'/t/mus/open'}">
 						<v-icon left>mdi-music-note</v-icon> 음악..
 					</v-btn>
+
+        </v-layout>
+				<v-divider></v-divider>
+				<h3 class="font-weight-light mt-3">커미션 찾습니다</h3>
+				<v-layout row align-center justify-space-around>
+					<v-btn color="blue-grey" text :to="{path:'/t/art/find'}">
+						<v-icon left>mdi-satellite</v-icon>그림
+					</v-btn>
+					<v-btn color="blue-grey darken-2" text :to="{path:'/t/wri/find'}">
+						<v-icon left>mdi-text</v-icon> 글..
+					</v-btn>
+
 				</v-layout>
-        <br>
-        <ad-sq200></ad-sq200>
+        <v-layout row align-center justify-space-around>
+          					<v-btn color="blue-grey darken-2" text :to="{path:'/t/des/find'}">
+						<v-icon left>mdi-shape</v-icon> 디자인..
+					</v-btn>
+					<v-btn color="blue-grey" text :to="{path:'/t/mus/find'}">
+						<v-icon left>mdi-music-note</v-icon> 음악..
+					</v-btn>
+        </v-layout>
+        <ad-vt300></ad-vt300>
 
 			</v-container>
 		</v-navigation-drawer>
@@ -148,14 +153,14 @@ import Footer from "@/components/Footer.vue";
 // @ts-ignore
 import objectFitImages from "object-fit-images";
 import cmsnService from "@/services/cmsn";
-import AdSquare200 from "@/components/ads/AdSquare200.vue"
+import AdVert300 from "@/components/ads/AdVert300.vue"
 
 export default Vue.extend({
   name: "App",
   components: {
     Masonry,
     "my-footer": Footer,
-    "ad-sq200": AdSquare200
+    "ad-vt300": AdVert300
   },
   data: () => ({
     //
@@ -211,7 +216,7 @@ export default Vue.extend({
   z-index: 5;
 }
 .v-app-bar {
-  box-shadow: 0px 0px 6px 2px rgba(26, 23, 23, 0.1) !important;
+  box-shadow: 0px 0px 5px 2px rgba(26, 23, 23, 0.05) !important;
 }
 
 .toolbar-search {
@@ -234,8 +239,6 @@ export default Vue.extend({
   padding: 24px;
   margin: 0 auto;
 }
-
-
 
 @media screen and (max-width: 720px) {
   .wrapper {

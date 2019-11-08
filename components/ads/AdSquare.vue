@@ -1,7 +1,7 @@
 <template>
     <div class="ad-sq-wrapper">
         <!-- /21750020995/square -->
-        <div id='div-gpt-ad-1538840058287-0'>
+        <div id='div-gpt-ad-1538840058287-0' >
     </div>
 
 
@@ -11,14 +11,14 @@
 <script>
 export default {
     mounted(){
-        
+
         googletag.cmd.push(function() { googletag.display('div-gpt-ad-1538840058287-0'); });
 
     },
     updated(){
         console.log('Square Ad Updated');
-        
-        
+
+
     }
 }
 </script>

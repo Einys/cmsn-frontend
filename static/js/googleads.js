@@ -26,15 +26,10 @@
     googletag.defineSlot('/21750020995/squ-200-a', [200, 200], 'div-gpt-ad-1573235351291-0').addService(googletag.pubads());
   });
 
-  googletag.cmd.push(function () {
-    googletag.defineSlot('/21750020995/square', [[300, 250], [336, 280]], 'div-gpt-ad-1538840058287-0').addService(googletag.pubads());
-
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/21750020995/vert-w300', [[300, 250], [300, 600], [160, 600], [120, 600]], 'div-gpt-ad-1573237100486-0').addService(googletag.pubads());
   });
 
-  googletag.cmd.push(function () {
-    googletag.defineSlot('/21750020995/squ-under', [[336, 280], [300, 250]], 'div-gpt-ad-1538874382517-0').addService(googletag.pubads());
-
-  });
   googletag.cmd.push(function () {
     googletag.defineSlot('/21750020995/lg-banner', [[728, 90], [970, 90]], 'div-gpt-ad-1571325317379-0').addService(googletag.pubads());
 

@@ -119,7 +119,7 @@
 					</v-btn>
 				</v-layout>
         <br>
-          <ad-res v-if="false"></ad-res>
+        <ad-sq200></ad-sq200>
 
 			</v-container>
 		</v-navigation-drawer>
@@ -148,14 +148,14 @@ import Footer from "@/components/Footer.vue";
 // @ts-ignore
 import objectFitImages from "object-fit-images";
 import cmsnService from "@/services/cmsn";
-import AdResponsive from "@/components/ads/AdResponsive.vue"
+import AdSquare200 from "@/components/ads/AdSquare200.vue"
 
 export default Vue.extend({
   name: "App",
   components: {
     Masonry,
     "my-footer": Footer,
-    "ad-res": AdResponsive
+    "ad-sq200": AdSquare200
   },
   data: () => ({
     //

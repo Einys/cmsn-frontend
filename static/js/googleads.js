@@ -22,6 +22,10 @@
   var googletag = googletag || {};
   googletag.cmd = googletag.cmd || [];
 
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/21750020995/squ-200-a', [200, 200], 'div-gpt-ad-1573235351291-0').addService(googletag.pubads());
+  });
+
   googletag.cmd.push(function () {
     googletag.defineSlot('/21750020995/square', [[300, 250], [336, 280]], 'div-gpt-ad-1538840058287-0').addService(googletag.pubads());
 

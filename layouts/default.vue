@@ -5,7 +5,7 @@
 			<v-toolbar-title @click="$router.push('/')" style="cursor:pointer">CM-SN.ART</v-toolbar-title>
 			<v-spacer></v-spacer>
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
-			<v-btn text v-if="!$vuetify.breakpoint.mdAndUp" @click="searchDrawer = !searchDrawer"><span class="body-1">카테고리</span></v-btn>
+			<v-btn text @click="searchDrawer = !searchDrawer"><span class="body-1">카테고리</span></v-btn>
 
 			<v-btn v-if="false" outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank"><v-icon left>mdi-twitter</v-icon>로그인</v-btn>
 		</v-app-bar>
@@ -84,7 +84,8 @@
 		</v-navigation-drawer>
 
 		<!-- 오른쪽 서랍 -->
-		<v-navigation-drawer app width="320" :permanent="$vuetify.breakpoint.mdAndUp" right color="background" v-model="searchDrawer">
+		<v-navigation-drawer app width="320" :permanent="$vuetify.breakpoint.mdAndUp" right color="background"
+    v-model="searchDrawer" style="overflow:hidden">
 			<v-container justify-center style="text-align:center">
 				<h3 class="font-weight-light mt-1">커미션 열었어요</h3>
 				<v-layout row align-center justify-space-around style="font-size: 20px;">
@@ -125,10 +126,9 @@
 					</v-btn>
         </v-layout>
 			</v-container>
-      <div style="overflow:hidden">
-         <ad-vt300></ad-vt300>
+      <br>
+      <ad-vt300></ad-vt300>
 
-      </div>
 		</v-navigation-drawer>
 
 		<!-- 모바일용 하단 네비게이션 -->

@@ -42,7 +42,6 @@
 
 		<!-- ad banner -->
 		<ad-xs-banner v-if="$vuetify.breakpoint.xs"></ad-xs-banner>
-    <ad-lg-banner v-else></ad-lg-banner>
 
 	</div>
 </template>

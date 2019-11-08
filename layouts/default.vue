@@ -119,7 +119,7 @@
 					</v-btn>
 				</v-layout>
         <br>
-          <ad-res v-if="$vuetify.breakpoint.lgAndUp"></ad-res>
+          <ad-res v-if="false"></ad-res>
 
 			</v-container>
 		</v-navigation-drawer>

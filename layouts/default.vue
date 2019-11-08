@@ -1,6 +1,6 @@
 <template>
 	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
-		<v-app-bar app>
+		<v-app-bar app clipped-right>
 			<v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 			<v-toolbar-title @click="$router.push('/')" style="cursor:pointer">CM-SN.ART</v-toolbar-title>
 			<v-spacer></v-spacer>
@@ -84,7 +84,7 @@
 		</v-navigation-drawer>
 
 		<!-- 오른쪽 서랍 -->
-		<v-navigation-drawer app temporary right color="background" v-model="searchDrawer">
+		<v-navigation-drawer app clipped :permanent="$vuetify.breakpoint.mdAndUp" right color="background" v-model="searchDrawer">
 			<v-container justify-center style="text-align:center">
 				<h2 class="font-weight-light mt-3">커미션 열었어요</h2>
 				<v-layout row wrap align-center justify-space-around style="font-size: 20px;">
@@ -208,7 +208,7 @@ export default Vue.extend({
   z-index: 5;
 }
 .v-app-bar {
-  box-shadow: 0px 0px 10px 2px rgba(26, 23, 23, 0.1) !important;
+  box-shadow: 0px 0px 6px 2px rgba(26, 23, 23, 0.1) !important;
 }
 
 .toolbar-search {
@@ -232,13 +232,14 @@ export default Vue.extend({
   margin: 0 auto;
 }
 
-nav {
-	z-index: 100 !important;
-}
+
 
 @media screen and (max-width: 720px) {
   .wrapper {
     padding: 24px 2px;
+  }
+  nav {
+	  z-index: 100 !important;
   }
 }
 </style>

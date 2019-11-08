@@ -92,23 +92,9 @@ import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
       if (intent === "open") return "열었어요";
       else if (intent === "find") return "찾습니다";
     }
-  },
-  async asyncData({ $axios, query, params }){
-    const {list, next} = await $axios.$get('/1.0/data/items/list', {})
-    console.log(list)
-    return {list: list, next: next}
-  },
-  watchQuery: ["page"]
+  }
 })
 export default class Card extends Vue {
-  @Prop()
-  public cat!: string;
-
-  @Prop()
-  public intent!: "open" | "find";
-
-  @Prop({ default: "1" })
-  public page!: string;
 
   @Prop()
   public q!: string;
@@ -124,7 +110,7 @@ export default class Card extends Vue {
   @Watch("$route.query")
   private onQueryChanged(newPage: string, page: string) {
     console.log("query changed ", page, newPage);
-    //this.fetchData();
+    this.fetchData();
   }
 
   content = {
@@ -150,7 +136,7 @@ export default class Card extends Vue {
 
   created() {}
   mounted() {
-    //this.fetchData();
+    this.fetchData();
   }
 
   fetchData() {
@@ -161,17 +147,16 @@ export default class Card extends Vue {
     document.documentElement.scrollTop = 0;
     console.log("scroll to top ");
 
-    cmsnService
-      .getItemlist({
+    this.$axios.$get('/1.0/data/items/list', {params: {
         cat: this.cat,
         intent: this.intent,
         count: this.count,
         skip: this.skip,
         keyword: this.q
-      })
-      .then(({ data }) => {
-        this.list = data.list;
-        this.next = data.next;
+      }})
+      .then(({ list, next }) => {
+        this.list = list;
+        this.next = next;
         this.busy = false;
       })
       .catch(err => {
@@ -188,7 +173,22 @@ export default class Card extends Vue {
   scrollToTop(){
     document.documentElement.scrollTop = 0;
   }
-
+  get cat(){
+    return this.$route.params.cat
+  }
+  get intent (){
+    return this.$route.params.intent
+  }
+  get page (){
+    let pageQuery = this.$route.query.page;
+    if(typeof pageQuery === 'string'){
+      return pageQuery
+    }else if(Array.isArray(pageQuery)){
+      return pageQuery[0]
+    }else{
+      return '1'
+    }
+  }
   get skip() {
     let skip = (parseInt(this.page) - 1) * this.count;
     return skip > 0 ? skip : 0;

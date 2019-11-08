@@ -30,7 +30,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#aaa' },
+  loading: { color: '#5dc596' },
   /*
   ** Global CSS
   */
@@ -83,8 +83,8 @@ module.exports = {
   /**
    * axios
    */
-  axios: {    
-    // proxyHeaders: false  
+  axios: {
+    // proxyHeaders: false
   },
   /*
   ** Build configuration

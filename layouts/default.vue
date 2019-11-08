@@ -128,11 +128,7 @@
         </v-layout>
 			</v-container>
       <br>
-      <div v-if="$vuetify.breakpoint.mdAndUp">
-        ad
       <ad-vt300></ad-vt300>
-
-      </div>
 
 		</v-navigation-drawer>
 

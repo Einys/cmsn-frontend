@@ -17,7 +17,8 @@ var bodyParser = require('body-parser');
 const app = express();
 
 /**
- * this is to get raw body to calculate webhook header sign. (2018.6.15)
+ * Rawbody parser
+ * to calculate webhook header sign. (2018.6.15)
  * 웹훅사인은 로우바디 + 컨슈머시크릿
  */
 var rawBodySaver = function (req, res, buf, encoding) {
@@ -38,19 +39,6 @@ app.use(express.static(path.join(__dirname, '../frontend/dist/js')));
 app.use(express.static(path.join(__dirname, '../frontend/dist/img')));
 
 
-
-/**
- * Rawbody parser
- * to calculate webhook header sign. (2018.6.15)
- * 웹훅사인은 로우바디 + 컨슈머시크릿
- */
-var rawBodySaver = function (req, res, buf, encoding) {
-  if (buf && buf.length) {
-    req.rawBody = buf.toString(encoding || 'utf8');
-  }
-}
-app.use(bodyParser.json({ verify: rawBodySaver }));
-app.use(bodyParser.urlencoded({ extended: false }))
 
 //CORS policy
 const SERVER_URL = process.env.SERVER_URL
@@ -183,7 +171,7 @@ app.post('/twitter', async function (req, res) {
   if (!process.env.DEBUG && !process.env.TEST) {
     //디버그모드가 아닐 때 (실제 서버 웹훅으로 들어온 데이터일때)
     let raw = req.rawBody
-    //console.log('[app.js: post/twitter]  raw : ' + raw);
+    console.log('[app.js: post/twitter]  raw : ' + raw);
     let myHmac = security.get_challenge_response(raw, process.env.consumer_secret)
     console.log('[app.js: post/twitter]  MY Hash : sha256=' + myHmac);
     let myHash = 'sha256=' + myHmac;

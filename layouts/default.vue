@@ -124,11 +124,11 @@
 						<v-icon left>mdi-music-note</v-icon> 음악..
 					</v-btn>
         </v-layout>
-        <br>
-        <br>
-        <ad-vt300></ad-vt300>
-
 			</v-container>
+      <div style="overflow:hidden">
+         <ad-vt300></ad-vt300>
+
+      </div>
 		</v-navigation-drawer>
 
 		<!-- 모바일용 하단 네비게이션 -->

@@ -84,7 +84,7 @@
 		</v-navigation-drawer>
 
 		<!-- 오른쪽 서랍 -->
-		<v-navigation-drawer app width="320" :permanent="isRightDrawerPermanent" right color="background"
+		<v-navigation-drawer app width="300" :permanent="isRightDrawerPermanent" right color="background"
     v-model="searchDrawer" style="overflow:hidden">
     <v-btn v-if="!isRightDrawerPermanent" absolute top right text @click="searchDrawer=false"><v-icon>mdi-close</v-icon></v-btn>
 			<v-container justify-center style="text-align:center">

@@ -1,11 +1,11 @@
 <template>
 <div class="ad-res">
     <div class="ad-wrapper">
-<ins 
+<ins
      class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-9523902096267561"
-     :data-ad-slot="adslot"
+     :data-ad-slot="slot"
      data-ad-format="auto"
      data-full-width-responsive="true">
      </ins>
@@ -16,34 +16,29 @@
 
 <script>
 export default {
-    props:{
-        adstyle:String,
-        adslot:String,
-    },
     data(){
         return{
-            id: Math.floor(Math.random() * 99999999) + 1
+            id: Math.floor(Math.random() * 99999999) + 1,
+            slot: "9405479595"
         }
     },
     mounted(){
-        console.log('Ad ', this.adslot, "Mounted id: " , this.id);
-        
+        console.log('Ad ', this.slot, "Mounted id: " , this.id);
+
             process.nextTick(function(){
-                (adsbygoogle = window.adsbygoogle || []).push({});
+                (window.adsbygoogle || []).push({});
             })
     },
     watch:{
         '$route'( to, from ){
 
-            console.log("Route change detected. Reload Ad ", this.adslot );
+            console.log("Route change detected. Reload Ad ", this.slot );
             this.id = Math.floor(Math.random() * 99999999) + 1
             this.$forceUpdate();
 
             process.nextTick(function(){
-                (adsbygoogle = window.adsbygoogle || []).push({});
+                (window.adsbygoogle || []).push({});
             })
-            
-            
 
         }
 
@@ -56,11 +51,9 @@ export default {
     display: inline-block;
     margin: 10px 0px;
   position: relative;
-  background-image: url("../../assets/images/ad-bg.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #eeeeee;
   width: 100%;
-  padding-bottom: 90%;
+  padding-bottom: 100%;
 }
 
 .ad-res .ad-wrapper {

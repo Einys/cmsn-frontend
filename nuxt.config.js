@@ -1,5 +1,11 @@
 const colors = require('vuetify/es5/util/colors').default
 
+if(process.env.NODE_ENV !== 'production'){
+  const dotenv = require('dotenv');
+  dotenv.config()
+}
+
+
 module.exports = {
   mode: 'universal',
   /**
@@ -24,6 +30,7 @@ module.exports = {
     ],
     script: [
       {src:'https://securepubads.g.doubleclick.net/tag/js/gpt.js', async:'async'},
+      {src:'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', async:'async'},
       {src:'/js/googleads.js'} // static/js
     ]
   },
@@ -84,7 +91,7 @@ module.exports = {
    * axios
    */
   axios: {
-    baseURL: 'https://mevn-try.herokuapp.com/'
+    baseURL: process.env.SERVER_URL
     // proxyHeaders: false
   },
   /**

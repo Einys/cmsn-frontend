@@ -7,7 +7,7 @@
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
 			<v-btn text @click="searchDrawer = !searchDrawer"><span class="body-1">카테고리</span></v-btn>
 
-			<v-btn outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank"><v-icon left>mdi-twitter</v-icon>로그인</v-btn>
+			<v-btn v-if="false" outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank"><v-icon left>mdi-twitter</v-icon>로그인</v-btn>
 		</v-app-bar>
 
 		<!--스낵바-->
@@ -118,6 +118,8 @@
 						<v-icon left>mdi-music-note</v-icon> 음악..
 					</v-btn>
 				</v-layout>
+        <br>
+          <ad-res v-if="$vuetify.breakpoint.lgAndUp"></ad-res>
 
 			</v-container>
 		</v-navigation-drawer>
@@ -146,13 +148,14 @@ import Footer from "@/components/Footer.vue";
 // @ts-ignore
 import objectFitImages from "object-fit-images";
 import cmsnService from "@/services/cmsn";
-
+import AdResponsive from "@/components/ads/AdResponsive.vue"
 
 export default Vue.extend({
   name: "App",
   components: {
     Masonry,
-    "my-footer": Footer
+    "my-footer": Footer,
+    "ad-res": AdResponsive
   },
   data: () => ({
     //
@@ -167,7 +170,8 @@ export default Vue.extend({
   }),
   methods: {
     login() {
-	  cmsnService.login().catch(err => {console.log(err)})
+      this.snackbar = true;
+	   //cmsnService.login().catch(err => {console.log(err)})
     },
     search(e: any) {
       console.log("search", this.keyword);
@@ -199,7 +203,6 @@ export default Vue.extend({
 
     }
   }
-  //googletag.pubads().refresh();
 });
 </script>
 <style lang="scss">

@@ -33,7 +33,7 @@
 			<div class="masonry-wrapper">
 				<page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
 				<loader v-if="busy" />
-				<masonry v-if="list" :list="list" :isArticle="!isImages" />
+				<masonry v-if="!isEmpty" :list="list" :isArticle="!isImages" />
 
 				<page-button v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
 			</div>

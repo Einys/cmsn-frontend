@@ -27,7 +27,7 @@
   });
 
   googletag.cmd.push(function() {
-    googletag.defineSlot('/21750020995/vert-w300', [[300, 250], [300, 600], [160, 600], [120, 600]], 'div-gpt-ad-1573237100486-0').addService(googletag.pubads());
+    googletag.defineSlot('/21750020995/vert-w300', [[300, 600], [160, 600], [120, 600], [300, 250] ], 'div-gpt-ad-1573237100486-0').addService(googletag.pubads());
   });
 
   googletag.cmd.push(function () {

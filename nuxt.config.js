@@ -48,7 +48,7 @@ module.exports = {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxtjs/vuetify', '@nuxt/typescript-build', '@nuxtjs/axios'
+    '@nuxtjs/vuetify', '@nuxt/typescript-build', '@nuxtjs/axios', '@nuxtjs/google-analytics'
   ],
   /*
   ** Nuxt.js modules
@@ -85,6 +85,12 @@ module.exports = {
    */
   axios: {
     // proxyHeaders: false
+  },
+  /**
+   * google analytics
+   */
+  googleAnalytics: {
+    id: 'UA-121532539-1'
   },
   /*
   ** Build configuration

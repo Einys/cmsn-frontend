@@ -1,9 +1,10 @@
 <template>
 <div>
-  <ad-banner></ad-banner>
+
   <div class="wrapper">
     <h3 class="pa-2 pt-5 pb-1">원하는 커미션이 있나요?</h3>
     <cat-horiz></cat-horiz>
+    <ad-banner></ad-banner>
     <h3 class="pa-2 pt-5 pb-1">최신 홍보</h3>
     <loader v-if="busy"/>
     <masonry :list="list" :isArticle="true"/>
@@ -25,14 +26,13 @@ import CatHoriz from "@/components/cat/Horiz.vue";
 import Masonry from "@/components/Masonry.vue"
 import cmsnService from "@/services/cmsn";
 import Loader from "@/components/Loader.vue";
-import Banners from "@/components/ads/Banners.vue";
-
+import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
 export default Vue.extend({
   components: {
     CatHoriz,
     Masonry,
     Loader,
-    'ad-banner':Banners
+    'ad-banner':AdLargeBanner
   },
   data: () => {
     return {

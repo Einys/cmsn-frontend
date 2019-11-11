@@ -52,7 +52,6 @@ import CatHoriz from "@/components/cat/Horiz.vue";
 import Masonry from "@/components/Masonry.vue";
 import PageButton from "@/components/PageButton.vue";
 import Loader from "@/components/Loader.vue";
-import Banners from "@/components/ads/Banners.vue";
 import AdMobileBanner from "@/components/ads/AdMobileBanner.vue";
 import AdMobileBanner2 from "@/components/ads/AdMobileBanner2.vue";
 import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
@@ -61,7 +60,6 @@ import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
   components: {
     Masonry,
     PageButton,
-    "ad-banner": Banners,
     "ad-xs-banner": AdMobileBanner,
     "ad-320x100": AdMobileBanner2,
     "ad-lg-banner": AdLargeBanner,

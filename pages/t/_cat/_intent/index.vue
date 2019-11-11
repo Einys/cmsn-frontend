@@ -1,8 +1,7 @@
 <template>
 	<div>
 		<!-- ad banner -->
-		<ad-320x100 v-if="$vuetify.breakpoint.xs"></ad-320x100>
-    <ad-lg-banner v-else></ad-lg-banner>
+    <ad-lg-banner></ad-lg-banner>
 
 		<div class="wrapper">
       <v-btn fab depressed dark color="orange" style="z-index:5; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;"
@@ -52,7 +51,6 @@ import CatHoriz from "@/components/cat/Horiz.vue";
 import Masonry from "@/components/Masonry.vue";
 import PageButton from "@/components/PageButton.vue";
 import Loader from "@/components/Loader.vue";
-import Banners from "@/components/ads/Banners.vue";
 import AdMobileBanner from "@/components/ads/AdMobileBanner.vue";
 import AdMobileBanner2 from "@/components/ads/AdMobileBanner2.vue";
 import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
@@ -61,7 +59,6 @@ import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
   components: {
     Masonry,
     PageButton,
-    "ad-banner": Banners,
     "ad-xs-banner": AdMobileBanner,
     "ad-320x100": AdMobileBanner2,
     "ad-lg-banner": AdLargeBanner,

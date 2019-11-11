@@ -1,8 +1,7 @@
 <template>
 	<div>
 		<!-- ad banner -->
-		<ad-320x100 v-if="$vuetify.breakpoint.smAndDown"></ad-320x100>
-    <ad-lg-banner v-else></ad-lg-banner>
+    <ad-lg-banner></ad-lg-banner>
 
 		<div class="wrapper">
       <v-btn fab depressed dark color="orange" style="z-index:5; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;"
@@ -39,11 +38,11 @@
 			</div>
 
 		</div>
-    
+
 		<!-- ad banner -->
 		<ad-xs-banner v-if="$vuetify.breakpoint.smAndDown"></ad-xs-banner>
     <ad-lg-banner v-else></ad-lg-banner>
-    
+
 	</div>
 </template>
 <script lang="ts">

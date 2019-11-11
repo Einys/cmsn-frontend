@@ -31,7 +31,8 @@
   });
 
   googletag.cmd.push(function () {
-    googletag.defineSlot('/21750020995/lg-banner', [[970, 90], [728, 90]], 'div-gpt-ad-1571325317379-0').addService(googletag.pubads());
+    var bannerAdSizes = googletag.sizeMapping().addSize([1280, 768], [1168, 150]).addSize([980, 690], [970, 90]).addSize([728, 300], [728, 90]).addSize([0, 0], [320, 100]).build();
+    googletag.defineSlot('/21750020995/lg-banner', [[1168, 150],[970, 90],[728, 90],[320, 100]], 'div-gpt-ad-1571325317379-0').defineSizeMapping(bannerAdSizes).addService(googletag.pubads());
 
   });
 

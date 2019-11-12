@@ -4,9 +4,7 @@
   <div class="wrapper">
     <h3 class="pa-2 pt-5 pb-1">원하는 커미션이 있나요?</h3>
     <cat-horiz></cat-horiz>
-    <div id="banner1" style="width: 300px; height: 250px;">
-
-    </div>
+    <br>
     <ad-banner></ad-banner>
     <h3 class="pa-2 pt-5 pb-1">최신 홍보</h3>
     <loader v-if="busy"/>

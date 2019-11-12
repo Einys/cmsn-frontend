@@ -27,7 +27,7 @@
   });
 
   googletag.cmd.push(function() {
-    var sideAdSizes = googletag.sizeMapping().addSize([1366, 768], [300, 600]).addSize([1024, 768], [300,250]).addSize([728, 300], []).build();
+    var sideAdSizes = googletag.sizeMapping().addSize([1366, 768], [300, 600]).addSize([1024, 768], [300,250]).addSize([0, 0], []).build();
     googletag.defineSlot('/21750020995/vert-w300', [[300, 600], [160, 600], [120, 600], [300, 250] ], 'div-gpt-ad-1573237100486-0').defineSizeMapping(sideAdSizes).addService(googletag.pubads());
   });
 

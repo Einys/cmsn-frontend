@@ -1,12 +1,10 @@
 <template>
 	<div>
-		<!-- ad banner -->
-    <ad-lg-banner></ad-lg-banner>
 
 		<div class="wrapper">
-      <v-btn fab depressed dark color="orange" style="z-index:5; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;"
-      @click="scrollToTop()">
-        <v-icon>mdi-chevron-up</v-icon></v-btn>
+			<v-btn fab depressed dark color="orange" style="z-index:5; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
+				<v-icon>mdi-chevron-up</v-icon>
+			</v-btn>
 
 			<v-layout no-gutters row wrap justify-center align-center class="ma-2">
 
@@ -25,10 +23,12 @@
 				<v-flex xs12 sm4>
 					<v-text-field class="search mt-2" solo flat clearable color="orange" prepend-inner-icon="mdi-magnify" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" />
 				</v-flex>
-        <v-flex xs12 v-if="cat === 'all'">
-          <cat-horiz :cat="cat" :intent="intent"></cat-horiz>
-        </v-flex>
+				<v-flex xs12 v-if="cat === 'all'">
+					<cat-horiz :cat="cat" :intent="intent"></cat-horiz>
+				</v-flex>
 			</v-layout>
+			<!-- ad banner -->
+			<ad-lg-banner></ad-lg-banner>
 			<div class="masonry-wrapper">
 				<page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
 				<loader v-if="busy" />
@@ -91,7 +91,6 @@ import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
   }
 })
 export default class Card extends Vue {
-
   @Prop()
   public q!: string;
 
@@ -143,13 +142,16 @@ export default class Card extends Vue {
     document.documentElement.scrollTop = 0;
     console.log("scroll to top ");
 
-    this.$axios.$get('/1.0/data/items/list', {params: {
-        cat: this.cat,
-        intent: this.intent,
-        count: this.count,
-        skip: this.skip,
-        keyword: this.q
-      }})
+    this.$axios
+      .$get("/1.0/data/items/list", {
+        params: {
+          cat: this.cat,
+          intent: this.intent,
+          count: this.count,
+          skip: this.skip,
+          keyword: this.q
+        }
+      })
       .then(({ list, next }) => {
         this.list = list;
         this.next = next;
@@ -166,23 +168,23 @@ export default class Card extends Vue {
     this.$router.push({ query: { q: this.keyword } });
   }
 
-  scrollToTop(){
+  scrollToTop() {
     document.documentElement.scrollTop = 0;
   }
-  get cat(){
-    return this.$route.params.cat
+  get cat() {
+    return this.$route.params.cat;
   }
-  get intent (){
-    return this.$route.params.intent
+  get intent() {
+    return this.$route.params.intent;
   }
-  get page (){
+  get page() {
     let pageQuery = this.$route.query.page;
-    if(typeof pageQuery === 'string'){
-      return pageQuery
-    }else if(Array.isArray(pageQuery)){
-      return pageQuery[0]
-    }else{
-      return '1'
+    if (typeof pageQuery === "string") {
+      return pageQuery;
+    } else if (Array.isArray(pageQuery)) {
+      return pageQuery[0];
+    } else {
+      return "1";
     }
   }
   get skip() {

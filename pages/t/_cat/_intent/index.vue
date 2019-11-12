@@ -1,6 +1,7 @@
 <template>
 	<div>
-
+			<!-- ad banner -->
+			<ad-lg-banner></ad-lg-banner>
 		<div class="wrapper">
 			<v-btn fab depressed dark color="orange" style="z-index:5; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
 				<v-icon>mdi-chevron-up</v-icon>
@@ -27,8 +28,7 @@
 					<cat-horiz :cat="cat" :intent="intent"></cat-horiz>
 				</v-flex>
 			</v-layout>
-			<!-- ad banner -->
-			<ad-lg-banner></ad-lg-banner>
+
 			<div class="masonry-wrapper">
 				<page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
 				<loader v-if="busy" />

@@ -108,7 +108,7 @@
 
         </v-layout>
 				<v-divider></v-divider>
-				<h3 class="font-weight-light mt-3">커미션 찾습니다</h3>
+				<h3 class="font-weight-light mt-1">커미션 찾습니다</h3>
 				<v-layout row align-center justify-space-around>
 					<v-btn color="blue-grey" text :to="{path:'/t/art/find'}">
 						<v-icon left>mdi-satellite</v-icon>그림

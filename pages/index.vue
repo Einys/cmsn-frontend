@@ -2,7 +2,7 @@
 <div>
 
   <div class="wrapper">
-    <h3 class="pa-2 pt-5 pb-1">원하는 커미션이 있나요?</h3>
+    <h3 class="pa-2 pt-5 pb-1">원하시는 커미션이 있나요?</h3>
     <cat-horiz></cat-horiz>
     <br>
     <ad-banner></ad-banner>
@@ -11,7 +11,7 @@
     <masonry :list="list" :isArticle="true"/>
     <div v-if="!isEmpty">
 
-      <h3 class="pa-2 pt-5 pb-1">커미션 카테고리</h3>
+      <h3 class="pa-2 pt-5 pb-1">카테고리 선택하고 더보기</h3>
     <cat-horiz></cat-horiz>
 
     </div>

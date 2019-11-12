@@ -7,7 +7,7 @@ if(process.env.NODE_ENV !== 'production'){
 
 
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
   /**
   * env
   */

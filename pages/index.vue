@@ -4,6 +4,9 @@
   <div class="wrapper">
     <h3 class="pa-2 pt-5 pb-1">원하는 커미션이 있나요?</h3>
     <cat-horiz></cat-horiz>
+    <div id="banner1" style="width: 300px; height: 250px;">
+
+    </div>
     <ad-banner></ad-banner>
     <h3 class="pa-2 pt-5 pb-1">최신 홍보</h3>
     <loader v-if="busy"/>
@@ -46,6 +49,9 @@ export default Vue.extend({
   },
   mounted(){
     this.petchList()
+        googletag.cmd.push(function() {
+      googletag.display('banner1');
+    });
     //this.petchEach() //나중에 메인에 개별 카테고리가 보이도록 만들기...
   },
   methods: {

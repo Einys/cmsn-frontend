@@ -26,9 +26,9 @@ export default class AutoBot extends Tbot {
     s3: iParser.S3;
 
     /**
-     * 
-     * @param {*} param0 
-     * @param {DB} db 
+     *
+     * @param {*} param0
+     * @param {DB} db
      */
     constructor(botConfig: Bot.Ibot) {
 
@@ -293,8 +293,8 @@ export default class AutoBot extends Tbot {
     }
 
     /**
-    * 
-    * @param {*} tweet 
+    *
+    * @param {*} tweet
     * @param {*} req 답장을 보내야해서 파라미터로 추가. . . ..(2019.01.17)
     */
     languageFilter(tweet, req) {
@@ -361,7 +361,7 @@ export default class AutoBot extends Tbot {
 
     async catchDeleteEvent(deleteEvent) {
         console.log('[director] deleteEvent : ', JSON.stringify(deleteEvent))
-        //리트윗이 딜리트이벤트가 떴다는것 = 그 트윗이 지워졌다는뜻 혹은 리트윗해제됨 이므로 디비에서 비활성화함. 18.06.19 
+        //리트윗이 딜리트이벤트가 떴다는것 = 그 트윗이 지워졌다는뜻 혹은 리트윗해제됨 이므로 디비에서 비활성화함. 18.06.19
         //이전 코드 가져옴 19.02.14
         let id = deleteEvent[0].status.id
 
@@ -454,10 +454,10 @@ export default class AutoBot extends Tbot {
 
         console.log("[director] dmevent sender id : " + sender_id);
         /**
-         * 
+         *
          * 아래의 코드 - 정지먹은 유저가 디엠으로 오면
          * 18.06.12
-         * 
+         *
          * 정지 표시를 유저에다가 다는것에서 따로 컬렉션을 만들어서 넣고 expire 시키는걸로
          * 18.08.31
          *
@@ -495,14 +495,14 @@ export default class AutoBot extends Tbot {
             console.log("Metadata : " + metadata);
 
             /**
-             * 
-             * 
+             *
+             *
              * 아래부터 스위치
              * 신고이유(메타데이터)를 받아서
              * 그 이유를 말한 사람 아이디를 KEY로 신고내역 DB에서 신고를 찾아서
              * 신고에 이유를 업데이트한다
-             * 
-             * 
+             *
+             *
              */
 
 
@@ -537,7 +537,7 @@ export default class AutoBot extends Tbot {
                 case "abuse_porn":
                 case "abuse_misuse":
                     //최근 대화기록 확인
-                    await Database.Chat.find({ senderID: sender_id, targetID: this.id, 'content.reportedItemID': { $exists: true } }).sort({ 'updatedAt': -1 }).limit(1).then(chat => {
+                    await Database.Chat.find({ senderID: sender_id, targetID: this.id, 'content.reportedItemID': { $exists: true } }).sort({ 'createdAt': -1 }).limit(1).then(chat => {
 
                         return this.createReportByTwitterItemID(metadata, chat[0].content.reportedItemID, sender_id)
 
@@ -635,7 +635,7 @@ export default class AutoBot extends Tbot {
 
 
             /**
-             * 트윗에 링크가 있음  
+             * 트윗에 링크가 있음
              * @dm.message_data.entities.urls
              */
             if (dm.message_data.entities.urls.length > 0) {
@@ -699,10 +699,10 @@ export default class AutoBot extends Tbot {
     }
 
     /**
-     * 신고된 트윗 id가 서비스에서 이미 제재된 트윗인지, sender가 이미 신고한 트윗인지 등을 체크하고 계속 진행할지 reportable 로 결정한다. 
+     * 신고된 트윗 id가 서비스에서 이미 제재된 트윗인지, sender가 이미 신고한 트윗인지 등을 체크하고 계속 진행할지 reportable 로 결정한다.
      * 서비스 이용 기록이 없는 트위터 유저도 디엠해서 링크를 신고할 수 있기 때문에 유저의 (트위터) id만 받는다.
-     * @param id 
-     * @param sender_id 
+     * @param id
+     * @param sender_id
      */
     async analyzeReport(targetItemID: string, senderUserID: string) {
 
@@ -794,7 +794,7 @@ export default class AutoBot extends Tbot {
         rep = await rep.save();
 
 
-        //이미 존재하는 블랙리스트와 아이템id, 신고사유가 일치하면 
+        //이미 존재하는 블랙리스트와 아이템id, 신고사유가 일치하면
         //effected를 true로 만들고, 신고자에게 신고되었다는 DM을 주되
         //블랙리스트를 또 중복해서 추가하지는 않도록
         let alreadyBlacklisted = await Database.Blacklist.findOne({ itemid: rep.target_item, reason: rep.reason })
@@ -832,11 +832,11 @@ export default class AutoBot extends Tbot {
         r.sender_username = sender.username
 
         let rep = await r.save();
-        
+
         let admin = await Data.Bot.findOne({name:'admin'})
-        
+
         Data.Report.find({ target_userid: r.target_userid, reason: { $exists: true } }).then(reports => {  //find by user id
-        
+
             d('Effected?')
             if (sender.userid === admin.id || reports.length > 4) {
                 d('- YES')
@@ -844,7 +844,7 @@ export default class AutoBot extends Tbot {
             } else {
                 d('- NO')
             }
-        
+
         })
         return rep
     }
@@ -1004,7 +1004,7 @@ export default class AutoBot extends Tbot {
                 }
             }
 
-            //Link의 S3 관련 리뉴얼. 
+            //Link의 S3 관련 리뉴얼.
             if (botS3 && typeof botS3.storeMediaByLink === 'function' && iParser.config.saveLinkMedia) {
                 if (Array.isArray(item.links) && item.links.length >= 1) {
                     for (let link of item.links) {
@@ -1244,7 +1244,7 @@ export function closeDatabaseconn() {
 
 /**
  * parse an intent(find, open, und)
- * @param text 
+ * @param text
  */
 export async function parseIntent(text: string) {
 
@@ -1313,7 +1313,7 @@ export async function getUserReqSucceedCount(user, bot) {
 
 /**
  * 배열에서 가장 많이 나타난 요소를 리턴한다.
- * @param {array} array 
+ * @param {array} array
  */
 function mode(array) {
     if (array.length == 0)

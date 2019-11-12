@@ -6,19 +6,18 @@
 			<v-btn fab depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
 				<v-icon>mdi-chevron-up</v-icon>
 			</v-btn>
-
 			<v-layout no-gutters row wrap justify-center align-center class="ma-2">
 
 				<v-flex xs12 sm8>
 					<v-row no-gutters align="center">
 						<h2 class="headline">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h2>
-						<v-btn v-if="cat" class="pa-1" :href="'https://twitter.com/'+bots[cat]" target="_blank" text color="light-blue">
-							<v-icon left>mdi-twitter</v-icon>{{bots[cat]}}
+						<v-btn v-if="cat" class="pa-1" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text color="light-blue">
+							<v-icon left>mdi-twitter</v-icon>{{(bots||[])[cat]}}
 						</v-btn>
 
 					</v-row>
 					<div class="body">
-						{{content[cat]}}
+						{{(content||[])[cat]}}
 					</div>
 				</v-flex>
 				<v-flex xs12 sm4>
@@ -32,8 +31,7 @@
 			<div class="masonry-wrapper">
 				<page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
 				<loader v-if="busy" />
-				<masonry v-if="!isEmpty" :list="list" :isArticle="!isImages" />
-
+				<masonry v-if="!isEmpty" :list="list" :isArticle="!gallery" />
 				<page-button v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
 			</div>
 
@@ -51,6 +49,7 @@ import Loader from "@/components/Loader.vue";
 import AdMobileBanner from "@/components/ads/AdMobileBanner.vue";
 import AdMobileBanner2 from "@/components/ads/AdMobileBanner2.vue";
 import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
+import { isArray } from "util";
 @Component({
   //
   components: {
@@ -88,10 +87,7 @@ import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
   }
 })
 export default class Card extends Vue {
-  @Prop()
-  public q!: string;
 
-  keyword = this.q || null;
 
   @Watch("page")
   private onPageChanged(newPage: string, page: string) {
@@ -118,6 +114,8 @@ export default class Card extends Vue {
   count = 24;
 
   busy = false;
+  gallery: boolean;
+  keyword: string;
 
   bots = {
     art: "cmsn_RT",
@@ -126,7 +124,10 @@ export default class Card extends Vue {
     mus: "cmsn_m"
   };
 
-  created() {}
+  created() {
+    this.gallery = (typeof this.q === 'string') || this.isImages;
+    this.keyword = isArray(this.q) ? this.q[0] : this.q
+  }
   mounted() {
     this.fetchData();
   }
@@ -168,6 +169,10 @@ export default class Card extends Vue {
   scrollToTop() {
     document.documentElement.scrollTop = 0;
   }
+  toggleGallery() {
+    console.log('toggle gallery')
+    this.gallery = false;
+  }
   get cat() {
     return this.$route.params.cat;
   }
@@ -189,6 +194,10 @@ export default class Card extends Vue {
     return skip > 0 ? skip : 0;
   }
 
+  get q() {
+    return this.$route.query.q
+  }
+
   get isEmpty() {
     return !(Array.isArray(this.list) ? this.list[0] : true);
   }
@@ -196,6 +205,7 @@ export default class Card extends Vue {
   get isImages() {
     return this.intent === "open" && (this.cat === "art" || this.cat === "des");
   }
+
 }
 </script>
 

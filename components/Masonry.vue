@@ -75,7 +75,7 @@ $large-column-width: calc((100% - 24px * 3) / 4);
 
 .item {
     background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 18px 0 rgba(180, 167, 163, 0.22);
+  box-shadow: 0px 0px 14px 0 rgba(180, 167, 163, 0.22);
   border-radius: 4px;
     padding: 2px;
   margin: 12px 0px;
@@ -107,6 +107,7 @@ $large-column-width: calc((100% - 24px * 3) / 4);
     overflow: hidden;
     margin: 3px 0px;
     box-shadow: none;
+    border: 1px solid rgba(235, 232, 232, 0.7);
   }
 
 }
@@ -114,6 +115,8 @@ $large-column-width: calc((100% - 24px * 3) / 4);
 @media screen and (max-width: 550px) {
   .item.article {
     width: 100%;
+    margin: 6px 0px;
+    border: 1px solid rgb(226, 223, 223);
   }
 }
 

@@ -82,7 +82,7 @@ module.exports = {
         light: {
           gold:'#c08028',
           silver: '#707592',
-          background:'#f5f4f4'
+          background:'#f3f2f2'
         }
       }
     }

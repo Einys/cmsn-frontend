@@ -151,9 +151,13 @@ export default class Card extends Vue {
 }
 
 .ad {
+  text-align: unset !important;
   position: relative;
   overflow: hidden;
   min-height: 120px;
+}
+.ad body {
+  text-align: unset !important;
 }
 .ad .ad-wrapper {
   display: block;

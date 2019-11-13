@@ -12,6 +12,7 @@
 			</a>
 		</div>
 
+
 		<!-- If AD -->
 		<div class="ad" v-if="isAD" align="center">
 			<div class="ad-wrapper">

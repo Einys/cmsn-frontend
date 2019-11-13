@@ -1,11 +1,11 @@
 <template>
 <div>
-    
+
 <ins class="adsbygoogle"
      :style="adstyle"
      data-ad-client="ca-pub-9523902096267561"
      :data-ad-slot="adslot"
-     data-ad-format="auto"
+     data-ad-format="rectangle"
      :data-full-width-responsive="isResponsive">
      </ins>
 

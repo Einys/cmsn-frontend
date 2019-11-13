@@ -18,7 +18,6 @@
 			<div class="ad-wrapper">
 				<ad adstyle="display:block" :adslot="item.slot" isResponsive="true">
 				</ad>
-				<div class="ad-text" align="center"> 스폰서 광고입니다 </div>
 			</div>
 
 		</div>
@@ -153,7 +152,25 @@ export default class Card extends Vue {
   opacity: 1;
 }
 
-
+.ad {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 90%;
+}
+.ad .ad-wrapper {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.ad-wrapper .adsense {
+  display: inline;
+  vertical-align: middle;
+}
 .ad-text {
   width: 100%;
   font-size: 12px;

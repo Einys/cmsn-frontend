@@ -1,14 +1,26 @@
 <template>
 
 	<div>
-		<profile :user="item._user" :departedAt="item.departedAt" />
-		<a :href=" 'https://twitter.com/' + computedUsername +'/status/'+ item.id " target="_blank" rel="noopener">
-			<div style='position:relative'>
-				<div :class="['text', {overlay: hideText, unhideable: unhideableText}]" v-if="item.text" :inner-html.prop="item.text | text"></div>
-				<images :images="thumbImages" />
+		<div v-if=" !isAD">
+			<profile :user="item._user" :departedAt="item.departedAt" />
+			<a :href=" 'https://twitter.com/' + computedUsername +'/status/'+ item.id " target="_blank" rel="noopener">
+				<div style='position:relative'>
+					<div :class="['text', {overlay: hideText, unhideable: unhideableText}]" v-if="item.text" :inner-html.prop="item.text | text"></div>
+					<images :images="thumbImages" />
+				</div>
+
+			</a>
+		</div>
+
+		<!-- If AD -->
+		<div class="ad" v-if="isAD" align="center">
+			<div class="ad-wrapper">
+				<ad adstyle="display:block" :adslot="item.slot" isResponsive="true">
+				</ad>
+				<div class="ad-text" align="center"> 스폰서 광고입니다 </div>
 			</div>
 
-		</a>
+		</div>
 
 	</div>
 </template>
@@ -16,15 +28,14 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import Images from "./Images.vue";
 import Profile from "./Profile.vue";
+import Ad from "@/components/ads/Ad.vue";
 
 @Component({
   name: "item-card",
-  props: {
-    item: Object
-  },
   components: {
     Images,
-    Profile
+    Profile,
+    Ad
   },
   filters: {
     text(value: string) {
@@ -59,6 +70,10 @@ export default class Card extends Vue {
     } else {
       //
     }
+  }
+
+  get isAD(){
+    return this.item && this.item.id === 'ad'
   }
 
   get computedUsername() {
@@ -136,6 +151,16 @@ export default class Card extends Vue {
 .text.overlay:hover {
   opacity: 1;
 }
+
+
+.ad-text {
+  width: 100%;
+  font-size: 12px;
+  color: #999999;
+  text-align: center;
+}
+
+
 @media screen and (max-width: 550px) {
   .text.unhideable {
     height: 180px;

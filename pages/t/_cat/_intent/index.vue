@@ -1,7 +1,7 @@
 <template>
 	<div>
-			<!-- ad banner -->
-			<ad-lg-banner></ad-lg-banner>
+		<!-- ad banner -->
+		<ad-lg-banner></ad-lg-banner>
 		<div class="wrapper">
 			<v-btn fab depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
 				<v-icon>mdi-chevron-up</v-icon>
@@ -87,8 +87,6 @@ import { isArray } from "util";
   }
 })
 export default class Card extends Vue {
-
-
   @Watch("page")
   private onPageChanged(newPage: string, page: string) {
     console.log("page changed ", page, newPage);
@@ -125,8 +123,8 @@ export default class Card extends Vue {
   };
 
   created() {
-    this.gallery = (typeof this.q === 'string') || this.isImages;
-    this.keyword = isArray(this.q) ? this.q[0] : this.q
+    this.gallery = typeof this.q === "string" || this.isImages;
+    this.keyword = isArray(this.q) ? this.q[0] : this.q;
   }
   mounted() {
     this.fetchData();
@@ -151,7 +149,8 @@ export default class Card extends Vue {
         }
       })
       .then(({ list, next }) => {
-        this.list = list;
+        let listInclAd = this.pushAdd(list);
+        this.list = listInclAd;
         this.next = next;
         this.busy = false;
       })
@@ -159,6 +158,36 @@ export default class Card extends Vue {
         console.log(err);
         this.busy = false;
       });
+  }
+
+  pushAdd(itemlist: any[]) {
+    let adindex;
+    let slot;
+    let upperSlot = "4952472534";
+    let mobildReslot = "2851911042";
+    let underSlot = "6263283269";
+
+    if (window.innerWidth < 1400) {
+      adindex = 2;
+    } else if (window.innerWidth < 1750) {
+      adindex = 3;
+    } else {
+      adindex = 4;
+    }
+    itemlist.splice(adindex, 0, {
+      id: "ad",
+      clientNum: "ca-pub-9523902096267561",
+      slot: upperSlot
+    });
+
+    if (itemlist.length > 10) {
+      itemlist.splice(itemlist.length - 4, 0, {
+        id: "ad",
+        clientNum: "ca-pub-9523902096267561",
+        slot: underSlot
+      });
+    }
+    return itemlist
   }
 
   search(e: any) {
@@ -170,7 +199,7 @@ export default class Card extends Vue {
     document.documentElement.scrollTop = 0;
   }
   toggleGallery() {
-    console.log('toggle gallery')
+    console.log("toggle gallery");
     this.gallery = false;
   }
   get cat() {
@@ -195,7 +224,7 @@ export default class Card extends Vue {
   }
 
   get q() {
-    return this.$route.query.q
+    return this.$route.query.q;
   }
 
   get isEmpty() {
@@ -205,7 +234,6 @@ export default class Card extends Vue {
   get isImages() {
     return this.intent === "open" && (this.cat === "art" || this.cat === "des");
   }
-
 }
 </script>
 

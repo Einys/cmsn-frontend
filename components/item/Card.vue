@@ -14,12 +14,9 @@
 
 
 		<!-- If AD -->
-		<div class="ad" v-if="isAD" align="center">
-			<div class="ad-wrapper">
+		<div class="ad" v-if="isAD" style="height: auto">
 				<ad adstyle="display:block" :adslot="item.slot" isResponsive="true">
 				</ad>
-			</div>
-
 		</div>
 
 	</div>

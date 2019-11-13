@@ -75,9 +75,7 @@ $medium-column-width: calc((100% - 12px * 2) / 3);
 $large-column-width: calc((100% - 24px * 3) / 4);
 
 .item {
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 18px 0 rgba(180, 167, 163, 0.22);
-  border-radius: 2px;
+
   text-align: left;
   position: absolute;
   width: $large-column-width;

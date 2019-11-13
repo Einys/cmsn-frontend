@@ -1,6 +1,6 @@
 <template>
 
-	<div>
+	<div :class="[{'item-card': !isAD, 'ad-card': isAD}]">
 		<div v-if=" !isAD">
 			<profile :user="item._user" :departedAt="item.departedAt" />
 			<a :href=" 'https://twitter.com/' + computedUsername +'/status/'+ item.id " target="_blank" rel="noopener">
@@ -118,6 +118,14 @@ export default class Card extends Vue {
 </script>
 
 <style>
+.item-card{
+    background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 18px 0 rgba(180, 167, 163, 0.22);
+  border-radius: 2px;
+}
+.ad-card{
+    background-color: rgba(252, 252, 252, 0.5);
+}
 .text {
   text-overflow: ellipsis;
   word-break: break-all;

@@ -119,12 +119,11 @@ export default class Card extends Vue {
 
 <style>
 .item-card{
-    background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 18px 0 rgba(180, 167, 163, 0.22);
-  border-radius: 2px;
+
 }
+
 .ad-card{
-    background-color: rgba(252, 252, 252, 0.5);
+    background-color: rgba(124, 122, 122, 0.05);
 }
 .text {
   text-overflow: ellipsis;
@@ -163,8 +162,6 @@ export default class Card extends Vue {
 .ad {
   position: relative;
   overflow: hidden;
-  width: 100%;
-  padding-bottom: 90%;
 }
 .ad .ad-wrapper {
   display: block;

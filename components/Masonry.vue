@@ -10,11 +10,10 @@
     >
       <div
         v-masonry-tile
-        :class="['item', {article: isArticle}]"
         v-for="(item, index) in list"
         :key="index"
       >
-        <item-card :item="item" :isArticle="isArticle"></item-card>
+        <item-card :class="['item', {article: isArticle, ad: item.id ==='ad'}]" :item="item" :isArticle="isArticle"></item-card>
       </div>
     </div>
 
@@ -75,14 +74,20 @@ $medium-column-width: calc((100% - 12px * 2) / 3);
 $large-column-width: calc((100% - 24px * 3) / 4);
 
 .item {
-
+    background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 18px 0 rgba(180, 167, 163, 0.22);
+  border-radius: 4px;
+    padding: 2px;
+  margin: 12px 0px;
   text-align: left;
   position: absolute;
   width: $large-column-width;
   border-radius: 4px;
   box-sizing: border-box;
-  padding: 2px;
-  margin: 12px 0px;
+
+}
+.item.ad{
+  background-color: rgba(134, 134, 134, 0.1);
 }
 
 @media screen and (max-width: $break-large) {

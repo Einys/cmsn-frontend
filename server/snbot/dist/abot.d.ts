@@ -116,10 +116,11 @@ export declare function closeDatabaseconn(): Promise<void>;
  * parse an intent(find, open, und)
  * @param text
  */
-export declare function parseIntent(text: string): Promise<"open" | "find" | "und">;
+export declare function parseIntent(text: string): Promise<"find" | "open" | "und">;
 /**
  * 두 날짜 간 차이를 절댓값으로 반환하는 함수
  */
 export declare function getDateDiffHours(date1: any, date2: any): number;
 export declare function getUserReqSucceedCount(user: any, bot: any): Promise<void>;
 export declare function isExistInAWSS3(mediakey: string, botS3: iParser.S3): Promise<boolean>;
+export declare function isQuotedTweet(tweetObject: Twit.Twitter.Status): boolean;

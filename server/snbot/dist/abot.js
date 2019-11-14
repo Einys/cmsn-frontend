@@ -75,6 +75,12 @@ class AutoBot extends bot_1.default {
                 text: requestTweet.text,
                 itemid: itemTweet.id_str
             }, { upsert: true, new: true });
+            //다른 트윗을 인용한 트윗인 경우 처리
+            if (isQuotedTweet(itemTweet)) {
+                d('quoted tweet is denied');
+                this.sendReply(requestTweet, '다른 트윗을 인용한 트윗은 홍보하실 수 없습니다.');
+                return { promoted: false, filter: 'quoted tweet' };
+            }
             //유저 정보 업데이트 파라미터
             d('setting user info update params');
             let conditions = { id: itemTweet.user.id_str }, update = { id: itemTweet.user.id_str, profileName: itemTweet.user.name, name: itemTweet.user.screen_name, sns: 'Twitter', lastVisit: Date.now() }, option = { upsert: true, new: true };
@@ -314,7 +320,7 @@ class AutoBot extends bot_1.default {
     }
     async catchDeleteEvent(deleteEvent) {
         console.log('[director] deleteEvent : ', JSON.stringify(deleteEvent));
-        //리트윗이 딜리트이벤트가 떴다는것 = 그 트윗이 지워졌다는뜻 혹은 리트윗해제됨 이므로 디비에서 비활성화함. 18.06.19 
+        //리트윗이 딜리트이벤트가 떴다는것 = 그 트윗이 지워졌다는뜻 혹은 리트윗해제됨 이므로 디비에서 비활성화함. 18.06.19
         //이전 코드 가져옴 19.02.14
         let id = deleteEvent[0].status.id;
         a_data_mongoose_1.Item.findOneAndUpdate({ retweetid: id }, { activated: false }, function (err, res) {
@@ -467,7 +473,7 @@ class AutoBot extends bot_1.default {
                 case "abuse_porn":
                 case "abuse_misuse":
                     //최근 대화기록 확인
-                    await Database.Chat.find({ senderID: sender_id, targetID: this.id, 'content.reportedItemID': { $exists: true } }).sort({ 'updatedAt': -1 }).limit(1).then(chat => {
+                    await Database.Chat.find({ senderID: sender_id, targetID: this.id, 'content.reportedItemID': { $exists: true } }).sort({ 'createdAt': -1 }).limit(1).then(chat => {
                         return this.createReportByTwitterItemID(metadata, chat[0].content.reportedItemID, sender_id);
                     }).then(reportDoc => {
                         Database.Report.find({ target_item: reportDoc.target_item, reason: { $exists: true } }).then(reports => {
@@ -669,7 +675,7 @@ class AutoBot extends bot_1.default {
         rep.target_username = reporteditem._user.name;
         //리포트 저장
         rep = await rep.save();
-        //이미 존재하는 블랙리스트와 아이템id, 신고사유가 일치하면 
+        //이미 존재하는 블랙리스트와 아이템id, 신고사유가 일치하면
         //effected를 true로 만들고, 신고자에게 신고되었다는 DM을 주되
         //블랙리스트를 또 중복해서 추가하지는 않도록
         let alreadyBlacklisted = await Database.Blacklist.findOne({ itemid: rep.target_item, reason: rep.reason });
@@ -704,13 +710,13 @@ class AutoBot extends bot_1.default {
         r.target_username = user.name
         r.sender_userid = sender.userid
         r.sender_username = sender.username
-
+  
         let rep = await r.save();
-        
+  
         let admin = await Data.Bot.findOne({name:'admin'})
-        
+  
         Data.Report.find({ target_userid: r.target_userid, reason: { $exists: true } }).then(reports => {  //find by user id
-        
+  
             d('Effected?')
             if (sender.userid === admin.id || reports.length > 4) {
                 d('- YES')
@@ -718,7 +724,7 @@ class AutoBot extends bot_1.default {
             } else {
                 d('- NO')
             }
-        
+  
         })
         return rep
     }
@@ -854,7 +860,7 @@ class AutoBot extends bot_1.default {
                     }
                 }
             }
-            //Link의 S3 관련 리뉴얼. 
+            //Link의 S3 관련 리뉴얼.
             if (botS3 && typeof botS3.storeMediaByLink === 'function' && iParser.config.saveLinkMedia) {
                 if (Array.isArray(item.links) && item.links.length >= 1) {
                     for (let link of item.links) {
@@ -1197,4 +1203,13 @@ async function isExistInAWSS3(mediakey, botS3) {
     }
 }
 exports.isExistInAWSS3 = isExistInAWSS3;
+function isQuotedTweet(tweetObject) {
+    if (tweetObject.quoted_status) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+exports.isQuotedTweet = isQuotedTweet;
 //# sourceMappingURL=abot.js.map

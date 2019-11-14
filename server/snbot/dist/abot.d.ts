@@ -116,7 +116,7 @@ export declare function closeDatabaseconn(): Promise<void>;
  * parse an intent(find, open, und)
  * @param text
  */
-export declare function parseIntent(text: string): Promise<"find" | "open" | "und">;
+export declare function parseIntent(text: string): Promise<"open" | "find" | "und">;
 /**
  * 두 날짜 간 차이를 절댓값으로 반환하는 함수
  */

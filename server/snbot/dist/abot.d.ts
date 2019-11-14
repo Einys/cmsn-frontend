@@ -123,3 +123,4 @@ export declare function parseIntent(text: string): Promise<"find" | "open" | "un
 export declare function getDateDiffHours(date1: any, date2: any): number;
 export declare function getUserReqSucceedCount(user: any, bot: any): Promise<void>;
 export declare function isExistInAWSS3(mediakey: string, botS3: iParser.S3): Promise<boolean>;
+export declare function isQuotedTweet(tweetObject: Twit.Twitter.Status): boolean;

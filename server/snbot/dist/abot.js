@@ -75,6 +75,12 @@ class AutoBot extends bot_1.default {
                 text: requestTweet.text,
                 itemid: itemTweet.id_str
             }, { upsert: true, new: true });
+            //다른 트윗을 인용한 트윗인 경우 처리
+            if (isQuotedTweet(itemTweet)) {
+                d('quoted tweet is denied');
+                this.sendReply(requestTweet, '다른 트윗을 인용한 트윗은 홍보하실 수 없습니다.');
+                return { promoted: false, filter: 'quoted tweet' };
+            }
             //유저 정보 업데이트 파라미터
             d('setting user info update params');
             let conditions = { id: itemTweet.user.id_str }, update = { id: itemTweet.user.id_str, profileName: itemTweet.user.name, name: itemTweet.user.screen_name, sns: 'Twitter', lastVisit: Date.now() }, option = { upsert: true, new: true };
@@ -704,13 +710,13 @@ class AutoBot extends bot_1.default {
         r.target_username = user.name
         r.sender_userid = sender.userid
         r.sender_username = sender.username
-
+  
         let rep = await r.save();
-
+  
         let admin = await Data.Bot.findOne({name:'admin'})
-
+  
         Data.Report.find({ target_userid: r.target_userid, reason: { $exists: true } }).then(reports => {  //find by user id
-
+  
             d('Effected?')
             if (sender.userid === admin.id || reports.length > 4) {
                 d('- YES')
@@ -718,7 +724,7 @@ class AutoBot extends bot_1.default {
             } else {
                 d('- NO')
             }
-
+  
         })
         return rep
     }
@@ -1197,4 +1203,13 @@ async function isExistInAWSS3(mediakey, botS3) {
     }
 }
 exports.isExistInAWSS3 = isExistInAWSS3;
+function isQuotedTweet(tweetObject) {
+    if (tweetObject.quoted_status) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+exports.isQuotedTweet = isQuotedTweet;
 //# sourceMappingURL=abot.js.map

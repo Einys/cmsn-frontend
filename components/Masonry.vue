@@ -106,7 +106,7 @@ $large-column-width: calc((100% - 24px * 3) / 4);
     padding: 1px;
     overflow: hidden;
     margin: 3px 0px;
-    box-shadow: 0px 0px 4px 0px rgba(126, 117, 114, 0.3);
+    box-shadow: 0px 0px 4px 0px rgba(126, 117, 114, 0.1);
   }
 }
 

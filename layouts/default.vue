@@ -174,7 +174,7 @@ export default Vue.extend({
     bottomNav: true,
     sheet: false,
 	keyword: "",
-	server: process.env.VUE_APP_SERVER_URL
+	server: process.env.SERVER_URL
   }),
   methods: {
     login() {
@@ -250,7 +250,7 @@ export default Vue.extend({
 
 @media screen and (max-width: 720px) {
   .wrapper {
-    padding: 24px 2px;
+    padding: 24px 0px;
   }
   nav {
 	  z-index: 100 !important;

@@ -21,7 +21,7 @@
 					</div>
 				</v-flex>
 				<v-flex xs12 sm4>
-					<v-text-field class="search mt-2" solo flat clearable color="orange" prepend-inner-icon="mdi-magnify" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" />
+					<v-text-field class="search mt-2" solo flat clearable color="orange" prepend-inner-icon="mdi-magnify" :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" @click:append="search()" />
 				</v-flex>
 				<v-flex xs12 v-if="cat === 'all'">
 					<cat-horiz :cat="cat" :intent="intent"></cat-horiz>
@@ -33,6 +33,7 @@
 				<loader v-if="busy" />
 				<masonry v-if="!isEmpty" :list="list" :isArticle="!gallery" />
 				<page-button v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
+          <v-layout v-if="isEmpty && !busy" justify-center> <h3>표시할 내용이 없습니다.</h3> </v-layout>
 			</div>
 
 		</div>
@@ -60,6 +61,11 @@ import { isArray } from "util";
     "ad-lg-banner": AdLargeBanner,
     Loader,
     CatHoriz
+  },
+  data(){
+    return {
+      keyword: ''
+    }
   },
   filters: {
     cat(cat: any) {
@@ -174,11 +180,14 @@ export default class Card extends Vue {
     } else {
       adindex = 4;
     }
-    itemlist.splice(adindex, 0, {
-      id: "ad",
-      clientNum: "ca-pub-9523902096267561",
-      slot: upperSlot
-    });
+
+    if (itemlist.length > 0) {
+      itemlist.splice(adindex, 0, {
+        id: "ad",
+        clientNum: "ca-pub-9523902096267561",
+        slot: upperSlot
+      });
+    }
 
     if (itemlist.length > 10) {
       itemlist.splice(itemlist.length - 4, 0, {

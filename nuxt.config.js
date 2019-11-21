@@ -12,7 +12,7 @@ module.exports = {
   * env
   */
   env: {
-
+    SERVER_URL: process.env.SERVER_URL || 'http://localhost:3000'
   },
   /*
   ** Headers of the page
@@ -25,6 +25,7 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'SNS 트위터와 연동되는 커미션 홍보 사이트' }
     ],
+    noscript: [{ innerHTML: "Art commission site - We're sorry but this site doesn't work properly without JavaScript enabled. Please enable it to continue. 안녕하세요. 창작 예술 커미션 사이트입니다. 그림 글 캘리그라피 공예 시각디자인 작곡 보이스 등 창작 커미션을 홍보하는 사이트입니다. 방문자분의 브라우저에 자바스크립트가 활성화되어 있지 않아 사이트가 정상 작동하지 않습니다. 자바스크립트를 활성화시키고 새로고침 하여 주세요. 감사합니다." }],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
@@ -49,7 +50,8 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/masonry', ssr: false, client:true },
-    { src: '~/plugins/main', ssr: false, client:true }
+    { src: '~/plugins/main', ssr: false, client:true },
+    { src: '~/plugins/nuxt-client-init.js', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules

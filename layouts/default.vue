@@ -7,7 +7,7 @@
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
 			<v-btn text @click="searchDrawer = !searchDrawer"><span class="body-1">카테고리</span></v-btn>
 
-			<v-btn v-if="false" outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank"><v-icon left>mdi-twitter</v-icon>로그인</v-btn>
+			<v-btn outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank"><v-icon left>mdi-twitter</v-icon>로그인</v-btn>
 		</v-app-bar>
 
 		<!--스낵바-->
@@ -174,7 +174,7 @@ export default Vue.extend({
     bottomNav: true,
     sheet: false,
 	keyword: "",
-	server: process.env.VUE_APP_SERVER_URL
+	server: process.env.SERVER_URL
   }),
   methods: {
     login() {
@@ -250,7 +250,7 @@ export default Vue.extend({
 
 @media screen and (max-width: 720px) {
   .wrapper {
-    padding: 24px 2px;
+    padding: 24px 0px;
   }
   nav {
 	  z-index: 100 !important;

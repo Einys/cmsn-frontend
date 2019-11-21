@@ -2,7 +2,8 @@
 <div>
 
   <div class="wrapper">
-    <v-btn flat @click="$store.commit('increment')">count</v-btn>
+    <v-btn text @click="$store.commit('increment')">count</v-btn> {{this.$store.state.counter}}
+    user: {{this.$store.state.authUser}}
     <h3 class="pa-2 pt-5 pb-1">원하시는 커미션이 있나요?</h3>
     <cat-horiz></cat-horiz>
     <br>
@@ -45,6 +46,13 @@ export default Vue.extend({
       desList: [],
       musList: []
     }
+  },
+  async asyncData({ params }) {
+    console.log(
+      `[index.vue] asyncData: isClient : ${process.client}, isServer: ${
+        process.server
+      }`
+    );
   },
   mounted(){
     this.petchList()

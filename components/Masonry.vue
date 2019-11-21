@@ -106,17 +106,15 @@ $large-column-width: calc((100% - 24px * 3) / 4);
     padding: 1px;
     overflow: hidden;
     margin: 3px 0px;
-    box-shadow: none;
-    border: 1px solid rgba(235, 232, 232, 0.7);
+    box-shadow: 0px 0px 4px 0px rgba(126, 117, 114, 0.3);
   }
-
 }
 
 @media screen and (max-width: 550px) {
   .item.article {
     width: 100%;
-    margin: 6px 0px;
-    border: 1px solid rgb(226, 223, 223);
+    margin: 10px 0px;
+    box-shadow: 0px 0px 6px 0px rgba(126, 117, 114, 0.3);
   }
 }
 

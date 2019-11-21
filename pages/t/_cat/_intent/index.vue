@@ -175,10 +175,8 @@ export default class Card extends Vue {
 
     if (window.innerWidth < 1400) {
       adindex = 2;
-    } else if (window.innerWidth < 1750) {
-      adindex = 3;
     } else {
-      adindex = 4;
+      adindex = 3;
     }
 
     if (itemlist.length > 0) {

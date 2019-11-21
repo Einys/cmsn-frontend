@@ -7,7 +7,7 @@
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
 			<v-btn text @click="searchDrawer = !searchDrawer"><span class="body-1">카테고리</span></v-btn>
 
-			<v-btn outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank"><v-icon left>mdi-twitter</v-icon>로그인</v-btn>
+			<v-btn v-if="false" outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank"><v-icon left>mdi-twitter</v-icon>로그인</v-btn>
 		</v-app-bar>
 
 		<!--스낵바-->

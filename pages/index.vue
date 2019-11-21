@@ -2,8 +2,6 @@
 <div>
 
   <div class="wrapper">
-    <v-btn text @click="$store.commit('increment')">count</v-btn> {{this.$store.state.counter}}
-    user: {{this.$store.state.authUser}}
     <h3 class="pa-2 pt-5 pb-1">원하시는 커미션이 있나요?</h3>
     <cat-horiz></cat-horiz>
     <br>

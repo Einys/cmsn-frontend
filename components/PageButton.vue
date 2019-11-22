@@ -3,10 +3,10 @@
     <v-btn
       fab
       depressed
-      color="brown lighten-5"
-      class="brown--text"
+      color="blue-grey lighten-5"
+      class="blue-grey--text"
       style="position: absolute; left: -2px"
-      
+
       @click="toFirst()"
     >
       <v-icon>mdi-page-first</v-icon>

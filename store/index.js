@@ -16,14 +16,13 @@ export const mutations = {
         state.route = route
     }
 }
-
 export const actions = {
-  // nuxtServerInit is called by Nuxt.js before server-rendering every page
-  nuxtServerInit({ commit }, { req }) {
-      console.log('[store/index.js] Serverinit')
-      console.log('[store/index.js]', req.originalUrl)
-    if (req.session && req.user) {
-      commit('SET_USER', req.user)
-    }
+  nuxtClientInit({ commit }, {req}) {
+    // code
+    console.log('[store/index.js] Clientinit')
+    console.log('[store/index.js]', req)
+    //if (req.session && req.user) {
+      //commit('SET_USER', req.user)
+    //}
   }
 }

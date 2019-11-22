@@ -124,7 +124,7 @@
 				</v-expansion-panel-content>
 			</v-expansion-panel>
 		</v-expansion-panels>
-		<h3 class="pt-5 pb-0">원하는 커미션이 있나요?</h3>
+		<h3 class="pt-5 pb-0">원하시는 커미션이 있나요?</h3>
 		<cat-horiz></cat-horiz>
 	</v-container>
 

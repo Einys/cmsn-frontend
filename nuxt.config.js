@@ -63,6 +63,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-client-init-module'
   ],
   /*
   ** vuetify module configuration

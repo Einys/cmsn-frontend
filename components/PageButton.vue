@@ -3,7 +3,7 @@
     <v-btn
       fab
       depressed
-      color="blue-grey lighten-5"
+      color="blue-grey lighten-4"
       class="blue-grey--text"
       style="position: absolute; left: -2px"
 
@@ -11,13 +11,15 @@
     >
       <v-icon>mdi-page-first</v-icon>
     </v-btn>
-    <v-btn fab depressed @click="toPrevious()" :disabled="!hasPrevious" color="brown lighten-5" class="brown--text">
+    <v-btn fab depressed @click="toPrevious()" :disabled="!hasPrevious"       color="blue-grey lighten-4"
+      class="blue-grey--text">
       <v-icon>mdi-chevron-left</v-icon>
     </v-btn>
     &nbsp;&nbsp;
     .. {{pageNum}} ..
     &nbsp;&nbsp;
-    <v-btn fab depressed @click="toNext()" :disabled="!hasNext" color="brown lighten-5" class="brown--text">
+    <v-btn fab depressed @click="toNext()" :disabled="!hasNext"       color="blue-grey lighten-4"
+      class="blue-grey--text">
       <v-icon>mdi-chevron-right</v-icon>
     </v-btn>
 

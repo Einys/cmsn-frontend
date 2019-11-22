@@ -61,10 +61,8 @@ app.use((req, res, next) => {
   next();
 });
 
-process.env.DATABASE_URI = 'mongodb+srv://imCute:y5966807@clusterfree-t0zkr.mongodb.net/cm' //process.env.DATABASE_URI
-
 //snbot
-const Snbot = require('./snbot/dist/abot');
+const Snbot = require('snbot');
 Snbot.connectDatabase(process.env.DATABASE_URI)
 const mongoose = require('mongoose');
 

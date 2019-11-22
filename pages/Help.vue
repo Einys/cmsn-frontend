@@ -2,7 +2,8 @@
 	<v-container style="max-width: 900px; margin: 0 auto;">
 		<h2> 이용안내 </h2>
 		<p>
-			문의/건의/버그제보 : 트위터 @cms_env, 이메일 cmsn.service@gmail.com
+			문의/건의/버그제보 : 트위터 @cms_env, 이메일 cmsn.service@gmail.com<br>
+      세메센은 커미션을 좋아하는 개인이 개발하고 운영합니다. 안정적인 서비스를 위해 노력할 것을 약속드리지만, 과도한 비난이나 문책은 감당하기 어려울 수 있으며, 서비스 종료로 이어질 수 있습니다.
 		</p>
 		<h3> 홍보 방법 </h3>
 		<p>

@@ -45,6 +45,13 @@ export default Vue.extend({
       musList: []
     }
   },
+  async asyncData({ params }) {
+    console.log(
+      `[index.vue] asyncData: isClient : ${process.client}, isServer: ${
+        process.server
+      }`
+    );
+  },
   mounted(){
     this.petchList()
         googletag.cmd.push(function() {

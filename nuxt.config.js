@@ -50,8 +50,7 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/masonry', ssr: false, client:true },
-    { src: '~/plugins/main', ssr: false, client:true },
-    { src: '~/plugins/nuxt-client-init.js', ssr: false }
+    { src: '~/plugins/main', ssr: false, client:true }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -63,7 +62,6 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    'nuxt-client-init-module'
   ],
   /*
   ** vuetify module configuration

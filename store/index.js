@@ -17,12 +17,32 @@ export const mutations = {
     }
 }
 export const actions = {
-  nuxtClientInit({ commit }, {req}) {
+  nuxtClientInit({ commit }, context) {
     // code
     console.log('[store/index.js] Clientinit')
-    console.log('[store/index.js]', req)
-    //if (req.session && req.user) {
-      //commit('SET_USER', req.user)
-    //}
+    console.log('[store/index.js]', context)
+    if(context && context.$axios){
+      console.log('[store/index.js]context.$axios')
+      context.$axios.$get('/user').then(res =>{
+        console.log('user data :',res)
+        commit('SET_USER', res)
+      }).catch(err =>{
+        throw new Error(err)
+      })
+    } else {
+      console.log('context or context.$axios is not defined')
+    }
+  },
+  logout({commit}, context){
+    if(context && context.$axios){
+      context.$axios.$get('/logout').then(res =>{
+        commit('SET_USER', null)
+      }).catch(err =>{
+        throw err
+      })
+    } else {
+      console.log('context or context.$axios is not defined')
+    }
+
   }
 }

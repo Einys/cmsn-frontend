@@ -9,9 +9,10 @@
 				<v-icon size="13">mdi-email</v-icon> : cmsn.service@gmail.com<br>
                 <a href="https://twitter.com/cms_env" target="_blank">
 					<v-icon size="13">mdi-twitter</v-icon> : @cms_env
-				</a> 
+				</a>
                 <br><br>
-                Copyright 2018 CMSN, all rights reserved.
+                ⓒ CMSN <br>
+                사이트 내에 게시된 예술 작품의 저작권은 그 작품을 창작한 아티스트에게 있습니다. 무단 복제는 금지되어 있습니다.
 			</p>
 			<p>
 

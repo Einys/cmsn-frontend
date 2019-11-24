@@ -3,7 +3,6 @@
 		<h2> 이용안내 </h2>
 		<p>
 			문의/건의/버그제보 : 트위터 @cms_env, 이메일 cmsn.service@gmail.com<br>
-    	세메센은 개인 1인이 개발하고 운영합니다. 모두가 편히 이용할 수 있는 안정적인 서비스를 위해 노력할 것을 약속드리지만, 과도한 비난이나 책임은 감당하기 어려울 수 있습니다.
 		</p>
 		<h3> 홍보 방법 </h3>
 		<p>
@@ -18,7 +17,7 @@
 		</v-row>
 		<br>
 		<p>
-			<v-icon>mdi-check</v-icon> <span>커미션을 찾는 트윗도 홍보 가능합니다.</span>
+			<v-icon>mdi-check</v-icon> <span>커미션 아티스트를 찾는 트윗도 홍보 가능합니다.</span>
 		</p>
 		<p>
 			<v-icon>mdi-check</v-icon> <span>홍보봇은 요청받은 트윗타래의 맨 위 트윗 하나를 홍보합니다.</span>

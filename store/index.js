@@ -27,7 +27,7 @@ export const actions = {
         console.log('user data :',res)
         commit('SET_USER', res)
       }).catch(err =>{
-        throw new Error(err)
+        context.$nuxt.error(err)
       })
     } else {
       console.log('context or context.$axios is not defined')
@@ -36,9 +36,10 @@ export const actions = {
   logout({commit}, context){
     if(context && context.$axios){
       context.$axios.$get('/logout').then(res =>{
+        context.$nuxt.error('test error')
         commit('SET_USER', null)
       }).catch(err =>{
-        throw err
+        context.$nuxt.error(err)
       })
     } else {
       console.log('context or context.$axios is not defined')

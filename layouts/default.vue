@@ -9,7 +9,7 @@
 					<v-icon>mdi-layers</v-icon>
 				</span></v-btn>
 
-			<v-btn v-if="!$store.state.authUser" depressed="" dark="" rounded color="blue" :href="server + '/auth/twitter'" target="_blank">
+			<v-btn v-if="!$store.state.authUser" depressed="" dark="" rounded color="blue" :href="server + '/auth/twitter?url=' + this.$route.path" target="_blank">
 				<v-icon left>mdi-twitter</v-icon>로그인
 			</v-btn>
 			<v-avatar v-if="$store.state.authUser" @click="userDrawer = !userDrawer">

@@ -60,7 +60,7 @@ module.exports = {
     '@nuxtjs/vuetify',
     ['@nuxt/typescript-build', {
       typeCheck: {
-        memoryLimit: 512,
+        memoryLimit: 128,
         workers: 1
       },
       ignoreNotFoundWarnings: false

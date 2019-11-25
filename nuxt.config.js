@@ -57,7 +57,16 @@ module.exports = {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxtjs/vuetify', '@nuxt/typescript-build', '@nuxtjs/axios', '@nuxtjs/google-analytics'
+    '@nuxtjs/vuetify',
+    ['@nuxt/typescript-build', {
+      typeCheck: {
+        memoryLimit: 512,
+        workers: 1
+      },
+      ignoreNotFoundWarnings: false
+    }],
+    '@nuxtjs/axios',
+    '@nuxtjs/google-analytics'
   ],
   /*
   ** Nuxt.js modules

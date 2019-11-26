@@ -16,14 +16,34 @@ export const mutations = {
         state.route = route
     }
 }
-
 export const actions = {
-  // nuxtServerInit is called by Nuxt.js before server-rendering every page
-  nuxtServerInit({ commit }, { req }) {
-      console.log('[store/index.js] Serverinit')
-      console.log('[store/index.js]', req.originalUrl)
-    if (req.session && req.user) {
-      commit('SET_USER', req.user)
+  nuxtClientInit({ commit }, context) {
+    // code
+    console.log('[store/index.js] Clientinit')
+    console.log('[store/index.js]', context)
+    if(context && context.$axios){
+      console.log('[store/index.js]context.$axios')
+      context.$axios.$get('/user').then(res =>{
+        console.log('user data :',res)
+        commit('SET_USER', res)
+      }).catch(err =>{
+        context.$nuxt.error(err)
+      })
+    } else {
+      console.log('context or context.$axios is not defined')
     }
+  },
+  logout({commit}, context){
+    if(context && context.$axios){
+      context.$axios.$get('/logout').then(res =>{
+        context.$nuxt.error('test error')
+        commit('SET_USER', null)
+      }).catch(err =>{
+        context.$nuxt.error(err)
+      })
+    } else {
+      console.log('context or context.$axios is not defined')
+    }
+
   }
 }

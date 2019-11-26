@@ -70,12 +70,41 @@ Snbot.connectDatabase(process.env.DATABASE_URI)
 const mongoose = require('mongoose');
 
 //Passport Settings
+
+/**
+ 1 - /login 요청
+
+2 - passport.authenticate("local", (error,user, message)  --->  localStrategy.js 실행
+
+3 - localStrategy에서 form으로 부터 입력받은 값으로 db에서 사용자 조회. 경우를 고려하여 done()함수 실행
+
+4 - localStrategy에서 done() --->  /login의 passport.authenticate의 콜백함수로 인자를 받음
+
+5 - 사용자가 없으면 redirect, 있으면 req.login()실행. 인자로 user를 넘겨줌. serializeUser실행
+
+6 - serializeUser실행 --> done(null, user.id) --> 세션에 user.id 저장
+
+7 - 사용자가 확인 되었으니, /login에서 redirect('~');
+
+8 - /success 요청
+
+9 - app.js의 passport.session() 실행
+
+10 - deserializeUser실행 -> 세션에서 유저아이디 가져옴(req.session.passport.user)
+
+11 - 세션에서 가져온 정보를 이용해 db에서 사용자 조회. 있음 -> done(null ,user)
+
+12 - req.user로 회원정보를 가져올 수 있음
+
+https://kosaf04pyh.tistory.com/23
+
+ */
 const MongoStore = require('connect-mongo')(session);
 app.use(session({
   secret: '@#@$MYSI$!$@!$!@',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 1000 * 60 * 60 * 12 }, // 쿠키 유효기간 12시간
+  cookie: { maxAge: 1000 * 60 * 60 * 24 * 14 }, // 쿠키 유효기간 14일
   store: new MongoStore({ mongooseConnection: Snbot.Database.Mongoose.connection })
 }));
 //[Start] Passport
@@ -86,17 +115,7 @@ var passport = require('passport')
 
 //console.log(config);
 
-// Passport session setup.
-passport.serializeUser(function (user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function (obj, done) {
-  done(null, obj);
-});
-
 // Use the TwitterStrategy within Passport.
-
 passport.use(new TwitterStrategy({
   consumerKey: process.env.consumer_key,
   consumerSecret: process.env.consumer_secret,
@@ -105,26 +124,38 @@ passport.use(new TwitterStrategy({
   function (token, tokenSecret, profile, done) {
 
     //아마도 이것들은 auth/callback 으로 들어오는 데이터인것같다.
-    console.log('┌ name : ', profile.username)
-    console.log('├ token : ', token)
-    console.log('└ secret : ', tokenSecret)
+    console.log('name : ', profile.username)
+
+    profile.token = token;
+    profile.tokenSecret = tokenSecret;
     //그리고 DB에서 찾아서 done 하면 다시 DB의 Session 데이터 안에 저장이 된다.
 
-    return done(null, profile);
-
+    done(null, profile)
   }
 ));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Passport session setup.
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
 
-app.get('/auth/twitter', passport.authenticate('twitter'));
+passport.deserializeUser(function (obj, done) {
+  //req.user 를 결정
+  done(null, obj);
+});
 
-app.get('/auth/twitter/callback',
-  passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/' }),
-  function (req, res) {
-    res.redirect('/');
+app.get('/auth/twitter', (req, res, next) => {
+  req.session.returnTo = req.query.url
+  console.log('Session : ', req.session)
+  next();
+ }, passport.authenticate('twitter'));
+
+app.get('/auth/twitter/callback', (req, res, next) => {
+  console.log('Callback Session : ', req.session);
+  passport.authenticate('twitter', { successRedirect: req.session.returnTo, failureRedirect: req.session.returnTo })(req, res, next)
 });
 
 app.get('/user', function (req, res) {
@@ -132,8 +163,9 @@ app.get('/user', function (req, res) {
 });
 
 app.get('/logout', function (req, res) {
-  req.logout();
-  res.redirect('/');
+  req.session.destroy(()=>{
+    res.redirect('/');
+  })
 });
 
 

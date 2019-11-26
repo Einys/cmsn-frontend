@@ -57,16 +57,13 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+.env.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
 # next.js build output
 .next
-
-# nuxt.js build output
-.nuxt
 
 # vuepress build output
 .vuepress/dist

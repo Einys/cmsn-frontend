@@ -3,16 +3,16 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _5e41a484 = () => interopDefault(import('..\\pages\\About.vue' /* webpackChunkName: "pages_About" */))
-const _aebf27c0 = () => interopDefault(import('..\\pages\\Help.vue' /* webpackChunkName: "pages_Help" */))
-const _43b9446b = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
-const _27e856fd = () => interopDefault(import('..\\pages\\List.vue' /* webpackChunkName: "pages_List" */))
-const _8c573a64 = () => interopDefault(import('..\\pages\\NotFound.vue' /* webpackChunkName: "pages_NotFound" */))
-const _6f7395f9 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpackChunkName: "pages_Privacy" */))
-const _cad67290 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
-const _705d98ac = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
-const _410b5653 = () => interopDefault(import('..\\pages\\t\\_cat\\_intent\\index.vue' /* webpackChunkName: "pages_t__cat__intent_index" */))
-const _7924e8a3 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _de6d70ae = () => interopDefault(import('..\\pages\\About.vue' /* webpackChunkName: "pages_About" */))
+const _0165e8d5 = () => interopDefault(import('..\\pages\\Help.vue' /* webpackChunkName: "pages_Help" */))
+const _9cf6e0d4 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
+const _fea4589c = () => interopDefault(import('..\\pages\\List.vue' /* webpackChunkName: "pages_List" */))
+const _05727d03 = () => interopDefault(import('..\\pages\\NotFound.vue' /* webpackChunkName: "pages_NotFound" */))
+const _45823db8 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpackChunkName: "pages_Privacy" */))
+const _5a7ee0a3 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
+const _2096b05f = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
+const _0968eb7e = () => interopDefault(import('..\\pages\\t\\_cat\\_intent\\index.vue' /* webpackChunkName: "pages_t__cat__intent_index" */))
+const _390f028e = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 Vue.use(Router)
 
@@ -25,43 +25,43 @@ export const routerOptions = {
 
   routes: [{
     path: "/About",
-    component: _5e41a484,
+    component: _de6d70ae,
     name: "About"
   }, {
     path: "/Help",
-    component: _aebf27c0,
+    component: _0165e8d5,
     name: "Help"
   }, {
     path: "/inspire",
-    component: _43b9446b,
+    component: _9cf6e0d4,
     name: "inspire"
   }, {
     path: "/List",
-    component: _27e856fd,
+    component: _fea4589c,
     name: "List"
   }, {
     path: "/NotFound",
-    component: _8c573a64,
+    component: _05727d03,
     name: "NotFound"
   }, {
     path: "/Privacy",
-    component: _6f7395f9,
+    component: _45823db8,
     name: "Privacy"
   }, {
     path: "/Terms",
-    component: _cad67290,
+    component: _5a7ee0a3,
     name: "Terms"
   }, {
     path: "/User",
-    component: _705d98ac,
+    component: _2096b05f,
     name: "User"
   }, {
     path: "/t/:cat?/:intent?",
-    component: _410b5653,
+    component: _0968eb7e,
     name: "t-cat-intent"
   }, {
     path: "/",
-    component: _7924e8a3,
+    component: _390f028e,
     name: "index"
   }],
 

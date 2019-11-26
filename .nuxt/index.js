@@ -12,9 +12,9 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_3914ec1a from 'nuxt_plugin_plugin_3914ec1a' // Source: .\\vuetify\\plugin.js (mode: 'all')
-import nuxt_plugin_googleanalytics_f92a826e from 'nuxt_plugin_googleanalytics_f92a826e' // Source: .\\google-analytics.js (mode: 'client')
-import nuxt_plugin_axios_211a613d from 'nuxt_plugin_axios_211a613d' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_plugin_d9a85976 from 'nuxt_plugin_plugin_d9a85976' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_googleanalytics_9936f198 from 'nuxt_plugin_googleanalytics_9936f198' // Source: .\\google-analytics.js (mode: 'client')
+import nuxt_plugin_axios_7709adb2 from 'nuxt_plugin_axios_7709adb2' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_masonry_18e5320f from 'nuxt_plugin_masonry_18e5320f' // Source: ..\\plugins\\masonry (mode: 'client')
 import nuxt_plugin_main_6a83762f from 'nuxt_plugin_main_6a83762f' // Source: ..\\plugins\\main (mode: 'client')
 import nuxt_plugin_nuxtclientinit_3893cbb9 from 'nuxt_plugin_nuxtclientinit_3893cbb9' // Source: ..\\plugins\\nuxt-client-init.js (mode: 'client')
@@ -170,16 +170,16 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_3914ec1a === 'function') {
-    await nuxt_plugin_plugin_3914ec1a(app.context, inject)
+  if (typeof nuxt_plugin_plugin_d9a85976 === 'function') {
+    await nuxt_plugin_plugin_d9a85976(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_googleanalytics_f92a826e === 'function') {
-    await nuxt_plugin_googleanalytics_f92a826e(app.context, inject)
+  if (process.client && typeof nuxt_plugin_googleanalytics_9936f198 === 'function') {
+    await nuxt_plugin_googleanalytics_9936f198(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_211a613d === 'function') {
-    await nuxt_plugin_axios_211a613d(app.context, inject)
+  if (typeof nuxt_plugin_axios_7709adb2 === 'function') {
+    await nuxt_plugin_axios_7709adb2(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_masonry_18e5320f === 'function') {

@@ -87,7 +87,7 @@
 			<v-expansion-panel>
 				<v-expansion-panel-header class="pa-3">세메센(cmsn)은 무슨 일을 하나요?</v-expansion-panel-header>
 				<v-expansion-panel-content>
-					세메센은 예술 창작 커미션의 플랫폼 역할을 하며, 트위터의 봇 계정과 연동됩니다.
+					세메센은 예술 창작 커미션이나 커미션을 찾는 트윗을 아카이빙하여 게시하는 역할을 하며, 트위터의 봇 계정과 연동됩니다.
 					수동으로 리트윗하여 홍보하던 그림 커미션 홍보봇 계정으로 시작하여, 일반 개인이 커미션을 좋아하는 마음에 개발하고 관리합니다.
 				</v-expansion-panel-content>
 			</v-expansion-panel>

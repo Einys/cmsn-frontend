@@ -5,7 +5,7 @@ module.exports = {
         script: "./server/index.js",
         watch: true,
         env: {
-            "PORT": 80,
+            "PORT": 8080,
             "HOST": "0.0.0.0",
             "NODE_ENV": "production"
         }

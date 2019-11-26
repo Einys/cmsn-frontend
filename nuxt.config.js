@@ -50,8 +50,7 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/masonry', ssr: false, client:true },
-    { src: '~/plugins/main', ssr: false, client:true },
-    { src: '~/plugins/nuxt-client-init.js', ssr: false }
+    { src: '~/plugins/main', ssr: false, client:true }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -93,7 +92,7 @@ module.exports = {
         light: {
           gold:'#c08028',
           silver: '#707592',
-          background:'#E8EBEE'
+          background:'#E9ECEF'
         }
       }
     }

@@ -8,13 +8,15 @@
 			<v-btn text @click="searchDrawer = !searchDrawer"><span class="body-1">
 					<v-icon>mdi-layers</v-icon>
 				</span></v-btn>
+			<span v-if="false" class="enable-login">
+				<v-btn v-if="!$store.state.authUser" depressed="" dark="" rounded color="blue" :href="server + '/auth/twitter?url=' + this.$route.path" target="_blank">
+					<v-icon left>mdi-twitter</v-icon>로그인
+				</v-btn>
+				<v-avatar v-if="$store.state.authUser" @click="userDrawer = !userDrawer">
+					<v-icon>mdi-mail</v-icon>
+				</v-avatar>
+			</span>
 
-			<v-btn v-if="!$store.state.authUser" depressed="" dark="" rounded color="blue" :href="server + '/auth/twitter?url=' + this.$route.path" target="_blank">
-				<v-icon left>mdi-twitter</v-icon>로그인
-			</v-btn>
-			<v-avatar v-if="$store.state.authUser" @click="userDrawer = !userDrawer">
-				<v-icon>mdi-mail</v-icon>
-			</v-avatar>
 		</v-app-bar>
 
 		<!--스낵바-->
@@ -226,7 +228,7 @@ export default Vue.extend({
   created() {
     objectFitImages(); /* IE, Edge, Safari Polyfill */
     //this.$vuetify.theme.dark = true
-    console.log("node env ", process.env.NODE_ENV );
+    console.log("node env ", process.env.NODE_ENV);
   },
   computed: {
     isRightDrawerPermanent() {

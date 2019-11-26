@@ -38,7 +38,10 @@ app.use(express.static(path.join(__dirname, '../frontend/dist')));
 app.use(express.static(path.join(__dirname, '../frontend/dist/css')));
 app.use(express.static(path.join(__dirname, '../frontend/dist/js')));
 app.use(express.static(path.join(__dirname, '../frontend/dist/img')));
-
+app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../dist/css')));
+app.use(express.static(path.join(__dirname, '../dist/js')));
+app.use(express.static(path.join(__dirname, '../dist/img')));
 
 
 //CORS policy

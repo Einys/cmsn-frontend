@@ -58,10 +58,7 @@ module.exports = {
   buildModules: [
     '@nuxtjs/vuetify',
     ['@nuxt/typescript-build', {
-      typeCheck: {
-        memoryLimit: 256,
-        workers: 1
-      },
+      typeCheck: false,
       ignoreNotFoundWarnings: false
     }],
     '@nuxtjs/axios',

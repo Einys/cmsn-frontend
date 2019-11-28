@@ -8,7 +8,8 @@ module.exports = {
             "PORT": 8080,
             "HOST": "0.0.0.0",
             "NODE_ENV": "production"
-        }
+        },
+	log_date_format: 'YYYY-MM-DD HH:mm Z'
       }
   ]
 }

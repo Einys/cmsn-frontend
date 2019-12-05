@@ -12,7 +12,7 @@ module.exports = {
   * env
   */
   env: {
-    SERVER_URL: process.env.SERVER_URL || 'http://localhost:3000'
+    SERVER_URL: process.env.SERVER_URL || 'http://127.0.0.1:8080'
   },
   /*
   ** Headers of the page
@@ -89,7 +89,7 @@ module.exports = {
         light: {
           gold:'#c08028',
           silver: '#707592',
-          background:'#E9ECEF'
+          background:'#F3F2F2'
         }
       }
     }

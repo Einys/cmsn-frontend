@@ -15,9 +15,10 @@
 						</v-btn>
 
 					</v-row>
-					<div class="body">
-						{{(content||[])[cat]}}
-					</div>
+          <v-row no-gutters v-if="(content||[])[cat]">
+					  	{{(content||[])[cat]}}
+          </v-row>
+
 				</v-flex>
 				<v-flex xs12 sm4>
 					<v-text-field class="search my-2" solo flat clearable color="orange" prepend-inner-icon="mdi-magnify" :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" @click:append="search()" />
@@ -113,7 +114,7 @@ export default class Card extends Vue {
   }
 
   content = {
-    art: "커미션은 예술 창작을 의뢰하는 비용입니다. 작품의 저작권은 아티스트에게 있습니다.",
+    art: "",
     wri: "문예, 문예번역, 캐릭터봇, 점술 커미션",
     des: "시각디자인, 캘리그라피, 영상그래픽, 수공예, 사진촬영, 코스프레",
     mus: "보이스, 작곡, 믹싱 커미션"
@@ -185,7 +186,8 @@ export default class Card extends Vue {
     } else {
       adindex = 3;
     }
-
+    /*
+    // 사이징 버그 해결될 때 까지... (광고 사이즈가 갤러리 아이템 사이즈보다 커서 잘림)
     if (itemlist.length > 0) {
       itemlist.splice(adindex, 0, {
         id: "ad",
@@ -201,6 +203,7 @@ export default class Card extends Vue {
         slot: underSlot
       });
     }
+    */
     return itemlist;
   }
 
@@ -254,7 +257,7 @@ export default class Card extends Vue {
 
 <style>
 .search .v-input__slot {
-  background-color: #f5f5f5 !important;
+  background-color: #ffffff !important;
 }
 .search .v-text-field__details {
   display: none;

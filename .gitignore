@@ -65,7 +65,7 @@ typings/
 # next.js build output
 .next
 
-.nuxt
+.nuxt/
 dist
 
 # vuepress build output

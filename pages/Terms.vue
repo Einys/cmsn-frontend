@@ -23,7 +23,7 @@
   트윗 : 소셜 네트워크 서비스 'Twitter' 에서의 컨텐츠 게시 단위입니다.<br>
   답글 : 소셜 네트워크 서비스 'Twitter' 에서의 정의를 따릅니다.<br>
   멘션 : 소셜 네트워크 서비스 'Twitter' 에서의 정의를 따릅니다.<br>
-  (정의 참조 : https://help.twitter.com/ko/glossary )
+  (정의 참조 : <a href="https://help.twitter.com/ko/glossary" target="_blank">https://help.twitter.com/ko/glossary</a>  )
 
   <h3>3. 이용자의 권리</h3>
   귀하의 모든 컨텐츠는 귀하의 소유입니다. 서비스에 컨텐츠를 제공할 때 귀하는 반드시 귀하의 소유인 컨텐츠임을 보증하고 제공합니다.

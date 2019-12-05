@@ -147,7 +147,7 @@ export default class Card extends Vue {
     this.$axios
       .$get("/1.0/data/items/list", {
         params: {
-          cat: this.cat,
+          cat: this.cat === "all" ? undefined : this.cat,
           intent: this.intent,
           count: this.count,
           skip: this.skip,

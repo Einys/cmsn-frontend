@@ -1,47 +1,39 @@
 <template>
 	<div>
+		<!-- ad banner -->
+		<ad-lg-banner></ad-lg-banner>
+		<div class="wrapper">
+			<v-btn fab depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
+				<v-icon>mdi-chevron-up</v-icon>
+			</v-btn>
+			<v-layout no-gutters row wrap justify-center align-center class="ma-2">
 
-		<v-btn fab small depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.8;" @click="scrollToTop()">
-			<v-icon>mdi-chevron-up</v-icon>
-		</v-btn>
-		<v-layout no-gutters row wrap justify-center align-center class="pa-2">
-
-			<v-layout row wrap class="wrapper">
 				<v-flex xs12 sm8>
 					<v-row no-gutters align="center">
 						<h2 class="headline">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h2>
-						<v-btn v-if="cat && cat !== 'all'" class="pa-1" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text color="light-blue">
+						<v-btn v-if="cat" class="pa-1" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text color="light-blue">
 							<v-icon left>mdi-twitter</v-icon>{{(bots||[])[cat]}}
 						</v-btn>
 
 					</v-row>
-          <v-row no-gutters v-if="(content||[])[cat]">
-					  	{{(content||[])[cat]}}
-          </v-row>
-
+					<div class="body">
+						{{(content||[])[cat]}}
+					</div>
 				</v-flex>
 				<v-flex xs12 sm4>
-					<v-text-field class="search my-2" solo flat clearable color="orange" prepend-inner-icon="mdi-magnify" :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" @click:append="search()" />
+					<v-text-field class="search mt-2" solo flat clearable color="orange" prepend-inner-icon="mdi-magnify" :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" @click:append="search()" />
 				</v-flex>
-				<v-flex xs12 v-if="cat === 'all'" class="pt-2">
+				<v-flex xs12 v-if="cat === 'all'">
 					<cat-horiz :cat="cat" :intent="intent"></cat-horiz>
 				</v-flex>
 			</v-layout>
 
-		</v-layout>
-		<!-- ad banner -->
-    <v-row class="py-3">
-  		<ad-lg-banner></ad-lg-banner>
-    </v-row>
-		<div class="wrapper">
 			<div class="masonry-wrapper">
 				<page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
 				<loader v-if="busy" />
 				<masonry v-if="!isEmpty" :list="list" :isArticle="!gallery" />
 				<page-button v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
-				<v-layout v-if="isEmpty && !busy" justify-center>
-					<h3>표시할 내용이 없습니다.</h3>
-				</v-layout>
+          <v-layout v-if="isEmpty && !busy" justify-center> <h3>표시할 내용이 없습니다.</h3> </v-layout>
 			</div>
 
 		</div>
@@ -70,10 +62,10 @@ import { isArray } from "util";
     Loader,
     CatHoriz
   },
-  data() {
+  data(){
     return {
-      keyword: ""
-    };
+      keyword: ''
+    }
   },
   filters: {
     cat(cat: any) {
@@ -155,7 +147,7 @@ export default class Card extends Vue {
     this.$axios
       .$get("/1.0/data/items/list", {
         params: {
-          cat: this.cat === "all" ? undefined : this.cat,
+          cat: this.cat,
           intent: this.intent,
           count: this.count,
           skip: this.skip,
@@ -186,8 +178,7 @@ export default class Card extends Vue {
     } else {
       adindex = 3;
     }
-    /*
-    // 사이징 버그 해결될 때 까지... (광고 사이즈가 갤러리 아이템 사이즈보다 커서 잘림)
+
     if (itemlist.length > 0) {
       itemlist.splice(adindex, 0, {
         id: "ad",
@@ -203,8 +194,7 @@ export default class Card extends Vue {
         slot: underSlot
       });
     }
-    */
-    return itemlist;
+    return itemlist
   }
 
   search(e: any) {

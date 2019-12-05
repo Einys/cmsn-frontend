@@ -58,8 +58,4 @@ export default class Card extends Vue {
 	margin: 2px;
 	padding: 0px 10px !important;
 }
-
-.theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-    background-color: #ffffff;
-}
 </style>

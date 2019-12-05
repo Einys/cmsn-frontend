@@ -47,7 +47,7 @@ export default class Card extends Vue {
     content: "";
     width: 100%;
     height: 100%;
-    background: #5dc596;
+    background: #ffce47;
     animation: rotate-square-2-animate 0.5s linear infinite;
     position: absolute;
     bottom: 40%;

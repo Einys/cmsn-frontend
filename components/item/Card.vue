@@ -117,9 +117,7 @@ export default class Card extends Vue {
 <style>
 
 .text {
-  text-overflow: ellipsis;
   word-break: break-all;
-  overflow: hidden;
   position: relative;
   letter-spacing: 0.3px;
   font-size: 1rem;

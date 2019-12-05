@@ -82,9 +82,8 @@ $large-column-width: calc((100% - 24px * 3) / 4);
   text-align: left;
   position: absolute;
   width: $large-column-width;
-  border-radius: 4px;
   box-sizing: border-box;
-
+  border: 1px solid rgba(211, 211, 211, 0.5);
 }
 .item.ad{
   background-color: rgba(134, 134, 134, 0.1);

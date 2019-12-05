@@ -6,12 +6,14 @@ import {
   globalHandleError
 } from './utils'
 
-import NuxtError from '../layouts/error.vue'
+import NuxtError from '..\\layouts\\error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 
-import '../css/main.css'
+import '..\\css\\main.css'
 
-import _6f6c098b from '../layouts/default.vue'
+import '..\\node_modules\\vuetify\\dist\\vuetify.css'
+
+import _6f6c098b from '..\\layouts\\default.vue'
 
 const layouts = { "_default": _6f6c098b }
 
@@ -168,6 +170,10 @@ export default {
     },
 
     setLayout (layout) {
+      if(layout && typeof layout !== 'string') {
+        throw new Error('[nuxt] Avoid using non-string value as layout property.')
+      }
+
       if (!layout || !layouts['_' + layout]) {
         layout = 'default'
       }

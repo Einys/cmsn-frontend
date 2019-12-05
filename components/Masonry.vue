@@ -74,16 +74,17 @@ $medium-column-width: calc((100% - 12px * 2) / 3);
 $large-column-width: calc((100% - 24px * 3) / 4);
 
 .item {
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 24px 0 rgba(149, 153, 163, 0.2);
+    background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 14px 0 rgba(180, 167, 163, 0.22);
   border-radius: 4px;
-  padding: 0px;
+    padding: 2px;
   margin: 12px 0px;
   text-align: left;
   position: absolute;
   width: $large-column-width;
+  border-radius: 4px;
   box-sizing: border-box;
-  border: 1px solid rgba(211, 211, 211, 0.5);
+
 }
 .item.ad{
   background-color: rgba(134, 134, 134, 0.1);
@@ -102,7 +103,7 @@ $large-column-width: calc((100% - 24px * 3) / 4);
 @media screen and (max-width: $break-small) {
   .item {
     width: $small-column-width;
-    padding: 0px;
+    padding: 1px;
     overflow: hidden;
     margin: 3px 0px;
     box-shadow: 0px 0px 4px 0px rgba(126, 117, 114, 0.1);

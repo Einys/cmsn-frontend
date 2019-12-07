@@ -215,7 +215,7 @@ app.post('/twitter', async function (req, res) {
 
     if (!(myHash === twittersign)) {
       console.log('[app.js: post/twitter]  WARNING Data posted came from not twitter');
-      return;
+      //return;
     }
 
     var headers = {

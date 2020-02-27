@@ -7,7 +7,8 @@ module.exports = {
         env: {
             "PORT": 8080,
             "HOST": "0.0.0.0",
-            "NODE_ENV": "production"
+            "NODE_ENV": "production",
+	    "DEBUG": "snbot:*, -snbot:equation.ts, -snbot:equation.js"
         },
 	log_date_format: 'YYYY-MM-DD HH:mm Z'
       }

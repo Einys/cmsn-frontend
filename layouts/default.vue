@@ -2,7 +2,7 @@
 	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
 		<v-app-bar app>
 			<v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-			<v-toolbar-title @click="$router.push('/')" style="cursor:pointer">CM-SN.ART</v-toolbar-title>
+			<v-toolbar-title class="blue-grey--text text--darken-2" @click="$router.push('/')" style="cursor:pointer">CM-SN.ART</v-toolbar-title>
 			<v-spacer></v-spacer>
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
 			<v-btn text @click="searchDrawer = !searchDrawer"><span class="body-1">카테고리</span></v-btn>
@@ -88,7 +88,7 @@
     v-model="searchDrawer" style="overflow:hidden">
     <v-btn v-if="!isRightDrawerPermanent" absolute top right text @click="searchDrawer=false"><v-icon>mdi-close</v-icon></v-btn>
 			<v-container justify-center style="text-align:center">
-				<h3 class="font-weight-light mt-1">커미션 열었어요</h3>
+				<h3 class="font-weight-light pa-0 mt-2">커미션 열었어요</h3>
 				<v-layout row align-center justify-space-around style="font-size: 20px;">
 					<v-btn color="blue-grey" text  :to="{path:'/t/art/open'}">
 						<v-icon left>mdi-satellite</v-icon>그림
@@ -107,8 +107,7 @@
 					</v-btn>
 
         </v-layout>
-				<v-divider></v-divider>
-				<h3 class="font-weight-light mt-1">커미션 찾습니다</h3>
+				<h3 class="font-weight-light pa-0 mt-4">커미션 찾습니다</h3>
 				<v-layout row align-center justify-space-around>
 					<v-btn color="blue-grey" text :to="{path:'/t/art/find'}">
 						<v-icon left>mdi-satellite</v-icon>그림

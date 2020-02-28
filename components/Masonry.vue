@@ -77,14 +77,13 @@ $large-column-width: calc((100% - 24px * 3) / 4);
     background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 14px 0 rgba(180, 167, 163, 0.22);
   border-radius: 4px;
-    padding: 2px;
   margin: 12px 0px;
   text-align: left;
   position: absolute;
   width: $large-column-width;
   border-radius: 4px;
   box-sizing: border-box;
-
+  overflow: hidden;
 }
 .item.ad{
   background-color: rgba(134, 134, 134, 0.1);

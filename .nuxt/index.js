@@ -4,7 +4,7 @@ import ClientOnly from 'vue-client-only'
 import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
 import NuxtChild from './components/nuxt-child.js'
-import NuxtError from '../layouts/error.vue'
+import NuxtError from '..\\layouts\\error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
@@ -12,11 +12,11 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_4fd9f80a from 'nuxt_plugin_plugin_4fd9f80a' // Source: ./vuetify/plugin.js (mode: 'all')
-import nuxt_plugin_googleanalytics_5756a06c from 'nuxt_plugin_googleanalytics_5756a06c' // Source: ./google-analytics.js (mode: 'client')
-import nuxt_plugin_axios_166b277a from 'nuxt_plugin_axios_166b277a' // Source: ./axios.js (mode: 'all')
-import nuxt_plugin_masonry_18e5320f from 'nuxt_plugin_masonry_18e5320f' // Source: ../plugins/masonry (mode: 'client')
-import nuxt_plugin_main_6a83762f from 'nuxt_plugin_main_6a83762f' // Source: ../plugins/main (mode: 'client')
+import nuxt_plugin_plugin_11f62e22 from 'nuxt_plugin_plugin_11f62e22' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_googleanalytics_adf8c25e from 'nuxt_plugin_googleanalytics_adf8c25e' // Source: .\\google-analytics.js (mode: 'client')
+import nuxt_plugin_axios_4d659396 from 'nuxt_plugin_axios_4d659396' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_masonry_18e5320f from 'nuxt_plugin_masonry_18e5320f' // Source: ..\\plugins\\masonry (mode: 'client')
+import nuxt_plugin_main_6a83762f from 'nuxt_plugin_main_6a83762f' // Source: ..\\plugins\\main (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -169,16 +169,16 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_4fd9f80a === 'function') {
-    await nuxt_plugin_plugin_4fd9f80a(app.context, inject)
+  if (typeof nuxt_plugin_plugin_11f62e22 === 'function') {
+    await nuxt_plugin_plugin_11f62e22(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_googleanalytics_5756a06c === 'function') {
-    await nuxt_plugin_googleanalytics_5756a06c(app.context, inject)
+  if (process.client && typeof nuxt_plugin_googleanalytics_adf8c25e === 'function') {
+    await nuxt_plugin_googleanalytics_adf8c25e(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_166b277a === 'function') {
-    await nuxt_plugin_axios_166b277a(app.context, inject)
+  if (typeof nuxt_plugin_axios_4d659396 === 'function') {
+    await nuxt_plugin_axios_4d659396(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_masonry_18e5320f === 'function') {

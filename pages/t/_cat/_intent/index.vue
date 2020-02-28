@@ -10,9 +10,9 @@
 
 				<v-flex xs12 sm8>
 					<v-row no-gutters align="center">
-						<h2 class="headline">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h2>
+						<h3>{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h3>
 						<v-btn v-if="cat" class="pa-1" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text color="light-blue">
-							<v-icon left>mdi-twitter</v-icon>{{(bots||[])[cat]}}
+							<v-icon size="16">mdi-twitter</v-icon>&nbsp;{{(bots||[])[cat]}}
 						</v-btn>
 
 					</v-row>
@@ -21,7 +21,7 @@
 					</div>
 				</v-flex>
 				<v-flex xs12 sm4>
-					<v-text-field class="search mt-2" solo flat clearable color="orange" prepend-inner-icon="mdi-magnify" :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" @click:append="search()" />
+					<v-text-field class="search mt-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify" :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" @click:append="search()" />
 				</v-flex>
 				<v-flex xs12 v-if="cat === 'all'">
 					<cat-horiz :cat="cat" :intent="intent"></cat-horiz>

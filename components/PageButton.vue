@@ -5,8 +5,8 @@
       depressed
       color="brown lighten-5"
       class="brown--text"
-      style="position: absolute; left: -2px"
-      
+      style="position: absolute; left: 4px"
+
       @click="toFirst()"
     >
       <v-icon>mdi-page-first</v-icon>

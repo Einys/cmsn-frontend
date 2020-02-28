@@ -12,10 +12,10 @@
         />
       </v-avatar>
       <v-layout column>
-      <div>
+      <v-row no-gutters align="center">
       <span class="username">{{ user.name }}&nbsp;</span>
-      <v-icon :size="$vuetify.breakpoint.smAndUp? 14 : 12" color="grey">mdi-twitter</v-icon><br />
-      </div>
+      <v-icon :size="$vuetify.breakpoint.smAndUp? 14 : 12" color="grey">mdi-twitter</v-icon>
+      </v-row>
 
       <span
         class="date"
@@ -75,7 +75,7 @@ $break-large: 1200px;
 $break-small: 720px;
 
 .profile {
-color: #555555;
+color: #4b4b4b;
   padding: 10px 8px;
   font-size: 14px;
   line-height: 16px;
@@ -93,7 +93,7 @@ color: #555555;
   }
   .date {
     font-size: 12px;
-    color: rgb(155, 169, 187);
+    color: rgb(138, 155, 175);
   }
   .username {
     margin: 0;
@@ -137,7 +137,7 @@ color: #555555;
     }
     .username {
       max-width: 80px;
-     
+
     }
 
   }

@@ -30,7 +30,7 @@
 				</v-flex>
         <v-flex xs12 class="mt-5" v-if="q">
           <h2>
-            {{q}} 검색 결과
+            검색 : {{q}}
           </h2>
         </v-flex>
 			</v-layout>

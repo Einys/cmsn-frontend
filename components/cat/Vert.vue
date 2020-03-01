@@ -1,5 +1,5 @@
 <template>
-	<v-container justify-center style="text-align:center; max-width:320px">
+	<v-container justify-center style="text-align:center; max-width:320px; padding:0;">
 		<v-col class="mb-3">
 			<v-btn text to="/t/all/open">
 				<h2 style="cursor:pointer">커미션 열었어요</h2>
@@ -60,5 +60,6 @@ export default class CatVert extends Vue {}
 <style scoped>
 h2{
   color:rgb(44, 51, 59);
+  font-weight: 300;
 }
 </style>

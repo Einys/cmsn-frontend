@@ -117,7 +117,6 @@ $large-column-width: calc((100% - 24px * 3) / 4);
   .item.article {
     width: 100%;
     margin: 10px 0px;
-    box-shadow: 0px 0px 6px 0px rgba(126, 117, 114, 0.3);
   }
 }
 

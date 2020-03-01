@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cat-vert></cat-vert>
+    <cat-vert class="mt-5"></cat-vert>
   </div>
 </template>
 

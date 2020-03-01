@@ -101,45 +101,7 @@
 			<v-btn v-if="!isRightDrawerPermanent" absolute top right text @click="searchDrawer=false">
 				<v-icon>mdi-close</v-icon>
 			</v-btn>
-			<v-container justify-center style="text-align:center">
-				<h3 class="font-weight-light pa-0 mt-2">커미션 열었어요</h3>
-				<v-layout row align-center justify-space-around style="font-size: 20px;">
-					<v-btn color="blue-grey" text :to="{path:'/t/art/open'}">
-						<v-icon left>mdi-satellite</v-icon>그림
-					</v-btn>
-					<v-btn color="blue-grey darken-2" text :to="{path:'/t/wri/open'}">
-						<v-icon left>mdi-text</v-icon> 글..
-					</v-btn>
-
-				</v-layout>
-				<v-layout row align-center justify-space-around style="font-size: 20px;">
-					<v-btn color="blue-grey darken-2" text :to="{path:'/t/des/open'}">
-						<v-icon left>mdi-shape</v-icon> 디자인..
-					</v-btn>
-					<v-btn color="blue-grey" text :to="{path:'/t/mus/open'}">
-						<v-icon left>mdi-music-note</v-icon> 음악..
-					</v-btn>
-
-				</v-layout>
-				<h3 class="font-weight-light pa-0 mt-4">커미션 찾습니다</h3>
-				<v-layout row align-center justify-space-around>
-					<v-btn color="blue-grey" text :to="{path:'/t/art/find'}">
-						<v-icon left>mdi-satellite</v-icon>그림
-					</v-btn>
-					<v-btn color="blue-grey darken-2" text :to="{path:'/t/wri/find'}">
-						<v-icon left>mdi-text</v-icon> 글..
-					</v-btn>
-
-				</v-layout>
-				<v-layout row align-center justify-space-around>
-					<v-btn color="blue-grey darken-2" text :to="{path:'/t/des/find'}">
-						<v-icon left>mdi-shape</v-icon> 디자인..
-					</v-btn>
-					<v-btn color="blue-grey" text :to="{path:'/t/mus/find'}">
-						<v-icon left>mdi-music-note</v-icon> 음악..
-					</v-btn>
-				</v-layout>
-			</v-container>
+      <cat-vert></cat-vert>
 			<br>
 			<ad-vt300></ad-vt300>
 
@@ -170,11 +132,13 @@ import Footer from "@/components/Footer.vue";
 import objectFitImages from "object-fit-images";
 import cmsnService from "@/services/cmsn";
 import AdVert300 from "@/components/ads/AdVert300.vue";
+import CatVert from "@/components/cat/Vert.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
     Masonry,
+    "cat-vert":CatVert,
     "my-footer": Footer,
     "ad-vt300": AdVert300
   },

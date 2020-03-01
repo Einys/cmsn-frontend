@@ -88,8 +88,8 @@ module.exports = {
         },
         light: {
           gold:'#c08028',
-          silver: '#707592',
-          background:'#F3F2F2'
+          silver: '#636885',
+          background:'#F0F0F1'
         }
       }
     }

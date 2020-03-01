@@ -1,13 +1,20 @@
 <template>
 	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
 		<v-app-bar app>
-			<v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-			<v-toolbar-title class="blue-grey--text text--darken-2" @click="$router.push('/')" style="cursor:pointer">CM-SN.ART</v-toolbar-title>
+			<span class="blue-grey--text text--darken-2 ma-0" @click="drawer= !drawer" style="cursor:pointer;">
+				<v-layout>
+					<img style=" height: 28px; " :src="this.$vuetify.breakpoint.smAndDown ? '/logo2020.svg' :'/cmsnart.png'" />
+					<v-icon>mdi-chevron-right</v-icon>
+				</v-layout>
+
+			</span>
 			<v-spacer></v-spacer>
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
-			<v-btn text @click="searchDrawer = !searchDrawer"><span class="body-1">카테고리</span></v-btn>
+			<v-btn text @click="$router.push('/t')"><span class="body-1">카테고리</span></v-btn>
 
-			<v-btn v-if="false" outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank"><v-icon left>mdi-twitter</v-icon>로그인</v-btn>
+			<v-btn v-if="false" outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank">
+				<v-icon left>mdi-twitter</v-icon>로그인
+			</v-btn>
 		</v-app-bar>
 
 		<!--스낵바-->
@@ -54,7 +61,13 @@
 					<v-list-item-icon>
 						<v-icon>mdi-home</v-icon>
 					</v-list-item-icon>
-					<v-list-item-title class="font-weight-bold">CM-SN.ART</v-list-item-title>
+					<v-list-item-title class="font-weight-bold">홈</v-list-item-title>
+				</v-list-item>
+				<v-list-item link to="/t">
+					<v-list-item-icon>
+						<v-icon>mdi-layers</v-icon>
+					</v-list-item-icon>
+					<v-list-item-title>카테고리</v-list-item-title>
 				</v-list-item>
 				<v-list-item link to="/help">
 					<v-list-item-icon>
@@ -84,29 +97,30 @@
 		</v-navigation-drawer>
 
 		<!-- 오른쪽 서랍 -->
-		<v-navigation-drawer app width="300" :permanent="isRightDrawerPermanent" right color="background"
-    v-model="searchDrawer" style="overflow:hidden">
-    <v-btn v-if="!isRightDrawerPermanent" absolute top right text @click="searchDrawer=false"><v-icon>mdi-close</v-icon></v-btn>
+		<v-navigation-drawer app width="300" :permanent="isRightDrawerPermanent" right color="background" v-model="searchDrawer" style="overflow:hidden">
+			<v-btn v-if="!isRightDrawerPermanent" absolute top right text @click="searchDrawer=false">
+				<v-icon>mdi-close</v-icon>
+			</v-btn>
 			<v-container justify-center style="text-align:center">
 				<h3 class="font-weight-light pa-0 mt-2">커미션 열었어요</h3>
 				<v-layout row align-center justify-space-around style="font-size: 20px;">
-					<v-btn color="blue-grey" text  :to="{path:'/t/art/open'}">
+					<v-btn color="blue-grey" text :to="{path:'/t/art/open'}">
 						<v-icon left>mdi-satellite</v-icon>그림
 					</v-btn>
-					<v-btn color="blue-grey darken-2" text  :to="{path:'/t/wri/open'}">
+					<v-btn color="blue-grey darken-2" text :to="{path:'/t/wri/open'}">
 						<v-icon left>mdi-text</v-icon> 글..
 					</v-btn>
 
 				</v-layout>
-        <v-layout row align-center justify-space-around style="font-size: 20px;">
-          					<v-btn color="blue-grey darken-2" text  :to="{path:'/t/des/open'}">
+				<v-layout row align-center justify-space-around style="font-size: 20px;">
+					<v-btn color="blue-grey darken-2" text :to="{path:'/t/des/open'}">
 						<v-icon left>mdi-shape</v-icon> 디자인..
 					</v-btn>
 					<v-btn color="blue-grey" text :to="{path:'/t/mus/open'}">
 						<v-icon left>mdi-music-note</v-icon> 음악..
 					</v-btn>
 
-        </v-layout>
+				</v-layout>
 				<h3 class="font-weight-light pa-0 mt-4">커미션 찾습니다</h3>
 				<v-layout row align-center justify-space-around>
 					<v-btn color="blue-grey" text :to="{path:'/t/art/find'}">
@@ -117,17 +131,17 @@
 					</v-btn>
 
 				</v-layout>
-        <v-layout row align-center justify-space-around>
-          					<v-btn color="blue-grey darken-2" text :to="{path:'/t/des/find'}">
+				<v-layout row align-center justify-space-around>
+					<v-btn color="blue-grey darken-2" text :to="{path:'/t/des/find'}">
 						<v-icon left>mdi-shape</v-icon> 디자인..
 					</v-btn>
 					<v-btn color="blue-grey" text :to="{path:'/t/mus/find'}">
 						<v-icon left>mdi-music-note</v-icon> 음악..
 					</v-btn>
-        </v-layout>
+				</v-layout>
 			</v-container>
-      <br>
-      <ad-vt300></ad-vt300>
+			<br>
+			<ad-vt300></ad-vt300>
 
 		</v-navigation-drawer>
 
@@ -155,7 +169,7 @@ import Footer from "@/components/Footer.vue";
 // @ts-ignore
 import objectFitImages from "object-fit-images";
 import cmsnService from "@/services/cmsn";
-import AdVert300 from "@/components/ads/AdVert300.vue"
+import AdVert300 from "@/components/ads/AdVert300.vue";
 
 export default Vue.extend({
   name: "App",
@@ -172,13 +186,13 @@ export default Vue.extend({
     searchDrawer: false,
     bottomNav: true,
     sheet: false,
-	keyword: "",
-	server: process.env.SERVER_URL
+    keyword: "",
+    server: process.env.SERVER_URL
   }),
   methods: {
     login() {
       this.snackbar = true;
-	   //cmsnService.login().catch(err => {console.log(err)})
+      //cmsnService.login().catch(err => {console.log(err)})
     },
     search(e: any) {
       console.log("search", this.keyword);
@@ -202,17 +216,18 @@ export default Vue.extend({
     console.log(process.env.NODE_ENV, "node env");
   },
   computed: {
-    isRightDrawerPermanent(){
-      return this.$vuetify.breakpoint.mdAndUp
+    isRightDrawerPermanent() {
+      return this.$vuetify.breakpoint.mdAndUp;
     }
   },
   watch: {
     $route(to, from) {
-			console.log("Route change detected. Reload Ad ");
+      console.log("Route change detected. Reload Ad ");
 
-			//@ts-ignore
-			if(googletag && typeof googletag.pubads === 'function' ) { googletag.pubads().refresh(); }
-
+      //@ts-ignore
+      if (googletag && typeof googletag.pubads === "function") {
+        googletag.pubads().refresh();
+      }
     }
   }
 });
@@ -221,6 +236,9 @@ export default Vue.extend({
 .v-toolbar {
   flex: none !important;
   z-index: 5;
+}
+.v-toolbar__content {
+  padding: 10px 24px;
 }
 .v-app-bar {
   box-shadow: 0px 0px 5px 2px rgba(26, 23, 23, 0.05) !important;
@@ -248,11 +266,14 @@ export default Vue.extend({
 }
 
 @media screen and (max-width: 720px) {
+  .v-toolbar__content {
+    padding: 10px 16px;
+  }
   .wrapper {
-    padding: 24px 0px;
+    padding: 24px 16px;
   }
   nav {
-	  z-index: 100 !important;
+    z-index: 100 !important;
   }
 }
 </style>

@@ -4,11 +4,13 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _b2181e8c = () => interopDefault(import('..\\pages\\About.vue' /* webpackChunkName: "pages_About" */))
+const _cad5f93e = () => interopDefault(import('..\\pages\\Category.vue' /* webpackChunkName: "pages_Category" */))
 const _33a959a4 = () => interopDefault(import('..\\pages\\Help.vue' /* webpackChunkName: "pages_Help" */))
 const _30ad8f32 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
 const _9a1d76fe = () => interopDefault(import('..\\pages\\List.vue' /* webpackChunkName: "pages_List" */))
 const _d83a235c = () => interopDefault(import('..\\pages\\NotFound.vue' /* webpackChunkName: "pages_NotFound" */))
 const _136389f5 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpackChunkName: "pages_Privacy" */))
+const _1053e4a1 = () => interopDefault(import('..\\pages\\t\\index.vue' /* webpackChunkName: "pages_t_index" */))
 const _70a989b4 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
 const _52da212e = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
 const _68285b62 = () => interopDefault(import('..\\pages\\t\\_cat\\_intent\\index.vue' /* webpackChunkName: "pages_t__cat__intent_index" */))
@@ -27,6 +29,10 @@ export const routerOptions = {
     path: "/About",
     component: _b2181e8c,
     name: "About"
+  }, {
+    path: "/Category",
+    component: _cad5f93e,
+    name: "Category"
   }, {
     path: "/Help",
     component: _33a959a4,
@@ -48,6 +54,10 @@ export const routerOptions = {
     component: _136389f5,
     name: "Privacy"
   }, {
+    path: "/t",
+    component: _1053e4a1,
+    name: "t"
+  }, {
     path: "/Terms",
     component: _70a989b4,
     name: "Terms"
@@ -56,7 +66,7 @@ export const routerOptions = {
     component: _52da212e,
     name: "User"
   }, {
-    path: "/t/:cat?/:intent?",
+    path: "/t/:cat/:intent?",
     component: _68285b62,
     name: "t-cat-intent"
   }, {

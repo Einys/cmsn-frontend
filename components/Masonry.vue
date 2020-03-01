@@ -75,7 +75,6 @@ $large-column-width: calc((100% - 24px * 3) / 4);
 
 .item {
     background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 14px 0 rgba(180, 167, 163, 0.22);
   border-radius: 4px;
   margin: 12px 0px;
   text-align: left;
@@ -105,7 +104,12 @@ $large-column-width: calc((100% - 24px * 3) / 4);
     padding: 1px;
     overflow: hidden;
     margin: 3px 0px;
-    box-shadow: 0px 0px 4px 0px rgba(126, 117, 114, 0.1);
+  }
+
+  .masonry{
+    position: absolute;
+    width:100vw;
+    left:-16px;
   }
 }
 

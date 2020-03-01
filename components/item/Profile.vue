@@ -5,7 +5,7 @@
     rel="noopener"
   >
     <v-row class="profile pa-2 py-3" no-gutters>
-      <v-avatar size="28" class="avatar">
+      <v-avatar size="32" class="avatar">
         <img
           :src="user.profileImg"
           @error="onProfileImageError($event)"
@@ -77,7 +77,7 @@ $break-small: 720px;
 .profile {
 color: #4b4b4b;
   padding: 10px 8px;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 16px;
     .avatar{
         float: left;

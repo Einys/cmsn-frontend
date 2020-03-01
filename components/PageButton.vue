@@ -3,21 +3,20 @@
     <v-btn
       fab
       depressed
-      color="brown lighten-5"
-      class="brown--text"
+      class="orange--text"
       style="position: absolute; left: 4px"
 
       @click="toFirst()"
     >
       <v-icon>mdi-page-first</v-icon>
     </v-btn>
-    <v-btn fab depressed @click="toPrevious()" :disabled="!hasPrevious" color="brown lighten-5" class="brown--text">
+    <v-btn fab depressed @click="toPrevious()" :disabled="!hasPrevious" class="orange--text">
       <v-icon>mdi-chevron-left</v-icon>
     </v-btn>
     &nbsp;&nbsp;
     .. {{pageNum}} ..
     &nbsp;&nbsp;
-    <v-btn fab depressed @click="toNext()" :disabled="!hasNext" color="brown lighten-5" class="brown--text">
+    <v-btn fab depressed @click="toNext()" :disabled="!hasNext" class="orange--text">
       <v-icon>mdi-chevron-right</v-icon>
     </v-btn>
 
@@ -58,10 +57,10 @@ export default class Card extends Vue {
 
 <style lang="scss">
 .pagenation {
-  margin: 20px auto;
+  margin: 16px auto;
   font-size: 22px;
   text-align: center;
-  color: #666666;
+  color: #555555;
   position: relative;
 
 }

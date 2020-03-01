@@ -3,29 +3,36 @@
 		<!-- ad banner -->
 		<ad-lg-banner></ad-lg-banner>
 		<div class="wrapper">
-			<v-btn fab depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
+			<v-btn fab small depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
 				<v-icon>mdi-chevron-up</v-icon>
 			</v-btn>
 			<v-layout no-gutters row wrap justify-center align-center class="ma-2">
 
 				<v-flex xs12 sm8>
-					<v-row no-gutters align="center">
+					<v-row no-gutters align="center" v-if="cat!=='all'">
 						<h3>{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h3>
 						<v-btn v-if="cat" class="pa-1" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text color="light-blue">
 							<v-icon size="16">mdi-twitter</v-icon>&nbsp;{{(bots||[])[cat]}}
 						</v-btn>
 
 					</v-row>
-					<div class="body">
+					<div class="body grey--text text--darken-2">
 						{{(content||[])[cat]}}
 					</div>
 				</v-flex>
 				<v-flex xs12 sm4>
-					<v-text-field class="search mt-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify" :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" @click:append="search()" />
+					<v-text-field class="search mt-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify"
+          :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..."
+          v-on:keyup.enter="search()" @click:append="search()" />
 				</v-flex>
 				<v-flex xs12 v-if="cat === 'all'">
-					<cat-horiz :cat="cat" :intent="intent"></cat-horiz>
+					<cat-horiz class="my-3" :cat="cat" :intent="intent" ></cat-horiz>
 				</v-flex>
+        <v-flex xs12 class="mt-5" v-if="q">
+          <h2>
+            {{q}} 검색 결과
+          </h2>
+        </v-flex>
 			</v-layout>
 
 			<div class="masonry-wrapper">

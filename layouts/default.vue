@@ -101,7 +101,7 @@
 			<v-btn v-if="!isRightDrawerPermanent" absolute top right text @click="searchDrawer=false">
 				<v-icon>mdi-close</v-icon>
 			</v-btn>
-      <cat-vert></cat-vert>
+      <cat-vert class="mt-3"></cat-vert>
 			<br>
 			<ad-vt300></ad-vt300>
 

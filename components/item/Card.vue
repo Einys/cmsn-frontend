@@ -154,6 +154,7 @@ export default class Card extends Vue {
 }
 
 .ad {
+  max-width: 320px;
   text-align: unset !important;
   position: relative;
   overflow: hidden;

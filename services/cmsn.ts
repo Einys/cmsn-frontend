@@ -11,15 +11,9 @@ export default {
   login() {
     return Api().get('/auth/twitter')
   },
-
-  getItemlist ( params: {cat?:string, intent?:string, count?:number, skip?:number, dateBefore?: any, keyword?:string} ) {
-
-    return Api().get( dataUrl + 'items/list', {
-      params: params,
+  getUserByName( name ){
+    return Api().get( dataUrl + 'users/name/' + name, {
       timeout: 5000 // 5초 이내에 응답이 오지 않으면 에러로 간주
     })
-  },
-  getBotLimit( cat: string ) {
-    return Api().get( dataUrl + 'bots/limit/' + cat)
   }
 }

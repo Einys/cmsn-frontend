@@ -1,6 +1,6 @@
 <template>
   <a
-    :href=" 'https://twitter.com/'+ user.name"
+    :href=" '/@/' + user.name"
     target="_blank"
     rel="noopener"
   >
@@ -60,6 +60,8 @@ export default class Card extends Vue {
   @Prop({ required: false })
   public departedAt: any;
   error = false;
+  twitterUser = 'https://twitter.com/'+ this.user.name
+
   mounted() {}
   onProfileImageError($event: any) {
     if(!this.error){

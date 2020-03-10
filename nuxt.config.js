@@ -12,8 +12,8 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s',
-    title: '커미션 사이트 세메센(CMSN)',
+    titleTemplate: '%s - 세메센(CMSN)',
+    title: '커미션 사이트',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

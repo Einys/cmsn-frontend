@@ -3,15 +3,11 @@
 	<div>
 		<div v-if=" !isAD">
 			<profile :user="item._user" :departedAt="item.departedAt" />
-			<a :href=" 'https://twitter.com/' + computedUsername +'/status/'+ item.id " target="_blank" rel="noopener">
 				<div style='position:relative'>
 					<div :class="['text', {overlay: hideText, unhideable: unhideableText}]" v-if="item.text" :inner-html.prop="item.text | text"></div>
 					<images :images="thumbImages" />
 				</div>
-
-			</a>
 		</div>
-
 
 		<!-- If AD -->
 		<div class="ad" v-if="isAD" style="height: auto">

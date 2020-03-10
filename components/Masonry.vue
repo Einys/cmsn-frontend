@@ -11,8 +11,11 @@
         v-for="(item, index) in list"
         :key="index"
       >
+      <a :href=" '/i/' + item.id " target="_blank" rel="noopener">
         <item-card :class="['item', {article: isArticle, ad: item.id ==='ad'}]" :item="item" :isArticle="isArticle"></item-card>
+      </a>
       </div>
+
     </div>
 
 </template>

@@ -12,7 +12,8 @@ const _136389f5 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpac
 const _1053e4a1 = () => interopDefault(import('..\\pages\\t\\index.vue' /* webpackChunkName: "pages_t_index" */))
 const _70a989b4 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
 const _52da212e = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
-const _237a4bed = () => interopDefault(import('..\\pages\\@\\_name.vue' /* webpackChunkName: "pages_@__name" */))
+const _d0068218 = () => interopDefault(import('..\\pages\\i\\_id.vue' /* webpackChunkName: "pages_i__id" */))
+const _897ceed0 = () => interopDefault(import('..\\pages\\u\\_name.vue' /* webpackChunkName: "pages_u__name" */))
 const _68285b62 = () => interopDefault(import('..\\pages\\t\\_cat\\_intent\\index.vue' /* webpackChunkName: "pages_t__cat__intent_index" */))
 const _4f39ab9f = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
@@ -62,9 +63,13 @@ export const routerOptions = {
     component: _52da212e,
     name: "User"
   }, {
-    path: "/@/:name?",
-    component: _237a4bed,
-    name: "@-name"
+    path: "/i/:id?",
+    component: _d0068218,
+    name: "i-id"
+  }, {
+    path: "/u/:name?",
+    component: _897ceed0,
+    name: "u-name"
   }, {
     path: "/t/:cat/:intent?",
     component: _68285b62,

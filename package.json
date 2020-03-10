@@ -34,8 +34,9 @@
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "request": "^2.88.0",
-    "snbot": "^1.0.11",
-    "twit": "^2.2.11"
+    "snbot": "^1.0.21",
+    "twit": "^2.2.11",
+    "vue-meta": "^2.3.3"
   },
   "devDependencies": {
     "@nuxt/typescript": "^2.8.1",

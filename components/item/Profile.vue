@@ -1,6 +1,6 @@
 <template>
   <a
-    :href=" '/@/' + user.name"
+    :href=" '/u/' + user.name"
     target="_blank"
     rel="noopener"
   >

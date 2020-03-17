@@ -22,6 +22,7 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import Images from "./Images.vue";
 import Profile from "./Profile.vue";
 import Ad from "@/components/ads/Ad.vue";
+import MImage from "@/components/methods/image"
 
 @Component({
   name: "item-card",
@@ -78,39 +79,7 @@ export default class Card extends Vue {
   }
 
   get thumbImages() {
-    let imgsrcArr: string[] = [];
-    let item = this.item;
-    if (item.attachment && item.attachment[0]) {
-      item.attachment.forEach((attachment: any) => {
-        let src = attachment.src; //기본 소스;
-
-        //트위터의 작은이미지 불러오는 부분
-        if( typeof src === "string" && src.includes('pbs.twimg.com/media') ){
-          src = src + '?format=jpg&name=small'
-        }
-
-        /* s3 데이터로 바꾸는 부분 : 사용중단
-        if (attachment.media && attachment.media.s3) {
-          let s3 = attachment.media.s3
-          if (s3.thumb && s3.thumb.location) {
-            src = s3.thumb.location;
-          } else if (s3.small && s3.small.location) {
-            src = s3.small.location;
-          }
-        }
-        */
-        imgsrcArr.push(src);
-      });
-    } else if (item.links && item.links[0]) {
-      const link = item.links[0];
-      if (link.media && link.media.s3 && link.media.s3.small) {
-        imgsrcArr.push(link.media.s3.small.location);
-      } else if (link.media) {
-        imgsrcArr.push(link.media.origin);
-      }
-    }
-
-    return imgsrcArr[0] ? imgsrcArr : null;
+    return MImage.thumbImages(this.item)
   }
 }
 </script>

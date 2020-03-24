@@ -1,12 +1,13 @@
-# nuxt-ts-hello
+# Build Setup
 
-> My great Nuxt.js project
+> npm install
+> npm run build
+> npm run pm2
 
-## Build Setup
+
+## others
 
 ``` bash
-# install dependencies
-$ npm run install
 
 # serve with hot reload at localhost:3000
 $ npm run dev

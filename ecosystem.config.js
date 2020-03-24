@@ -8,9 +8,10 @@ module.exports = {
             "PORT": 8080,
             "HOST": "0.0.0.0",
             "NODE_ENV": "production",
-	    "DEBUG": "snbot:*, -snbot:equation.ts, -snbot:equation.js"
+            "DEBUG": "snbot:*, -snbot:equation.ts, -snbot:equation.js",
+            "TWITTER_NOPOST": 0
         },
-	log_date_format: 'YYYY-MM-DD HH:mm Z'
+	      log_date_format: 'YYYY-MM-DD HH:mm Z'
       }
   ]
 }

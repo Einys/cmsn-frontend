@@ -220,27 +220,31 @@ app.post('/twitter', async function (req, res) {
       console.log('[server] Data from twitter')
     }
 
-    var headers = {
-      'User-Agent': 'Super Agent/0.0.1',
-      'Content-Type': 'application/json'
-    }
-
-    var options = {
-      url: 'https://cmsn-beta.herokuapp.com/twitter',
-      method: 'POST',
-      headers: headers,
-      json: req.body
-    }
-
-    // Start the request
-    request(options, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        // Print out the response body
-        console.log('Posted tweet data to Beta server or local(ngrok)')
-      } else {
-        console.log('Beta server down.', response.statusCode);
+    if( process.env.ALPHA_SERVER_URL ){
+      //테섭(테스트용으로 트위터 웹훅이벤트 받아보려는 서버) URL 설정이 되어있는 경우
+      var headers = {
+        'User-Agent': 'Super Agent/0.0.1',
+        'Content-Type': 'application/json'
       }
-    })
+
+      var options = {
+        url: process.env.ALPHA_SERVER_URL,
+        method: 'POST',
+        headers: headers,
+        json: req.body
+      }
+
+      // Start the request
+      request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          // Print out the response body
+          console.log('Posted tweet data to Beta server or local(ngrok)')
+        } else {
+          console.log('Beta server down.', response.statusCode);
+        }
+      })
+    }
+
 
   }
 

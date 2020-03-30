@@ -202,8 +202,8 @@ app.post('/twitter', async function (req, res) {
   res.status(200).send('OK');
 
   // 예정 : DDOS 방어하기...*
-  if (!process.env.DEBUG && !process.env.TEST) {
-    //디버그모드가 아닐 때 (실제 서버 웹훅으로 들어온 데이터일때)
+  if ( !process.env.TEST ) {
+    //테스트모드가 아닐 때 (실제 서버 웹훅으로 들어온 데이터일때)
     let raw = req.rawBody
     console.log('[app.js: post/twitter]  raw : ' + raw);
     let myHmac = security.get_challenge_response(raw, process.env.consumer_secret)
@@ -243,9 +243,12 @@ app.post('/twitter', async function (req, res) {
           console.log('Beta server down.', response.statusCode);
         }
       })
+    } else {
+      console.log('[server/index.js] no alpha server url.')
     }
 
-
+  } else {
+    console.log('[server/index.js] TEST : test mode')
   }
 
   console.log('[app.js] twitter request body : ', JSON.stringify(req.body))

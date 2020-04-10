@@ -10,7 +10,7 @@ module.exports = {
             "NODE_ENV": "production",
             "DEBUG": "snbot:*, -snbot:equation.ts, -snbot:equation.js",
             "TWITTER_NOPOST": 0,
-            "ALPHA_SERVER_URL": "http://f4ee688b.ngrok.io"
+            "TEST": 0
         },
 	      log_date_format: 'YYYY-MM-DD HH:mm Z'
       }

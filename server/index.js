@@ -2,8 +2,10 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 
 // app
+
 const dotenv = require('dotenv');
 dotenv.config()
+
 
 var createError = require('http-errors');
 const express = require('express');
@@ -151,7 +153,7 @@ app.get('/auth/twitter', (req, res, next) => {
   req.session.returnTo = req.query.url
   console.log('Session : ', req.session)
   next();
- }, passport.authenticate('twitter'));
+}, passport.authenticate('twitter'));
 
 app.get('/auth/twitter/callback', (req, res, next) => {
   console.log('Callback Session : ', req.session);
@@ -163,7 +165,7 @@ app.get('/user', function (req, res) {
 });
 
 app.get('/logout', function (req, res) {
-  req.session.destroy(()=>{
+  req.session.destroy(() => {
     res.redirect('/');
   })
 });
@@ -200,9 +202,10 @@ app.post('/twitter', async function (req, res) {
   //@ts-ignore
 
   res.status(200).send('OK');
+  console.log('test env : ', process.env.TEST)
 
   // 예정 : DDOS 방어하기...*
-  if ( !process.env.TEST ) {
+  if (process.env.TEST == 0) {
     //테스트모드가 아닐 때 (실제 서버 웹훅으로 들어온 데이터일때)
     let raw = req.rawBody
     console.log('[app.js: post/twitter]  raw : ' + raw);
@@ -219,34 +222,34 @@ app.post('/twitter', async function (req, res) {
     } else {
       console.log('[server] Data from twitter')
     }
+    /*
+        if( process.env.ALPHA_SERVER_URL ){
+          //테섭(테스트용으로 트위터 웹훅이벤트 받아보려는 서버) URL 설정이 되어있는 경우
+          var headers = {
+            'User-Agent': 'Super Agent/0.0.1',
+            'Content-Type': 'application/json'
+          }
 
-    if( process.env.ALPHA_SERVER_URL ){
-      //테섭(테스트용으로 트위터 웹훅이벤트 받아보려는 서버) URL 설정이 되어있는 경우
-      var headers = {
-        'User-Agent': 'Super Agent/0.0.1',
-        'Content-Type': 'application/json'
-      }
+          var options = {
+            url: process.env.ALPHA_SERVER_URL,
+            method: 'POST',
+            headers: headers,
+            json: req.body
+          }
 
-      var options = {
-        url: process.env.ALPHA_SERVER_URL,
-        method: 'POST',
-        headers: headers,
-        json: req.body
-      }
-
-      // Start the request
-      request(options, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          // Print out the response body
-          console.log('Posted tweet data to Beta server or local(ngrok)')
+          // Start the request
+          request(options, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+              // Print out the response body
+              console.log('Posted tweet data to Beta server or local(ngrok)')
+            } else {
+              console.log('Beta server down.', response.statusCode);
+            }
+          })
         } else {
-          console.log('Beta server down.', response.statusCode);
+          console.log('[server/index.js] no alpha server url.')
         }
-      })
-    } else {
-      console.log('[server/index.js] no alpha server url.')
-    }
-
+    */
   } else {
     console.log('[server/index.js] TEST : test mode')
   }
@@ -261,7 +264,7 @@ app.post('/twitter', async function (req, res) {
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
-async function start () {
+async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 

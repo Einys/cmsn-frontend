@@ -222,7 +222,6 @@ app.post('/twitter', async function (req, res) {
     } else {
       console.log('[server] Data from twitter')
     }
-    /*
         if( process.env.ALPHA_SERVER_URL ){
           //테섭(테스트용으로 트위터 웹훅이벤트 받아보려는 서버) URL 설정이 되어있는 경우
           var headers = {
@@ -249,7 +248,6 @@ app.post('/twitter', async function (req, res) {
         } else {
           console.log('[server/index.js] no alpha server url.')
         }
-    */
   } else {
     console.log('[server/index.js] TEST : test mode')
   }

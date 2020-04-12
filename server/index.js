@@ -230,7 +230,7 @@ app.post('/twitter', async function (req, res) {
           }
 
           var options = {
-            url: process.env.ALPHA_SERVER_URL,
+            url: process.env.ALPHA_SERVER_URL + '/twitter',
             method: 'POST',
             headers: headers,
             json: req.body

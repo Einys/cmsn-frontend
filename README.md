@@ -8,6 +8,7 @@
 ## others
 
 ``` bash
+env boolean 판정할땐 꼭 process.env.ENV_TEST === '0' 식으로 하기
 
 # serve with hot reload at localhost:3000
 $ npm run dev

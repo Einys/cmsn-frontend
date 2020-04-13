@@ -8,7 +8,8 @@
     "dev": "cross-env NODE_ENV=development HOST=127.0.0.1 PORT=8080 nodemon server/index.js --watch server",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production HOST=0.0.0.0 PORT=8080 node server/index.js",
-    "pm2": "sudo pm2 start ecosystem.config.js",
+    "pm2": "sudo pm2 start ecosystem.config.js --env production",
+    "pm2-dev": "sudo pm2 start ecosystem.config.js",
     "generate": "nuxt generate",
     "heroku-postbuild": "npm run build"
   },
@@ -34,7 +35,7 @@
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "request": "^2.88.0",
-    "snbot": "^1.0.21",
+    "snbot": "^1.0.25",
     "twit": "^2.2.11"
   },
   "devDependencies": {

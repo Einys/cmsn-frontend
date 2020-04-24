@@ -1,15 +1,38 @@
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 
+
 // app
-
 const dotenv = require('dotenv');
-dotenv.config()
 
+// .dev env 를 필요하면 먼저 로드 (덮어씌워지지 않음)
+const path = require('path');
+if(process.env.NODE_ENV === "development"){
+  let p = path.resolve(process.cwd(), '.env.dev')
+  dotenv.config({path: p});
+  console.log('[server] dotenv dev enabled', p);
+}
+
+dotenv.config();
+
+console.log('[server] NODE_ENV : ', process.env.NODE_ENV)
+console.log('[server] DEBUG : ', process.env.DEBUG)
+console.log('[server] dotenv enabled : ', process.env.DOTENV_ENABLED)
+
+
+
+//snbot
+let Snbot = require('snbot');
+if (process.env.SNBOT_LOCAL && process.env.SNBOT_LOCAL !== '0' && process.env.SNBOT_LOCAL_ENABLED && process.env.SNBOT_LOCAL_ENABLED !== '0') {
+  console.log('[server] snbot local', process.env.SNBOT_LOCAL);
+  Snbot = require(process.env.SNBOT_LOCAL); // '../../snbot/dist'
+} else {
+  console.log('[server] snbot npm');
+}
 
 var createError = require('http-errors');
 const express = require('express');
-var path = require('path');
+
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
@@ -66,8 +89,8 @@ app.use((req, res, next) => {
   next();
 });
 
-//snbot
-const Snbot = require('snbot');
+
+
 Snbot.connectDatabase(process.env.DATABASE_URI)
 const mongoose = require('mongoose');
 
@@ -222,37 +245,38 @@ app.post('/twitter', async function (req, res) {
     } else {
       console.log('[server] Data from twitter')
     }
-        if( process.env.ALPHA_SERVER_URL ){
-          //테섭(테스트용으로 트위터 웹훅이벤트 받아보려는 서버) URL 설정이 되어있는 경우
-          var headers = {
-            'User-Agent': 'Super Agent/0.0.1',
-            'Content-Type': 'application/json'
-          }
+    if (process.env.ALPHA_SERVER_URL) {
+      //테섭(테스트용으로 트위터 웹훅이벤트 받아보려는 서버) URL 설정이 되어있는 경우
+      var headers = {
+        'User-Agent': 'Super Agent/0.0.1',
+        'Content-Type': 'application/json'
+      }
 
-          var options = {
-            url: process.env.ALPHA_SERVER_URL + '/twitter',
-            method: 'POST',
-            headers: headers,
-            json: req.body
-          }
+      var options = {
+        url: process.env.ALPHA_SERVER_URL + '/twitter',
+        method: 'POST',
+        headers: headers,
+        json: req.body
+      }
 
-          // Start the request
-          request(options, function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-              // Print out the response body
-              console.log('Posted tweet data to Beta server or local(ngrok)')
-            } else {
-              console.log('Beta server down.', response.statusCode);
-            }
-          })
+      // Start the request
+      request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          // Print out the response body
+          console.log('Posted tweet data to Beta server or local(ngrok)')
         } else {
-          console.log('[server/index.js] no alpha server url.')
+          console.log('Beta server down.', response.statusCode);
         }
+      })
+    } else {
+      console.log('[server/index.js] no alpha server url.')
+    }
   } else {
     console.log('[server/index.js] TEST : test mode')
   }
 
-  console.log('[app.js] twitter request body : ', JSON.stringify(req.body))
+  console.log('[server] twitter webhook event arrived. (Further log will be printed only when the DEBUG environment variable is set)')
+  console.log('[server] req.body', req.body )
   Snbot.catchWebHookEvent(req.body).catch(err => { console.log(err) });
 
 })

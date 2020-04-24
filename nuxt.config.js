@@ -1,11 +1,5 @@
 const colors = require('vuetify/es5/util/colors').default
 
-if(process.env.NODE_ENV !== 'production'){
-  const dotenv = require('dotenv');
-  dotenv.config()
-}
-
-
 module.exports = {
   mode: 'spa',
   /**

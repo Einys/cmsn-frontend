@@ -1,6 +1,6 @@
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
-
+const debug = require('debug')('server')
 
 // app
 const dotenv = require('dotenv');
@@ -20,6 +20,7 @@ console.log('[server] DEBUG : ', process.env.DEBUG)
 console.log('[server] dotenv enabled : ', process.env.DOTENV_ENABLED)
 
 
+debug('server message')
 
 //snbot
 let Snbot = require('snbot');
@@ -275,8 +276,8 @@ app.post('/twitter', async function (req, res) {
     console.log('[server/index.js] TEST : test mode')
   }
 
-  console.log('[server] twitter webhook event arrived. (Further log will be printed only when the DEBUG environment variable is set)')
-  console.log('[server] req.body', req.body )
+  console.log('[server] twitter webhook event arrived. (Further log will be printed only when the DEBUG environment variable is set. When using pm2, set env DEBUG_FD = 1, to prevent DEBUG log from going to stderr )')
+  //console.log('[server] req.body', req.body )
   Snbot.catchWebHookEvent(req.body).catch(err => { console.log(err) });
 
 })

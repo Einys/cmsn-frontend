@@ -12,6 +12,7 @@ const _136389f5 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpac
 const _1053e4a1 = () => interopDefault(import('..\\pages\\t\\index.vue' /* webpackChunkName: "pages_t_index" */))
 const _70a989b4 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
 const _52da212e = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
+const _307954b7 = () => interopDefault(import('..\\pages\\bot\\_cat\\index.vue' /* webpackChunkName: "pages_bot__cat_index" */))
 const _68285b62 = () => interopDefault(import('..\\pages\\t\\_cat\\_intent\\index.vue' /* webpackChunkName: "pages_t__cat__intent_index" */))
 const _4f39ab9f = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
@@ -67,6 +68,10 @@ export const routerOptions = {
     path: "/User",
     component: _52da212e,
     name: "User"
+  }, {
+    path: "/bot/:cat?",
+    component: _307954b7,
+    name: "bot-cat"
   }, {
     path: "/t/:cat/:intent?",
     component: _68285b62,

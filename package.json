@@ -11,8 +11,14 @@
     "pm2": "sudo pm2 start ecosystem.config.js --env production",
     "pm2-dev": "pm2 start ecosystem.config.js",
     "generate": "nuxt generate",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "browserslist": "browserslist"
   },
+  "browserslist": [
+    "last 2 version",
+    "android >= 4.4",
+    "IE >= 10"
+  ],
   "dependencies": {
     "aws-sdk": "^2.457.0",
     "axios": "^0.18.0",
@@ -35,7 +41,7 @@
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "request": "^2.88.0",
-    "snbot": "^1.0.28",
+    "snbot": "^1.0.29",
     "twit": "^2.2.11"
   },
   "devDependencies": {

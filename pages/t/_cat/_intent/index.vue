@@ -9,11 +9,14 @@
 			<v-layout no-gutters row wrap justify-center align-center class="ma-2">
 
 				<v-flex xs12 sm8>
-					<v-row no-gutters align="center" v-if="cat!=='all'">
-						<h3>{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h3>
-						<v-btn v-if="cat" class="pa-1" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text color="light-blue">
-							<v-icon size="16">mdi-twitter</v-icon>&nbsp;{{(bots||[])[cat]}}
+					<v-row no-gutters align="center" justify="start" v-if="cat!=='all'">
+            <div class="title font-weight-bold" style="vertical-align:middle">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</div>
+            <div>
+              						<v-btn v-if="cat" class="pa-1" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text small fab color="light-blue">
+							<v-icon>mdi-twitter</v-icon>
 						</v-btn>
+            <v-btn x-small dark fab depressed class="light-blue--text" color="light-blue lighten-4" @click="$router.push('/bot/'+cat )"><v-icon>mdi-poll</v-icon></v-btn>
+            </div>
 
 					</v-row>
 					<div class="body grey--text text--darken-2">

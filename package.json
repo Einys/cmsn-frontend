@@ -37,7 +37,7 @@
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "request": "^2.88.0",
-    "snbot": "^1.0.29",
+    "snbot": "^1.1.0",
     "twit": "^2.2.11"
   },
   "devDependencies": {

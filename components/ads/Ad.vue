@@ -22,7 +22,7 @@ export default {
     },
     mounted(){
         console.log('Ad ', this.adslot, "Mounted");
-        (window.adsbygoogle || []).push({});
+        //(window.adsbygoogle || []).push({});
     }
 }
 </script>

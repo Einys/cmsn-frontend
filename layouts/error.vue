@@ -1,15 +1,10 @@
 <template>
   <v-app>
-  <v-container>
-    <v-layout
-      row
-      wrap
-      fill-height
-      justify-center
-      align-center
-    >
+  <v-container fill-height>
+    <v-col justify='center' align='center'>
 
-      <v-card flat>
+
+      <v-card flat max-width="420">
         <v-img max-width="420" src="https://images.unsplash.com/photo-1535696588143-945e1379f1b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"></v-img>
 
         <v-card-title>
@@ -54,14 +49,14 @@
         </v-card-actions>
 
       </v-card>
-
-    </v-layout>
     <v-layout
       justify-center
       class=" text-xs-center"
     >
       <p class="caption ma-1 px-3 grey--text text--lighten-1 "> 커미션 서치 사이트 cm-sn.art</p>
     </v-layout>
+    </v-col>
+
   </v-container>
 
   </v-app>

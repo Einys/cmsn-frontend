@@ -1,7 +1,7 @@
 const colors = require('vuetify/es5/util/colors').default
 
 module.exports = {
-  mode: 'spa',
+  mode: 'universal',
   /**
   * env
   */
@@ -43,8 +43,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/masonry', ssr: false, client:true },
-    { src: '~/plugins/main', ssr: false, client:true }
+    { src: '~/plugins/masonry', ssr: false, client:true},
+    { src: '~/plugins/main', ssr: false, client:true}
   ],
   /*
   ** Nuxt.js dev-modules

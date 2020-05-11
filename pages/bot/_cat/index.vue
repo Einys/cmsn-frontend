@@ -26,9 +26,6 @@
 					<v-btn rounded @click="$router.push('/bot/des')">디자인</v-btn>
 					<v-btn rounded @click="$router.push('/bot/mus')">음악</v-btn>
           </v-row>
-
-
-
 				</v-col>
 				<v-col cols="12" sm=6>
 					<v-card color="amber darken-1" dark @click="$router.push('/t/'+ cat )">
@@ -39,7 +36,6 @@
 							홍보목록
 						</v-card-title>
 					</v-card>
-
 				</v-col>
 				<v-col cols="12" sm=6>
 					<a :href="twitterLink" target="_blank">
@@ -65,15 +61,15 @@ import datefns from "date-fns";
 import collection from '@/plugins/collection'
 
 @Component({
-  asyncData({ params, error }) {
-    return cmsnService
-      .getBotLimit(params.cat)
+  asyncData({ params, error, app }) {
+    return app.$axios.$get('/1.0/data/bots/limit/'+ params.cat)
       .then(res => {
-        return { limit: res.data.limit, count: res.data.count };
+        console.log(res);
+        return { limit: res.limit, count: res.count };
       })
       .catch(err => {
         console.error(err);
-        error({ statusCode: 500, message: "Server error" });
+        error(err);
       });
   },
   filters: {

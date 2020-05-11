@@ -38,11 +38,11 @@
 		</p>
 		<h3> 홍보 취소 방법 </h3>
 		<p>
-			<v-icon>mdi-undo</v-icon> <span class="alt">자신의 홍보</span> <span>&nbsp;&nbsp;취소하고자 하는 트윗의 답글에 홍보봇을 멘션하고 '취소' 라는 키워드를 같이 적습니다. <br>예) @cmsn_RT 취소</span>
+			<v-icon>mdi-undo</v-icon> <span class="alt">자신의 홍보 :</span> <span>&nbsp;&nbsp;취소하고자 하는 트윗의 답글에 홍보봇을 멘션하고 '취소' 라는 키워드를 같이 적습니다. <br>예) @cmsn_RT 취소</span>
 		</p>
 		<p>
 			<span style="color: #f04747; font-weight: bold">
-				<v-icon color="#f04747">mdi-alert-circle</v-icon> 타인의 홍보(신고)
+				<v-icon color="#f04747">mdi-alert-circle</v-icon> 타인의 홍보(신고) :
 			</span> <span>&nbsp;&nbsp;홍보봇 계정에게 쪽지(DM)</span>
 			<v-icon fontSet="material-icons-outlined">mdi-email-outline</v-icon><span>를 보내 신고합니다.</span><br><span style="color: #f04747">신고는 자동 응답 봇이 받아 누적 신고 수에 따라 자동 취소하며, 이후 문의 등에 의한 수동 검토를 거칠 수 있습니다.</span>
 		</p>

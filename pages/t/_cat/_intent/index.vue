@@ -103,11 +103,6 @@ import { isArray } from "util";
   }
 })
 export default class Card extends Vue {
-  @Watch("page")
-  private onPageChanged(newPage: string, page: string) {
-    console.log("page changed ", page, newPage);
-    this.fetchData();
-  }
 
   @Watch("$route.query")
   private onQueryChanged(newPage: string, page: string) {

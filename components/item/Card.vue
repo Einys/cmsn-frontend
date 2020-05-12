@@ -93,8 +93,6 @@ export default class Card extends Vue {
           src = src + '?format=jpg&name=small'
         }
 
-        console.log(src)
-
         /* s3 데이터로 바꾸는 부분 : 사용중단
         if (attachment.media && attachment.media.s3) {
           let s3 = attachment.media.s3

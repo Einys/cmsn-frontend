@@ -88,6 +88,13 @@ export default class Card extends Vue {
       item.attachment.forEach((attachment: any) => {
         let src = attachment.src; //기본 소스;
 
+        //트위터의 작은이미지 불러오는 부분
+        if( typeof src === "string" && src.includes('pbs.twimg.com/media') ){
+          src = src + '?format=jpg&name=small'
+        }
+
+        console.log(src)
+
         /* s3 데이터로 바꾸는 부분 : 사용중단
         if (attachment.media && attachment.media.s3) {
           let s3 = attachment.media.s3

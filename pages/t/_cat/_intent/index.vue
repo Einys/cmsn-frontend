@@ -160,10 +160,13 @@ export default class Card extends Vue {
         }
       })
       .then(({ list, next }) => {
+
         let listInclAd = this.pushAdd(list);
         this.list = listInclAd;
+
         this.next = next;
         this.busy = false;
+
       })
       .catch(err => {
         console.log(err);
@@ -183,7 +186,7 @@ export default class Card extends Vue {
     } else {
       adindex = 3;
     }
-
+/* //광고
     if (itemlist.length > 0) {
       itemlist.splice(adindex, 0, {
         id: "ad",
@@ -199,6 +202,7 @@ export default class Card extends Vue {
         slot: underSlot
       });
     }
+    */
     return itemlist
   }
 

@@ -99,7 +99,6 @@ $large-column-width: calc((100% - 24px * 3) / 4);
 @media screen and (max-width: $break-small) {
   .item {
     width: $small-column-width;
-    padding: 1px;
     overflow: hidden;
     margin: 3px 0px;
   }

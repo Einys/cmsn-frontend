@@ -4,7 +4,6 @@ var router = express.Router();
 var createError = require('http-errors');
 var bodyParser = require('body-parser');
 
-<<<<<<< HEAD
 let ItemController = require('snbot/data/controller.item')
 let BotController = require('snbot/data/controller.bot')
 let AuthController = require('snbot/data/controller.auth')
@@ -23,14 +22,6 @@ if (process.env.SNBOT_LOCAL && process.env.SNBOT_LOCAL !== '0' && process.env.SN
 } else {
   console.log('[server] npm module router enabled')
 }
-=======
-const ItemController = require('snbot/data/controller.item')
-const BotController = require('snbot/data/controller.bot')
-const AuthController = require('snbot/data/controller.auth')
-const UserController = require('snbot/data/controller.user')
-const DataController = require('snbot/data/controller.data')
-const ChatEventController = require('snbot/data/controller.chatevent')
->>>>>>> wip
 
 /* GET data. */
 router.use('/items', ItemController.default);

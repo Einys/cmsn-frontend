@@ -12,8 +12,6 @@ const _136389f5 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpac
 const _1053e4a1 = () => interopDefault(import('..\\pages\\t\\index.vue' /* webpackChunkName: "pages_t_index" */))
 const _70a989b4 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
 const _52da212e = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
-const _2e1bf802 = () => interopDefault(import('..\\pages\\bot\\my\\index.vue' /* webpackChunkName: "pages_bot_my_index" */))
-const _307954b7 = () => interopDefault(import('..\\pages\\bot\\_cat\\index.vue' /* webpackChunkName: "pages_bot__cat_index" */))
 const _d0068218 = () => interopDefault(import('..\\pages\\i\\_id.vue' /* webpackChunkName: "pages_i__id" */))
 const _897ceed0 = () => interopDefault(import('..\\pages\\u\\_name.vue' /* webpackChunkName: "pages_u__name" */))
 const _68285b62 = () => interopDefault(import('..\\pages\\t\\_cat\\_intent\\index.vue' /* webpackChunkName: "pages_t__cat__intent_index" */))

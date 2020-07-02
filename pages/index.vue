@@ -1,6 +1,5 @@
 <template>
 	<div>
-
 		<div class="wrapper">
 			<h3 class="pt-5 pb-1">원하시는 커미션이 있나요?</h3>
 			<cat-horiz ></cat-horiz>
@@ -15,6 +14,8 @@
 				<cat-horiz ></cat-horiz>
 
 			</div>
+      <v-btn @click="$store.commit('increment')">증가</v-btn>
+      <v-btn @click="getUser">유저 가져오기</v-btn>
 
 		</div>
 	</div>
@@ -86,6 +87,12 @@ export default Vue.extend({
       cmsnService.getItemlist({ cat: "mus", count: 4 }).then(res => {
         this.musList = res.data.list;
       });
+    },
+    getUser() {
+      this.$axios.$get('/user').then(res =>{
+        console.log(res)
+        this.$store.commit('SET_USER', res)
+      })
     }
   },
   computed: {

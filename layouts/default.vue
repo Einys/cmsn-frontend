@@ -1,34 +1,45 @@
 <template>
 	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
-		<v-app-bar app>
+		<v-app-bar app style=" padding-right: 310px ">
 			<span class="blue-grey--text text--darken-2 ma-0" @click="drawer= !drawer" style="cursor:pointer;">
 				<v-layout>
-					<img style=" height: 28px; " :src="this.$vuetify.breakpoint.smAndDown ? '/logo2020.svg' :'/cmsnart.png'" />
+					<img v-if=" isSmAndDownWindow " style=" height: 28px; " src=" /logo2020.svg " />
+					<img v-else style=" height: 28px; " src=" /cmsnart.png " />
 					<v-icon>mdi-chevron-right</v-icon>
 				</v-layout>
 
 			</span>
 			<v-spacer></v-spacer>
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
-			<v-btn text @click="$router.push('/t')"><span class="body-1">카테고리</span></v-btn>
-
-			<v-btn v-if="false" outlined rounded color="blue" :href="server + '/auth/twitter'" target="_blank">
+			<v-btn class="mr-2" text @click="$router.push('/t')"><span class="body-1">카테고리</span></v-btn>
+			<span v-if="$store.state.authUser">
+				<v-avatar size=40 @click="userDrawer = !userDrawer" style="cursor:pointer">
+					<img v-if="$store.state.authUser.photos && $store.state.authUser.photos.length > 0 && $store.state.authUser.photos[0].value " :src="$store.state.authUser.photos[0].value" />
+				</v-avatar>
+			</span>
+			<v-btn v-else rounded dark depressed color="blue" :href="server + '/auth/twitter'" target="_blank">
 				<v-icon left>mdi-twitter</v-icon>로그인
 			</v-btn>
+
 		</v-app-bar>
 
 		<!--스낵바-->
-		<v-snackbar v-model="snackbar" :timeout="3000" top color="cyan darken-2">
-			트위터 아이디로 로그인 추가 예정
-			<v-btn color="yellow" text @click="snackbar = false">확인</v-btn>
-		</v-snackbar>
 		<v-snackbar v-model="errorbar" :timeout="3000" top color="cyan darken-2">
 			오류 발생. 재시도해 주시거나 관리자에게 문의주세요.
 			<v-btn color="yellow" text @click="errorbar = false">확인</v-btn>
 		</v-snackbar>
 		<!-- 메인 컨텐츠 -->
 		<v-content>
-			<nuxt />
+				<div style="padding-right: 320px " justify="start" align="left">
+					<nuxt />
+				</div>
+
+				<div style="display:flex; position:absolute; top: 140px; right: 20px; " justify="center" align="center">
+					<div style="width: 300px; height:600px; background-color:grey;">
+						광고
+					</div>
+				</div>
+
 		</v-content>
 
 		<!-- 왼쪽 서랍 -->
@@ -87,23 +98,56 @@
 					</v-list-item-icon>
 					<v-list-item-title class="font-weight-medium">서비스 후원</v-list-item-title>
 				</v-list-item>
-				<v-list-item link @click="login()">
-					<v-list-item-icon>
-						<v-icon>mdi-dots-horizontal</v-icon>
-					</v-list-item-icon>
-				</v-list-item>
 			</v-list>
 			<my-footer></my-footer>
 		</v-navigation-drawer>
 
 		<!-- 오른쪽 서랍 -->
-		<v-navigation-drawer app width="300" :permanent="isRightDrawerPermanent" right color="background" v-model="searchDrawer" style="overflow:hidden">
-			<v-btn v-if="!isRightDrawerPermanent" absolute top right text @click="searchDrawer=false">
-				<v-icon>mdi-close</v-icon>
-			</v-btn>
-      <cat-vert class="mt-3"></cat-vert>
-			<br>
-			<ad-vt300></ad-vt300>
+		<v-navigation-drawer app width="300" right temporary color="background" v-model="userDrawer">
+			<template v-slot:prepend v-if="$store.state.authUser">
+				<v-list>
+					<v-list-item link two-line >
+						<v-list-item-avatar>
+							<img v-if="$store.state.authUser.photos && $store.state.authUser.photos.length > 0 && $store.state.authUser.photos[0].value " :src="$store.state.authUser.photos[0].value" />
+						</v-list-item-avatar>
+						<v-list-item-content>
+							<v-list-item-title class="title">{{$store.state.authUser.username}}</v-list-item-title>
+							<v-list-item-subtitle>{{$store.state.authUser.displayName}}</v-list-item-subtitle>
+						</v-list-item-content>
+						<v-list-item-action>
+							<v-icon>mdi-menu-down</v-icon>
+						</v-list-item-action>
+					</v-list-item>
+					<v-divider></v-divider>
+					<v-list-item link :to="'/u/' + $store.state.authUser.username">
+						<v-list-item-icon>
+							<v-icon>mdi-layers</v-icon>
+						</v-list-item-icon>
+						<v-list-item-title>나의 홍보</v-list-item-title>
+					</v-list-item>
+					<v-list-item link :to="'/u/' + $store.state.authUser.username + '/following'">
+						<v-list-item-icon>
+							<v-icon>mdi-star</v-icon>
+						</v-list-item-icon>
+						<v-list-item-title>팔로잉 중인 홍보</v-list-item-title>
+					</v-list-item>
+					<v-list-item link :to="'/u/' + $store.state.authUser.username + '/likes'">
+						<v-list-item-icon>
+							<v-icon>mdi-heart</v-icon>
+						</v-list-item-icon>
+						<v-list-item-title>마음함</v-list-item-title>
+					</v-list-item>
+
+					<v-divider></v-divider>
+					<v-list-item link :href="server + '/logout'" >
+						<v-list-item-icon>
+							<v-icon>mdi-arrow-left</v-icon>
+						</v-list-item-icon>
+						<v-list-item-title>로그아웃</v-list-item-title>
+					</v-list-item>
+				</v-list>
+
+			</template>
 
 		</v-navigation-drawer>
 
@@ -138,7 +182,7 @@ export default Vue.extend({
   name: "App",
   components: {
     Masonry,
-    "cat-vert":CatVert,
+    "cat-vert": CatVert,
     "my-footer": Footer,
     "ad-vt300": AdVert300
   },
@@ -148,6 +192,7 @@ export default Vue.extend({
     errorbar: false,
     drawer: false,
     searchDrawer: false,
+    userDrawer: false,
     bottomNav: true,
     sheet: false,
     keyword: "",
@@ -157,6 +202,11 @@ export default Vue.extend({
     login() {
       this.snackbar = true;
       //cmsnService.login().catch(err => {console.log(err)})
+    },
+    getUser() {
+      return this.$axios.get("/user").then(res => {
+        return res.data;
+      });
     },
     search(e: any) {
       console.log("search", this.keyword);
@@ -179,9 +229,20 @@ export default Vue.extend({
     //this.$vuetify.theme.dark = true
     console.log(process.env.NODE_ENV, "node env");
   },
+  mounted() {
+    this.getUser().then(user => {
+      this.$store.commit("SET_USER", user);
+    });
+  },
   computed: {
     isRightDrawerPermanent() {
       return this.$vuetify.breakpoint.mdAndUp;
+    },
+    isSmAndDownWindow() {
+      return this.$vuetify.breakpoint.smAndDown;
+    },
+    adTopPadding(){
+      return ;
     }
   },
   watch: {

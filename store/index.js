@@ -17,10 +17,9 @@ export const mutations = {
     }
 }
 export const actions = {
-  nuxtClientInit({ commit }, context) {
+  nuxtServerInit({ commit, req }, context) {
     // code
-    console.log('[store/index.js] Clientinit')
-    console.log('[store/index.js]', context)
+    console.log('[store/index.js] Serverinit')
     if(context && context.$axios){
       console.log('[store/index.js]context.$axios')
       context.$axios.$get('/user').then(res =>{

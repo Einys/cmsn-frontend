@@ -32,6 +32,14 @@ export const actions = {
       console.log('context or context.$axios is not defined')
     }
   },
+  getUser({commit}, context){
+    console.log('[store/index.js]context.$axios')
+    this.$axios.$get('/user').then(res =>{
+      commit('SET_USER', res)
+    }).catch(err =>{
+      context.$nuxt.error(err)
+    })
+  },
   logout({commit}, context){
     if(context && context.$axios){
       context.$axios.$get('/logout').then(res =>{

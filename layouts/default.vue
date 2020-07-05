@@ -1,6 +1,6 @@
 <template>
 	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
-		<v-app-bar app style=" padding-right: 310px ">
+		<v-app-bar app>
 			<span class="blue-grey--text text--darken-2 ma-0" @click="drawer= !drawer" style="cursor:pointer;">
 				<v-layout>
 					<img v-if=" isSmAndDownWindow " style=" height: 28px; " src=" /logo2020.svg " />
@@ -12,12 +12,52 @@
 			<v-spacer></v-spacer>
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
 			<v-btn class="mr-2" text @click="$router.push('/t')"><span class="body-1">카테고리</span></v-btn>
+
+
+      <!-- 로그인 -->
 			<span v-if="$store.state.authUser">
-				<v-avatar size=40 @click="userDrawer = !userDrawer" style="cursor:pointer">
-					<img v-if="$store.state.authUser.photos && $store.state.authUser.photos.length > 0 && $store.state.authUser.photos[0].value " :src="$store.state.authUser.photos[0].value" />
-				</v-avatar>
+				<v-menu offset-y color="background" :close-on-click="true">
+					<template v-slot:activator="{ on, attrs }">
+						<v-avatar size=40 v-bind="attrs" v-on="on" style="cursor:pointer">
+							<img v-if="$store.state.authUser.photos && $store.state.authUser.photos.length > 0 && $store.state.authUser.photos[0].value " :src="$store.state.authUser.photos[0].value" />
+						</v-avatar>
+					</template>
+					<v-list>
+						<v-list-item @click="$router.push('/mypage')">
+							<v-list-item-title>마이페이지</v-list-item-title>
+						</v-list-item>
+						<v-dialog v-model="logoutDialog" width="320">
+
+							<v-card>
+								<v-card-title primary-title>
+									로그아웃 하시겠어요?
+								</v-card-title>
+
+								<v-card-actions>
+                  <v-spacer></v-spacer>
+									<v-btn rounded depressed dark color="grey" @click="logoutDialog = false">
+                    취소
+                  </v-btn>
+									<v-btn color="primary" rounded depressed dark @click="logout()">
+                    <v-progress-circular indeterminate v-if="logoutProgressRunning"></v-progress-circular>
+                    <span v-else> 확인 </span>
+
+									</v-btn>
+								</v-card-actions>
+							</v-card>
+							<template v-slot:activator="{on, attrs}">
+								<v-list-item v-bind="attrs" v-on="on">
+									<v-list-item-title>로그아웃</v-list-item-title>
+								</v-list-item>
+							</template>
+
+						</v-dialog>
+
+					</v-list>
+				</v-menu>
+
 			</span>
-			<v-btn v-else rounded dark depressed color="blue" :href="server + '/auth/twitter'" target="_blank">
+			<v-btn v-else rounded dark depressed color=" blue" @click="login()" >
 				<v-icon left>mdi-twitter</v-icon>로그인
 			</v-btn>
 
@@ -30,15 +70,7 @@
 		</v-snackbar>
 		<!-- 메인 컨텐츠 -->
 		<v-content>
-				<div style="padding-right: 320px " justify="start" align="left">
-					<nuxt />
-				</div>
-
-				<div style="display:flex; position:absolute; top: 140px; right: 20px; " justify="center" align="center">
-					<div style="width: 300px; height:600px; background-color:grey;">
-						광고
-					</div>
-				</div>
+			<nuxt />
 
 		</v-content>
 
@@ -103,51 +135,13 @@
 		</v-navigation-drawer>
 
 		<!-- 오른쪽 서랍 -->
-		<v-navigation-drawer app width="300" right temporary color="background" v-model="userDrawer">
-			<template v-slot:prepend v-if="$store.state.authUser">
-				<v-list>
-					<v-list-item link two-line >
-						<v-list-item-avatar>
-							<img v-if="$store.state.authUser.photos && $store.state.authUser.photos.length > 0 && $store.state.authUser.photos[0].value " :src="$store.state.authUser.photos[0].value" />
-						</v-list-item-avatar>
-						<v-list-item-content>
-							<v-list-item-title class="title">{{$store.state.authUser.username}}</v-list-item-title>
-							<v-list-item-subtitle>{{$store.state.authUser.displayName}}</v-list-item-subtitle>
-						</v-list-item-content>
-						<v-list-item-action>
-							<v-icon>mdi-menu-down</v-icon>
-						</v-list-item-action>
-					</v-list-item>
-					<v-divider></v-divider>
-					<v-list-item link :to="'/u/' + $store.state.authUser.username">
-						<v-list-item-icon>
-							<v-icon>mdi-layers</v-icon>
-						</v-list-item-icon>
-						<v-list-item-title>나의 홍보</v-list-item-title>
-					</v-list-item>
-					<v-list-item link :to="'/u/' + $store.state.authUser.username + '/following'">
-						<v-list-item-icon>
-							<v-icon>mdi-star</v-icon>
-						</v-list-item-icon>
-						<v-list-item-title>팔로잉 중인 홍보</v-list-item-title>
-					</v-list-item>
-					<v-list-item link :to="'/u/' + $store.state.authUser.username + '/likes'">
-						<v-list-item-icon>
-							<v-icon>mdi-heart</v-icon>
-						</v-list-item-icon>
-						<v-list-item-title>마음함</v-list-item-title>
-					</v-list-item>
-
-					<v-divider></v-divider>
-					<v-list-item link :href="server + '/logout'" >
-						<v-list-item-icon>
-							<v-icon>mdi-arrow-left</v-icon>
-						</v-list-item-icon>
-						<v-list-item-title>로그아웃</v-list-item-title>
-					</v-list-item>
-				</v-list>
-
-			</template>
+		<v-navigation-drawer app width="300" :permanent="isRightDrawerPermanent" right color="background" v-model="searchDrawer" style="overflow:hidden">
+			<v-btn v-if="!isRightDrawerPermanent" absolute top right text @click="searchDrawer=false">
+				<v-icon>mdi-close</v-icon>
+			</v-btn>
+			<cat-vert class="mt-3"></cat-vert>
+			<br>
+			<ad-vt300></ad-vt300>
 
 		</v-navigation-drawer>
 
@@ -195,18 +189,27 @@ export default Vue.extend({
     userDrawer: false,
     bottomNav: true,
     sheet: false,
+    logoutDialog: false,
     keyword: "",
+    logoutProgressRunning: false,
     server: process.env.SERVER_URL
   }),
+  beforeCreate() {
+    this.$store.dispatch("getUser");
+  },
   methods: {
     login() {
-      this.snackbar = true;
-      //cmsnService.login().catch(err => {console.log(err)})
+      return window.location.href = this.$axios.defaults.baseURL + '/auth/twitter?returnTo=' + this.$route.fullPath
     },
-    getUser() {
-      return this.$axios.get("/user").then(res => {
-        return res.data;
-      });
+    logout() {
+      this.logoutProgressRunning = true
+      this.$axios.get('/logout').then(res => {
+        return window.location.reload()
+      }).catch(e => {
+        this.$nuxt.error(e)
+      }).finally(()=>{
+        this.logoutProgressRunning = false
+      })
     },
     search(e: any) {
       console.log("search", this.keyword);
@@ -230,19 +233,17 @@ export default Vue.extend({
     console.log(process.env.NODE_ENV, "node env");
   },
   mounted() {
-    this.getUser().then(user => {
-      this.$store.commit("SET_USER", user);
-    });
+
   },
   computed: {
     isRightDrawerPermanent() {
-      return this.$vuetify.breakpoint.mdAndUp;
+      return this.$vuetify.breakpoint.lgAndUp;
     },
     isSmAndDownWindow() {
       return this.$vuetify.breakpoint.smAndDown;
     },
-    adTopPadding(){
-      return ;
+    adTopPadding() {
+      return;
     }
   },
   watch: {

@@ -7,12 +7,14 @@ const _b2181e8c = () => interopDefault(import('..\\pages\\About.vue' /* webpackC
 const _33a959a4 = () => interopDefault(import('..\\pages\\Help.vue' /* webpackChunkName: "pages_Help" */))
 const _30ad8f32 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
 const _9a1d76fe = () => interopDefault(import('..\\pages\\List.vue' /* webpackChunkName: "pages_List" */))
+const _c708a3f8 = () => interopDefault(import('..\\pages\\mypage\\index.vue' /* webpackChunkName: "pages_mypage_index" */))
 const _d83a235c = () => interopDefault(import('..\\pages\\NotFound.vue' /* webpackChunkName: "pages_NotFound" */))
 const _136389f5 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpackChunkName: "pages_Privacy" */))
 const _1053e4a1 = () => interopDefault(import('..\\pages\\t\\index.vue' /* webpackChunkName: "pages_t_index" */))
 const _70a989b4 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
 const _52da212e = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
 const _2e1bf802 = () => interopDefault(import('..\\pages\\bot\\my\\index.vue' /* webpackChunkName: "pages_bot_my_index" */))
+const _6623511b = () => interopDefault(import('..\\pages\\mypage\\login.vue' /* webpackChunkName: "pages_mypage_login" */))
 const _307954b7 = () => interopDefault(import('..\\pages\\bot\\_cat\\index.vue' /* webpackChunkName: "pages_bot__cat_index" */))
 const _d0068218 = () => interopDefault(import('..\\pages\\i\\_id.vue' /* webpackChunkName: "pages_i__id" */))
 const _cd0b1e2c = () => interopDefault(import('..\\pages\\u\\_name\\index.vue' /* webpackChunkName: "pages_u__name_index" */))
@@ -54,6 +56,10 @@ export const routerOptions = {
     component: _9a1d76fe,
     name: "List"
   }, {
+    path: "/mypage",
+    component: _c708a3f8,
+    name: "mypage"
+  }, {
     path: "/NotFound",
     component: _d83a235c,
     name: "NotFound"
@@ -77,6 +83,10 @@ export const routerOptions = {
     path: "/bot/my",
     component: _2e1bf802,
     name: "bot-my"
+  }, {
+    path: "/mypage/login",
+    component: _6623511b,
+    name: "mypage-login"
   }, {
     path: "/bot/:cat?",
     component: _307954b7,

@@ -174,13 +174,18 @@ passport.deserializeUser(function (obj, done) {
 });
 
 app.get('/auth/twitter', (req, res, next) => {
+  req.session.returnTo = req.query.returnTo
   console.log('Session : ', req.session)
   next();
 }, passport.authenticate('twitter'));
 
 app.get('/auth/twitter/callback', (req, res, next) => {
   console.log('Callback Session : ', req.session);
-  passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/' })(req, res, next)
+  return passport.authenticate('twitter', { failureRedirect: req.session.returnTo })(req, res, next)
+}, function(req, res) {
+  console.log('Redirect: ', req.session.returnTo);
+    res.redirect(req.session.returnTo || '/');
+    delete req.session.returnTo;
 });
 
 app.get('/user', function (req, res) {
@@ -189,7 +194,8 @@ app.get('/user', function (req, res) {
 
 app.get('/logout', function (req, res) {
   req.session.destroy(() => {
-    res.redirect('/');
+    console.log('session destroyed: Redirect back');
+    res.redirect('back');
   })
 });
 

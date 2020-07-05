@@ -8,6 +8,9 @@ module.exports = {
   env: {
     SERVER_URL: process.env.SERVER_URL || 'http://127.0.0.1:8080'
   },
+  router: {
+    middleware: 'returnto'
+  },
   /*
   ** Headers of the page
   */

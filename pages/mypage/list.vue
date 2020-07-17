@@ -18,7 +18,7 @@ import Component from "vue-class-component";
 import Navigation from "@/components/mypage/navigation.vue"
 @Component({
   async asyncData({ store, $axios }) {
-    await store.dispatch("getUser");
+    await store.dispatch("getAuthUser");
     const res = await $axios.get(
       "1.0/data/users/id/" + store.state.authUser.id
     );

@@ -198,7 +198,7 @@ export default Vue.extend({
     server: process.env.SERVER_URL
   }),
   beforeCreate() {
-    this.$store.dispatch("getUser");
+    this.$store.dispatch("getAuthUser");
   },
   methods: {
     login() {

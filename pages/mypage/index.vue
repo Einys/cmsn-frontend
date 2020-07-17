@@ -9,6 +9,9 @@
 			</v-btn>
 
 		</v-row>
+    <v-row>
+
+    </v-row>
 	</v-container>
 </template>
 
@@ -19,7 +22,7 @@ import Navigation from "@/components/mypage/navigation.vue"
 @Component({
   async asyncData({ store, $axios }) {
     /*
-    await store.dispatch("getUser");
+    await store.dispatch("getAuthUser");
     const res = await $axios.get(
       "1.0/data/users/id/" + store.state.authUser.id
     );
@@ -49,7 +52,7 @@ export default class MypagePage extends Vue {
       params: { cursor: cursor || "-1" }
     });
     this.followingList.push(res.data.users);
-    if (res.data.next_cursor_str) {
+    if ( res.data.next_cursor_str !== '0' ) {
       return this.getfollowing(res.data.next_cursor_str);
     } else {
       return;

@@ -1,6 +1,6 @@
 <template>
-	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
-		<v-app-bar app>
+	<v-app :style="{background : $vuetify.theme.themes['light'].background}" >
+		<v-app-bar app clipped-left>
 			<span class="blue-grey--text text--darken-2 ma-0" @click="drawer= !drawer" style="cursor:pointer;">
 				<v-layout>
 					<img v-if=" isSmAndDownWindow " style=" height: 28px; " src=" /logo2020.svg " />
@@ -13,10 +13,9 @@
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
 			<v-btn class="mr-2" text @click="$router.push('/t')"><span class="body-1">카테고리</span></v-btn>
 
-
-      <!-- 로그인 -->
+			<!-- 로그인 -->
 			<span v-if="$store.state.authUser">
-				<v-menu offset-y color="background" :close-on-click="true">
+				<v-menu offset-y color="background" :close-on-click="true" transition="slide-y-transition" close-on-content-click >
 					<template v-slot:activator="{ on, attrs }">
 						<v-avatar size=40 v-bind="attrs" v-on="on" style="cursor:pointer">
 							<img v-if="$store.state.authUser.photos && $store.state.authUser.photos.length > 0 && $store.state.authUser.photos[0].value " :src="$store.state.authUser.photos[0].value" />
@@ -24,7 +23,11 @@
 					</template>
 					<v-list>
 						<v-list-item @click="$router.push('/mypage')">
-							<v-list-item-title>마이페이지</v-list-item-title>
+							<v-list-item-title>마이페이지 <v-chip class="ma-2" color="orange" text-color="white">
+									<span class="font-italic">beta</span>
+								</v-chip>
+							</v-list-item-title>
+
 						</v-list-item>
 						<v-dialog v-model="logoutDialog" width="320">
 
@@ -34,13 +37,13 @@
 								</v-card-title>
 
 								<v-card-actions>
-                  <v-spacer></v-spacer>
+									<v-spacer></v-spacer>
 									<v-btn rounded depressed dark color="grey" @click="logoutDialog = false">
-                    취소
-                  </v-btn>
+										취소
+									</v-btn>
 									<v-btn color="primary" rounded depressed dark @click="logout()">
-                    <v-progress-circular indeterminate v-if="logoutProgressRunning"></v-progress-circular>
-                    <span v-else> 확인 </span>
+										<v-progress-circular indeterminate v-if="logoutProgressRunning"></v-progress-circular>
+										<span v-else> 확인 </span>
 
 									</v-btn>
 								</v-card-actions>
@@ -57,7 +60,7 @@
 				</v-menu>
 
 			</span>
-			<v-btn v-else rounded dark depressed color=" blue" @click="login()" >
+			<v-btn v-else rounded dark depressed color=" blue" @click="login()">
 				<v-icon left>mdi-twitter</v-icon>로그인
 			</v-btn>
 
@@ -199,17 +202,24 @@ export default Vue.extend({
   },
   methods: {
     login() {
-      return window.location.href = this.$axios.defaults.baseURL + '/auth/twitter?returnTo=' + this.$route.fullPath
+      return (window.location.href =
+        this.$axios.defaults.baseURL +
+        "/auth/twitter?returnTo=" +
+        this.$route.fullPath);
     },
     logout() {
-      this.logoutProgressRunning = true
-      this.$axios.get('/logout').then(res => {
-        return window.location.reload()
-      }).catch(e => {
-        this.$nuxt.error(e)
-      }).finally(()=>{
-        this.logoutProgressRunning = false
-      })
+      this.logoutProgressRunning = true;
+      this.$axios
+        .get("/logout")
+        .then(res => {
+          return window.location.reload();
+        })
+        .catch(e => {
+          this.$nuxt.error(e);
+        })
+        .finally(() => {
+          this.logoutProgressRunning = false;
+        });
     },
     search(e: any) {
       console.log("search", this.keyword);
@@ -232,9 +242,7 @@ export default Vue.extend({
     //this.$vuetify.theme.dark = true
     console.log(process.env.NODE_ENV, "node env");
   },
-  mounted() {
-
-  },
+  mounted() {},
   computed: {
     isRightDrawerPermanent() {
       return this.$vuetify.breakpoint.lgAndUp;

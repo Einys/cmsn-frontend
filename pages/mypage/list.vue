@@ -18,32 +18,20 @@ import Component from "vue-class-component";
 import Navigation from "@/components/mypage/navigation.vue"
 @Component({
   async asyncData({ store, $axios }) {
-    /*
     await store.dispatch("getUser");
     const res = await $axios.get(
       "1.0/data/users/id/" + store.state.authUser.id
     );
     console.log(res);
     return { myuser: res.data };
-    */
   },
   components: {
     "my-nav" :Navigation
   }
 })
 export default class MypagePage extends Vue {
-  followingList = [];
+  followingList: [any];
 
-  logout() {
-    return this.$axios.get("/logout");
-  }
-  mounted() {
-    this.getfollowing().catch(err => {
-      if( err.response.status === 429){
-        console.log('Too many request error')
-      }
-    });
-  }
   async getfollowing(cursor?) {
     const res = await this.$axios.get("/1.0/data/users/mypage/friends", {
       params: { cursor: cursor || "-1" }

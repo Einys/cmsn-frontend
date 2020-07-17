@@ -14,6 +14,9 @@ const _1053e4a1 = () => interopDefault(import('..\\pages\\t\\index.vue' /* webpa
 const _70a989b4 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
 const _52da212e = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
 const _2e1bf802 = () => interopDefault(import('..\\pages\\bot\\my\\index.vue' /* webpackChunkName: "pages_bot_my_index" */))
+const _8c49b97a = () => interopDefault(import('..\\pages\\mypage\\following.vue' /* webpackChunkName: "pages_mypage_following" */))
+const _782f7824 = () => interopDefault(import('..\\pages\\mypage\\likes.vue' /* webpackChunkName: "pages_mypage_likes" */))
+const _ffef0548 = () => interopDefault(import('..\\pages\\mypage\\list.vue' /* webpackChunkName: "pages_mypage_list" */))
 const _6623511b = () => interopDefault(import('..\\pages\\mypage\\login.vue' /* webpackChunkName: "pages_mypage_login" */))
 const _307954b7 = () => interopDefault(import('..\\pages\\bot\\_cat\\index.vue' /* webpackChunkName: "pages_bot__cat_index" */))
 const _d0068218 = () => interopDefault(import('..\\pages\\i\\_id.vue' /* webpackChunkName: "pages_i__id" */))
@@ -83,6 +86,18 @@ export const routerOptions = {
     path: "/bot/my",
     component: _2e1bf802,
     name: "bot-my"
+  }, {
+    path: "/mypage/following",
+    component: _8c49b97a,
+    name: "mypage-following"
+  }, {
+    path: "/mypage/likes",
+    component: _782f7824,
+    name: "mypage-likes"
+  }, {
+    path: "/mypage/list",
+    component: _ffef0548,
+    name: "mypage-list"
   }, {
     path: "/mypage/login",
     component: _6623511b,

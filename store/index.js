@@ -34,7 +34,7 @@ export const actions = {
   },
   getUser({commit}, context){
     console.log('[store/index.js]context.$axios')
-    this.$axios.$get('/user').then(res =>{
+    return this.$axios.$get('/user').then(res =>{
       commit('SET_USER', res)
     }).catch(err =>{
       context.$nuxt.error(err)

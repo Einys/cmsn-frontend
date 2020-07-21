@@ -14,8 +14,6 @@
 				<cat-horiz ></cat-horiz>
 
 			</div>
-      <v-btn @click="$store.commit('increment')">증가</v-btn>
-      <v-btn @click="getUser">유저 가져오기</v-btn>
 
 		</div>
 	</div>

@@ -7,17 +7,18 @@ const _b2181e8c = () => interopDefault(import('..\\pages\\About.vue' /* webpackC
 const _33a959a4 = () => interopDefault(import('..\\pages\\Help.vue' /* webpackChunkName: "pages_Help" */))
 const _30ad8f32 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
 const _9a1d76fe = () => interopDefault(import('..\\pages\\List.vue' /* webpackChunkName: "pages_List" */))
+const _8e291684 = () => interopDefault(import('..\\pages\\mypage.vue' /* webpackChunkName: "pages_mypage" */))
 const _c708a3f8 = () => interopDefault(import('..\\pages\\mypage\\index.vue' /* webpackChunkName: "pages_mypage_index" */))
+const _8c49b97a = () => interopDefault(import('..\\pages\\mypage\\following.vue' /* webpackChunkName: "pages_mypage_following" */))
+const _4e0945f2 = () => interopDefault(import('..\\pages\\mypage\\items.vue' /* webpackChunkName: "pages_mypage_items" */))
+const _782f7824 = () => interopDefault(import('..\\pages\\mypage\\likes.vue' /* webpackChunkName: "pages_mypage_likes" */))
+const _6623511b = () => interopDefault(import('..\\pages\\mypage\\login.vue' /* webpackChunkName: "pages_mypage_login" */))
 const _d83a235c = () => interopDefault(import('..\\pages\\NotFound.vue' /* webpackChunkName: "pages_NotFound" */))
 const _136389f5 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpackChunkName: "pages_Privacy" */))
 const _1053e4a1 = () => interopDefault(import('..\\pages\\t\\index.vue' /* webpackChunkName: "pages_t_index" */))
 const _70a989b4 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
 const _52da212e = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
 const _2e1bf802 = () => interopDefault(import('..\\pages\\bot\\my\\index.vue' /* webpackChunkName: "pages_bot_my_index" */))
-const _8c49b97a = () => interopDefault(import('..\\pages\\mypage\\following.vue' /* webpackChunkName: "pages_mypage_following" */))
-const _782f7824 = () => interopDefault(import('..\\pages\\mypage\\likes.vue' /* webpackChunkName: "pages_mypage_likes" */))
-const _ffef0548 = () => interopDefault(import('..\\pages\\mypage\\list.vue' /* webpackChunkName: "pages_mypage_list" */))
-const _6623511b = () => interopDefault(import('..\\pages\\mypage\\login.vue' /* webpackChunkName: "pages_mypage_login" */))
 const _307954b7 = () => interopDefault(import('..\\pages\\bot\\_cat\\index.vue' /* webpackChunkName: "pages_bot__cat_index" */))
 const _d0068218 = () => interopDefault(import('..\\pages\\i\\_id.vue' /* webpackChunkName: "pages_i__id" */))
 const _cd0b1e2c = () => interopDefault(import('..\\pages\\u\\_name\\index.vue' /* webpackChunkName: "pages_u__name_index" */))
@@ -60,8 +61,28 @@ export const routerOptions = {
     name: "List"
   }, {
     path: "/mypage",
-    component: _c708a3f8,
-    name: "mypage"
+    component: _8e291684,
+    children: [{
+      path: "",
+      component: _c708a3f8,
+      name: "mypage"
+    }, {
+      path: "following",
+      component: _8c49b97a,
+      name: "mypage-following"
+    }, {
+      path: "items",
+      component: _4e0945f2,
+      name: "mypage-items"
+    }, {
+      path: "likes",
+      component: _782f7824,
+      name: "mypage-likes"
+    }, {
+      path: "login",
+      component: _6623511b,
+      name: "mypage-login"
+    }]
   }, {
     path: "/NotFound",
     component: _d83a235c,
@@ -86,22 +107,6 @@ export const routerOptions = {
     path: "/bot/my",
     component: _2e1bf802,
     name: "bot-my"
-  }, {
-    path: "/mypage/following",
-    component: _8c49b97a,
-    name: "mypage-following"
-  }, {
-    path: "/mypage/likes",
-    component: _782f7824,
-    name: "mypage-likes"
-  }, {
-    path: "/mypage/list",
-    component: _ffef0548,
-    name: "mypage-list"
-  }, {
-    path: "/mypage/login",
-    component: _6623511b,
-    name: "mypage-login"
   }, {
     path: "/bot/:cat?",
     component: _307954b7,

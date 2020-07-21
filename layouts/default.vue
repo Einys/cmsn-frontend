@@ -60,8 +60,8 @@
 				</v-menu>
 
 			</span>
-			<v-btn v-else rounded dark depressed color=" blue" @click="login()">
-				<v-icon left>mdi-twitter</v-icon>로그인
+			<v-btn v-else rounded dark outlined color=" blue" @click="login()">
+				<v-icon left>mdi-twitter</v-icon>마이페이지
 			</v-btn>
 
 		</v-app-bar>
@@ -198,7 +198,7 @@ export default Vue.extend({
     server: process.env.SERVER_URL
   }),
   beforeCreate() {
-    this.$store.dispatch("getAuthUser");
+    this.$store.dispatch("getAuthAndMyUser");
   },
   methods: {
     login() {

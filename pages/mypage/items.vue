@@ -1,7 +1,6 @@
 <template>
 	<v-container fluid fill-height>
 
-    <my-nav></my-nav>
 		<v-row align="center" justify="center">
 
 			<v-btn rounded @click="$router.push('/mypage/following')">
@@ -18,12 +17,7 @@ import Component from "vue-class-component";
 import Navigation from "@/components/mypage/navigation.vue"
 @Component({
   async asyncData({ store, $axios }) {
-    await store.dispatch("getAuthUser");
-    const res = await $axios.get(
-      "1.0/data/users/id/" + store.state.authUser.id
-    );
-    console.log(res);
-    return { myuser: res.data };
+
   },
   components: {
     "my-nav" :Navigation

@@ -54,8 +54,8 @@ export const actions = {
       return this.$axios.get(
         "1.0/data/users/id/" + authUser.id
       );
-    }).then( myUser => {
-      commit('SET_MYUSER', myUser)
+    }).then( res => {
+      commit('SET_MYUSER', res.data)
     }).catch(err =>{
       context.$nuxt.error(err)
     })

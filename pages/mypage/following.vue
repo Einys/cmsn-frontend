@@ -3,7 +3,7 @@
 
 		<v-row align="center" justify="center">
 
-			<v-alert type="info">
+			<v-alert type="info" outlined>
         <v-row no-gutters>
           <v-col>
 						내가 팔로우한 계정(최대 1천개) 중 세메센에 홍보중인 계정이 있다면 표시합니다. 이 목록은 15분 간격으로 업데이트 할 수 있습니다.

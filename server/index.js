@@ -136,7 +136,7 @@ app.use(session({
 //[Start] Passport
 var passport = require('passport')
   , util = require('util')
-  , TwitterStrategy = require('passport-twitter').Strategy
+  , TwitterStrategy = require('passport-twitter').Strategy //사용하지않고 대신 myTwitterStrategy 사용 (snbot모듈에 있음)
   , cookieParser = require('cookie-parser')
 
 //console.log(config);

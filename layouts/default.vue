@@ -1,5 +1,5 @@
 <template>
-	<v-app :style="{background : $vuetify.theme.themes['light'].background}" >
+	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
 		<v-app-bar app clipped-left>
 			<span class="blue-grey--text text--darken-2 ma-0" @click="drawer= !drawer" style="cursor:pointer;">
 				<v-layout>
@@ -15,20 +15,18 @@
 
 			<!-- 로그인 -->
 			<span v-if="$store.state.authUser">
-				<v-menu offset-y color="background" :close-on-click="true" transition="slide-y-transition" close-on-content-click >
+				<v-menu offset-y bottom left color="background" transition="slide-y-transition" >
 					<template v-slot:activator="{ on, attrs }">
+            <v-btn fab small elevation="1" >
 						<v-avatar size=40 v-bind="attrs" v-on="on" style="cursor:pointer">
-							<img v-if="$store.state.authUser.photos && $store.state.authUser.photos.length > 0 && $store.state.authUser.photos[0].value " :src="$store.state.authUser.photos[0].value" />
+							<img v-if="$store.state.authUser.photos && $store.state.authUser.photos.length > 0 && $store.state.authUser.photos[0].value " :src="$store.state.authUser.photos[0].value" @error="onProfileImageError"/>
 						</v-avatar>
-					</template>
-					<v-list>
-						<v-list-item @click="$router.push('/mypage')">
-							<v-list-item-title>마이페이지 <v-chip class="ma-2" color="orange" text-color="white">
-									<span class="font-italic">beta</span>
-								</v-chip>
-							</v-list-item-title>
+            </v-btn>
 
-						</v-list-item>
+					</template>
+					<!-- 마이페이지 -->
+					<mypage-list></mypage-list>
+					<v-list>
 						<v-dialog v-model="logoutDialog" width="320">
 
 							<v-card>
@@ -41,10 +39,8 @@
 									<v-btn rounded depressed dark color="grey" @click="logoutDialog = false">
 										취소
 									</v-btn>
-									<v-btn color="primary" rounded depressed dark @click="logout()">
-										<v-progress-circular indeterminate v-if="logoutProgressRunning"></v-progress-circular>
-										<span v-else> 확인 </span>
-
+									<v-btn color="primary" rounded depressed dark @click="logout()" :loading="logoutProgressRunning">
+										확인
 									</v-btn>
 								</v-card-actions>
 							</v-card>
@@ -174,6 +170,8 @@ import objectFitImages from "object-fit-images";
 import cmsnService from "@/services/cmsn";
 import AdVert300 from "@/components/ads/AdVert300.vue";
 import CatVert from "@/components/cat/Vert.vue";
+import MyMenuList from "@/components/mypage/navigation.vue";
+import ProfileMixin from "@/components/mixin/profile"
 
 export default Vue.extend({
   name: "App",
@@ -181,8 +179,10 @@ export default Vue.extend({
     Masonry,
     "cat-vert": CatVert,
     "my-footer": Footer,
-    "ad-vt300": AdVert300
+    "ad-vt300": AdVert300,
+    "mypage-list": MyMenuList
   },
+  mixins: [ProfileMixin],
   data: () => ({
     //
     snackbar: false,
@@ -195,7 +195,8 @@ export default Vue.extend({
     logoutDialog: false,
     keyword: "",
     logoutProgressRunning: false,
-    server: process.env.SERVER_URL
+    server: process.env.SERVER_URL,
+    profileError: false
   }),
   beforeCreate() {
     this.$store.dispatch("getAuthAndMyUser");
@@ -216,8 +217,6 @@ export default Vue.extend({
         })
         .catch(e => {
           this.$nuxt.error(e);
-        })
-        .finally(() => {
           this.logoutProgressRunning = false;
         });
     },
@@ -235,7 +234,7 @@ export default Vue.extend({
     },
     throwError() {
       throw new Error("error");
-    }
+    },
   },
   created() {
     objectFitImages(); /* IE, Edge, Safari Polyfill */

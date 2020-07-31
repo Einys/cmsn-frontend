@@ -5,13 +5,18 @@
 				<images :images="thumbImages" />
 			</v-card>
 
-			<v-card flat class="pa-5 mb-2" :inner-html.prop="text | text">
-
+			<v-card flat class="mb-2" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank" >
+        <v-card-text class="body-1 black--text" :inner-html.prop="text | text"> </v-card-text>
+        <v-card-actions>
+          <v-btn text class="grey--text text--darken-1">
+            {{item.departedAt}}
+          </v-btn>
+          <span></span>
+          <v-spacer></v-spacer>
+          <v-btn text><v-icon color="blue">mdi-twitter</v-icon></v-btn>
+        </v-card-actions>
 			</v-card>
-      <a :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank">
-      <v-btn style="width:100%" rounded depressed color="white"><v-icon color="blue">mdi-twitter</v-icon></v-btn>
 
-      </a>
 			<div class="mt-4" v-if="item && item.links && Array.isArray(item.links) && item.links[0]">
 
 				<h3>링크된 페이지</h3>
@@ -34,13 +39,14 @@
 					{{link}}
 				</div>
 			</div>
-			{{item.links}}
+
 
 			<div>
 
 			</div>
 
 			<div class="pa-5">
+        {{item.links}}
 				{{item}}
 
 			</div>

@@ -1,5 +1,6 @@
 const colors = require('vuetify/es5/util/colors').default
 
+
 module.exports = {
   mode: 'spa',
   /**
@@ -24,9 +25,9 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
-      {src:'https://securepubads.g.doubleclick.net/tag/js/gpt.js', async:'async'},
-      {src:'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', async:'async'},
-      {src:'/js/googleads.js'} // static/js
+      { src: 'https://securepubads.g.doubleclick.net/tag/js/gpt.js', async: 'async' },
+      { src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', async: 'async' },
+      { src: '/js/googleads.js' } // static/js
     ]
   },
   /*
@@ -43,8 +44,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/masonry', ssr: false, client:true},
-    { src: '~/plugins/main', ssr: false, client:true}
+    { src: '~/plugins/masonry', ssr: false, client: true },
+    { src: '~/plugins/main', ssr: false, client: true },
+
   ],
   /*
   ** Nuxt.js dev-modules
@@ -81,9 +83,9 @@ module.exports = {
           success: colors.green.accent3
         },
         light: {
-          gold:'#c08028',
+          gold: '#c08028',
           silver: '#5F647D',
-          background:'#EDEEF0'
+          background: '#EDEEF0'
         }
       }
     }
@@ -108,6 +110,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+
     extend(config, ctx) {
     }
   }

@@ -14,6 +14,7 @@
         :src="getSrc(img)"
         :class='["len"+ (images.length > 4? 4 : images.length), "index"+index,  (( images.length-index < images.length) && (images.length > 2))? "sub" : "main" ]'
         @error="onImageError($event, index)"
+
       />
 
     </template>

@@ -2,14 +2,14 @@
 	<div class="wrapper itempage">
 		<div style="margin:0 auto; max-width:720px">
 			<v-card flat>
-				<images :images="thumbImages" />
+				<img v-for="(image, index) in images" :key="index"  />
 			</v-card>
 
 			<v-card flat class="mb-2" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank" >
         <v-card-text class="body-1 black--text" :inner-html.prop="text | text"> </v-card-text>
         <v-card-actions>
           <v-btn text class="grey--text text--darken-1">
-            {{item.departedAt}}
+            {{item.departedAt | datepassed}}
           </v-btn>
           <span></span>
           <v-spacer></v-spacer>
@@ -55,11 +55,12 @@
 	</div>
 </template>
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
+import { Component, Vue, Prop, Mixins } from "vue-property-decorator";
 import ItemCard from "@/components/item/Card.vue";
 import Images from "@/components/item/Images.vue";
 import MImage from "@/components/methods/image";
+import ProfileMixin from "@/components/mixin/profile.ts";
+import ItemMixin from "@/components/mixin/item.ts";
 
 @Component({
   filters: {
@@ -90,7 +91,7 @@ import MImage from "@/components/methods/image";
     Images
   }
 })
-export default class ItemPage extends Vue {
+export default class ItemPage extends Mixins(ProfileMixin, ItemMixin) {
   item: any;
 
   get text() {
@@ -99,9 +100,11 @@ export default class ItemPage extends Vue {
   MediaSourceOfLink(link) {
     return MImage.getMediaSourceOfLink(link);
   }
-  get thumbImages() {
-    return MImage.thumbImages(this.item);
+
+  get images(){
+    return this.thumbImages(this.item);
   }
+
 }
 </script>
 

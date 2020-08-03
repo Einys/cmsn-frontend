@@ -27,8 +27,9 @@
   </a>
 </template>
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
-
+import { Component, Vue, Prop, Mixins } from "vue-property-decorator";
+import ProfileMixin from "@/components/mixin/profile.ts";
+import ItemMixin from "@/components/mixin/item.ts";
 @Component({
   //
   filters: {
@@ -54,7 +55,7 @@ import { Component, Vue, Prop } from "vue-property-decorator";
     }
   }
 })
-export default class Card extends Vue {
+export default class Card extends Mixins(ProfileMixin, ItemMixin) {
   @Prop({ required: true })
   public user: any;
   @Prop({ required: false })

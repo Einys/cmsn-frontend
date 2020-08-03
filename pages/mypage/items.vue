@@ -38,16 +38,14 @@
 				<v-list>
 					<v-list-item two-line v-for="item in myUser._items" :key="item.id" :to="'/i/'+item.id">
 
-						<v-list-item-avatar>
-							<v-img v-if="item.attachment && item.attachment[0]" :src="item.attachment[0]">
-
-							</v-img>
-							<v-img v-else src="https://pbs.twimg.com/media/D-s8cUzVAAAP2tf?format=jpg&name=900x900"></v-img>
+						<v-list-item-avatar size="100">
+							<img  v-if="item.attachment && item.attachment[0]" :src="item.attachment[0].src" @error="onItemImageError($event, item.id)"/>
+							<img  v-else :src="emptyItemImage" @error="onItemImageError($event, item.id)"/>
 
 						</v-list-item-avatar>
 						<v-list-item-content>
-							<v-list-item-title>
-								{{item.text}}
+							<v-list-item-title >
+                {{ item.text | text | nonewline }}
 							</v-list-item-title>
 							<v-list-item-subtitle>
 								n일전 홍보
@@ -67,11 +65,6 @@
 			아직 아무것도 없습니다.
 		</v-row>
 
-		<v-row>
-			<v-col>
-				{{myItem}}
-			</v-col>
-		</v-row>
 	</v-container>
 </template>
 
@@ -85,10 +78,9 @@ import Masonry from "@/components/Masonry.vue";
   async asyncData({ store, $axios }) {},
   components: {
     Masonry
-  },
-  mixins: [ProfileMixin, ItemMixin]
+  }
 })
-export default class MypagePage extends Mixins(ProfileMixin) {
+export default class MypagePage extends Mixins(ProfileMixin, ItemMixin) {
   followingList: [any];
 
   get authUser() {
@@ -99,9 +91,15 @@ export default class MypagePage extends Mixins(ProfileMixin) {
     return this.$store.state.myUser;
   }
 
+  get myItem() {
+    return this.myUser._items
+  }
+
   get profilePic() {
     return this.authUser.photos[0].value!.replace("_normal", "");
   }
+
+
 }
 </script>
 

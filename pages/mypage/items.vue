@@ -48,7 +48,7 @@
                 {{ item.text | text | nonewline }}
 							</v-list-item-title>
 							<v-list-item-subtitle>
-								n일전 홍보
+								{{ item.departedAt | datepassed }}
 							</v-list-item-subtitle>
 						</v-list-item-content>
 						<v-list-item-action>

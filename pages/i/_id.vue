@@ -2,19 +2,26 @@
 	<div class="wrapper itempage">
 		<div style="margin:0 auto; max-width:720px">
 			<v-card flat>
-				<img v-for="(image, index) in images" :key="index"  />
+				<v-carousel height="400" hide-delimiter-background show-arrows-on-hover>
+					<v-carousel-item v-for="(image, i) in images" :key="i">
+						<img :src="image" style="width:100%" />
+					</v-carousel-item>
+				</v-carousel>
+
 			</v-card>
 
-			<v-card flat class="mb-2" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank" >
-        <v-card-text class="body-1 black--text" :inner-html.prop="text | text"> </v-card-text>
-        <v-card-actions>
-          <v-btn text class="grey--text text--darken-1">
-            {{item.departedAt | datepassed}}
-          </v-btn>
-          <span></span>
-          <v-spacer></v-spacer>
-          <v-btn text><v-icon color="blue">mdi-twitter</v-icon></v-btn>
-        </v-card-actions>
+			<v-card flat class="mb-2" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank">
+				<v-card-text class="body-1 black--text" :inner-html.prop="text | text"> </v-card-text>
+				<v-card-actions>
+					<v-btn text class="grey--text text--darken-1">
+						{{item.departedAt | datepassed}}
+					</v-btn>
+					<span></span>
+					<v-spacer></v-spacer>
+					<v-btn text>
+						<v-icon color="blue">mdi-twitter</v-icon>
+					</v-btn>
+				</v-card-actions>
 			</v-card>
 
 			<div class="mt-4" v-if="item && item.links && Array.isArray(item.links) && item.links[0]">
@@ -40,13 +47,12 @@
 				</div>
 			</div>
 
-
 			<div>
 
 			</div>
 
 			<div class="pa-5">
-        {{item.links}}
+				{{item.links}}
 				{{item}}
 
 			</div>
@@ -72,24 +78,24 @@ import ItemMixin from "@/components/mixin/item.ts";
         .replace(/&gt;/g, ">")
         .replace(/&amp;/g, "&")
         .replace(/:\/\/link/g, '<span class="highlight">(링크)</span>');
-    }
+    },
   },
   async asyncData({ params, $axios }) {
     const data = await $axios
       .$get("/1.0/data/items/" + params.id, { timeout: 5000 })
-      .then(res => {
+      .then((res) => {
         return res;
       });
     return { item: data };
   },
   head() {
     return {
-      title: `${this.item._user.name}의 커미션`
+      title: `${this.item._user.name}의 커미션`,
     };
   },
   components: {
-    Images
-  }
+    Images,
+  },
 })
 export default class ItemPage extends Mixins(ProfileMixin, ItemMixin) {
   item: any;
@@ -101,10 +107,9 @@ export default class ItemPage extends Mixins(ProfileMixin, ItemMixin) {
     return MImage.getMediaSourceOfLink(link);
   }
 
-  get images(){
+  get images() {
     return this.thumbImages(this.item);
   }
-
 }
 </script>
 

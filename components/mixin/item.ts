@@ -118,5 +118,9 @@ export default class ItemMixin extends Vue {
 
     return imgsrcArr[0] ? imgsrcArr : null;
   }
+
+  likebtnclick($event){
+    $event.target.style.color = '#FF4545'
+  }
 }
 

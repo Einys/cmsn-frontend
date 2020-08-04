@@ -35,29 +35,47 @@
 
 			<v-col cols="12" md="8">
 				<div class="headline font-weight-bold mb-2"> 나의 홍보 </div>
-				<v-list>
-					<v-list-item two-line v-for="item in myUser._items" :key="item.id" :to="'/i/'+item.id">
+				<v-card v-for="item in myUser._items" :key="item.id" class="mb-2" flat>
+					<v-list-item two-line>
 
 						<v-list-item-avatar size="100">
-							<img  v-if="item.attachment && item.attachment[0]" :src="item.attachment[0].src" @error="onItemImageError($event, item.id)"/>
-							<img  v-else :src="emptyItemImage" @error="onItemImageError($event, item.id)"/>
+							<img v-if="item.attachment && item.attachment[0]" :src="item.attachment[0].src" @error="onItemImageError($event, item.id)" />
+							<img v-else :src="emptyItemImage" @error="onItemImageError($event, item.id)" />
 
 						</v-list-item-avatar>
 						<v-list-item-content>
-							<v-list-item-title >
-                {{ item.text | text | nonewline }}
-							</v-list-item-title>
-							<v-list-item-subtitle>
-								{{ item.departedAt | datepassed }}
-							</v-list-item-subtitle>
+
+							<v-list-item-content>
+								<v-list-item-subtitle>
+									{{ item.departedAt | datepassed }}
+								</v-list-item-subtitle>
+								<v-list-item-title>
+									{{ item.text | text | nonewline }}
+								</v-list-item-title>
+
+							</v-list-item-content>
+
+							<v-row align="center">
+								<v-btn fab small text color="red">
+									<v-icon>mdi-delete</v-icon>
+
+								</v-btn>
+
+								<v-btn fab small text color="teal" :to="'/i/'+item.id">
+									<v-icon>mdi-cog</v-icon>
+								</v-btn>
+								<v-spacer></v-spacer>
+								<v-btn color="blue" dark text>
+									<v-icon left>mdi-twitter</v-icon> 재홍보
+								</v-btn>
+
+							</v-row>
+
 						</v-list-item-content>
-						<v-list-item-action>
-							<v-btn text>설정</v-btn>
-							<v-btn text>재홍보</v-btn>
-						</v-list-item-action>
 
 					</v-list-item>
-				</v-list>
+
+				</v-card>
 			</v-col>
 
 		</v-row>
@@ -77,8 +95,8 @@ import Masonry from "@/components/Masonry.vue";
 @Component({
   async asyncData({ store, $axios }) {},
   components: {
-    Masonry
-  }
+    Masonry,
+  },
 })
 export default class MypagePage extends Mixins(ProfileMixin, ItemMixin) {
   followingList: [any];
@@ -92,14 +110,8 @@ export default class MypagePage extends Mixins(ProfileMixin, ItemMixin) {
   }
 
   get myItem() {
-    return this.myUser._items
+    return this.myUser._items;
   }
-
-  get profilePic() {
-    return this.authUser.photos[0].value!.replace("_normal", "");
-  }
-
-
 }
 </script>
 

@@ -1,58 +1,79 @@
 <template>
 	<div class="wrapper itempage">
 		<div style="margin:0 auto; max-width:720px">
-			<v-card flat>
-				<v-carousel height="400" hide-delimiter-background show-arrows-on-hover>
-					<v-carousel-item v-for="(image, i) in images" :key="i">
-						<img :src="image" style="width:100%" />
+
+			<v-card flat class="mb-5">
+				<v-carousel height="400" hide-delimiters show-arrows-on-hover :show-arrows=" ( images && images.length > 1 ) ">
+					<v-carousel-item v-for="(image, i) in images" :key="i" >
+						<img :src="image" style="width:100%; object-fit:contain" @error="onItemImageError($event, image+'carousel')" />
 					</v-carousel-item>
 				</v-carousel>
+				<v-row justify="center" class="mb-1">
+					<v-col v-for="(image, i) in images" :key="i" cols="auto">
 
-			</v-card>
+						<v-avatar size=60>
+							<img :src="image" @error="onItemImageError($event, image+'2')">
+						</v-avatar>
+						<div style="width: 4px; height: 4px; background-color: grey; margin: 0 auto; border-radius:50%; margin-top: 6px;"></div>
 
-			<v-card flat class="mb-2" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank">
-				<v-card-text class="body-1 black--text" :inner-html.prop="text | text"> </v-card-text>
+					</v-col>
+
+				</v-row>
+
+				<v-card-text class="body-1 black--text">
+					{{text | text}}
+				</v-card-text>
+
 				<v-card-actions>
 					<v-btn text class="grey--text text--darken-1">
-						{{item.departedAt | datepassed}}
+						<v-icon small left >mdi-twitter</v-icon>{{item.departedAt | datepassed}}
 					</v-btn>
-					<span></span>
+
 					<v-spacer></v-spacer>
-					<v-btn text>
-						<v-icon color="blue">mdi-twitter</v-icon>
+					<v-btn text color="grey" fab small @click="likebtnclick" class="btn-like" >
+						<v-icon>mdi-heart</v-icon>
 					</v-btn>
 				</v-card-actions>
+
+			</v-card>
+			<h3>링크된 페이지</h3>
+
+			<v-card flat class="mt-3" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank">
+				<v-card-text>
+					<v-icon left color="blue">mdi-twitter</v-icon> twitter.com/{{item._user.name}}/status...
+
+				</v-card-text>
 			</v-card>
 
-			<div class="mt-4" v-if="item && item.links && Array.isArray(item.links) && item.links[0]">
+			<div class="mt-3" v-if="item && item.links && Array.isArray(item.links) && item.links[0]">
 
-				<h3>링크된 페이지</h3>
 				<div v-for="(link) in item.links" :key="link._id">
 					<v-card flat>
-						<v-row no-gutters style="overflow: hidden; text-overflow: ellipsis;">
+						<v-row no-gutters align="center" style="overflow: hidden; text-overflow: ellipsis;">
 							<v-col cols="4">
-								<v-img v-if="MediaSourceOfLink(link)" :src="MediaSourceOfLink(link)" aspect-ratio="1.2" />
+                <v-avatar tile size=120>
+								  <img width="100%" :src="MediaSourceOfLink(link)" @error="onItemImageError($event, image+'linkthumb')" />
+
+                </v-avatar>
 							</v-col>
 							<v-col cols="8" class="pa-3">
 								<div class="caption">{{link.display_url}}</div>
 								<div v-if="link.meta">
 									<div class="mt-2 font-weight-bold">{{link.meta.title}}</div>
-									<div class="caption" style="">{{link.meta.description}}</div>
+									<div class="caption" style="max-height:40px; overflow: hidden;">{{link.meta.description}}</div>
 								</div>
 							</v-col>
 						</v-row>
 
 					</v-card>
-					{{link}}
+
 				</div>
 			</div>
 
-			<div>
 
-			</div>
 
 			<div class="pa-5">
-				{{item.links}}
+				{{item.links}}<br><br>
 				{{item}}
 
 			</div>
@@ -69,17 +90,7 @@ import ProfileMixin from "@/components/mixin/profile.ts";
 import ItemMixin from "@/components/mixin/item.ts";
 
 @Component({
-  filters: {
-    text(value: string) {
-      return value
-        .replace(/<script>/g, " ")
-        .replace(/(?:\r\n|\r|\n)/g, "<br/>")
-        .replace(/&lt;/g, "<")
-        .replace(/&gt;/g, ">")
-        .replace(/&amp;/g, "&")
-        .replace(/:\/\/link/g, '<span class="highlight">(링크)</span>');
-    },
-  },
+
   async asyncData({ params, $axios }) {
     const data = await $axios
       .$get("/1.0/data/items/" + params.id, { timeout: 5000 })
@@ -117,6 +128,11 @@ export default class ItemPage extends Mixins(ProfileMixin, ItemMixin) {
 .itempage .highlight {
   color: #ff7b7b;
 }
+
+.btn-like:focus {
+ background-color: transparent;
+}
+
 </style>
 
 

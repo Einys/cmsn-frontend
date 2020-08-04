@@ -10,4 +10,11 @@ export default class MyMixin extends Vue {
       $event.target.src = require("@/assets/default.jpg");
     }
   }
+  get authUser() {
+    return this.$store.state.authUser;
+  }
+
+  get profilePic() {
+    return this.authUser.photos[0].value!.replace("_normal", "");
+  }
 }

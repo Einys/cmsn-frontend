@@ -28,19 +28,19 @@ import Component from 'vue-class-component'
       if (Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60) < 60) {
         return (
           Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60) +
-          " 분 전 홍보"
+          "분 전 홍보"
         );
       } else if (
         Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60) < 24
       ) {
         return (
           Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60) +
-          " 시간 전 홍보"
+          "시간 전 홍보"
         );
       } else {
         return (
           Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60 / 24) +
-          " 일 전 홍보"
+          "일 전 홍보"
         );
       }
     },
@@ -53,8 +53,12 @@ import Component from 'vue-class-component'
         .replace(/&amp;/g, "&")
         .replace(/:\/\/link/g, '(link)');
     },
-    nonewline(value: string){
-      return value.replace("<br/>", "")
+    nonewline(value: string) {
+      //replaceAll prototype 선언
+      String.prototype.replaceAll = function (org, dest) {
+        return this.split(org).join(dest);
+      }
+      return value.replaceAll("<br/>", " ")
     }
   }
 })
@@ -62,28 +66,28 @@ export default class ItemMixin extends Vue {
   itemImageError = [];
 
   onItemImageError($event: any, key: number) {
-    if(!this.itemImageError[key]){
+    if (!this.itemImageError[key]) {
       this.itemImageError[key] = true
       $event!.target!.src = require("@/assets/404.jpg");
     }
   }
-  onEmptyItem($event){
+  onEmptyItem($event) {
     $event!.target!.src = require("@/assets/thumbnail.jpg");
   }
 
-  get emptyItemImage(){
+  get emptyItemImage() {
     return require("@/assets/logo2020.png");
   }
 
-  getMediaSourceOfLink( link ){
+  getMediaSourceOfLink(link) {
     let src;
-    if(link){
-      if(link.media){
-        if(link.media.s3 && link.media.s3.small){
+    if (link) {
+      if (link.media) {
+        if (link.media.s3 && link.media.s3.small) {
           src = link.media.s3.small.location
         }
       }
-    }else{
+    } else {
       return 'empty link'
     }
 
@@ -119,7 +123,7 @@ export default class ItemMixin extends Vue {
     return imgsrcArr[0] ? imgsrcArr : null;
   }
 
-  likebtnclick($event){
+  likebtnclick($event) {
     $event.target.style.color = '#FF4545'
   }
 }

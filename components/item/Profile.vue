@@ -1,30 +1,32 @@
 <template>
-  <a
-    :href=" '/u/' + user.name"
-    target="_blank"
-    rel="noopener"
-  >
-    <v-row class="profile pa-2 py-3" no-gutters>
-      <v-avatar size="32" class="avatar">
-        <img
-          :src="user.profileImg"
-          @error="onProfileImageError($event)"
-        />
-      </v-avatar>
-      <v-layout column>
-      <v-row no-gutters align="center">
-      <span class="username">{{ user.name }}&nbsp;</span>
-      <v-icon :size="$vuetify.breakpoint.smAndUp? 14 : 12" color="grey">mdi-twitter</v-icon>
-      </v-row>
+	<div>
+		<v-row v-if="!isUserEmpty" class="profile pa-2 py-3" no-gutters>
+			<v-avatar size="32" class="avatar">
+				<img :src="user.profileImg" @error="onProfileImageError($event)" />
+			</v-avatar>
+			<v-layout column>
+				<v-row no-gutters align="center">
+					<span class="username">{{ userName }}&nbsp;</span>
+					<v-icon :size="$vuetify.breakpoint.smAndUp? 14 : 12" color="grey">mdi-twitter</v-icon>
+				</v-row>
 
-      <span
-        class="date"
-        v-if="departedAt"
-      >{{ departedAt | datepassed }}</span>
-      </v-layout>
+				<span class="date" v-if="departedAt">{{ departedAt | datepassed }}</span>
+			</v-layout>
+		</v-row>
 
-    </v-row>
-  </a>
+		<v-row v-else class="profile pa-2 py-3" no-gutters>
+			<v-avatar size=32>
+				<img src="error" @error="onProfileImageError($event)" />
+			</v-avatar>
+			<v-layout column>
+				<v-row no-gutters align="center">
+					<span class="username">&nbsp;유저 데이터 없음&nbsp;</span>
+					<v-icon :size="$vuetify.breakpoint.smAndUp? 14 : 12" color="grey">mdi-twitter</v-icon>
+				</v-row>
+			</v-layout>
+		</v-row>
+	</div>
+
 </template>
 <script lang="ts">
 import { Component, Vue, Prop, Mixins } from "vue-property-decorator";
@@ -52,23 +54,35 @@ import ItemMixin from "@/components/mixin/item.ts";
           " 일 전 홍보"
         );
       }
-    }
-  }
+    },
+  },
 })
 export default class Card extends Mixins(ProfileMixin, ItemMixin) {
-  @Prop({ required: true })
+  @Prop({ required: true, default: {} })
   public user: any;
   @Prop({ required: false })
   public departedAt: any;
   error = false;
-  twitterUser = 'https://twitter.com/'+ this.user.name
+  twitterUser = this.user ? "https://twitter.com/" + this.user!.name : null;
 
   mounted() {}
   onProfileImageError($event: any) {
-    if(!this.error){
+    if (!this.error) {
       this.error = true;
-      $event.target.src = require('@/assets/default.jpg');
+      $event.target.src = require("@/assets/default.jpg");
     }
+  }
+
+  get isUserEmpty() {
+    if (this.user) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  get userName() {
+    return this.user!.name;
   }
 }
 </script>
@@ -78,14 +92,14 @@ $break-large: 1200px;
 $break-small: 720px;
 
 .profile {
-color: #4b4b4b;
+  color: #4b4b4b;
   padding: 10px 8px;
   font-size: 15px;
   line-height: 16px;
-    .avatar{
-        float: left;
-        margin-right: 8px;
-    }
+  .avatar {
+    float: left;
+    margin-right: 8px;
+  }
   .margin-right {
     margin-right: 8px;
   }
@@ -124,7 +138,7 @@ color: #4b4b4b;
 
   .profile {
     padding: 2px;
-     line-height: 14px;
+    line-height: 14px;
     .avatar {
       width: 28px;
       height: 28px;
@@ -133,17 +147,13 @@ color: #4b4b4b;
       margin-right: 6px;
     }
     .logo-twitter {
-
     }
     .date {
       font-size: 11px;
     }
     .username {
       max-width: 80px;
-
     }
-
   }
 }
-
 </style>

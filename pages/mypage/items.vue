@@ -79,9 +79,22 @@
 			</v-col>
 
 		</v-row>
-		<v-row v-else align="center" justify="center" class="grey--text text--darken-2" style="min-height:200px; background-color: rgba(100,100,110,0.01)">
-			아직 아무것도 없습니다.
-		</v-row>
+
+			<v-row v-else align="center" justify="center" class="grey--text text--darken-2" style="min-height:200px; background-color: rgba(100,100,110,0.01)">
+        <v-col>
+          <v-row align="center" justify="center">
+				아직 아무것도 없습니다.
+
+          </v-row>
+          <v-row align="center" justify="center">
+				홍보를 하시려면 <nuxt-link to="/help"> &nbsp;이용안내</nuxt-link> 를 참고해주세요.
+
+          </v-row>
+        </v-col>
+
+
+			</v-row>
+
 
 	</v-container>
 </template>

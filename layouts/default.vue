@@ -213,7 +213,7 @@ export default Vue.extend({
       this.$axios
         .get("/logout")
         .then(res => {
-          return window.location.reload();
+          return window.location.href = '/';
         })
         .catch(e => {
           this.$nuxt.error(e);

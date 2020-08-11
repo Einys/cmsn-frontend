@@ -1,7 +1,7 @@
 <template>
 
 	<div>
-		<div v-if=" !isAD">
+		<div v-if=" !isAD" @click="toItemPage" style="cursor: pointer">
 			<profile :user="item._user" :departedAt="item.departedAt" />
 				<div style='position:relative'>
 					<div :class="['text', {overlay: hideText, unhideable: unhideableText}]" v-if="item.text" :inner-html.prop="item.text | text"></div>
@@ -66,13 +66,21 @@ export default class Card extends Vue {
     }
   }
 
+  toItemPage(){
+    if( this.item._user ){
+      return this.$router.push('/i/'+ this.item.id)
+    } else {
+      return window.open('about:blank').location.href = `https://twitter.com/i/web/status/${this.item.id}/`
+    }
+  }
+
   get isAD(){
     return this.item && this.item.id === 'ad'
   }
 
   get computedUsername() {
     if (this.item._user) {
-      return this.item._user.name;
+      return this.item._user!.name;
     } else {
       throw new Error("no _user on item");
     }

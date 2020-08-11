@@ -4,10 +4,18 @@ import Component from 'vue-class-component'
 export default class MyMixin extends Vue {
   myMixinValue = 'Fetch my mixin';
   profileImageError = false;
+  profileImageErrorArray = []
   onProfileImageError($event) {
     if (!this.profileImageError) {
       this.profileImageError = true;
-      $event.target.src = require("@/assets/default.jpg");
+      $event.target.src = require( "@/assets/default.jpg" );
+    }
+  }
+
+  onProfileImageErrorWithKey($event, key) {
+    if(!this.profileImageErrorArray[key]){
+      this.profileImageErrorArray[key] = true;
+      $event.target.src = require( "@/assets/default.jpg" );
     }
   }
   get authUser() {
@@ -17,4 +25,9 @@ export default class MyMixin extends Vue {
   get profilePic() {
     return this.authUser.photos[0].value!.replace("_normal", "");
   }
+
+  bigProfilePic( path ){
+    return path.replace("_normal", "");
+  }
+
 }

@@ -36,40 +36,24 @@
 			<v-col cols="12" md="8">
 				<div class="headline font-weight-bold mb-2"> 나의 홍보 </div>
 				<v-card v-for="item in myUser._items" :key="item.id" class="mb-2" flat>
-					<v-list-item two-line>
+					<v-list-item two-line :to=" '/i/'+item.id ">
 
 						<v-list-item-avatar size="100">
-							<img v-if="item.attachment && item.attachment[0]" :src="item.attachment[0].src" @error="onItemImageError($event, item.id)" />
-							<img v-else :src="emptyItemImage" @error="onItemImageError($event, item.id)" />
+							<img v-if="item.attachment && item.attachment[0]" :src="item.attachment[0].src" @error="item.attachment[0].src = emptyItemImage" />
+							<img v-else :src="emptyItemImage" />
 
 						</v-list-item-avatar>
 						<v-list-item-content>
 
 							<v-list-item-content>
 								<v-list-item-subtitle>
-									{{ item.departedAt | datepassed }}
+									{{ item.departedAt | datepassed }} 홍보
 								</v-list-item-subtitle>
 								<v-list-item-title>
 									{{ item.text | text | nonewline }}
 								</v-list-item-title>
 
 							</v-list-item-content>
-
-							<v-row align="center">
-								<v-btn fab small text color="red">
-									<v-icon>mdi-delete</v-icon>
-
-								</v-btn>
-
-								<v-btn fab small text color="teal" :to="'/i/'+item.id">
-									<v-icon>mdi-cog</v-icon>
-								</v-btn>
-								<v-spacer></v-spacer>
-								<v-btn color="blue" dark text>
-									<v-icon left>mdi-twitter</v-icon> 재홍보
-								</v-btn>
-
-							</v-row>
 
 						</v-list-item-content>
 
@@ -80,7 +64,7 @@
 
 		</v-row>
 
-			<v-row v-else align="center" justify="center" class="grey--text text--darken-2" style="min-height:200px; background-color: rgba(100,100,110,0.01)">
+			<v-row v-else align="center" justify="center" class="grey--text text--darken-2" style="min-height:200px;">
         <v-col>
           <v-row align="center" justify="center">
 				아직 아무것도 없습니다.

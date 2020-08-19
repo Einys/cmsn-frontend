@@ -2,15 +2,15 @@
 	<div class="wrapper itempage">
 		<div style="margin:0 auto; max-width:720px">
 
-			<v-card flat class="mb-5">
+			<v-card flat class="mb-1">
 				<div v-if="images" style="font-size:1px">
 					<img :src="images[0]" style="width:100%;" @error="onItemImageError($event, image+'carousel')" />
 					<v-row dense>
 						<v-col v-for="(image, i) in imagesWithoutFirst" :key="i">
-              <v-avatar tile width="100%" height="120">
-							<img :src="image" style="width:100%; object-fit:cover" @error="onItemImageError($event, image+'carousel')" />
+							<v-avatar tile width="100%" height="120">
+								<img :src="image" style="width:100%; object-fit:cover" @error="onItemImageError($event, image+'carousel')" />
 
-              </v-avatar>
+							</v-avatar>
 						</v-col>
 					</v-row>
 				</div>
@@ -21,7 +21,7 @@
 
 				<v-card-actions>
 					<v-btn text class="grey--text text--darken-1">
-						{{item.departedAt | datepassed}}
+						{{item.departedAt | datepassed}} 홍보
 					</v-btn>
 
 					<v-spacer></v-spacer>
@@ -31,11 +31,20 @@
 				</v-card-actions>
 			</v-card>
 
-			<v-row no-gutters="" class="grey--text text--darken-1">
-				<v-icon left>mdi-link-variant</v-icon> 링크된 외부 페이지
+			<v-row no-gutters v-if=" ($store.state.authUser && item._user.id === $store.state.authUser.id) ">
+				<v-col>
+					<v-card flat>
+						<v-list-item-group >
+							<v-list-item color="red">
+                <v-list-item-title class="red--text"><v-icon left color="red">mdi-delete</v-icon>삭제하기</v-list-item-title>
+              </v-list-item>
+						</v-list-item-group>
+					</v-card>
+				</v-col>
+
 			</v-row>
 
-			<v-card flat class="mt-1" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank">
+			<v-card flat class="mt-5" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank">
 				<v-card-text>
 					<v-icon left color="blue">mdi-twitter</v-icon> twitter.com/{{item._user.name}}/status...
 
@@ -50,7 +59,7 @@
 							<v-list-item>
 								<v-list-item-avatar size="100" tile>
 
-									<img width="100%" :src="MediaSourceOfLink(link)" @error="onItemImageError($event, image+'linkthumb')" />
+									<img width="100%" :src="getMediaSourceOfLinkLocal(link)" @error="link = '/_nuxt/assets/404.jpg'" />
 
 								</v-list-item-avatar>
 								<v-list-item-content>
@@ -73,7 +82,7 @@
 
 				</div>
 			</div>
-			<v-card flat v-if="item._user" class="mt-5 mb-5">
+			<v-card flat v-if="item._user" class="mt-5 mb-5 pb-5">
 				<v-row justify="center" align="center">
 					<v-col cols="auto">
 						<v-avatar size="120">
@@ -98,7 +107,7 @@
 						<v-icon small style=" vertical-align: middle; padding-left:3px">mdi-twitter</v-icon>
 					</v-col>
 				</v-row>
-				<v-row justify="center" align="center">
+				<v-row justify="center" align="center" v-if=" !($store.state.authUser && item._user.id === $store.state.authUser.id) ">
 					<v-col cols="auto">
 						<v-btn outlined rounded>
 							<v-icon left>mdi-account-plus</v-icon>팔로우
@@ -106,6 +115,29 @@
 					</v-col>
 				</v-row>
 			</v-card>
+
+			<v-row no-gutters v-if=" ($store.state.authUser && item._user.id === $store.state.authUser.id) ">
+        <v-col>
+          <v-card flat>
+            <v-list>
+              <v-list-item-group>
+                <v-subheader>홍보 설정</v-subheader>
+                <v-list-item>
+                  <v-list-item-title>
+                    재홍보
+                  </v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-list-item-title>
+                    새로고침
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
+        </v-col>
+
+			</v-row>
 
 			<!-- <div v-if="user">
 				<div v-if=" hasActivatedItem">
@@ -136,7 +168,6 @@
 import { Component, Vue, Prop, Mixins } from "vue-property-decorator";
 import ItemCard from "@/components/item/Card.vue";
 import Images from "@/components/item/Images.vue";
-import MImage from "@/components/methods/image";
 import ProfileMixin from "@/components/mixin/profile.ts";
 import ItemMixin from "@/components/mixin/item.ts";
 
@@ -173,15 +204,16 @@ export default class ItemPage extends Mixins(ProfileMixin, ItemMixin) {
     }
   }
 
-  get imagesWithoutFirst(){
-    return this.images.slice(1)
+  get imagesWithoutFirst() {
+    return this.images.slice(1);
   }
 
   get text() {
     return this.item ? this.item.text : null;
   }
-  MediaSourceOfLink(link) {
-    return MImage.getMediaSourceOfLink(link);
+
+  getMediaSourceOfLinkLocal(link) {
+    return this.getMediaSourceOfLink(link);
   }
 
   get images() {

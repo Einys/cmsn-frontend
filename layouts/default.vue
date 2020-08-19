@@ -15,15 +15,18 @@
 
 			<!-- 로그인 -->
 			<span v-if="$store.state.authUser">
-				<v-menu offset-y bottom left color="background" transition="slide-y-transition" >
+				<v-menu color="background" transition="slide-y-transition"  content-class="mymenu" >
 					<template v-slot:activator="{ on, attrs }">
-            <v-btn fab small elevation="1" >
-						<v-avatar size=40 v-bind="attrs" v-on="on" style="cursor:pointer">
+            <v-btn fab small elevation="1" v-bind="attrs" v-on="on" class="mr-3">
+						<v-avatar size=40  style="cursor:pointer">
 							<img v-if="$store.state.authUser.photos && $store.state.authUser.photos.length > 0 && $store.state.authUser.photos[0].value " :src="$store.state.authUser.photos[0].value" @error="onProfileImageError"/>
 						</v-avatar>
+            <v-icon color="orange" style="position: absolute; right: -28px;">mdi-chevron-down </v-icon>
             </v-btn>
 
+
 					</template>
+
 					<!-- 마이페이지 -->
 					<mypage-list></mypage-list>
 					<v-list>
@@ -296,6 +299,12 @@ export default Vue.extend({
   max-width: 1280px !important;
   padding: 24px;
   margin: 0 auto;
+}
+
+.mymenu {
+  top:64px !important;
+  box-shadow: 0px 0px 10px 2px rgba(26, 23, 23, 0.05) !important;
+  border: 1px solid rgba(43, 53, 65, 0.08);
 }
 
 @media screen and (max-width: 720px) {

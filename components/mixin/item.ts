@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import datefns from 'date-fns'
 @Component({
   filters: {
     cat(cat: any) {
@@ -25,22 +26,33 @@ import Component from 'vue-class-component'
       else if (intent === "find") return "찾습니다";
     },
     datepassed(value: any): any {
+
       if (Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60) < 60) {
         return (
           Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60) +
-          "분 전 홍보"
+          "분 전"
         );
       } else if (
         Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60) < 24
       ) {
         return (
           Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60) +
-          "시간 전 홍보"
+          "시간 전"
         );
-      } else {
+      } else if( Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60 / 24) < 30 ) {
         return (
           Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60 / 24) +
-          "일 전 홍보"
+          "일 전"
+        );
+
+      } else if( new Date().getFullYear() !== new Date(value).getFullYear()) {
+        return (
+          datefns.format(Date.parse(value), 'YY년 M월 D일')
+        );
+      }
+      else {
+        return (
+          datefns.format(Date.parse(value), 'M월 D일')
         );
       }
     },
@@ -64,6 +76,7 @@ import Component from 'vue-class-component'
 })
 export default class ItemMixin extends Vue {
   itemImageError = [];
+  itemErrorImageRoute = '/_nuxt/assets/404.jpg'
 
   onItemImageError($event: any, key: number) {
     if (!this.itemImageError[key]) {
@@ -80,18 +93,16 @@ export default class ItemMixin extends Vue {
   }
 
   getMediaSourceOfLink(link) {
-    let src;
-    if (link) {
-      if (link.media) {
-        if (link.media.s3 && link.media.s3.small) {
-          src = link.media.s3.small.location
-        }
-      }
+    console.log('link', link)
+
+    if ( link && link.media && link.media.s3 && link.media.s3.small ) {
+      return link.media.s3.small.location
+    } else if( typeof link === 'string'){
+      return link
     } else {
-      return 'empty link'
+      return this.itemErrorImageRoute
     }
 
-    return src || 'no meta image source'
   }
   thumbImages(item) {
     let imgsrcArr = [];

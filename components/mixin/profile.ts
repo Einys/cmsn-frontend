@@ -5,6 +5,7 @@ export default class MyMixin extends Vue {
   myMixinValue = 'Fetch my mixin';
   profileImageError = false;
   profileImageErrorArray = []
+  profileErrorImageRoute = '/_nuxt/assets/default.jpg'
   onProfileImageError($event) {
     if (!this.profileImageError) {
       this.profileImageError = true;
@@ -23,7 +24,8 @@ export default class MyMixin extends Vue {
   }
 
   get profilePic() {
-    return this.authUser.photos[0].value!.replace("_normal", "");
+    const pic = this.authUser.photos[0].value
+    return pic.replace("_normal", "");
   }
 
   bigProfilePic( path ){

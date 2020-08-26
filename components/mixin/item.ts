@@ -21,9 +21,33 @@ import datefns from 'date-fns'
           return "";
       }
     },
+    catadd(cat: any) {
+      switch (cat) {
+        case "art":
+          return "그림";
+          break;
+        case "wri":
+          return "글, 점술..";
+          break;
+        case "des":
+          return "디자인, 공예..";
+          break;
+        case "mus":
+          return "음악, 보이스..";
+          break;
+        default:
+          return "";
+      }
+    },
     intent(intent: any) {
-      if (intent === "open") return "열었어요";
-      else if (intent === "find") return "찾습니다";
+      if (intent === "open"){
+        return "열었어요"
+      }
+      else if (intent === "find"){
+        return "찾습니다"
+      } else {
+        return "분류 필요"
+      }
     },
     datepassed(value: any): any {
 
@@ -81,7 +105,7 @@ export default class ItemMixin extends Vue {
   onItemImageError($event: any, key: number) {
     if (!this.itemImageError[key]) {
       this.itemImageError[key] = true
-      $event!.target!.src = require("@/assets/404.jpg");
+      $event.target.src = require("@/assets/404.jpg");
     }
   }
   onEmptyItem($event) {

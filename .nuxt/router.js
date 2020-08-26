@@ -13,6 +13,7 @@ const _8c49b97a = () => interopDefault(import('..\\pages\\mypage\\following.vue'
 const _4e0945f2 = () => interopDefault(import('..\\pages\\mypage\\items.vue' /* webpackChunkName: "pages_mypage_items" */))
 const _782f7824 = () => interopDefault(import('..\\pages\\mypage\\likes.vue' /* webpackChunkName: "pages_mypage_likes" */))
 const _6623511b = () => interopDefault(import('..\\pages\\mypage\\login.vue' /* webpackChunkName: "pages_mypage_login" */))
+const _3b66e51a = () => interopDefault(import('..\\pages\\mypage\\notifications.vue' /* webpackChunkName: "pages_mypage_notifications" */))
 const _d83a235c = () => interopDefault(import('..\\pages\\NotFound.vue' /* webpackChunkName: "pages_NotFound" */))
 const _136389f5 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpackChunkName: "pages_Privacy" */))
 const _1053e4a1 = () => interopDefault(import('..\\pages\\t\\index.vue' /* webpackChunkName: "pages_t_index" */))
@@ -82,6 +83,10 @@ export const routerOptions = {
       path: "login",
       component: _6623511b,
       name: "mypage-login"
+    }, {
+      path: "notifications",
+      component: _3b66e51a,
+      name: "mypage-notifications"
     }]
   }, {
     path: "/NotFound",

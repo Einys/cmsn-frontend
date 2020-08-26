@@ -34,51 +34,78 @@
 		<v-row v-if="myUser._items && myUser._items[0]" align="center" justify="center">
 
 			<v-col cols="12" md="8">
-				<div class="headline font-weight-bold mb-2"> 나의 홍보 </div>
-				<v-card v-for="item in myUser._items" :key="item.id" class="mb-2" flat>
-					<v-list-item two-line :to=" '/i/'+item.id ">
+				<v-row align="center" no-gutters>
+					<v-col cols="12" md="auto">
+						<div class="headline font-weight-bold"> 나의 홍보 </div>
+
+					</v-col>
+					<v-col cols="12" md="auto">
+						<v-subheader class="px-0">비활성화된 지 오래된 홍보는 삭제될 수 있습니다.</v-subheader>
+
+					</v-col>
+				</v-row>
+				<v-card v-for="item in myUser._items" :key="item.id" class="mb-2" :flat="!item.activated" :disabled="!item.activated">
+
+					<v-list-item three-line>
 
 						<v-list-item-avatar size="100">
-							<img v-if="item.attachment && item.attachment[0]" :src="item.attachment[0].src" @error="item.attachment[0].src = emptyItemImage" />
+							<img v-if="item.attachment && item.attachment[0]" :src="item.attachment[0].src" @error="onItemImageError($event, item.attachment[0].src)" />
 							<img v-else :src="emptyItemImage" />
 
 						</v-list-item-avatar>
 						<v-list-item-content>
 
 							<v-list-item-content>
-								<v-list-item-subtitle>
-									{{ item.departedAt | datepassed }} 홍보
+
+								<v-list-item-subtitle style="font-size:1em;">
+									<v-card-text class="px-0 py-0">
+										{{ item.text | text | nonewline }}
+									</v-card-text>
 								</v-list-item-subtitle>
-								<v-list-item-title>
-									{{ item.text | text | nonewline }}
-								</v-list-item-title>
+								<v-list-item-subtitle style="font-size:0.8em;">
+									<v-row no-gutters align="center">
+										<span class="grey--text pr-1">마지막 홍보 <span>{{ item.departedAt | datepassed }}</span></span>
+										<template v-if="$vuetify.breakpoint.mdAndUp">
+											<v-btn text color="blue">
+												<v-icon small>mdi-rewind</v-icon>재홍보
+											</v-btn>
+											<v-btn color="blue-grey" style="position:absolute; right:0;" class="mr-1" text :to=" '/i/'+item.id ">
+												<v-icon left>mdi-file-document-outline</v-icon>자세히
+											</v-btn>
+										</template>
 
+									</v-row>
+								</v-list-item-subtitle>
 							</v-list-item-content>
-
 						</v-list-item-content>
-
 					</v-list-item>
-
+					<v-card-actions v-if="$vuetify.breakpoint.smAndDown" class="pt-0">
+						<v-btn color="blue-grey" class="mr-1" text :to=" '/i/'+item.id ">
+							<v-icon left>mdi-file-document-outline</v-icon>자세히
+						</v-btn>
+						<v-spacer></v-spacer>
+						<v-btn text color="blue">
+							<v-icon small left>mdi-rewind</v-icon>재홍보
+						</v-btn>
+					</v-card-actions>
 				</v-card>
 			</v-col>
 
 		</v-row>
 
-			<v-row v-else align="center" justify="center" class="grey--text text--darken-2" style="min-height:200px;">
-        <v-col>
-          <v-row align="center" justify="center">
-				아직 아무것도 없습니다.
+		<v-row v-else align="center" justify="center" class="grey--text text--darken-2" style="min-height:200px;">
+			<v-col>
+				<v-row align="center" justify="center">
+					아직 아무것도 없습니다.
 
-          </v-row>
-          <v-row align="center" justify="center">
-				홍보를 하시려면 <nuxt-link to="/help"> &nbsp;이용안내</nuxt-link> 를 참고해주세요.
+				</v-row>
+				<v-row align="center" justify="center">
+					홍보를 하시려면 <nuxt-link to="/help"> &nbsp;이용안내</nuxt-link> 를 참고해주세요.
 
-          </v-row>
-        </v-col>
+				</v-row>
+			</v-col>
 
-
-			</v-row>
-
+		</v-row>
 
 	</v-container>
 </template>

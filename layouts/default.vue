@@ -15,13 +15,13 @@
 
 			<!-- 로그인 -->
 			<span v-if="$store.state.authUser">
-				<v-menu color="background" transition="slide-y-transition"  content-class="mymenu" >
+				<v-menu offset-y color="background" transition="slide-y-transition"  content-class="mymenu" >
 					<template v-slot:activator="{ on, attrs }">
-            <v-btn fab small elevation="1" v-bind="attrs" v-on="on" class="mr-3">
+            <v-btn fab small elevation="1" v-bind="attrs" v-on="on" class="ml-2 mr-3">
 						<v-avatar size=40  style="cursor:pointer">
 							<img v-if="$store.state.authUser.photos && $store.state.authUser.photos.length > 0 && $store.state.authUser.photos[0].value " :src="$store.state.authUser.photos[0].value" @error="onProfileImageError"/>
 						</v-avatar>
-            <v-icon color="orange" style="position: absolute; right: -28px;">mdi-chevron-down </v-icon>
+            <v-icon color="orange" style="position: absolute; right: -26px;">mdi-chevron-down </v-icon>
             </v-btn>
 
 

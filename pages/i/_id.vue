@@ -302,12 +302,15 @@ export default class ItemPage extends Mixins(ProfileMixin, ItemMixin) {
 
   catUpdate() {
     this.catUpdateProgressRunning = true;
-    setTimeout(() => {
-      console.log("update cat");
-      this.catUpdateProgressRunning = false;
-      this.catdialog = false;
+    this.$axios.$put('/1.0/data/items/update/index', { cat: this.item.index.cat, intent: this.item.index.intent}).then((res)=>{
+      console.log(res)
       window.location.reload();
-    }, 2000);
+    }).catch(err => {
+      console.error(err)
+    }).finally(()=>{
+      this.catUpdateProgressRunning = false
+    });
+
   }
 
   get needCat(){

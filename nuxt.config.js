@@ -64,6 +64,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/toast'
   ],
   /*
   ** vuetify module configuration
@@ -103,6 +104,18 @@ module.exports = {
   googleAnalytics: {
     id: 'UA-121532539-1'
   },
+  toast: {
+    position: 'top-center',
+    register: [ // Register custom toasts
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
+}
   /*
   ** Build configuration
   */

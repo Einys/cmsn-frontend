@@ -36,11 +36,11 @@
 			<v-col cols="12" md="8">
 				<v-row align="center" no-gutters>
 					<v-col cols="12" md="auto">
-						<div class="headline font-weight-bold"> 나의 홍보 </div>
+						<div class="headline font-weight-bold pr-3"> 나의 홍보 </div>
 
 					</v-col>
 					<v-col cols="12" md="auto">
-						<v-subheader class="px-0">비활성화된 지 오래된 홍보는 삭제될 수 있습니다.</v-subheader>
+						<v-subheader class="px-0">비활성화된 지 오래된 홍보는 세메센 등록이 해제될 수 있습니다.</v-subheader>
 
 					</v-col>
 				</v-row>
@@ -66,10 +66,13 @@
 									<v-row no-gutters align="center">
 										<span class="grey--text pr-1">마지막 홍보 <span>{{ item.departedAt | datepassed }}</span></span>
 										<template v-if="$vuetify.breakpoint.mdAndUp">
-											<v-btn text color="blue">
+											<v-btn text color="blue" v-if="item.activated">
 												<v-icon small>mdi-rewind</v-icon>재홍보
 											</v-btn>
-											<v-btn color="blue-grey" style="position:absolute; right:0;" class="mr-1" text :to=" '/i/'+item.id ">
+											<v-btn v-else color="orange" text style="opacity:1; pointer-events:auto" >
+												<v-icon small>mdi-rewind</v-icon>활성화
+											</v-btn>
+											<v-btn color="blue-grey" style="position:absolute; right:0; opacity:1; pointer-events:auto" class="mr-1" text :to=" '/i/'+item.id ">
 												<v-icon left>mdi-file-document-outline</v-icon>자세히
 											</v-btn>
 										</template>
@@ -79,13 +82,16 @@
 							</v-list-item-content>
 						</v-list-item-content>
 					</v-list-item>
-					<v-card-actions v-if="$vuetify.breakpoint.smAndDown" class="pt-0">
-						<v-btn color="blue-grey" class="mr-1" text :to=" '/i/'+item.id ">
+					<v-card-actions v-if="$vuetify.breakpoint.smAndDown" class="pt-0" style="opacity:1">
+						<v-btn color="blue-grey" class="mr-1" text :to=" '/i/'+item.id " style="pointer-events:auto">
 							<v-icon left>mdi-file-document-outline</v-icon>자세히
 						</v-btn>
 						<v-spacer></v-spacer>
-						<v-btn text color="blue">
+						<v-btn text color="blue" v-if="item.activated">
 							<v-icon small left>mdi-rewind</v-icon>재홍보
+						</v-btn>
+						<v-btn text v-else color="orange" style="pointer-events:auto">
+							<v-icon small left>mdi-rewind</v-icon>활성화
 						</v-btn>
 					</v-card-actions>
 				</v-card>

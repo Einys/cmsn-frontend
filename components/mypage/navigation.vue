@@ -37,7 +37,6 @@ export default class MypageNav extends Vue {
   activeTitle = "마이페이지";
 
   menus = [
-    { icon: "mdi-bell", title: "알림", to: '/mypage/notifications'},
     { icon: "mdi-account-circle", title: "나의 홍보", to: "/mypage/items" },
     { icon: "mdi-account-multiple", title: "팔로잉", to: "/mypage/following" },
     { icon: "mdi-heart", title: "마음함", to: "/mypage/likes" },

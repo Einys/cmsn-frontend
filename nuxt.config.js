@@ -33,7 +33,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#5dc596' },
+  loading: '~/layouts/loading.vue',
   /*
   ** Global CSS
   */
@@ -115,7 +115,7 @@ module.exports = {
         }
       }
     ]
-}
+},
   /*
   ** Build configuration
   */

@@ -15,6 +15,19 @@
 
 			<!-- 로그인 -->
 			<span v-if="$store.state.authUser">
+        <v-menu offset-y transition="slide-y-transition" content-class="mymenu">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn fab text v-bind="attrs" v-on="on">
+              <v-icon color="blue-grey darken-2"> mdi-bell </v-icon>
+            </v-btn>
+
+					</template>
+            <v-list width="320">
+              <v-alert border="left" colored-border color="orange" icon="mdi-compass-rose" class="ma-0">
+                반갑습니다. 알림 기능은 아직 준비중입니다.
+              </v-alert>
+            </v-list>
+        </v-menu>
 				<v-menu offset-y color="background" transition="slide-y-transition"  content-class="mymenu" >
 					<template v-slot:activator="{ on, attrs }">
             <v-btn fab small elevation="1" v-bind="attrs" v-on="on" class="ml-2 mr-3">

@@ -33,7 +33,7 @@
     "express-session": "^1.16.1",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
-    "nuxt": "^2.12.2",
+    "nuxt": "^2.14.4",
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "request": "^2.88.0",

@@ -16,7 +16,7 @@
 							@{{myUser.name}}
 						</div>
 						<div class="mt-2 ">
-							<v-btn outlined rounded color="grey darken-2" class="mr-2">프로필</v-btn>
+							<v-btn outlined rounded color="grey darken-2" class="mr-2">새로고침</v-btn>
 							<v-btn fab small outlined color="blue">
 								<v-icon small>mdi-twitter</v-icon>
 							</v-btn>
@@ -30,6 +30,14 @@
 		</v-row>
 
 		<!-- 나의 홍보 -->
+    <v-row>
+      <v-col cols="12" md="8" offset-md="2">
+    <v-alert icon="mdi-compass-rose" outlined>
+      현재 테스트 중입니다. 제공되는 기능이 변동될 수 있습니다.
+    </v-alert>
+      </v-col>
+    </v-row>
+
 
 		<v-row v-if="myUser._items && myUser._items[0]" align="center" justify="center">
 
@@ -40,7 +48,7 @@
 
 					</v-col>
 					<v-col cols="12" md="auto">
-						<v-subheader class="px-0">비활성화된 지 오래된 홍보는 세메센 등록이 해제될 수 있습니다.</v-subheader>
+						<v-subheader class="px-0">비활성화된 지 1개월이 지난 홍보는 이 목록에서 삭제될 수 있습니다. </v-subheader>
 
 					</v-col>
 				</v-row>

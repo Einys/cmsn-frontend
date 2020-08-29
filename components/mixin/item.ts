@@ -49,6 +49,16 @@ import datefns from 'date-fns'
         return "분류 필요"
       }
     },
+    coloredIntent(intent: any) {
+      if (intent === "open"){
+        return '<span style="color: red">열었어요</span>'
+      }
+      else if (intent === "find"){
+        return "찾습니다"
+      } else {
+        return "분류 필요"
+      }
+    },
     datepassed(value: any): any {
 
       if (Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60) < 60) {
@@ -71,7 +81,7 @@ import datefns from 'date-fns'
 
       } else if( new Date().getFullYear() !== new Date(value).getFullYear()) {
         return (
-          datefns.format(Date.parse(value), 'YY년 M월 D일')
+          datefns.format(Date.parse(value), 'YY년 M월')
         );
       }
       else {

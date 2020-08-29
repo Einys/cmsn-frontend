@@ -1,6 +1,6 @@
 <template>
 	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
-		<v-app-bar app clipped-left>
+		<v-app-bar app clipped-left color="background">
 			<span class="blue-grey--text text--darken-2 ma-0" @click="drawer= !drawer" style="cursor:pointer;">
 				<v-layout>
 					<img v-if=" isSmAndDownWindow " style=" height: 28px; " src=" /logo2020.svg " />
@@ -15,9 +15,10 @@
 
 			<!-- 로그인 -->
 			<span v-if="$store.state.authUser">
-        <v-menu offset-y transition="slide-y-transition" content-class="mymenu">
+
+        <!-- <v-menu offset-y transition="slide-y-transition" content-class="mymenu">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn fab text v-bind="attrs" v-on="on">
+            <v-btn fab text v-bind="attrs" v-on="on" disabled>
               <v-icon color="blue-grey darken-2"> mdi-bell </v-icon>
             </v-btn>
 
@@ -27,7 +28,7 @@
                 반갑습니다. 알림 기능은 아직 준비중입니다.
               </v-alert>
             </v-list>
-        </v-menu>
+        </v-menu> -->
 				<v-menu offset-y color="background" transition="slide-y-transition"  content-class="mymenu" >
 					<template v-slot:activator="{ on, attrs }">
             <v-btn fab small elevation="1" v-bind="attrs" v-on="on" class="ml-2 mr-3">
@@ -290,7 +291,11 @@ export default Vue.extend({
   padding: 10px 24px;
 }
 .v-app-bar {
-  box-shadow: 0px 0px 5px 2px rgba(26, 23, 23, 0.05) !important;
+  opacity: 0.95;
+  box-shadow: 0px 0px 10px 3px rgba(26, 23, 23, 0.05) !important;
+}
+.v-navigation-drawer__border{
+  opacity: 0;
 }
 
 .toolbar-search {

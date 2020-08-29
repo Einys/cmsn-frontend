@@ -1,11 +1,17 @@
 <template lang="html">
   <div class="loading-page" v-if="loading">
-    <p>로딩중...</p>
+    <v-row justify="center">
+      <dot-loader style="margin:0 auto;"></dot-loader>
+    </v-row>
   </div>
 </template>
 
 <script>
+import DotLoader from '@/components/loader/DotLoader.vue'
   export default {
+    components: {
+      DotLoader
+    },
     data: () => ({
       loading: false
     }),
@@ -35,3 +41,4 @@
     z-index: 20;
   }
 </style>
+

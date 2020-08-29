@@ -125,17 +125,14 @@
 					</v-btn>
 
 					<v-spacer></v-spacer>
-					<v-btn text color="grey" fab small @click="likebtnclick" class="btn-like">
+          <v-btn text color="grey" fab small @click="likebtnclick" class="btn-like">
 						<v-icon>mdi-heart-outline</v-icon>
 					</v-btn>
+          <v-btn text color="light-blue" fab small class="btn-like" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank">
+						<v-icon left color="blue">mdi-twitter</v-icon>
+					</v-btn>
+
 				</v-card-actions>
-			</v-card>
-
-			<v-card flat class="mt-5" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank">
-				<v-card-text>
-					<v-icon left color="blue">mdi-twitter</v-icon> twitter.com/{{item._user.name}}/status...
-
-				</v-card-text>
 			</v-card>
 
 			<div class="mt-2" v-if="item && item.links && Array.isArray(item.links) && item.links[0]">

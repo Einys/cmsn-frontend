@@ -30,15 +30,6 @@
 		</v-row>
 
 		<!-- 나의 홍보 -->
-    <v-row>
-      <v-col cols="12" md="8" offset-md="2">
-    <v-alert icon="mdi-compass-rose" outlined>
-      현재 테스트 중입니다. 제공되는 기능이 변동될 수 있습니다.
-    </v-alert>
-      </v-col>
-    </v-row>
-
-
 		<v-row v-if="myUser._items && myUser._items[0]" align="center" justify="center">
 
 			<v-col cols="12" md="8">

@@ -1,13 +1,25 @@
 <template>
-	<v-container fluid fill-height>
+	<v-container fluid fill-height style="box-sizing:border-box;">
 
 		<v-row justify="center">
+			<v-col md="8">
+				<div class="headline font-weight-bold pr-3"> 팔로잉
+          <v-tooltip v-model="tooltip" top>
+						<template v-slot:activator="{ on, attrs }">
+							<v-btn icon v-bind="attrs" v-on="on" @click="tooltip = !tooltip">
+								<v-icon color="grey lighten-1">mdi-cart</v-icon>
+							</v-btn>
+						</template>
+						<span>Programmatic tooltip</span>
+					</v-tooltip>
+				</div>
+			</v-col>
 			<v-row align="center" justify="center" no-gutters style="width:100%; max-width:800px;">
 				<v-alert text type="info">
-					내가 팔로우한 계정(최대 1천개) 중 세메센에 홍보중인 계정이 있다면 표시합니다. 최근 15분 안에 팔로우한 계정은 표시되지 않을 수 있습니다.
+					내가 팔로우한 계정(최대 1천개) 중 세메센에 홍보중인 계정을 표시합니다. 최근 15분 안에 팔로우한 계정은 표시되지 않을 수 있습니다.
 				</v-alert>
 				<v-alert text type="info" color="green">
-					프로필 사진이 트위터 기본 이미지(사람모양)로 표시된다면 이용자가 세메센을 이용한 후에 트위터 프로필 사진을 변경한 경우일 수 있습니다.
+					프로필 사진이 기본 이미지<v-icon color="green">mdi-account</v-icon>로 표시되는 경우 이용자가 세메센을 이용한 후에 트위터 프로필 사진을 변경한 경우일 수 있습니다.
 				</v-alert>
 			</v-row>
 		</v-row>
@@ -54,7 +66,7 @@
 								</v-list-item-avatar>
 								<v-list-item-content>
 									<v-list-item-title style="font-size: 0.8em" class="grey--text text--darken-1">
-										마지막 홍보 {{item.departedAt | datepassed}}
+										마지막 홍보 {{item.departedAt | datepassed}} · {{item.index.intent[0] | intent}}
 									</v-list-item-title>
 
 									<v-list-item-subtitle class="grey--text text--darken-3">
@@ -66,9 +78,8 @@
 								<v-row justify="center">
 									<v-card flat style="width:100%;  max-width:700px; background:transparent">
 										<v-card-text class="grey--text text--darken-3">
-
 											<v-row no-gutters class="grey--text text--darken-1">
-												마지막 홍보 {{item.departedAt | datepassed}}
+												마지막 홍보 {{item.departedAt | datepassed}} · {{item.index.intent[0] | intent}}
 											</v-row>
 											<v-row>
 												<v-col class="grow">
@@ -179,13 +190,13 @@ export default class MypageFollowingPage extends Mixins(
 ) {
   followingList: any[] = [];
   getCount = 0;
+  tooltip = false;
 
   logout() {
     return this.$axios.get("/logout");
   }
   mounted() {
     this.getfriends();
-    console.log(this.$vuetify.breakpoint);
   }
   async getfriends() {
     try {
@@ -202,7 +213,7 @@ export default class MypageFollowingPage extends Mixins(
           "/auth/twitter?returnTo=" +
           this.$route.fullPath;
       } else {
-        this.$nuxt.error(e.message)
+        this.$nuxt.error(e.message);
       }
     }
   }

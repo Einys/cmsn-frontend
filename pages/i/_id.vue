@@ -1,7 +1,7 @@
 <template>
 	<div class="wrapper itempage">
 		<div style="margin:0 auto; max-width:720px">
-			<v-row no-gutters v-if=" ($store.state.authUser && item._user.id === $store.state.authUser.id) ">
+			<v-row no-gutters >
 				<v-col>
 					<v-card flat>
 						<v-list>
@@ -55,6 +55,9 @@
 											</v-row>
 										</v-card-text>
 										<v-divider></v-divider>
+										<v-alert type="error" v-if="catdialogError">
+											{{catdialogError}}
+										</v-alert>
 
 										<v-card-actions>
 
@@ -73,36 +76,47 @@
 										<v-icon left>mdi-replay</v-icon>재홍보
 									</v-list-item-title>
 								</v-list-item>
-                <v-list-item>
+								<v-list-item>
 									<v-list-item-title>
 
 									</v-list-item-title>
 								</v-list-item>
 
-
-
 							</v-list-item-group>
-              <v-list-item-group color="red">
-                <v-list-item flat>
+							<v-list-item-group color="red">
+								<v-list-item flat>
 									<v-list-item-title>
 										<v-icon left>mdi-sleep</v-icon> 비활성화
 									</v-list-item-title>
 								</v-list-item>
-                                <v-list-item flat>
-									<v-list-item-title>
-										<v-icon left>mdi-delete</v-icon> 삭제
-									</v-list-item-title>
-								</v-list-item>
-              </v-list-item-group>
-              <v-divider>
+							</v-list-item-group>
+							<v-divider>
 
-              </v-divider>
+							</v-divider>
 						</v-list>
 					</v-card>
 				</v-col>
 
 			</v-row>
+
 			<v-card flat class="mb-1">
+              				<v-card-actions>
+					<v-btn text class="grey--text text--darken-1">
+						{{item.departedAt | datepassed}} 홍보
+					</v-btn>
+
+					<v-spacer></v-spacer>
+					<v-btn text color="grey" fab small @click="likebtnclick" class="btn-like">
+						<v-icon>mdi-heart-outline</v-icon>
+					</v-btn>
+					<v-btn text color="light-blue" fab small class="btn-like" :href="`https://twitter.com/i/web/status/${this.item.id}/`" target="_blank">
+						<v-icon color="blue">mdi-twitter</v-icon>
+					</v-btn>
+
+				</v-card-actions>
+        				<v-card-text class="body-1 black--text">
+					{{text | text}}
+				</v-card-text>
 				<div v-if="images" style="font-size:1px">
 					<img :src="images[0]" style="width:100%;" @error="onItemImageError($event, image+'carousel')" />
 					<v-row dense>
@@ -115,26 +129,16 @@
 					</v-row>
 				</div>
 
-				<v-card-text class="body-1 black--text">
-					{{text | text}}
-				</v-card-text>
 
-				<v-card-actions>
-					<v-btn text class="grey--text text--darken-1">
-						{{item.departedAt | datepassed}} 홍보
-					</v-btn>
 
-					<v-spacer></v-spacer>
-          <v-btn text color="grey" fab small @click="likebtnclick" class="btn-like">
-						<v-icon>mdi-heart-outline</v-icon>
-					</v-btn>
-          <v-btn text color="light-blue" fab small class="btn-like" :href="`https://twitter.com/${item._user.name}/status/${item.id}`" target="_blank">
-						<v-icon left color="blue">mdi-twitter</v-icon>
-					</v-btn>
 
-				</v-card-actions>
 			</v-card>
+			<v-card flat class="mt-5" :href="`https://twitter.com/i/web/status/${this.item.id}/`" target="_blank">
+				<v-card-text>
+					<v-icon left color="blue">mdi-twitter</v-icon> twitter.com/{{item._user.name}}/status...
 
+				</v-card-text>
+			</v-card>
 			<div class="mt-2" v-if="item && item.links && Array.isArray(item.links) && item.links[0]">
 
 				<div v-for="(link) in item.links" :key="link._id">
@@ -237,11 +241,11 @@ import ItemMixin from "@/components/mixin/item.ts";
       .then((res) => {
         return res;
       });
-    return { item: data, user: null };
+    return { item: data, user: data._user || {} };
   },
   head() {
     return {
-      title: `${this.item._user.name}의 커미션`,
+      title: `${this.user.name}의 커미션`,
     };
   },
   components: {
@@ -252,16 +256,14 @@ export default class ItemPage extends Mixins(ProfileMixin, ItemMixin) {
   item: any;
   user: any;
   catdialog = false;
+  catdialogError = "";
   catUpdateProgressRunning = false;
 
   mounted() {
-    if (this.item._user && this.item._user._items) {
-      console.log("do something");
-      this.$axios
-        .get("/1.0/data/users/id/" + this.item._user.id)
-        .then((res) => {
-          this.user = res.data;
-        });
+    if (this.item._user && !this.user._items) {
+      this.$axios.get("/1.0/data/users/id/" + this.user.id).then((res) => {
+        this.user = res.data;
+      });
     }
   }
 
@@ -299,22 +301,33 @@ export default class ItemPage extends Mixins(ProfileMixin, ItemMixin) {
 
   catUpdate() {
     this.catUpdateProgressRunning = true;
-    this.$axios.$put('/1.0/data/items/update/index', { cat: this.item.index.cat, intent: this.item.index.intent}).then((res)=>{
-      console.log(res)
-      window.location.reload();
-    }).catch(err => {
-      console.error(err)
-    }).finally(()=>{
-      this.catUpdateProgressRunning = false
-    });
-
+    this.catdialogError = "";
+    this.$axios
+      .$put("/1.0/data/items/update/index", {
+        id: this.item.id,
+        cat: this.item.index.cat,
+        intent: this.item.index.intent,
+      })
+      .then((res) => {
+        console.log(res);
+        this.catdialog = false;
+        this.$nuxt.$loading.start();
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.error(err);
+        this.catdialogError = err.message;
+      })
+      .finally(() => {
+        this.catUpdateProgressRunning = false;
+      });
   }
 
-  get needCat(){
-    return this.item.index.cat.length < 1
+  get needCat() {
+    return this.item.index.cat.length < 1;
   }
-  get needIntent(){
-    return this.item.index.intent.length < 1
+  get needIntent() {
+    return this.item.index.intent.length < 1;
   }
 }
 </script>

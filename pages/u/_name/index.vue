@@ -1,99 +1,153 @@
 <template>
-	<div class="wrapper" v-if="user">
+	<v-container fluid fill-height v-if="authUser && myUser">
+		<v-row class="my-profile" align="center" justify="center">
+			<v-col cols="12" sm="12" md="6" lg="4">
+				<v-row align="center" justify="start" class="d-flex pa-2 flex-nowrap" style="overflow:hidden; text-overflow:ellipsis">
+					<v-col align="center" justify="center" cols="5">
+						<v-avatar size="98%">
+							<img :src="profilePic" alt="my profile pic" @error="onProfileImageError">
+						</v-avatar>
+					</v-col>
+					<v-col cols="7">
+						<div class="headline" style="flex: 1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">
+							{{myUser.profileName}}
+						</div>
+						<div style="flex: 1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">
+							@{{myUser.name}}
+						</div>
+						<div class="mt-2 ">
+							<v-btn outlined rounded color="grey darken-2" class="mr-2">새로고침</v-btn>
+							<v-btn fab small outlined color="blue">
+								<v-icon small class="ma-0">mdi-twitter</v-icon>
+							</v-btn>
+						</div>
+					</v-col>
 
+				</v-row>
 
-			<v-row align="center" no-gutters>
-				<v-avatar size="120" class="avatar my-1 mr-5">
-					<img :src="user.profileImg" @error="onProfileImageError($event)" />
-				</v-avatar>
-        <span>
-          <span class="username"> {{user.profileName}} </span>
-          <a :href="twitterUser" target="_blank">
-          <div>
-            {{user.name}}&nbsp;<v-icon small color="blue">mdi-twitter</v-icon>
-          </div>
-          </a>
-        </span>
+			</v-col>
 
-			</v-row>
+		</v-row>
 
-      <v-row v-if="!itemIsEmpty">
-        <v-col v-for="item in user._items" :key="item.id">
-          <v-card>
-          <v-row align="center">
-            <v-col cols="12" sm="12">
-              <images :images="item.attachment"></images>
-            </v-col>
-            <v-col>
-              {{item.text}}
-            </v-col>
-          </v-row>
-          </v-card>
+		<!-- 나의 홍보 -->
+		<v-row v-if="myUser._items && myUser._items[0]" align="center" justify="center">
 
-        </v-col>
+			<v-col cols="12" md="8">
+				<v-row align="center" no-gutters>
+					<v-col cols="12" md="auto">
+						<div class="headline font-weight-bold pr-3"> 나의 홍보 </div>
 
-      </v-row>
+					</v-col>
+					<v-col cols="12" md="auto">
+						<v-subheader class="px-0">비활성화된 지 1개월이 지난 홍보는 이 목록에서 삭제될 수 있습니다. </v-subheader>
 
+					</v-col>
+				</v-row>
+				<v-card v-for="item in myUser._items" :key="item.id" class="mb-2" :flat="!item.activated" :disabled="!item.activated">
 
-		<div>
+					<v-list-item three-line>
 
-		</div>
+						<v-list-item-avatar size="100">
+							<img v-if="item.attachment && item.attachment[0]" :src="item.attachment[0].src" @error="onItemImageError($event, item.attachment[0].src)" />
+							<img v-else :src="emptyItemImage" />
 
-		{{user}}
-	</div>
+						</v-list-item-avatar>
+						<v-list-item-content>
+
+							<v-list-item-content>
+
+								<v-list-item-subtitle style="font-size:1em;">
+									<v-card-text class="px-0 py-0">
+										{{ item.text | text | nonewline }}
+									</v-card-text>
+								</v-list-item-subtitle>
+								<v-list-item-subtitle style="font-size:0.8em;">
+									<v-row no-gutters align="center">
+										<span class="grey--text pr-1">마지막 홍보 <span>{{ item.departedAt | datepassed }}</span></span>
+										<template v-if="$vuetify.breakpoint.mdAndUp">
+											<v-btn text color="blue" v-if="item.activated">
+												<v-icon small>mdi-rewind</v-icon>재홍보
+											</v-btn>
+											<v-btn v-else color="orange" text style="opacity:1; pointer-events:auto" >
+												<v-icon small>mdi-rewind</v-icon>활성화
+											</v-btn>
+											<v-btn color="blue-grey" style="position:absolute; right:0; opacity:1; pointer-events:auto" class="mr-1" text :to=" '/i/'+item.id ">
+												<v-icon left>mdi-file-document-outline</v-icon>자세히
+											</v-btn>
+										</template>
+
+									</v-row>
+								</v-list-item-subtitle>
+							</v-list-item-content>
+						</v-list-item-content>
+					</v-list-item>
+					<v-card-actions v-if="$vuetify.breakpoint.smAndDown" class="pt-0" style="opacity:1">
+						<v-btn color="blue-grey" class="mr-1" text :to=" '/i/'+item.id " style="pointer-events:auto">
+							<v-icon left>mdi-file-document-outline</v-icon>자세히
+						</v-btn>
+						<v-spacer></v-spacer>
+						<v-btn text color="blue" v-if="item.activated">
+							<v-icon small left>mdi-rewind</v-icon>재홍보
+						</v-btn>
+						<v-btn text v-else color="orange" style="pointer-events:auto">
+							<v-icon small left>mdi-rewind</v-icon>활성화
+						</v-btn>
+					</v-card-actions>
+				</v-card>
+			</v-col>
+
+		</v-row>
+
+		<v-row v-else align="center" justify="center" class="grey--text text--darken-2" style="min-height:200px;">
+			<v-col>
+				<v-row align="center" justify="center">
+					아직 아무것도 없습니다.
+
+				</v-row>
+				<v-row align="center" justify="center">
+					홍보를 하시려면 <nuxt-link to="/help"> &nbsp;이용안내</nuxt-link> 를 참고해주세요.
+
+				</v-row>
+			</v-col>
+
+		</v-row>
+
+	</v-container>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
-import cmsnService from "@/services/cmsn";
+import { Component, Mixins, Vue } from "vue-property-decorator";
+import ProfileMixin from "@/components/mixin/profile.ts";
+import ItemMixin from "@/components/mixin/item.ts";
 import Masonry from "@/components/Masonry.vue";
-import Images from "@/components/item/Images.vue";
+
 @Component({
-  async asyncData({ params, $axios }) {
-    const data = await $axios
-      .$get("/1.0/data/users/name/" + params.name)
-      .then(res => {
-        return res;
-      });
-    return { user: data };
+  async asyncData({ store, $axios }) {},
+  components: {
+    Masonry,
   },
   head() {
     return {
       title: `${this.user.name}의 커미션`
     };
   },
-  components:{
-    Masonry,
-    Images
-  }
 })
-export default class Users extends Vue {
-  user: any;
+export default class MypagePage extends Mixins(ProfileMixin, ItemMixin) {
+  followingList: [any];
 
-  title: "hello world!";
-  get twitterUser() {
-    return "https://twitter.com/" + this.user.name;
-  }
-  get itemIsEmpty() {
-    return this.user ? ( Array.isArray(this.user._items) ? false : true ) : true;
-  }
-  error = false;
-
-  onProfileImageError($event: any) {
-    if (!this.error) {
-      this.error = true;
-      $event.target.src = require("@/assets/default.jpg");
-    }
+  get authUser() {
+    return this.$store.state.authUser;
   }
 
+  get myUser() {
+    return this.$store.state.myUser;
+  }
+
+  get myItem() {
+    return this.myUser._items;
+  }
 }
 </script>
 
 <style scoped>
-.username {
-  color: #242627;
-  font-size: 38px;
-  font-weight: bold;
-}
 </style>

@@ -23,8 +23,6 @@ const _2e1bf802 = () => interopDefault(import('..\\pages\\bot\\my\\index.vue' /*
 const _307954b7 = () => interopDefault(import('..\\pages\\bot\\_cat\\index.vue' /* webpackChunkName: "pages/bot/_cat/index" */))
 const _d0068218 = () => interopDefault(import('..\\pages\\i\\_id.vue' /* webpackChunkName: "pages/i/_id" */))
 const _cd0b1e2c = () => interopDefault(import('..\\pages\\u\\_name\\index.vue' /* webpackChunkName: "pages/u/_name/index" */))
-const _7b5bf9ae = () => interopDefault(import('..\\pages\\u\\_name\\following.vue' /* webpackChunkName: "pages/u/_name/following" */))
-const _7e31f258 = () => interopDefault(import('..\\pages\\u\\_name\\likes.vue' /* webpackChunkName: "pages/u/_name/likes" */))
 const _68285b62 = () => interopDefault(import('..\\pages\\t\\_cat\\_intent\\index.vue' /* webpackChunkName: "pages/t/_cat/_intent/index" */))
 const _4f39ab9f = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -124,14 +122,6 @@ export const routerOptions = {
     path: "/u/:name",
     component: _cd0b1e2c,
     name: "u-name"
-  }, {
-    path: "/u/:name?/following",
-    component: _7b5bf9ae,
-    name: "u-name-following"
-  }, {
-    path: "/u/:name?/likes",
-    component: _7e31f258,
-    name: "u-name-likes"
   }, {
     path: "/t/:cat/:intent",
     component: _68285b62,

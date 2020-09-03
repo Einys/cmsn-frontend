@@ -2,23 +2,23 @@
 	<v-container fluid fill-height v-if="authUser && myUser">
 		<v-row class="my-profile" align="center" justify="center">
 			<v-col cols="12" sm="12" md="6" lg="4">
-				<v-row align="center" justify="center">
-					<v-col align="center" justify="center" cols="auto">
-						<v-avatar size="120">
+				<v-row align="center" justify="start" class="d-flex pa-2 flex-nowrap" style="overflow:hidden; text-overflow:ellipsis">
+					<v-col align="center" justify="center" cols="5">
+						<v-avatar size="98%">
 							<img :src="profilePic" alt="my profile pic" @error="onProfileImageError">
 						</v-avatar>
 					</v-col>
-					<v-col cols="auto">
-						<div class="headline" style="max-width:240px; white-space: nowrap; overflow:hidden; text-overflow:ellipsis">
+					<v-col cols="7">
+						<div class="headline" style="flex: 1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">
 							{{myUser.profileName}}
 						</div>
-						<div>
+						<div style="flex: 1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">
 							@{{myUser.name}}
 						</div>
 						<div class="mt-2 ">
 							<v-btn outlined rounded color="grey darken-2" class="mr-2">새로고침</v-btn>
 							<v-btn fab small outlined color="blue">
-								<v-icon small>mdi-twitter</v-icon>
+								<v-icon small class="ma-0">mdi-twitter</v-icon>
 							</v-btn>
 						</div>
 					</v-col>

@@ -68,7 +68,7 @@ export default class Card extends Vue {
 
   toItemPage(){
     if( this.item._user ){
-      return this.$router.push('/i/'+ this.item.id)
+      return window.open('about:blank').location.href = `/i/${this.item.id}`
     } else {
       return window.open('about:blank').location.href = `https://twitter.com/i/web/status/${this.item.id}/`
     }

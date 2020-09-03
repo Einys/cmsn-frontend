@@ -1,5 +1,5 @@
 <template>
-	<v-list full-width>
+	<v-list full-width v-if="myUser">
     <v-list-item two-line>
 
       <v-list-item-content>
@@ -39,7 +39,7 @@ export default class MypageNav extends Vue {
   menus = [
     { icon: "mdi-account-circle", title: "나의 홍보", to: "/mypage/items" },
     { icon: "mdi-account-multiple", title: "팔로잉", to: "/mypage/following" },
-    { icon: "mdi-heart", title: "마음함", to: "/mypage/likes" },
+    //{ icon: "mdi-heart", title: "마음함", to: "/mypage/likes" },
   ];
 
   mounted() {

@@ -45,7 +45,7 @@ export default class App extends Vue {
     try {
       this.busy = true;
       this.favorites = [];
-      const res = await this.$axios.get("/1.0/data/users/mypage/favorites");
+      const res = await this.$axios.get("/1.0/data/users/authenticated/favorites");
       this.favorites = res.data;
     } catch (e) {
       console.dir(e);

@@ -10,6 +10,8 @@ let AuthController = require('snbot/data/controller.auth')
 let UserController = require('snbot/data/controller.user')
 let DataController = require('snbot/data/controller.data')
 let ChatEventController = require('snbot/data/controller.chatevent')
+//@ts-ignore
+let ClientErrController // = require('snbot/data/controller.clienterr')
 
 if (process.env.SNBOT_LOCAL && process.env.SNBOT_LOCAL !== '0' && process.env.SNBOT_LOCAL_ENABLED && process.env.SNBOT_LOCAL_ENABLED !== '0') {
   console.log('[server] local router enabled')
@@ -19,6 +21,7 @@ if (process.env.SNBOT_LOCAL && process.env.SNBOT_LOCAL !== '0' && process.env.SN
   UserController = require('../' + process.env.SNBOT_LOCAL + '/data/controller.user')
   DataController = require('../' + process.env.SNBOT_LOCAL + '/data/controller.data')
   ChatEventController = require('../' + process.env.SNBOT_LOCAL + '/data/controller.chatevent')
+  ClientErrController = require('../' + process.env.SNBOT_LOCAL + '/data/controller.clienterr')
 } else {
   console.log('[server] npm module router enabled')
 }
@@ -30,20 +33,20 @@ router.use('/auths', AuthController.default);
 router.use('/users', UserController.default);
 router.use('/chatevent', ChatEventController.default);
 
+/* error */
+router.post('/error', ClientErrController ? ClientErrController.default : function (req, res, next) {
+
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  console.log('[SPA ERROR] ip ', ip);
+  res.locals.clientIp = ip;
+  console.log(req.body);
+
+  next()
+});
+
 router.get('/', (req, res) => {
   res.sendStatus(200)
 })
-
-router.post('/error', function (req, res, next) {
-  // query 는 헤더에 붙인거
-  // params 는 url 에 들어온거
-  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
-  console.log('[SPA ERROR] ip ', ip);
-  console.log(req.body);
-  res.status(200);
-  res.send('200 OK');
-});
 
 // catch 404 and forward to error handler
 router.use(function (req, res, next) {

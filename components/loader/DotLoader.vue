@@ -18,7 +18,7 @@ export default {
     },
     color: {
       type: String,
-      default: '#5dc596'
+      default: '#90caf1'
     },
     size: {
       type: String,
@@ -57,6 +57,10 @@ export default {
 .v-spinner .v-dot
 {
 
+}
+
+.colorsample{
+  font-color: #90caf1;
 }
 .v-spinner .v-dot1
 {

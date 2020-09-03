@@ -1,23 +1,17 @@
 <template>
-	<v-container fluid fill-height style="box-sizing:border-box;">
+	<v-container fluid fill-height style="box-sizing:border-box; max-width:800px;">
 
-		<v-row justify="center">
-			<v-col md="8">
-				<div class="headline font-weight-bold pr-3"> 팔로잉
-          <v-tooltip v-model="tooltip" top>
-						<template v-slot:activator="{ on, attrs }">
-							<v-btn icon v-bind="attrs" v-on="on" @click="tooltip = !tooltip">
-								<v-icon color="grey lighten-1">mdi-cart</v-icon>
-							</v-btn>
-						</template>
-						<span>Programmatic tooltip</span>
-					</v-tooltip>
-				</div>
-			</v-col>
+		<v-row no-gutters align="center">
+
+			<v-row no-gutters align="center" class="headline font-weight-bold py-5"> 팔로잉
+
+				<span class="pa-2" data-tooltip-text="내가 팔로우한 계정(최대 1천개) 중 세메센에 홍보중인 계정을 표시합니다. 최근 15분 안에 팔로우한 계정은 표시되지 않을 수 있습니다.">
+          <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+        </span>
+
+			</v-row>
+
 			<v-row align="center" justify="center" no-gutters style="width:100%; max-width:800px;">
-				<v-alert text type="info">
-					내가 팔로우한 계정(최대 1천개) 중 세메센에 홍보중인 계정을 표시합니다. 최근 15분 안에 팔로우한 계정은 표시되지 않을 수 있습니다.
-				</v-alert>
 				<v-alert text type="info" color="green">
 					프로필 사진이 기본 이미지<v-icon color="green">mdi-account</v-icon>로 표시되는 경우 이용자가 세메센을 이용한 후에 트위터 프로필 사진을 변경한 경우일 수 있습니다.
 				</v-alert>
@@ -152,7 +146,7 @@
 
 				</v-row>
 				<template v-if="user._items.length > 2">
-					<v-row no-gutters justify="center">
+					<v-row no-gutters justify="center" class="caption py-3">
 						... and more
 
 					</v-row>
@@ -201,7 +195,7 @@ export default class MypageFollowingPage extends Mixins(
   async getfriends() {
     try {
       this.followingList = [];
-      const res = await this.$axios.get("/1.0/data/users/mypage/friends/db");
+      const res = await this.$axios.get("/1.0/data/users/authenticated/friends/db");
       this.followingList = res.data;
     } catch (e) {
       console.dir(e);
@@ -236,4 +230,48 @@ export default class MypageFollowingPage extends Mixins(
 </script>
 
 <style scoped>
+[data-tooltip-text]:hover {
+	position: relative;
+}
+
+[data-tooltip-text]:after {
+	-webkit-transition: bottom .3s ease-in-out, opacity .3s ease-in-out;
+	-moz-transition: bottom .3s ease-in-out, opacity .3s ease-in-out;
+	transition: bottom .3s ease-in-out, opacity .3s ease-in-out;
+
+	background-color: rgba(0, 0, 0, 0.8);
+
+  -webkit-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+	-moz-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+	box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+
+  -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+  color: #FFFFFF;
+	font-size: 12px;
+  font-weight: normal;
+	margin-bottom: 10px;
+	padding: 7px 12px;
+	position: absolute;
+  width: 60vw;
+	min-width: 150px;
+	max-width: 300px;
+	word-wrap: break-word;
+
+	z-index: 9999;
+
+	opacity: 0;
+	left: -9999px;
+  top: 90%;
+
+	content: attr(data-tooltip-text);
+}
+
+[data-tooltip-text]:hover:after {
+	top: 130%;
+	left: 0;
+	opacity: 1;
+}
 </style>

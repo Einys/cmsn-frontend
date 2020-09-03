@@ -80,7 +80,7 @@ export default class MypagePage extends Vue {
   }
   mounted() {}
   async getfollowing(cursor?) {
-    const res = await this.$axios.get("/1.0/data/users/mypage/friends", {
+    const res = await this.$axios.get("/1.0/data/users/authenticated/friends", {
       params: { cursor: cursor || "-1" }
     });
     this.followingList.push(res.data.users);

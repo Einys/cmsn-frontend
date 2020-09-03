@@ -14,7 +14,7 @@
           <h1 v-else>An Error occurred</h1>
         </v-card-title>
         <v-card-text>
-          <p>
+          <p v-if="error.statusCode !== 404">
             어..? 예상치 못한 일이 일어났습니다.
           </p>
           <v-divider></v-divider>
@@ -22,10 +22,14 @@
           <p>
             {{error.stack}}
           </p>
-          <p>
-            {{error.message}}
+          <p v-if="error.statusCode === 404">
+            찾으시는 페이지가 없어졌거나 다른 곳으로 이동했습니다.
+            <!-- {{error.message}} -->
           </p>
-
+          <p v-else>
+            관리자에게 오류 보고서가 전달되었습니다. 원인을 알아내는 대로 고쳐질 것입니다.
+            <!-- {{error.message}} -->
+          </p>
         </v-card-text>
         <v-card-actions>
           <v-btn

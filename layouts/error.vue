@@ -1,7 +1,7 @@
 <template>
   <v-app>
   <v-container fill-height>
-    <v-col justify='center' align='center'>
+    <v-col justify='start' align='center'>
 
 
       <v-card flat max-width="420">
@@ -27,7 +27,7 @@
             <!-- {{error.message}} -->
           </p>
           <p v-else>
-            관리자에게 오류 보고서가 전달되었습니다. 원인을 알아내는 대로 고쳐질 것입니다.
+            불편을 드려 죄송합니다. 관리자에게 오류 보고서가 자동으로 전달되었습니다. 최대한 빠르게 원인을 파악하여 고치겠습니다.
             <!-- {{error.message}} -->
           </p>
         </v-card-text>

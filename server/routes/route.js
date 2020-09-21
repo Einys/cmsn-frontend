@@ -10,8 +10,7 @@ let AuthController = require('snbot/data/controller.auth')
 let UserController = require('snbot/data/controller.user')
 let DataController = require('snbot/data/controller.data')
 let ChatEventController = require('snbot/data/controller.chatevent')
-//@ts-ignore
-let ClientErrController // = require('snbot/data/controller.clienterr')
+let ClientErrController = require('snbot/data/controller.clienterr')
 
 if (process.env.SNBOT_LOCAL && process.env.SNBOT_LOCAL !== '0' && process.env.SNBOT_LOCAL_ENABLED && process.env.SNBOT_LOCAL_ENABLED !== '0') {
   console.log('[server] local router enabled')

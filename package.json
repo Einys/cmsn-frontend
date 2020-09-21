@@ -37,7 +37,7 @@
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "request": "^2.88.0",
-    "snbot": "^1.0.21",
+    "snbot": "^2.1.0",
     "twit": "^2.2.11",
     "vue-meta": "^2.3.3"
   },

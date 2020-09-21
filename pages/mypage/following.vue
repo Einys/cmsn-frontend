@@ -18,13 +18,16 @@
 			</v-row>
 		</v-row>
 
-		<v-row v-if="! (followingList&& followingList[0]) " class="pa-5" align="center" justify="center">
+		<v-row v-if=" followingLoading " class="pa-5" align="center" justify="center">
 			<v-col cols="6">
 				<v-progress-linear indeterminate color="light-blue"></v-progress-linear>
 
 			</v-col>
 		</v-row>
-		<v-row v-else no-gutters justify="center">
+    <v-row v-if=" !followingLoading && !(followingList && followingList[0]) " align="center" justify="center" style="height: 200px; color: #707070">
+      아직 홍보 중인 사람이 없어요.
+    </v-row>
+		<v-row v-if=" (followingList && followingList[0]) "  no-gutters justify="center">
 			<v-card v-for="user in followingWhoHasItemList" :key="user.id" class="my-1 usercard" flat style="width:100%; max-width:800px; box-sizing:border-box">
 
 				<v-list-item :href=" 'https://twitter.com/' + user.name " target="_blank">
@@ -185,6 +188,7 @@ export default class MypageFollowingPage extends Mixins(
   followingList: any[] = [];
   getCount = 0;
   tooltip = false;
+  followingLoading = false;
 
   logout() {
     return this.$axios.get("/logout");
@@ -194,6 +198,7 @@ export default class MypageFollowingPage extends Mixins(
   }
   async getfriends() {
     try {
+      this.followingLoading = true;
       this.followingList = [];
       const res = await this.$axios.get("/1.0/data/users/authenticated/friends/db");
       this.followingList = res.data;
@@ -209,6 +214,8 @@ export default class MypageFollowingPage extends Mixins(
       } else {
         this.$nuxt.error(e.message);
       }
+    } finally {
+      this.followingLoading = false;
     }
   }
 

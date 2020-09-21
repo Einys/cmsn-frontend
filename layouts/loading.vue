@@ -1,16 +1,20 @@
 <template lang="html">
   <div class="loading-page" v-if="loading">
     <v-row justify="center">
-      <dot-loader style="margin:0 auto;"></dot-loader>
+      <sync-loader style="margin:0 auto;"></sync-loader>
     </v-row>
   </div>
 </template>
 
 <script>
 import DotLoader from '@/components/loader/DotLoader.vue'
+import BounceLoader from '@/components/loader/BounceLoader.vue'
+import SyncLoader from '@/components/loader/SyncLoader.vue'
   export default {
     components: {
-      DotLoader
+      DotLoader,
+      BounceLoader,
+      SyncLoader
     },
     data: () => ({
       loading: false

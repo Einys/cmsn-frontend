@@ -123,7 +123,7 @@ export default class ItemMixin extends Vue {
   }
 
   get emptyItemImage() {
-    return require("@/assets/logo2020.png");
+    return require("@/assets/cmsn_img_empty.png");
   }
 
   getMediaSourceOfLink(link) {

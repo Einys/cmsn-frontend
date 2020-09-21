@@ -159,7 +159,7 @@
 											<div class="mt-2 font-weight-bold">{{link.meta.title}}</div>
 
 										</v-list-item-title>
-										<div class="caption" style="max-height:48px; overflow: hidden; line-height:1.3em; padding-top:4px; padding-right:3px;">{{link.meta.description}}</div>
+										<div class="caption" style="color:rgba(0, 0, 0, 0.6); max-height:48px; overflow: hidden; line-height:1.3em; padding-top:4px; padding-right:3px;">{{link.meta.description}}</div>
 									</div>
 								</v-list-item-content>
 							</v-list-item>
@@ -170,7 +170,7 @@
 
 				</div>
 			</div>
-			<v-card flat v-if="item._user" class="mt-5 mb-5 pb-5">
+			<v-card flat v-if="item._user" class="mt-5 mb-5 pb-5 pt-3">
 				<v-row justify="center" align="center">
 					<v-col cols="auto">
 						<v-avatar size="120">

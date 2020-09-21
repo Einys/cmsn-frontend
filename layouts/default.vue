@@ -292,7 +292,7 @@ export default Vue.extend({
 }
 .v-app-bar {
   opacity: 0.95;
-  box-shadow: 0px 0px 10px 3px rgba(26, 23, 23, 0.05) !important;
+  box-shadow: 0px 0px 10px 3px rgba(23, 26, 26, 0.05) !important;
 }
 .v-navigation-drawer__border{
   opacity: 0;

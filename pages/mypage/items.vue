@@ -64,12 +64,12 @@
 								<v-list-item-subtitle style="font-size:0.8em;">
 									<v-row no-gutters align="center">
 										<span class="grey--text pr-1">마지막 홍보 <span>{{ item.departedAt | datepassed }}</span></span>
-										<template v-if="$vuetify.breakpoint.mdAndUp">
-											<v-btn text color="blue" v-if="item.activated">
-												<v-icon small>mdi-rewind</v-icon>재홍보
+										<template v-if="$vuetify.breakpoint.mdAndUp" >
+											<v-btn text color="blue" v-if="item.activated" @click="promote(item)" >
+												재홍보
 											</v-btn>
 											<v-btn v-else color="orange" text style="opacity:1; pointer-events:auto" >
-												<v-icon small>mdi-rewind</v-icon>활성화
+												활성화
 											</v-btn>
 											<v-btn color="blue-grey" style="position:absolute; right:0; opacity:1; pointer-events:auto" class="mr-1" text :to=" '/i/'+item.id ">
 												<v-icon left>mdi-file-document-outline</v-icon>자세히
@@ -87,10 +87,10 @@
 						</v-btn>
 						<v-spacer></v-spacer>
 						<v-btn text color="blue" v-if="item.activated">
-							<v-icon small left>mdi-rewind</v-icon>재홍보
+							재홍보
 						</v-btn>
 						<v-btn text v-else color="orange" style="pointer-events:auto">
-							<v-icon small left>mdi-rewind</v-icon>활성화
+							활성화
 						</v-btn>
 					</v-card-actions>
 				</v-card>
@@ -102,11 +102,9 @@
 			<v-col>
 				<v-row align="center" justify="center">
 					아직 아무것도 없습니다.
-
 				</v-row>
 				<v-row align="center" justify="center">
 					홍보를 하시려면 <nuxt-link to="/help"> &nbsp;이용안내</nuxt-link> 를 참고해주세요.
-
 				</v-row>
 			</v-col>
 
@@ -129,6 +127,22 @@ import Masonry from "@/components/Masonry.vue";
 })
 export default class MypagePage extends Mixins(ProfileMixin, ItemMixin) {
   followingList: [any];
+  promoteError: any = false;
+  promoteInProgress = false;
+  promote( item ){
+    this.promoteInProgress = true;
+	  this.$axios.post("/1.0/data/items/promote", { ... item }).then((res)=>{
+      if( res.status !== 200 ){
+        this.promoteError = res.status
+      } else {
+
+      }
+    }).catch(err => {
+      this.promoteError = err
+    }).finally(()=>{
+      this.promoteInProgress = false
+    });
+  }
 
   get authUser() {
     return this.$store.state.authUser;

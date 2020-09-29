@@ -1,8 +1,11 @@
 <template>
 	<div>
 		<div class="wrapper">
+
+			<v-btn @click="makeError()">에러만들기</v-btn>
+
 			<h3 class="pt-5 pb-1">원하시는 커미션이 있나요?</h3>
-			<cat-horiz ></cat-horiz>
+			<cat-horiz></cat-horiz>
 			<br>
 			<ad-banner></ad-banner>
 			<h3 class="pt-5 pb-1">세메센 최신 홍보</h3>
@@ -11,7 +14,7 @@
 			<div v-if="!isEmpty">
 
 				<h3 class="pt-5 pb-1">카테고리 선택하고 더보기</h3>
-				<cat-horiz ></cat-horiz>
+				<cat-horiz></cat-horiz>
 
 			</div>
 
@@ -32,7 +35,7 @@ export default Vue.extend({
     CatHoriz,
     Masonry,
     Loader,
-    "ad-banner": AdLargeBanner
+    "ad-banner": AdLargeBanner,
   },
   data: () => {
     return {
@@ -41,7 +44,7 @@ export default Vue.extend({
       artList: [],
       wriList: [],
       desList: [],
-      musList: []
+      musList: [],
     };
   },
   async asyncData({ params }) {
@@ -51,7 +54,7 @@ export default Vue.extend({
   },
   mounted() {
     this.petchList();
-    googletag.cmd.push(function() {
+    googletag.cmd.push(function () {
       googletag.display("banner1");
     });
     //this.petchEach() //나중에 메인에 개별 카테고리가 보이도록 만들기...
@@ -61,37 +64,40 @@ export default Vue.extend({
       this.busy = true;
       cmsnService
         .getItemlist({ count: 8 })
-        .then(res => {
+        .then((res) => {
           //console.log(res.data)
           this.list = res.data.list;
           console.log("petchList");
           this.busy = false;
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
           this.busy = false;
         });
     },
     petchEach() {
-      cmsnService.getItemlist({ cat: "art", count: 4 }).then(res => {
+      cmsnService.getItemlist({ cat: "art", count: 4 }).then((res) => {
         this.artList = res.data.list;
       });
-      cmsnService.getItemlist({ cat: "wri", count: 4 }).then(res => {
+      cmsnService.getItemlist({ cat: "wri", count: 4 }).then((res) => {
         this.wriList = res.data.list;
       });
-      cmsnService.getItemlist({ cat: "des", count: 4 }).then(res => {
+      cmsnService.getItemlist({ cat: "des", count: 4 }).then((res) => {
         this.desList = res.data.list;
       });
-      cmsnService.getItemlist({ cat: "mus", count: 4 }).then(res => {
+      cmsnService.getItemlist({ cat: "mus", count: 4 }).then((res) => {
         this.musList = res.data.list;
       });
     },
     getUser() {
-      this.$axios.$get('/user').then(res =>{
-        console.log(res)
-        this.$store.commit('SET_USER', res)
-      })
-    }
+      this.$axios.$get("/user").then((res) => {
+        console.log(res);
+        this.$store.commit("SET_USER", res);
+      });
+    },
+    makeError() {
+      throw new Error("make error");
+    },
   },
   computed: {
     isEmpty() {
@@ -100,7 +106,7 @@ export default Vue.extend({
       } else {
         return true;
       }
-    }
-  }
+    },
+  },
 });
 </script>

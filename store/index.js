@@ -38,7 +38,7 @@ export const actions = {
   },
   getAuthUser({commit}, context){
     console.log('[store/index.js]context.$axios')
-    return this.$axios.$get('/user').then(res =>{
+    return this.$axios.$get('/cmsnuser').then(res =>{
       commit('SET_AUTH_USER', res)
       return res
     }).catch(err =>{
@@ -47,7 +47,7 @@ export const actions = {
   },
   getAuthAndMyUser({commit}, context){
     console.log('[store/index.js]context.$axios')
-    return this.$axios.$get('/user').then(res =>{
+    return this.$axios.$get('/cmsnuser').then(res =>{
       commit('SET_AUTH_USER', res)
       return res
     }).then( authUser => {

@@ -2,7 +2,8 @@ const colors = require('vuetify/es5/util/colors').default
 
 
 module.exports = {
-
+  telemetry: false,
+  ssr: false,
   mode: 'spa',
   /**
   * env

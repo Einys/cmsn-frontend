@@ -173,7 +173,8 @@ app.get('/auth/twitter/callback', (req, res, next) => {
     delete req.session.returnTo;
 });
 
-app.get('/user', function (req, res) {
+app.get('/cmsnuser', function (req, res) {
+  console.log('/cmsnuser req.user: ', req.user)
   res.send(req.user);
 });
 

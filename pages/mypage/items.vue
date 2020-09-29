@@ -4,7 +4,7 @@
 			<v-col cols="12" sm="12" md="6" lg="4">
 				<v-row align="center" justify="start" class="d-flex pa-2 flex-nowrap" style="overflow:hidden; text-overflow:ellipsis">
 					<v-col align="center" justify="center" cols="5">
-						<v-avatar size="98%">
+						<v-avatar size="98%" >
 							<img :src="profilePic" alt="my profile pic" @error="onProfileImageError">
 						</v-avatar>
 					</v-col>
@@ -43,22 +43,15 @@
 
 					</v-col>
 				</v-row>
-				<v-card v-for="item in myItem" :key="item.id" class="mb-2" :flat="!item.activated" :disabled="!item.activated">
-					<v-row no-gutters justify="end" align="center" style="flex-wrap: nowrap; overflow: hidden;"  class="px-2 pt-2">
-						<v-col cols="auto" style="flex-wrap: nowrap;">
-							<item-cat-chip :item="item"></item-cat-chip>
-						</v-col>
-					</v-row>
-					<v-list-item three-line>
+				<v-card v-for="item in myItem" :key="item.id" class="mb-2 pt-5" :flat="!item.activated" :disabled="!item.activated">
+					<v-list-item three-line style="height:100px">
 
-						<v-list-item-avatar size="100">
+						<v-list-item-avatar size="100" tile class="ma-0 mr-4">
 							<img v-if="item.attachment && item.attachment[0]" :src="item.attachment[0].src" @error="onItemImageError($event, item.attachment[0].src)" />
 							<img v-else :src="emptyItemImage" />
 
 						</v-list-item-avatar>
 						<v-list-item-content>
-
-							<v-list-item-content>
 
 								<v-list-item-subtitle style="font-size:1em;">
 									<v-card-text class="px-0 py-0">
@@ -71,19 +64,22 @@
 
 									</v-row>
 								</v-list-item-subtitle>
-							</v-list-item-content>
+
 						</v-list-item-content>
 					</v-list-item>
-					<v-card-actions class="pt-0" style="opacity:1">
+					<v-card-actions class="pt-0" style="opacity:1; flex-wrap:wrap;">
+						<v-col cols="12" sm="auto" style="flex-wrap: nowrap;">
+							<item-cat-chip :item="item"></item-cat-chip>
+						</v-col>
 						<v-btn color="blue-grey" class="mr-1" text :to=" '/i/'+item.id " style="pointer-events:auto">
 							<v-icon left>mdi-file-document-outline</v-icon>자세히
 						</v-btn>
 						<v-spacer></v-spacer>
 						<v-btn text color="blue" v-if="item.activated">
-							재홍보
+							재홍보하기
 						</v-btn>
-						<v-btn text v-else color="orange" style="pointer-events:auto">
-							활성화
+						<v-btn text v-else color="grey" style="pointer-events:auto">
+							비활성화됨
 						</v-btn>
 					</v-card-actions>
 				</v-card>

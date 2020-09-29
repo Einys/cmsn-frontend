@@ -33,15 +33,7 @@ router.use('/users', UserController.default);
 router.use('/chatevent', ChatEventController.default);
 
 /* error */
-router.post('/error', ClientErrController ? ClientErrController.default : function (req, res, next) {
-
-  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  console.log('[SPA ERROR] ip ', ip);
-  res.locals.clientIp = ip;
-  console.log(req.body);
-
-  next()
-});
+router.use('/error', ClientErrController.default);
 
 router.get('/', (req, res) => {
   res.sendStatus(200)

@@ -15,7 +15,6 @@
 
 			<!-- 로그인 -->
 			<span v-if="$store.state.authUser">
-
         <!-- <v-menu offset-y transition="slide-y-transition" content-class="mymenu">
           <template v-slot:activator="{ on, attrs }">
             <v-btn fab text v-bind="attrs" v-on="on" disabled>
@@ -86,6 +85,7 @@
 		</v-snackbar>
 		<!-- 메인 컨텐츠 -->
 		<v-content>
+
 			<nuxt />
 
 		</v-content>
@@ -215,8 +215,10 @@ export default Vue.extend({
     server: process.env.SERVER_URL,
     profileError: false
   }),
-  beforeCreate() {
+  async beforeCreate() {
     this.$store.dispatch("getAuthAndMyUser");
+    await this.$nextTick()
+
   },
   methods: {
     login() {

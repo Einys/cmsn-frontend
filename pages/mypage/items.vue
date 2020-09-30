@@ -3,12 +3,13 @@
 		<v-row class="my-profile" align="center" justify="center">
 			<v-col cols="12" sm="12" md="6" lg="4">
 				<v-row align="center" justify="start" class="d-flex pa-2 flex-nowrap" style="overflow:hidden; text-overflow:ellipsis">
-					<v-col align="center" justify="center" cols="5">
-						<v-avatar size="98%" >
+					<v-col align="center" justify="center" cols="auto">
+						<v-avatar size="120">
 							<img :src="profilePic" alt="my profile pic" @error="onProfileImageError">
 						</v-avatar>
 					</v-col>
-					<v-col cols="7">
+					<v-col cols="auto" class="pl-1">
+            <div style="width:164.22px"> <!--글자 칸이 버튼 크기에 맞춰 줄여지도록-->
 						<div class="headline" style="flex: 1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">
 							{{myUser.profileName}}
 						</div>
@@ -21,6 +22,8 @@
 								<v-icon small class="ma-0">mdi-twitter</v-icon>
 							</v-btn>
 						</div>
+            </div>
+
 					</v-col>
 
 				</v-row>
@@ -39,8 +42,7 @@
 
 					</v-col>
 					<v-col cols="12" md="auto">
-						<v-subheader class="px-0"> 마지막 홍보 후 6개월간 보관됩니다. </v-subheader>
-
+						<v-subheader class="px-0"> 오래된 홍보는 이 리스트에서 삭제될 수 있습니다. </v-subheader>
 					</v-col>
 				</v-row>
 				<v-card v-for="item in myItem" :key="item.id" class="mb-2 pt-5" :flat="!item.activated" :disabled="!item.activated">
@@ -54,7 +56,7 @@
 						<v-list-item-content>
 
 								<v-list-item-subtitle style="font-size:1em;">
-									<v-card-text class="px-0 py-0">
+									<v-card-text class="px-0 py-0 grey--text text--darken-2">
 										{{ item.text | text | nonewline }}
 									</v-card-text>
 								</v-list-item-subtitle>
@@ -68,12 +70,15 @@
 						</v-list-item-content>
 					</v-list-item>
 					<v-card-actions class="pt-0" style="opacity:1; flex-wrap:wrap;">
-						<v-col cols="12" sm="auto" style="flex-wrap: nowrap;">
+						<v-col cols="12" sm="auto" style="flex-wrap: nowrap;" class="pa-2 pt-3">
 							<item-cat-chip :item="item"></item-cat-chip>
 						</v-col>
-						<v-btn color="blue-grey" class="mr-1" text :to=" '/i/'+item.id " style="pointer-events:auto">
+						<v-btn color="blue-grey" text :to=" '/i/'+item.id " style="pointer-events:auto">
 							<v-icon left>mdi-file-document-outline</v-icon>자세히
 						</v-btn>
+            <v-btn text color="red" class="ml-0">
+              삭제
+            </v-btn>
 						<v-spacer></v-spacer>
 						<v-btn text color="blue" v-if="item.activated">
 							재홍보하기
@@ -175,6 +180,7 @@ export default class MypagePage extends Mixins(ProfileMixin, ItemMixin) {
       return null;
     }
   }
+
 }
 </script>
 

@@ -11,7 +11,7 @@
 			</span>
 			<v-spacer></v-spacer>
 			<!--<v-btn @click="throwError()" color="error">Make error</v-btn>-->
-			<v-btn class="mr-2" text @click="$router.push('/t')"><span class="body-1">카테고리</span></v-btn>
+			<v-btn class="mr-2" text @click="$router.push('/t')"><span>카테고리</span></v-btn>
 
 			<!-- 로그인 -->
 			<span v-if="$store.state.authUser">
@@ -72,8 +72,8 @@
 				</v-menu>
 
 			</span>
-			<v-btn v-else rounded dark outlined color=" blue" @click="login()">
-				<v-icon left>mdi-twitter</v-icon>마이페이지
+			<v-btn v-else text dark color=" blue" @click="login()">
+				마이페이지
 			</v-btn>
 
 		</v-app-bar>

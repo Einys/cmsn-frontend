@@ -11,7 +11,7 @@
           <h1 v-if="error.statusCode === 404">
             <v-icon>mdi-alert</v-icon> CODE 404 Page not found
           </h1>
-          <h1 v-else>An Error occurred</h1>
+          <h1 v-else>Error</h1>
         </v-card-title>
         <v-card-text>
           <p v-if="error.statusCode !== 404">

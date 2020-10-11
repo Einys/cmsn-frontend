@@ -72,7 +72,7 @@
 				</v-menu>
 
 			</span>
-			<v-btn v-else text dark color=" blue" @click="login()">
+			<v-btn v-else outlined rounded dark color=" blue" @click="login()">
 				마이페이지
 			</v-btn>
 

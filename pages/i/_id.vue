@@ -8,69 +8,7 @@
 							<v-list-item-group color="orange">
 
 								<v-subheader>내 홍보 옵션</v-subheader>
-								<v-dialog v-model="catdialog" width="500">
-									<template v-slot:activator="{ on, attrs }">
-										<v-list-item v-bind="attrs" v-on="on">
-
-											<v-row align="center" style="flex-wrap: nowrap; overflow: hidden;">
-												<v-col cols="auto">
-													<v-list-item-title>
-														<v-icon left>mdi-sort-variant</v-icon>
-														분류
-													</v-list-item-title>
-												</v-col>
-												<v-col cols="auto" style="flex-wrap: nowrap;">
-													<v-row>
-														<span v-for="cat of item.index.cat" :key="cat">
-															<v-chip> {{cat | cat}} </v-chip>
-														</span>
-														<span v-for="intent of item.index.intent" :key="intent">
-															<v-chip>{{intent | intent}}</v-chip>
-														</span>
-													</v-row>
-												</v-col>
-											</v-row>
-
-										</v-list-item>
-
-									</template>
-
-									<v-card>
-										<v-card-title class="pb-0 pt-5">홍보 목적</v-card-title>
-										<v-card-text>
-											<v-checkbox color="blue lighten-1" :error="needIntent" v-model="item.index.intent" hide-details :label=" 'open' | intent" value="open"></v-checkbox>
-											<v-checkbox :error="needIntent" v-model="item.index.intent" hide-details :label=" 'find' | intent" value="find"></v-checkbox>
-										</v-card-text>
-										<v-card-title class="pb-0 pt-5">분야</v-card-title>
-										<v-card-text>
-											<v-row no-gutters>
-												<v-col cols="12" sm="6">
-													<v-checkbox color="amber darken-1" :error="needCat" hide-details v-model="item.index.cat" :label=" 'art' | catadd" value="art"></v-checkbox>
-													<v-checkbox color="amber darken-2" :error="needCat" hide-details="auto" v-model="item.index.cat" :label=" 'des' | catadd" value="des"></v-checkbox>
-												</v-col>
-												<v-col cols="12" sm="6">
-													<v-checkbox color="amber darken-3" :error="needCat" hide-details v-model="item.index.cat" :label=" 'wri' | catadd" value="wri"></v-checkbox>
-													<v-checkbox color="amber darken-4" :error="needCat" hide-details v-model="item.index.cat" :label=" 'mus' | catadd" value="mus"></v-checkbox>
-												</v-col>
-											</v-row>
-										</v-card-text>
-										<v-divider></v-divider>
-										<v-alert type="error" v-if="catdialogError">
-											{{catdialogError}}
-										</v-alert>
-
-										<v-card-actions>
-
-											<v-btn color="primary" text @click="catdialog = false">
-												취소
-											</v-btn>
-											<v-spacer></v-spacer>
-											<v-btn color="primary" text @click="catUpdate" :loading="catUpdateProgressRunning" :disabled=" needCat || needIntent ">
-												확인
-											</v-btn>
-										</v-card-actions>
-									</v-card>
-								</v-dialog>
+                <item-cat-chip :item="item"></item-cat-chip>
 								<v-list-item>
 									<v-list-item-title>
 										<v-icon left>mdi-replay</v-icon>재홍보
@@ -231,6 +169,7 @@
 import { Component, Vue, Prop, Mixins } from "vue-property-decorator";
 import ItemCard from "@/components/item/Card.vue";
 import Images from "@/components/item/Images.vue";
+import ItemCatChip from "@/components/item/CatChip.vue";
 import ProfileMixin from "@/components/mixin/profile.ts";
 import ItemMixin from "@/components/mixin/item.ts";
 
@@ -250,6 +189,7 @@ import ItemMixin from "@/components/mixin/item.ts";
   },
   components: {
     Images,
+    ItemCatChip
   },
 })
 export default class ItemPage extends Mixins(ProfileMixin, ItemMixin) {

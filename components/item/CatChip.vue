@@ -84,6 +84,15 @@ export default class CatChip extends Mixins(ItemMixin) {
       });
   }
 
+  get itemIntent(){
+    let intent = this.item.index.intent;
+    if( Array.isArray(intent) ){
+      const idx = intent.indexOf('und')
+      intent.splice(idx, 1)
+    }
+    return intent
+  }
+
   get needCat() {
     return this.item.index.cat.length < 1;
   }

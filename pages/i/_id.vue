@@ -1,59 +1,67 @@
 <template>
-	<div class="wrapper itempage">
-		<div style="margin:0 auto; max-width:720px">
-			<v-row no-gutters >
-				<v-col>
-					<v-card flat>
-						<v-list>
-							<v-list-item-group color="orange">
+	<div class="wrapper itempage" style="background:rgba(255,255,255,0.1)">
+		<div style="margin:0 auto; max-width:720px;">
+			<v-list color="transparent">
+				<v-list-item-group color="orange">
 
-								<v-subheader>내 홍보 옵션</v-subheader>
-                <item-cat-chip :item="item"></item-cat-chip>
-								<v-list-item>
-									<v-list-item-title>
-										<v-icon left>mdi-replay</v-icon>재홍보
-									</v-list-item-title>
-								</v-list-item>
-								<v-list-item>
-									<v-list-item-title>
+					<v-subheader>내 홍보 옵션</v-subheader>
+					<v-list-item>
+						<v-list-item-title>
+							<v-icon left>mdi-folder-multiple-outline</v-icon><span class="mr-2"> 분류 </span>
+							<item-cat-chip :item="item"></item-cat-chip>
+						</v-list-item-title>
+					</v-list-item>
 
-									</v-list-item-title>
-								</v-list-item>
+					<v-list-item>
+						<v-list-item-title>
+							<v-icon left>mdi-replay</v-icon> 재홍보
+						</v-list-item-title>
+					</v-list-item>
+					<v-list-item>
+						<v-list-item-title>
+							<v-icon left>mdi-sleep</v-icon> 비활성화
+						</v-list-item-title>
+					</v-list-item>
+				</v-list-item-group>
+				<v-divider class="mt-3">
 
-							</v-list-item-group>
-							<v-list-item-group color="red">
-								<v-list-item flat>
-									<v-list-item-title>
-										<v-icon left>mdi-sleep</v-icon> 비활성화
-									</v-list-item-title>
-								</v-list-item>
-							</v-list-item-group>
-							<v-divider>
+				</v-divider>
+			</v-list>
 
-							</v-divider>
-						</v-list>
-					</v-card>
-				</v-col>
+			<v-card flat class="mb-1" color="transparent">
+				<v-card-actions>
+					<span>
+            <v-row>
+              <v-col>
+                <v-avatar>
+                  <img :src="item._user.profileImg">
+                </v-avatar>
+              </v-col>
+              <v-col>
+                <v-row class="font-weight-bold">
+                  @{{item._user.name}}
+                </v-row>
+                <v-row>
+                {{item.departedAt | datepassed}} 홍보
 
-			</v-row>
+                </v-row>
 
-			<v-card flat class="mb-1">
-              				<v-card-actions>
-					<v-btn text class="grey--text text--darken-1">
-						{{item.departedAt | datepassed}} 홍보
-					</v-btn>
+              </v-col>
+            </v-row>
+
+					</span>
 
 					<v-spacer></v-spacer>
-					<v-btn text color="grey" fab small @click="likebtnclick" class="btn-like">
+					<v-btn v-if="false" text color="grey" fab small @click="likebtnclick" class="btn-like">
 						<v-icon>mdi-heart-outline</v-icon>
 					</v-btn>
-					<v-btn text color="light-blue" fab small class="btn-like" :href="`https://twitter.com/i/web/status/${this.item.id}/`" target="_blank">
-						<v-icon color="blue">mdi-twitter</v-icon>
+					<v-btn text color="light-blue" class="btn-like" :href="`https://twitter.com/i/web/status/${this.item.id}/`" target="_blank">
+						트위터에서 보기<v-icon right color="blue">mdi-twitter</v-icon>
 					</v-btn>
 
 				</v-card-actions>
-        				<v-card-text class="body-1 black--text">
-					{{text | text}}
+				<v-card-text class="body-1 black--text pt-0" v-if="item.text" :inner-html.prop="item.text | textlink2Section">
+
 				</v-card-text>
 				<div v-if="images" style="font-size:1px">
 					<img :src="images[0]" style="width:100%;" @error="onItemImageError($event, image+'carousel')" />
@@ -67,18 +75,11 @@
 					</v-row>
 				</div>
 
-
-
-
 			</v-card>
-			<v-card flat class="mt-5" :href="`https://twitter.com/i/web/status/${this.item.id}/`" target="_blank">
-				<v-card-text>
-					<v-icon left color="blue">mdi-twitter</v-icon> twitter.com/{{item._user.name}}/status...
 
-				</v-card-text>
-			</v-card>
-			<div class="mt-2" v-if="item && item.links && Array.isArray(item.links) && item.links[0]">
-
+      <!-- 링크 -->
+			<div id="links" class="mt-2" v-if="item && item.links && Array.isArray(item.links) && item.links[0]">
+        <h2 class="mb-1 mt-4">링크된 페이지</h2>
 				<div v-for="(link) in item.links" :key="link._id">
 					<v-card flat :href="link.expanded_url" target="_blank">
 						<v-row align="center" style="overflow: hidden; text-overflow: ellipsis;">
@@ -89,13 +90,12 @@
 
 								</v-list-item-avatar>
 								<v-list-item-content>
-									<div class="caption">
-										<v-icon x-small left>mdi-link</v-icon>{{link.display_url}}
+									<div class="body-2">
+										<v-icon small left>mdi-link</v-icon>{{link.display_url}}
 									</div>
 									<div v-if="link.meta">
 										<v-list-item-title>
 											<div class="mt-2 font-weight-bold">{{link.meta.title}}</div>
-
 										</v-list-item-title>
 										<div class="caption" style="color:rgba(0, 0, 0, 0.6); max-height:48px; overflow: hidden; line-height:1.3em; padding-top:4px; padding-right:3px;">{{link.meta.description}}</div>
 									</div>
@@ -108,6 +108,8 @@
 
 				</div>
 			</div>
+
+      <!--프로필-->
 			<v-card flat v-if="item._user" class="mt-5 mb-5 pb-5 pt-3">
 				<v-row justify="center" align="center">
 					<v-col cols="auto">
@@ -189,7 +191,7 @@ import ItemMixin from "@/components/mixin/item.ts";
   },
   components: {
     Images,
-    ItemCatChip
+    ItemCatChip,
   },
 })
 export default class ItemPage extends Mixins(ProfileMixin, ItemMixin) {

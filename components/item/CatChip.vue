@@ -1,14 +1,14 @@
 <template>
 	<v-dialog v-model="catdialog" width="500">
 		<template v-slot:activator="{ on, attrs }">
-			<v-row no-gutters v-bind="attrs">
+			<span no-gutters v-bind="attrs">
 				<span v-for="cat of item.index.cat" :key="cat">
-					<v-chip v-on="on"> {{cat | cat}} </v-chip>
+					<v-chip v-on="on" dark color="orange"> {{cat | cat}} </v-chip>
 				</span>
 				<span v-for="intent of item.index.intent" :key="intent" v-bind:class="{ empty: intent === 'und' }">
-					<v-chip v-on="on" :color=" intent === 'und' ? 'orange lighten-2' : 'grey lighten-2' ">{{intent | intent}}</v-chip>
+					<v-chip v-on="on" dark :color=" intent === 'und' ? 'grey darken-2' : 'orange' ">{{intent | intent}}</v-chip>
 				</span>
-			</v-row>
+			</span>
 		</template>
 		<v-card>
 			<v-card-title class="pb-0 pt-5">홍보 목적</v-card-title>

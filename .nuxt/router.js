@@ -3,28 +3,30 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _f7f4dc0e = () => interopDefault(import('..\\pages\\About.vue' /* webpackChunkName: "pages_About" */))
-const _4b4f1485 = () => interopDefault(import('..\\pages\\Help.vue' /* webpackChunkName: "pages_Help" */))
-const _7250f434 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
-const _6ad2013c = () => interopDefault(import('..\\pages\\List.vue' /* webpackChunkName: "pages_List" */))
-const _7e0dfb5f = () => interopDefault(import('..\\pages\\mypage.vue' /* webpackChunkName: "pages_mypage" */))
-const _5f33a043 = () => interopDefault(import('..\\pages\\mypage\\index.vue' /* webpackChunkName: "pages_mypage_index" */))
-const _c27c43fc = () => interopDefault(import('..\\pages\\mypage\\following.vue' /* webpackChunkName: "pages_mypage_following" */))
-const _10c13831 = () => interopDefault(import('..\\pages\\mypage\\items.vue' /* webpackChunkName: "pages_mypage_items" */))
-const _f2bf93a6 = () => interopDefault(import('..\\pages\\mypage\\likes.vue' /* webpackChunkName: "pages_mypage_likes" */))
-const _28db435a = () => interopDefault(import('..\\pages\\mypage\\login.vue' /* webpackChunkName: "pages_mypage_login" */))
-const _f637af4e = () => interopDefault(import('..\\pages\\mypage\\notifications.vue' /* webpackChunkName: "pages_mypage_notifications" */))
-const _cb035e9a = () => interopDefault(import('..\\pages\\NotFound.vue' /* webpackChunkName: "pages_NotFound" */))
-const _1adc5118 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpackChunkName: "pages_Privacy" */))
-const _16ef4702 = () => interopDefault(import('..\\pages\\t\\index.vue' /* webpackChunkName: "pages_t_index" */))
-const _4dbb2af3 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
-const _6a7fdc0f = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
-const _7b3b64ba = () => interopDefault(import('..\\pages\\bot\\my\\index.vue' /* webpackChunkName: "pages_bot_my_index" */))
-const _66fe73d0 = () => interopDefault(import('..\\pages\\bot\\_cat\\index.vue' /* webpackChunkName: "pages_bot__cat_index" */))
-const _5d1f4595 = () => interopDefault(import('..\\pages\\i\\_id.vue' /* webpackChunkName: "pages_i__id" */))
-const _e402612e = () => interopDefault(import('..\\pages\\u\\_name\\index.vue' /* webpackChunkName: "pages_u__name_index" */))
-const _a9b57c64 = () => interopDefault(import('..\\pages\\t\\_cat\\_intent\\index.vue' /* webpackChunkName: "pages_t__cat__intent_index" */))
-const _2c4b4cde = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _b2181e8c = () => interopDefault(import('..\\pages\\About.vue' /* webpackChunkName: "pages_About" */))
+const _5faac661 = () => interopDefault(import('..\\pages\\dev32\\index.vue' /* webpackChunkName: "pages_dev32_index" */))
+const _33a959a4 = () => interopDefault(import('..\\pages\\Help.vue' /* webpackChunkName: "pages_Help" */))
+const _30ad8f32 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */))
+const _9a1d76fe = () => interopDefault(import('..\\pages\\List.vue' /* webpackChunkName: "pages_List" */))
+const _8e291684 = () => interopDefault(import('..\\pages\\mypage.vue' /* webpackChunkName: "pages_mypage" */))
+const _c708a3f8 = () => interopDefault(import('..\\pages\\mypage\\index.vue' /* webpackChunkName: "pages_mypage_index" */))
+const _8c49b97a = () => interopDefault(import('..\\pages\\mypage\\following.vue' /* webpackChunkName: "pages_mypage_following" */))
+const _4e0945f2 = () => interopDefault(import('..\\pages\\mypage\\items.vue' /* webpackChunkName: "pages_mypage_items" */))
+const _782f7824 = () => interopDefault(import('..\\pages\\mypage\\likes.vue' /* webpackChunkName: "pages_mypage_likes" */))
+const _6623511b = () => interopDefault(import('..\\pages\\mypage\\login.vue' /* webpackChunkName: "pages_mypage_login" */))
+const _3b66e51a = () => interopDefault(import('..\\pages\\mypage\\notifications.vue' /* webpackChunkName: "pages_mypage_notifications" */))
+const _d83a235c = () => interopDefault(import('..\\pages\\NotFound.vue' /* webpackChunkName: "pages_NotFound" */))
+const _136389f5 = () => interopDefault(import('..\\pages\\Privacy.vue' /* webpackChunkName: "pages_Privacy" */))
+const _1053e4a1 = () => interopDefault(import('..\\pages\\t\\index.vue' /* webpackChunkName: "pages_t_index" */))
+const _70a989b4 = () => interopDefault(import('..\\pages\\Terms.vue' /* webpackChunkName: "pages_Terms" */))
+const _52da212e = () => interopDefault(import('..\\pages\\User.vue' /* webpackChunkName: "pages_User" */))
+const _2e1bf802 = () => interopDefault(import('..\\pages\\bot\\my\\index.vue' /* webpackChunkName: "pages_bot_my_index" */))
+const _16d213f9 = () => interopDefault(import('..\\pages\\dev32\\images.vue' /* webpackChunkName: "pages_dev32_images" */))
+const _307954b7 = () => interopDefault(import('..\\pages\\bot\\_cat\\index.vue' /* webpackChunkName: "pages_bot__cat_index" */))
+const _d0068218 = () => interopDefault(import('..\\pages\\i\\_id.vue' /* webpackChunkName: "pages_i__id" */))
+const _cd0b1e2c = () => interopDefault(import('..\\pages\\u\\_name\\index.vue' /* webpackChunkName: "pages_u__name_index" */))
+const _68285b62 = () => interopDefault(import('..\\pages\\t\\_cat\\_intent\\index.vue' /* webpackChunkName: "pages_t__cat__intent_index" */))
+const _4f39ab9f = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -44,91 +46,99 @@ export const routerOptions = {
 
   routes: [{
     path: "/About",
-    component: _f7f4dc0e,
+    component: _b2181e8c,
     name: "About"
   }, {
+    path: "/dev32",
+    component: _5faac661,
+    name: "dev32"
+  }, {
     path: "/Help",
-    component: _4b4f1485,
+    component: _33a959a4,
     name: "Help"
   }, {
     path: "/inspire",
-    component: _7250f434,
+    component: _30ad8f32,
     name: "inspire"
   }, {
     path: "/List",
-    component: _6ad2013c,
+    component: _9a1d76fe,
     name: "List"
   }, {
     path: "/mypage",
-    component: _7e0dfb5f,
+    component: _8e291684,
     children: [{
       path: "",
-      component: _5f33a043,
+      component: _c708a3f8,
       name: "mypage"
     }, {
       path: "following",
-      component: _c27c43fc,
+      component: _8c49b97a,
       name: "mypage-following"
     }, {
       path: "items",
-      component: _10c13831,
+      component: _4e0945f2,
       name: "mypage-items"
     }, {
       path: "likes",
-      component: _f2bf93a6,
+      component: _782f7824,
       name: "mypage-likes"
     }, {
       path: "login",
-      component: _28db435a,
+      component: _6623511b,
       name: "mypage-login"
     }, {
       path: "notifications",
-      component: _f637af4e,
+      component: _3b66e51a,
       name: "mypage-notifications"
     }]
   }, {
     path: "/NotFound",
-    component: _cb035e9a,
+    component: _d83a235c,
     name: "NotFound"
   }, {
     path: "/Privacy",
-    component: _1adc5118,
+    component: _136389f5,
     name: "Privacy"
   }, {
     path: "/t",
-    component: _16ef4702,
+    component: _1053e4a1,
     name: "t"
   }, {
     path: "/Terms",
-    component: _4dbb2af3,
+    component: _70a989b4,
     name: "Terms"
   }, {
     path: "/User",
-    component: _6a7fdc0f,
+    component: _52da212e,
     name: "User"
   }, {
     path: "/bot/my",
-    component: _7b3b64ba,
+    component: _2e1bf802,
     name: "bot-my"
   }, {
+    path: "/dev32/images",
+    component: _16d213f9,
+    name: "dev32-images"
+  }, {
     path: "/bot/:cat?",
-    component: _66fe73d0,
+    component: _307954b7,
     name: "bot-cat"
   }, {
     path: "/i/:id?",
-    component: _5d1f4595,
+    component: _d0068218,
     name: "i-id"
   }, {
     path: "/u/:name?",
-    component: _e402612e,
+    component: _cd0b1e2c,
     name: "u-name"
   }, {
     path: "/t/:cat/:intent?",
-    component: _a9b57c64,
+    component: _68285b62,
     name: "t-cat-intent"
   }, {
     path: "/",
-    component: _2c4b4cde,
+    component: _4f39ab9f,
     name: "index"
   }],
 

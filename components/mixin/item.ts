@@ -97,7 +97,16 @@ import datefns from 'date-fns'
         .replace(/&lt;/g, "<")
         .replace(/&gt;/g, ">")
         .replace(/&amp;/g, "&")
-        .replace(/:\/\/link/g, '(link)');
+        .replace(/:\/\/link/g, '<span class="highlight">(링크)</span>');
+    },
+    textlink2Section(value:string){
+      return value
+        .replace(/<script>/g, " ")
+        .replace(/(?:\r\n|\r|\n)/g, "<br/>")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&amp;/g, "&")
+        .replace(/:\/\/link/g, '<a href="#links" name="link"><span class="highlight">(링크)</span></a>');
     },
     nonewline(value: string) {
       //replaceAll prototype 선언

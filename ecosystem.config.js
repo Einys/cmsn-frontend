@@ -8,7 +8,8 @@ module.exports = {
         "PORT": 8080,
         "NODE_ENV": "development",
         "DEBUG": "snbot:*, -snbot:equation.ts, -snbot:equation.js",
-        "DEBUG_FD": 1
+        "DEBUG_FD": 1,
+        "GOOGLE_APPLICATION_CREDENTIALS": 'C:/Users/ysunn/.googlecloud/logging_googlecloud.json'
       },
       env_production: {
         "PORT": 8080,

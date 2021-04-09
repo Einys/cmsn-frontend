@@ -2,6 +2,7 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const debug = require('debug')('server')
 
+
 // app
 const dotenv = require('dotenv');
 
@@ -29,6 +30,21 @@ if (process.env.SNBOT_LOCAL && process.env.SNBOT_LOCAL !== '0' && process.env.SN
   Snbot = require(process.env.SNBOT_LOCAL); // '../../snbot/dist'
 } else {
   console.log('[server] snbot npm');
+}
+
+let loggerBot = {};
+if( Snbot.logger ){
+  console.log('[server] snbot logger')
+  loggerBot.error = Snbot.logger.error ? Snbot.logger.error.bind(Snbot.logger) : console.error
+  loggerBot.info = Snbot.logger.info ? Snbot.logger.info.bind(Snbot.logger) : console.log
+} else {
+  loggerBot.error = console.error
+  loggerBot.info = console.log
+}
+if( typeof loggerBot.error ==='function' && typeof loggerBot.info === 'function'){
+  console.log('[server] logger OK')
+} else {
+  throw new Error('loggerBot.error, loggerBot.info must be functions')
 }
 
 var createError = require('http-errors');
@@ -150,7 +166,7 @@ passport.use(new TwitterStrategy({
   function (token, tokenSecret, profile, done) {
 
     //아마도 이것들은 auth/callback 으로 들어오는 데이터인것같다.
-    console.log('name : ', profile.username)
+    loggerBot.info('name : ', profile.username)
 
     profile.token = token;
     profile.tokenSecret = tokenSecret;
@@ -175,12 +191,12 @@ passport.deserializeUser(function (obj, done) {
 
 app.get('/auth/twitter', (req, res, next) => {
   req.session.returnTo = req.query.url
-  console.log('Session : ', req.session)
+  loggerBot.info('Session : ', req.session)
   next();
 }, passport.authenticate('twitter'));
 
 app.get('/auth/twitter/callback', (req, res, next) => {
-  console.log('Callback Session : ', req.session);
+  loggerBot.info('Callback Session : ', req.session);
   passport.authenticate('twitter', { successRedirect: req.session.returnTo, failureRedirect: req.session.returnTo })(req, res, next)
 });
 
@@ -208,7 +224,7 @@ const security = require('./security')
 app.get('/twitter', async function (request, response) {
 
   var crc_token = request.query.crc_token
-  console.log('received crc token : ', crc_token);
+  loggerBot.info('received crc token : ', crc_token);
 
   if (crc_token) {
     var hash = security.get_challenge_response(crc_token, process.env.consumer_secret)
@@ -226,25 +242,25 @@ app.post('/twitter', async function (req, res) {
   //@ts-ignore
 
   res.status(200).send('OK');
-  console.log('test env : ', process.env.TEST)
+  loggerBot.info('test env : ', process.env.TEST)
 
   // 예정 : DDOS 방어하기...*
   if (process.env.TEST == 0) {
     //테스트모드가 아닐 때 (실제 서버 웹훅으로 들어온 데이터일때)
     let raw = req.rawBody
-    console.log('[app.js: post/twitter]  raw : ' + raw);
+    //loggerBot.info('[app.js: post/twitter]  raw : ' + raw);
     let myHmac = security.get_challenge_response(raw, process.env.consumer_secret)
-    console.log('[app.js: post/twitter]  MY Hash : sha256=' + myHmac);
+    //loggerBot.info('[app.js: post/twitter]  MY Hash : sha256=' + myHmac);
     let myHash = 'sha256=' + myHmac;
     let twittersign = req.headers['x-twitter-webhooks-signature'];
 
-    console.log('[app.js: post/twitter]  Hash From twitter : ', req.headers['x-twitter-webhooks-signature']);
+    //loggerBot.info('[app.js: post/twitter]  Hash From twitter : ', req.headers['x-twitter-webhooks-signature']);
 
     if (!(myHash === twittersign)) {
-      console.log('[app.js: post/twitter]  WARNING Data posted came from not twitter');
+      loggerBot.info('[server] WARNING Data posted came from not twitter');
       //return;
     } else {
-      console.log('[server] Data from twitter')
+      loggerBot.info('[server] Data from twitter')
     }
     if (process.env.ALPHA_SERVER_URL) {
       //테섭(테스트용으로 트위터 웹훅이벤트 받아보려는 서버) URL 설정이 되어있는 경우
@@ -264,21 +280,21 @@ app.post('/twitter', async function (req, res) {
       request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
           // Print out the response body
-          console.log('Posted tweet data to Beta server or local(ngrok)')
+          loggerBot.info('Posted tweet data to Beta server or local(ngrok)')
         } else {
-          console.log('Beta server down.', response.statusCode);
+          loggerBot.info('Beta server down.', response.statusCode);
         }
       })
     } else {
-      console.log('[server/index.js] no alpha server url.')
+      loggerBot.info('[server/index.js] no alpha server url.')
     }
   } else {
-    console.log('[server/index.js] TEST : test mode')
+    loggerBot.info('[server/index.js] TEST : test mode')
   }
 
-  console.log('[server] twitter webhook event arrived. (Further log will be printed only when the DEBUG environment variable is set. When using pm2, set env DEBUG_FD = 1, to prevent DEBUG log from going to stderr )')
-  //console.log('[server] req.body', req.body )
-  Snbot.catchWebHookEvent(req.body).catch(err => { console.log(err) });
+  loggerBot.info('[server] twitter webhook event arrived.')
+  //loggerBot.info('[server] req.body', req.body )
+  Snbot.catchWebHookEvent(req.body).catch(err => { loggerBot.error(err) });
 
 })
 

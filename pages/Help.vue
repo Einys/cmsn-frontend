@@ -27,8 +27,8 @@
 			<v-icon>mdi-sync</v-icon> <span>같은 트윗을 여러 번 재홍보할 수 있습니다.</span>
 		</p>
 		<p>
-			<v-icon>mdi-alarm</v-icon> <span style="color: #f04747">재홍보는 4일에 한 번만 해 주세요. </span>
-			<span>유사한 내용은 한 트윗으로 모아서 홍보 요청해주세요.</span>
+			<v-icon>mdi-alarm</v-icon> <span style="color: #f04747">같은 트윗의 재홍보는 4일에 한 번, </span><span style="color: #3964b4"> 다른 트윗의 홍보는 4일에 2번까지만 해 주세요. 홍보 실수로 지우고 재업해서 홍보하는 등의 사유를 포함하여 4일에 2번입니다.</span>
+			<span>유사한 내용은 반드시 한 트윗으로 모아서 홍보 요청해주세요.</span><br> <span style="color: #3964b4; font-style: italic;"> (2021.04 에 추가된 내용) </span>
 		</p>
 		<p>
 			<v-icon>mdi-check-circle-outline</v-icon> <span>자신의 커미션만 홍보 요청해 주세요.</span>
@@ -147,5 +147,9 @@ export default {
   margin-right: 3px;
 }
 
+colortest{
+  color: #3964b4;
+  font-style: italic;
+}
 
 </style>

@@ -22,7 +22,9 @@ if (process.env.NODE_ENV === "development") {
 dotenv.config();
 
 console.log("[server] NODE_ENV : ", process.env.NODE_ENV);
+console.log("[server] TWITTER_NOPOST : ", process.env.TWITTER_NOPOST);
 console.log("[server] DEBUG : ", process.env.DEBUG);
+console.log("[server] TEST : ", process.env.TEST);
 console.log("[server] dotenv enabled : ", process.env.DOTENV_ENABLED);
 
 /**
@@ -367,7 +369,11 @@ app.post("/twitter", async function(req, res) {
 
 	loggerBot.info("[server] twitter webhook event arrived.");
 	Snbot.catchWebHookEvent(req.body).catch(err => {
-		loggerBot.error(err);
+		loggerBot.error({err:err, req: req.body});
+	}).catch(err => {
+		loggerBot.error({err:err, req: req.body});
+	}).catch(err => {
+		console.error(err);
 	});
 });
 

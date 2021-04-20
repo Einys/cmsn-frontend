@@ -20,6 +20,7 @@
     "IE >= 10"
   ],
   "dependencies": {
+    "@babel/preset-env": "^7.12.17",
     "@einys/snbot": "^1.1.2-alpha.3.beta",
     "axios": "^0.21.1",
     "connect-mongo": "^3.0.0",

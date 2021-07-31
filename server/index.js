@@ -55,7 +55,7 @@ if (
 ) {
 	console.log("[server] logger OK");
 } else {
-	throw new Error("loggerBot.error, loggerBot.info must be functions");
+	throw new Error("loggerBot.error, loggerBot.info must be function");
 }
 
 /**
@@ -198,6 +198,8 @@ passport.use(
 
 			profile.token = token;
 			profile.tokenSecret = tokenSecret;
+			loggerBot.info("token : ", token)
+			loggerBot.info("tokenSecret : ", tokenSecret)
 			//그리고 DB에서 찾아서 done 하면 다시 DB의 Session 데이터 안에 저장이 된다.
 
 			done(null, profile);
@@ -226,7 +228,7 @@ app.get(
 	"/auth/twitter",
 	(req, res, next) => {
 		req.session.returnTo = req.query.url;
-		loggerBot.info("Session : ", req.session);
+		loggerBot.info("Session : ", req.session); 
 		next();
 	},
 	passport.authenticate("twitter")

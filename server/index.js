@@ -409,3 +409,11 @@ async function start() {
 	});
 }
 start();
+
+process.on('SIGINT', function() {
+	Snbot.closeDatabaseconn().then(()=>{
+		process.exit(0);
+	}).catch(err =>{
+		process.exit(1);
+	})
+ });

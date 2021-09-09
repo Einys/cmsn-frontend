@@ -1,0 +1,27 @@
+version: "3"
+services: 
+  nginx:
+    ports: 
+      - "80:80"
+    log_driver: awslogs
+  node-app:
+    build: 
+      context: .
+      args:
+        NODE_ENV: production
+    environment: 
+      - NODE_ENV=production
+      - GOOGLE_APPLICATION_CREDENTIALS = /home/ubuntu/.googlecloud/logging-cmsn-prod.json
+      - GOOGLE_PROJECT_ID = cmsn-prod
+      - DATABASE_URI=mongodb+srv://imCute:y5966807@clusterfree-t0zkr.mongodb.net/cm
+      - consumer_key = gDwh72y2sbgSOBbFTz2EdUf0Z
+      - consumer_secret = jQ1V8lMnchXGpXyqklUECtyQuLLxWTUkIxt4C6a1V8EXWRnzBD
+      - TWITTER_NOPOST = 0
+    command: npm start
+    log_driver: awslogs
+  mongo:
+    image: mongo
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    log_driver: awslogs

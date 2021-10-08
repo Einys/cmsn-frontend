@@ -1,0 +1,27 @@
+version: "3"
+services: 
+  nginx:
+    ports: 
+      - "3000:80"
+  node-app:
+    build:
+      context: .
+      target: development
+      args: 
+        NODE_ENV: development
+    volumes: 
+      - ./:/app # 바인드 마운트
+      - /app/node_modules # 어나니머스 볼륨
+    environment: 
+      - NODE_ENV=development
+      - DATABASE_URI=mongodb+srv://imCute:y5966807@clusterfree-t0zkr.mongodb.net/test
+      - TEST=1
+      - TWITTER_NOPOST=1
+      - GOOGLE_APPLICATION_CREDENTIALS = C:/Users/ysunn/.googlecloud/logging_googlecloud.json
+      - GOOGLE_PROJECT_ID = cmsn-201301
+      - callback_url = http://127.0.0.1:8080/auth/twitter/callback
+      - SERVER_URL = http://127.0.0.1:8080
+      - consumer_key = gDwh72y2sbgSOBbFTz2EdUf0Z
+      - consumer_secret = jQ1V8lMnchXGpXyqklUECtyQuLLxWTUkIxt4C6a1V8EXWRnzBD
+    command: npm run dev 
+  

@@ -4,12 +4,12 @@ var router = express.Router();
 var createError = require('http-errors');
 var bodyParser = require('body-parser');
 
-let ItemController = require('@einys/snbot/data/controller.item')
-let BotController = require('@einys/snbot/data/controller.bot')
-let AuthController = require('@einys/snbot/data/controller.auth')
-let UserController = require('@einys/snbot/data/controller.user')
-let DataController = require('@einys/snbot/data/controller.data')
-let ChatEventController = require('@einys/snbot/data/controller.chatevent')
+let ItemController = require('@einys/snbot/dist/controller/item')
+let BotController = require('@einys/snbot/dist/controller/bot')
+let AuthController = require('@einys/snbot/dist/controller/auth')
+let UserController = require('@einys/snbot/dist/controller/user')
+let DataController = require('@einys/snbot/dist/controller/server-data')
+let ChatEventController = require('@einys/snbot/dist/controller/chatevent')
 
 /* GET data. */
 router.use('/items', ItemController.default);

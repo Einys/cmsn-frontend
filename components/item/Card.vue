@@ -2,7 +2,7 @@
 
 	<div>
 		<div v-if=" !isAD">
-			<profile :user="item._user" :departedAt="item.departedAt" />
+			<profile :user="item._user || {}" :departedAt="item.departedAt" />
 			<a :href=" 'https://twitter.com/' + computedUsername +'/status/'+ item.id " target="_blank" rel="noopener">
 				<div style='position:relative'>
 					<div :class="['text', {overlay: hideText, unhideable: unhideableText}]" v-if="item.text" :inner-html.prop="item.text | text"></div>
@@ -77,7 +77,9 @@ export default class Card extends Vue {
     if (this.item._user) {
       return this.item._user.name;
     } else {
-      throw new Error("no _user on item");
+      this.item._user = {}
+      this.$axios.post('/1.0/data/error', {message : `no _user on item ${this.item.id}`})
+      // throw new Error("no _user on item");
     }
   }
 

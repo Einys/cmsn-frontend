@@ -63,7 +63,7 @@ export default Vue.extend({
       cmsnService
         .getItemlist({ count: 8 })
         .then(res => {
-          //console.log(res.data)
+          // console.log(res.data)
           this.list = res.data.list;
           console.log("petchList");
           this.busy = false;

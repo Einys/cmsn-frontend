@@ -1,19 +1,21 @@
 <template>
   <a
-    :href=" 'https://twitter.com/'+ user.name"
+    :href=" user.name? 'https://twitter.com/'+ user.name : null "
     target="_blank"
     rel="noopener"
   >
     <v-row class="profile pa-2 py-3" no-gutters>
       <v-avatar size="32" class="avatar">
-        <img
+        <img v-if="user.profileImg"
           :src="user.profileImg"
           @error="onProfileImageError($event)"
         />
+        <img v-else src="@/assets/default.jpg"/>
       </v-avatar>
       <v-layout column>
       <v-row no-gutters align="center">
-      <span class="username">{{ user.name }}&nbsp;</span>
+      <span v-if="user.name !== null && user.name !== undefined" class="username">{{ user.name }}&nbsp;</span>
+      <span v-else class="caption grey--text"> (유저 확인 오류) &nbsp;</span>
       <v-icon :size="$vuetify.breakpoint.smAndUp? 14 : 12" color="grey">mdi-twitter</v-icon>
       </v-row>
 

@@ -7,7 +7,7 @@ module.exports = {
   * env
   */
   env: {
-    SERVER_URL: process.env.SERVER_URL || 'http://127.0.0.1:8080'
+    SERVER_URL: getBaseServerUrl()
   },
   /*
   ** Headers of the page
@@ -93,7 +93,7 @@ module.exports = {
    * axios
    */
   axios: {
-    baseURL: process.env.SERVER_URL
+    baseURL: getBaseServerUrl()
     // proxyHeaders: false
   },
   /**
@@ -112,4 +112,29 @@ module.exports = {
     extend(config, ctx) {
     }
   }
+}
+
+function getBaseServerUrl(){
+  let url;
+  if( process.env.NODE_ENV === 'production' ){
+
+    if( process.env.SERVER_URL !== undefined ){
+
+      url = process.env.SERVER_URL
+
+    } else {
+      throw new Error('process.env.SERVER_URL is empty. This env is mandatory for production >_<');
+    }
+  } else if( process.env.NODE_ENV === 'development' ) {
+
+    url = "127.0.0.1:8080"
+
+  } else {
+    console.log(`NODE_ENV is set to ${process.env.NODE_ENV}. Not production nor development`)
+    url = "127.0.0.1:8080"
+  }
+
+  console.log('[nuxt] api target SERVER_URL: ', url)
+
+  return url
 }

@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "development") {
   console.log("· Do : ")
   console.log("·    twitter get")
   console.log("·    test database modification ")
-  console.log("· Check ㅡ .env.dev, ecosystem.config ㅡ files for sure!")
+  console.log("· Check ㅡ .env.dev, ecosystem.config, docker-compose.yml ㅡ files for sure!")
 }
 
 dotenv.config();
@@ -416,4 +416,4 @@ process.on('SIGINT', function() {
 	}).catch(err =>{
 		process.exit(1);
 	})
- });
+});

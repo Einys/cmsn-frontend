@@ -17,7 +17,7 @@
     "browserslist": "browserslist",
     "docker-up": "docker-compose up -d",
     "docker-up2": "docker-compose up -d --scale node-app=2",
-    "docker-build": "docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t einys/cmsn --push ."
+    "docker-build": "docker buildx build --platform linux/amd64,linux/arm64 -t einys/cmsn --push ."
   },
   "browserslist": [
     "last 2 version",

@@ -1,5 +1,5 @@
 <template>
-	<v-container justify-center style="text-align:center; max-width:320px; padding:0; background-color: rgba(232, 233, 236, 1); border-radius:4px;">
+	<v-container justify-center style="text-align:center; max-width:320px; padding:0; background-color: rgba(232, 233, 235, 1); border-radius:4px;">
 		<v-col class="mb-4">
 			<v-btn text class="mb-2" to="/t/all/open">
 				<h2 style="cursor:pointer">커미션 열었어요</h2>

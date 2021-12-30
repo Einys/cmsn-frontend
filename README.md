@@ -4,6 +4,10 @@
 > npm run build
 > npm run pm2
 
+# Build including Docker (production)
+> export SERVER_URL(로컬 nuxt build용), SERVER_URL_TEST(docker nuxt build용)
+> npm run docker-build
+> npm run docker-up
 
 ## others
 

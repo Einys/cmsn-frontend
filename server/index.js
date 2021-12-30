@@ -131,7 +131,19 @@ app.use((req, res, next) => {
 	next();
 });
 
-Snbot.connectDatabase(process.env.DATABASE_URI);
+try {
+	if( process.env.NODE_ENV === "development" ){
+		console.log('connect to database: ', process.env.DATABASE_URI)
+	}
+	Snbot.Database.connect(process.env.DATABASE_URI, {ssl: true}).catch(e => {
+		console.log(e, 'mongoose connection failed')
+		process.exit(1)
+	});
+
+} catch(e) {
+	console.log(e)
+	process.exit(1)
+}
 
 /**
  * Passport Settings

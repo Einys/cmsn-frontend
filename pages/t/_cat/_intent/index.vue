@@ -149,17 +149,19 @@ export default class Card extends Vue {
     document.documentElement.scrollTop = 0;
     console.log("scroll to top ");
 
-    this.$axios
-      .$get("/1.0/data/items/list", {
-        params: {
+    cmsnService
+        .getItemlist({
           cat: this.cat === "all" ? undefined : this.cat,
           intent: this.intent,
           count: this.count,
           skip: this.skip,
+          //@ts-ignore
           keyword: this.q
-        }
-      })
-      .then(({ list, next }) => {
+        }) 
+      .then(res => {
+        return res.data
+      }).
+      then(({ list, next }) => {
 
         let listInclAd = this.pushAdd(list);
         this.list = listInclAd;

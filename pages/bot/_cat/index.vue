@@ -62,10 +62,12 @@ import collection from '@/plugins/collection'
 
 @Component({
   asyncData({ params, error, app }) {
-    return app.$axios.$get('/1.0/data/bots/limit/'+ params.cat)
-      .then(res => {
-        console.log(res);
-        return { limit: res.limit, count: res.count };
+    return cmsnService.getBotLimit(params.cat).then(res => {
+      return res.data
+    })
+      .then(data => {
+        console.log(data);
+        return { limit: data.limit, count: data.count };
       })
       .catch(err => {
         console.error(err);

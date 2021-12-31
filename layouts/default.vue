@@ -1,6 +1,6 @@
 <template>
 	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
-		<v-app-bar app :style="{background : $vuetify.theme.themes['light'].background, opacity: 0.95}">
+		<v-app-bar app :style="{background : $vuetify.theme.themes['light'].background, opacity: 0.96}">
 			<span class="blue-grey--text text--darken-2 ma-0" @click="drawer= !drawer" style="cursor:pointer;">
 				<v-layout>
 					<img style=" height: 28px; " :src="this.$vuetify.breakpoint.smAndDown ? '/logo2020.svg' :'/cmsnart.png'" />

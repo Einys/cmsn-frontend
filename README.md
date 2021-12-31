@@ -5,14 +5,12 @@
 > npm run pm2
 
 # Build including Docker (production)
-> export SERVER_URL(로컬 nuxt build용), SERVER_URL_TEST(docker nuxt build용)
 > npm run docker-build
 > npm run docker-up
 
 # env 
 ## production checklist
 > GOOGLE_APPLICATION_CREDENTIALS = /home/ubuntu/.googlecloud/logging-cmsn-prod.json
-> SERVER_URL
 
 ## development checklist
 ```

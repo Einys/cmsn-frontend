@@ -181,7 +181,7 @@ export default Vue.extend({
   },
   computed: {
     isRightDrawerPermanent() {
-      return this.$vuetify.breakpoint.mdAndUp;
+      return this.$vuetify.breakpoint.lgAndUp;
     }
   },
   watch: {
@@ -231,7 +231,7 @@ export default Vue.extend({
 
 // 오른쪽 서랍의 이상한 경계선 제거
 .theme--light.v-navigation-drawer:not(.v-navigation-drawer--floating) .v-navigation-drawer__border {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .v-btn__content .v-icon.v-icon--left, .v-btn__content .v-icon.v-icon--right{

@@ -1,10 +1,8 @@
 <template>
 
   <!-- /21750020995/lg-banner -->
-  <div style="margin:0 auto; height:90px; width:100%; background:white">
-  <div id='div-gpt-ad-1571325317379-0' style="margin:0 auto; text-align:center;">
+  <div id='div-gpt-ad-7777-0' style="margin:0 auto; text-align:center; height:240px; width:970px; background:white">
 
-  </div>
   </div>
 
 </template>
@@ -15,7 +13,7 @@ export default {
   props: {},
   mounted() {
     googletag.cmd.push(function() {
-      googletag.display("div-gpt-ad-1571325317379-0");
+      googletag.display("div-gpt-ad-7777-0");
     });
   },
   updated() {

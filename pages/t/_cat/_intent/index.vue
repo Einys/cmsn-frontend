@@ -1,11 +1,13 @@
 <template>
+
 	<div>
-		<!-- ad banner -->
-		<ad-lg-banner></ad-lg-banner>
+
 		<div class="wrapper">
+
 			<v-btn fab small depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
 				<v-icon>mdi-chevron-up</v-icon>
 			</v-btn>
+
 			<v-layout no-gutters row wrap justify-center align-center class="ma-2">
 
 				<v-flex xs12 sm8>
@@ -40,6 +42,8 @@
 
 			<div class="masonry-wrapper">
 				<page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
+            <!-- ad banner -->
+		<ad-lg-banner></ad-lg-banner>
 				<loader v-if="busy" />
 				<masonry v-if="!isEmpty" :list="list" :isArticle="!gallery" />
 				<page-button v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
@@ -60,6 +64,7 @@ import Loader from "@/components/Loader.vue";
 import AdMobileBanner from "@/components/ads/AdMobileBanner.vue";
 import AdMobileBanner2 from "@/components/ads/AdMobileBanner2.vue";
 import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
+import AdXLargeBanner from "@/components/ads/AdXLargeBanner.vue"
 import { isArray } from "util";
 @Component({
   //
@@ -69,6 +74,7 @@ import { isArray } from "util";
     "ad-xs-banner": AdMobileBanner,
     "ad-320x100": AdMobileBanner2,
     "ad-lg-banner": AdLargeBanner,
+    "ad-xlg-banner": AdXLargeBanner,
     Loader,
     CatHoriz
   },

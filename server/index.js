@@ -1,5 +1,4 @@
 const consola = require("consola");
-const { Nuxt, Builder } = require("nuxt");
 
 // app
 const dotenv = require("dotenv");
@@ -391,36 +390,19 @@ app.post("/twitter", async function(req, res) {
 	});
 });
 
-// Import and Set Nuxt.js options
-const config = require("../nuxt.config.js");
-config.dev = process.env.NODE_ENV !== "production";
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + "/index.html")
+})
 
-async function start() {
-	// Init Nuxt.js
-	const nuxt = new Nuxt(config);
+// Listen the server
+const port = process.env.PORT
+const host = process.env.HOST
+app.listen(port, host);
+consola.ready({
+	message: `Server listening on http://${host}:${port}`,
+	badge: true
+});
 
-	const { host, port } = nuxt.options.server;
-
-	// Build only in dev mode
-	if (config.dev) {
-    console.log('Nuxt Build start..')
-		const builder = new Builder(nuxt);
-		await builder.build();
-	} else {
-		await nuxt.ready();
-	}
-
-	// Give nuxt middleware to express
-	app.use(nuxt.render);
-
-	// Listen the server
-	app.listen(port, host);
-	consola.ready({
-		message: `Server listening on http://${host}:${port}`,
-		badge: true
-	});
-}
-start();
 
 process.on('SIGINT', function() {
 	Snbot.closeDatabaseconn().then(()=>{

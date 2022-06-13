@@ -1,0 +1,50 @@
+{
+  "name": "@einys/sn-server",
+  "version": "1.0.0",
+  "description": "server",
+  "author": "einys",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development HOST=127.0.0.1 PORT=8080 nodemon server/index.js --watch server --trace-warnings",
+    "start": "cross-env NODE_ENV=production HOST=0.0.0.0 PORT=8080 node server/index.js",
+    "pm2": "sudo pm2 start ecosystem.config.js --env production",
+    "pm2-dev": "pm2 start ecosystem.config.js",
+    "heroku-postbuild": "npm run build",
+    "browserslist": "browserslist",
+    "docker-up": "docker-compose up -d",
+    "docker-up2": "docker-compose up -d --scale node-app=2",
+    "docker-build": "docker build -t einys/cmsn-server ."
+  },
+  "browserslist": [
+    "last 2 version",
+    "android >= 4.4",
+    "IE >= 10"
+  ],
+  "dependencies": {
+    "@einys/snbot": "^3.2.0",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.0.0",
+    "consola": "^2.15.3",
+    "cookie-parser": "~1.4.3",
+    "cross-env": "^5.2.0",
+    "date-fns": "^1.30.1",
+    "debug": "~2.6.9",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "passport": "^0.4.0",
+    "passport-twitter": "^1.0.4",
+    "request": "^2.88.0",
+    "twit": "^2.2.11"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "@yarnpkg/pnpify": "^3.1.1-rc.1",
+    "core-js": "^2.6.11",
+    "nodemon": "^1.18.9",
+    "webpack": "^4.46.0"
+  },
+  "packageManager": "yarn@3.1.0"
+}

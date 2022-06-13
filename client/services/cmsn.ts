@@ -1,4 +1,4 @@
-import Api from '@/services/api'
+import Api from '~/services/api'
 let dataUrl = '/1.0/data/';
 
 export default {

@@ -1,8 +1,8 @@
-import Api from '~/services/api'
+import Api from './api'
 let dataUrl = '/1.0/data/';
 
 export default {
-  reportError( err: any, info: any ){
+  reportError( err, info ){
     return Api().post( dataUrl + 'error' , {
         error: err,
         info: info
@@ -12,14 +12,13 @@ export default {
     return Api().get('/auth/twitter')
   },
 
-  getItemlist ( params: {cat?:string, intent?:string, count?:number, skip?:number, dateBefore?: any, keyword?:string} ) {
-
+  getItemlist ( params ) {
     return Api().get( dataUrl + 'items/list', {
       params: params,
       timeout: 5000 // 5초 이내에 응답이 오지 않으면 에러로 간주
     })
   },
-  getBotLimit( cat: string ) {
+  getBotLimit( cat ) {
     return Api().get( dataUrl + 'bots/limit/' + cat)
   }
 }

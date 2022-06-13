@@ -45,19 +45,7 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/masonry', ssr: false, client:true},
-    { src: '~/plugins/main', ssr: false, client:true}
-  ],
-  /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-    '@nuxtjs/vuetify',
-    ['@nuxt/typescript-build', {
-      typeCheck: false,
-      ignoreNotFoundWarnings: false
-    }],
-    '@nuxtjs/axios',
-    '@nuxtjs/google-analytics'
+    { src: '~/plugins/main', ssr: false, client:true},
   ],
   /*
   ** Nuxt.js modules
@@ -111,7 +99,14 @@ module.exports = {
     */
     extend(config, ctx) {
     }
-  }
+  },
+  buildModules: [
+    '@nuxtjs/vuetify',
+    '@nuxtjs/axios',
+    '@nuxtjs/google-analytics',
+    '@nuxtjs/dotenv',
+    'nuxt-vite'
+  ]
 }
 
 function getBaseServerUrl(){

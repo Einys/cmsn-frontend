@@ -50,6 +50,10 @@ export default Vue.extend({
       `[index.vue] asyncData: isClient : ${process.client}, isServer: ${process.server}`
     );
   },
+  created() {
+    // 환경 변수 출력
+    console.log(process.env, 'env')
+  },
   mounted() {
     this.petchList();
     googletag.cmd.push(function() {
@@ -63,7 +67,7 @@ export default Vue.extend({
       cmsnService
         .getItemlist({ count: 8 })
         .then(res => {
-          // console.log(res.data)
+          //console.log(res.data)
           this.list = res.data.list;
           console.log("petchList");
           this.busy = false;

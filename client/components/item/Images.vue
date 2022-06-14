@@ -23,6 +23,7 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
+
 @Component({
   //
   props: {
@@ -45,7 +46,7 @@ export default class Images extends Vue {
     } else if (imageObject.location) {
       return imageObject.location;
     } else {
-      return "assets/500.jpg";
+      return "/500.jpg";
     }
   }
   essentialImage(src: string) {
@@ -64,7 +65,7 @@ export default class Images extends Vue {
   onImageError($event: any, index: number) {
     if(!this.error[index]){
       this.error[index] = true
-      $event.target.src = require("@/assets/404.jpg");
+      $event.target.src = '/404.jpg';
     }
   }
 }

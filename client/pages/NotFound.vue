@@ -20,7 +20,7 @@ export default {};
 <style>
 .logo {
   position: relative;
-  background: url(../assets/thumbnail.jpg) top center no-repeat;
+  background: url(~/thumbnail.jpg) top center no-repeat;
   border-radius: 50%;
   background-size: contain;
   display: inline-block;

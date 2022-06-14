@@ -30,7 +30,7 @@ export default {
 .ad-sq-wrapper{
     width: 336px;
     height: 280px;
-    background-image: url("../../assets/images/ad-bg.svg");
+    background-image: url("~/404.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }

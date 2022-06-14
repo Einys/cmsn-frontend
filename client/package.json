@@ -1,8 +1,8 @@
 {
-  "name": "nuxt-ts-hello",
+  "name": "@einys/cmsn-client",
   "version": "1.0.0",
-  "description": "My great Nuxt.js project",
-  "author": "EinYs",
+  "description": "My client",
+  "author": "einys",
   "private": true,
   "scripts": {
     "dev": "nuxt",

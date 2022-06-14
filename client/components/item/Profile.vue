@@ -10,7 +10,7 @@
           :src="user.profileImg"
           @error="onProfileImageError($event)"
         />
-        <img v-else src="@/assets/default.jpg"/>
+        <img v-else src="/default.jpg"/>
       </v-avatar>
       <v-layout column>
       <v-row no-gutters align="center">
@@ -66,7 +66,7 @@ export default class Card extends Vue {
   onProfileImageError($event: any) {
     if(!this.error){
       this.error = true;
-      $event.target.src = require('@/assets/default.jpg');
+      $event.target.src = '/default.jpg';
     }
   }
 }

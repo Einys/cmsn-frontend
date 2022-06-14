@@ -56,6 +56,9 @@ module.exports = {
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
   */
+  axios: {
+    baseURL: 'http://127.0.0.1:8080'
+  },
   vuetify: {
     customVariables: ['/variables.scss'],
     theme: {

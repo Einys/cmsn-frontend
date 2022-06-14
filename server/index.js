@@ -104,29 +104,14 @@ app.use(express.static(path.join(__dirname, "../dist/img")));
  * CORS policy
  *
  */
-const SERVER_URL = process.env.SERVER_URL;
 app.use((req, res, next) => {
-	if (req.get("origin") && req.get("origin").includes(SERVER_URL)) {
-		res.header("Content-Type", "text/html");
-		res.header("Access-Control-Allow-Origin", `${req.get("origin")}`); // localhost로부터의 요청에 응답한다
-		res.header("Access-Control-Allow-Methods", "PUT, DELETE");
-		res.header(
-			"Access-Control-Allow-Headers",
-			"Origin, X-Requested-With, Content-Type, Accept, Authorization"
-		);
-		if (req.method === "OPTIONS") {
-			res.sendStatus(200);
-			return;
-		}
-	} else {
-		console.log("Access-Control - Allow all");
-		res.header("Access-Control-Allow-Origin", "*"); // 모든 요청에 응답한다
-		res.header("Access-Control-Allow-Methods", "PUT, DELETE");
-		res.header(
-			"Access-Control-Allow-Headers",
-			"Origin, X-Requested-With, Content-Type, Accept, Authorization"
-		);
-	}
+	console.log("Access-Control - Allow all");
+	res.header("Access-Control-Allow-Origin", "*"); // 모든 요청에 응답한다
+	res.header("Access-Control-Allow-Methods", "PUT, DELETE");
+	res.header(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept, Authorization"
+	);
 	next();
 });
 

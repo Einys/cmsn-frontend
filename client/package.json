@@ -11,7 +11,8 @@
     "nuxt-build-prod": "cross-env NODE_ENV=production HOST=0.0.0.0 PORT=8080 nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "browserslist": "browserslist"
+    "browserslist": "browserslist",
+    "docker-build": "docker build -t einys/cmsn-frontend ."
   },
   "browserslist": [
     "last 2 version",

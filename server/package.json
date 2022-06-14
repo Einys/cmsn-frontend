@@ -13,7 +13,7 @@
     "browserslist": "browserslist",
     "docker-up": "docker-compose up -d",
     "docker-up2": "docker-compose up -d --scale node-app=2",
-    "docker-build": "docker build -t einys/cmsn-server ."
+    "docker-build": "docker build -t einys/cmsn-backend ."
   },
   "browserslist": [
     "last 2 version",

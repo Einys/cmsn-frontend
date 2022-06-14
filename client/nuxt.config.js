@@ -7,7 +7,7 @@ module.exports = {
   * env
   */
   env: {
-    SERVER_URL: getBaseServerUrl()
+
   },
   /*
   ** Headers of the page
@@ -76,13 +76,6 @@ module.exports = {
         }
       }
     }
-  },
-  /**
-   * axios
-   */
-  axios: {
-    baseURL: getBaseServerUrl()
-    // proxyHeaders: false
   },
   /**
    * google analytics

@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-const url = process.env.VUE_APP_SERVER_URL
+const url = "http://127.0.0.1:8080"
 export default() => {
-
-    console.log(url, 'axios-baseurl')
     return axios.create({
       baseURL: url
     })

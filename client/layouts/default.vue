@@ -151,7 +151,7 @@ export default Vue.extend({
     bottomNav: true,
     sheet: false,
     keyword: "",
-    server: process.env.SERVER_URL
+    server: process.env.VUE_APP_SERVER_URL
   }),
   methods: {
     login() {

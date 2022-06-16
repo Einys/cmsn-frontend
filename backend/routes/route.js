@@ -22,15 +22,23 @@ router.get('/', (req, res) => {
   res.sendStatus(200)
 })
 
+router.get('/error', (req, res) => {
+  res.sendStatus(200);
+})
+
+router.options('/error', (req, res) => {
+  console.log('!OPTIONS');
+  res.writeHead(200);
+  res.end();
+})
+
 router.post('/error', function (req, res, next) {
   // query 는 헤더에 붙인거
   // params 는 url 에 들어온거
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
   console.log('[SPA ERROR] ip ', ip);
   console.log(req.body);
-  res.status(200);
-  res.send('200 OK');
+  res.sendStatus(200);
 });
 
 // catch 404 and forward to error handler

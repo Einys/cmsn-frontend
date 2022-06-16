@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import cmsnService from '@/services/cmsn'
 export default {
   layout: 'empty',
   props: {
@@ -85,9 +86,13 @@ export default {
     }
   },
   methods: {
-        reload() {
+    reload() {
       window.location.reload(true);
     }
+  },
+  mounted(){
+    console.error(this.error)
+    cmsnService.reportError(this.error.message, this.error.stack)
   }
 }
 </script>

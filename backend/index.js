@@ -106,8 +106,9 @@ app.use(express.static(path.join(__dirname, "../dist/img")));
  */
 app.use((req, res, next) => {
 	console.log("Access-Control - Allow all");
+	req.
 	res.header("Access-Control-Allow-Origin", "*"); // 모든 요청에 응답한다
-	res.header("Access-Control-Allow-Methods", "PUT, DELETE");
+	res.header("Access-Control-Allow-Methods", "PUT, DELETE, POST, GET, OPTIONS");
 	res.header(
 		"Access-Control-Allow-Headers",
 		"Origin, X-Requested-With, Content-Type, Accept, Authorization"

@@ -23,11 +23,6 @@
 						{{(content||[])[cat]}}
 					</div>
 				</v-flex>
-				<v-flex xs12 sm4>
-					<v-text-field class="search mt-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify"
-          :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..."
-          v-on:keyup.enter="search()" @click:append="search()" />
-				</v-flex>
 				<v-flex xs12 v-if="cat === 'all'">
 					<cat-horiz class="my-3" :cat="cat" :intent="intent" ></cat-horiz>
 				</v-flex>

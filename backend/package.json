@@ -5,8 +5,8 @@
   "author": "einys",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development HOST=127.0.0.1 PORT=8080 nodemon server/index.js --watch server --trace-warnings",
-    "start": "cross-env NODE_ENV=production HOST=0.0.0.0 PORT=8080 node server/index.js",
+    "dev": "cross-env NODE_ENV=development HOST=127.0.0.1 PORT=8080 nodemon index.js --watch . --trace-warnings",
+    "start": "cross-env NODE_ENV=production HOST=0.0.0.0 PORT=8080 node index.js",
     "pm2": "sudo pm2 start ecosystem.config.js --env production",
     "pm2-dev": "pm2 start ecosystem.config.js",
     "heroku-postbuild": "npm run build",

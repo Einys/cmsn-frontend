@@ -1,7 +1,7 @@
-const colors = require('vuetify/es5/util/colors').default
+import colors from 'vuetify/es5/util/colors'
 
-module.exports = {
-  telemetry: false,
+export default {
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
   /**
   * env
@@ -47,20 +47,25 @@ module.exports = {
     { src: '~/plugins/masonry', ssr: false, client:true},
     { src: '~/plugins/main', ssr: false, client:true},
   ],
-  /*
-  ** Nuxt.js modules
-  */
+
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
+    // https://go.nuxtjs.dev/typescript
+    '@nuxt/typescript-build',
+    // https://go.nuxtjs.dev/vuetify
+    '@nuxtjs/vuetify',
+    '@nuxtjs/google-analytics',
+  ],
+  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
   ],
-  /*
-  ** vuetify module configuration
-  ** https://github.com/nuxt-community/vuetify-module
-  */
-  axios: {
-    baseURL: 'http://127.0.0.1:8080'
-  },
+
+  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['/variables.scss'],
+    customVariables: ['~/assets/variables.scss'],
     theme: {
       themes: {
         dark: {
@@ -89,42 +94,8 @@ module.exports = {
   /*
   ** Build configuration
   */
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
-  },
-  buildModules: [
-    '@nuxtjs/vuetify',
-    '@nuxtjs/axios',
-    '@nuxtjs/google-analytics',
-    'nuxt-vite'
-  ]
-}
-
-function getBaseServerUrl(){
-  let url;
-  if( process.env.NODE_ENV === 'production' ){
-
-    if( process.env.SERVER_URL !== undefined ){
-
-      url = process.env.SERVER_URL
-
-    } else {
-      throw new Error('process.env.SERVER_URL is empty. This env is mandatory for production >_<');
-    }
-  } else if( process.env.NODE_ENV === 'development' ) {
-
-    url = "127.0.0.1:8080"
-
-  } else {
-    console.log(`NODE_ENV is set to ${process.env.NODE_ENV}. Not production nor development`)
-    url = "127.0.0.1:8080"
   }
-
-  console.log('[nuxt] api target SERVER_URL: ', url)
-
-  return url
 }

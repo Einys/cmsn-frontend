@@ -21,6 +21,7 @@
   ],
   "dependencies": {
     "@einys/snbot": "^3.2.0",
+    "@nuxt/typescript-runtime": "^2.1.0",
     "axios": "^0.21.1",
     "babel-preset-es2015": "^6.24.1",
     "cross-env": "^5.2.0",
@@ -32,10 +33,9 @@
     "vue-server-renderer": "^2.6.14"
   },
   "devDependencies": {
-    "@nuxt/babel-preset-app": "^2.15.8",
-    "@nuxt/types": "^0.7.4",
+    "@nuxt/types": "^2.15.8",
     "@nuxt/typescript": "^2.8.1",
-    "@nuxt/typescript-build": "^0.3.3",
+    "@nuxt/typescript-build": "^2.1.0",
     "@nuxt/vue-app": "^2.15.8",
     "@nuxtjs/axios": "^5.13.1",
     "@nuxtjs/google-analytics": "^2.2.1",

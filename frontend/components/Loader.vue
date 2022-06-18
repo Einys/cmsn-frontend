@@ -15,15 +15,12 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 
-@Component({
-  //
-})
 export default class Card extends Vue {
   mounted() {}
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .spinner {
   position: relative;
   * {

@@ -5,6 +5,6 @@ COPY . .
 EXPOSE 8080
 RUN npm i
 
-RUN npm run nuxt-build-prod
+RUN npm run build
 
 CMD ["npm", "start"]

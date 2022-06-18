@@ -7,14 +7,12 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import CatVert from "@/components/cat/Vert.vue";
-  @Component({
-    components:{
-      CatVert
-    }
-  })
-  export default class T extends Vue {
 
-  };
+export default class T extends Vue {
+  components:{
+    CatVert
+  }
+};
 </script>
 
 <style scoped>

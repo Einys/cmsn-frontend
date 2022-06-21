@@ -1,0 +1,15 @@
+version: "3.9"
+
+configs:
+  fluent-bit-conf:
+    file: ./fluent-bit.conf
+
+services:
+  fluent-bit:
+    image: fluent/fluent-bit
+    configs:
+    - source: fluent-bit-conf
+      target: /fluent-bit/etc/fluent-bit.conf
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"

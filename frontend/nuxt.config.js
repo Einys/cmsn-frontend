@@ -12,6 +12,14 @@ export default {
   /*
   ** Headers of the page
   */
+  server: {
+    host: process.env.HOST !== undefined
+      ? process.env.HOST
+      : process.env.NODE_ENV === 'development'
+        ? 'localhost'
+        : '0.0.0.0',
+    port: 3000
+  },
   head: {
     titleTemplate: '%s',
     title: '커미션 사이트 세메센(CMSN)',
@@ -22,7 +30,8 @@ export default {
     ],
     noscript: [{ innerHTML: "Art commission site - We're sorry but this site doesn't work properly without JavaScript enabled. Please enable it to continue. 안녕하세요. 창작 예술 커미션 사이트입니다. 그림 글 캘리그라피 공예 시각디자인 작곡 보이스 등 창작 커미션을 홍보하는 사이트입니다. 방문자분의 브라우저에 자바스크립트가 활성화되어 있지 않아 사이트가 정상 작동하지 않습니다. 자바스크립트를 활성화시키고 새로고침 하여 주세요. 감사합니다." }],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap'}
     ],
     script: [
       {src:'https://securepubads.g.doubleclick.net/tag/js/gpt.js', async:'async'},

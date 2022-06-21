@@ -1,5 +1,5 @@
 {
-  "name": "@einys/cmsn-client",
+  "name": "@einys/cmsn-frontend",
   "version": "1.0.0",
   "description": "My client",
   "author": "einys",
@@ -7,12 +7,14 @@
   "scripts": {
     "dev": "nuxt",
     "build": "npm run nuxt-build-prod",
-    "nuxt-build-dev": "cross-env NODE_ENV=development HOST=127.0.0.1 PORT=8080 nuxt build",
-    "nuxt-build-prod": "cross-env NODE_ENV=production HOST=0.0.0.0 PORT=8080 nuxt build",
+    "nuxt-build-dev": "NODE_ENV=development nuxt build",
+    "nuxt-build-prod": "NODE_ENV=production nuxt build",
     "start": "nuxt start",
+    "start-local": "HOST=localhost npm start",
     "generate": "nuxt generate",
     "browserslist": "browserslist",
-    "docker-build": "docker build -t einys/cmsn-frontend ."
+    "docker-build": "docker build -t cmsn-frontend .",
+    "docker-tag": "docker tag cmsn-frontend:latest 412530390400.dkr.ecr.ap-northeast-2.amazonaws.com/cmsn-frontend:latest"
   },
   "browserslist": [
     "last 2 version",
@@ -30,7 +32,8 @@
     "nuxt": "^2.15.8",
     "postcss-preset-env": "^7.7.1",
     "vue": "^2.6.14",
-    "vue-server-renderer": "^2.6.14"
+    "vue-server-renderer": "^2.6.14",
+    "vue-spinner": "^1.0.4"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",
@@ -46,7 +49,6 @@
     "core-js": "^2.6.11",
     "nuxt-vite": "^0.3.5",
     "object-fit-images": "^3.2.4",
-    "vue-analytics": "^5.17.2",
     "vue-class-component": "^7.0.2",
     "vue-masonry": "^0.11.8",
     "vue-no-ssr": "^1.1.1",

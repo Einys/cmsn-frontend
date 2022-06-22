@@ -1,6 +1,7 @@
 html,
 body {
   margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 html {
@@ -48,5 +49,4 @@ h3 {
 color: rgb(55, 66, 94);
 padding: 0;
 }
-
 

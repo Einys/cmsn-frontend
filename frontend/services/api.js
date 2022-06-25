@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const url = "http://127.0.0.1:8080"
+const url = process.env.SERVER_URL
+console.log('SERVER_URL:', url)
 export default() => {
     return axios.create({
       baseURL: url

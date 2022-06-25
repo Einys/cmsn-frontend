@@ -10,7 +10,7 @@ services:
       options:
         fluentd-address: localhost:24224
         fluentd-async: "true"
-        tag: web.access
+        tag: web.back
   frontend:
     image: 412530390400.dkr.ecr.ap-northeast-2.amazonaws.com/cmsn-frontend:latest
     ports: 
@@ -20,4 +20,4 @@ services:
       options:
         fluentd-address: localhost:24224
         fluentd-async: "true"
-        tag: web.access
+        tag: web.front

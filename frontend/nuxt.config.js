@@ -67,6 +67,7 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxtjs/google-analytics',
+    '@nuxtjs/dotenv'
   ],
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

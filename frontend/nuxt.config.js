@@ -15,9 +15,7 @@ export default {
   server: {
     host: process.env.HOST !== undefined
       ? process.env.HOST
-      : process.env.NODE_ENV === 'development'
-        ? 'localhost'
-        : '0.0.0.0',
+      : '0.0.0.0',
     port: 3000
   },
   head: {

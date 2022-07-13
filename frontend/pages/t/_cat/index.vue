@@ -3,9 +3,9 @@
 		<!-- ad banner -->
 		<ad-lg-banner></ad-lg-banner>
 		<div class="wrapper">
-			<v-btn fab small depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
+			<!-- <v-btn fab small depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
 				<v-icon>mdi-chevron-up</v-icon>
-			</v-btn>
+			</v-btn> -->
 			<v-layout no-gutters row wrap justify-center align-center class="ma-2">
 
 				<v-flex xs12 sm8>

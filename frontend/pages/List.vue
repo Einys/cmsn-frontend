@@ -4,9 +4,10 @@
     <ad-lg-banner></ad-lg-banner>
 
 		<div class="wrapper">
-      <v-btn fab depressed dark color="orange" style="z-index:5; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;"
+      <!-- <v-btn fab depressed dark color="orange" style="z-index:5; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;"
       @click="scrollToTop()">
-        <v-icon>mdi-chevron-up</v-icon></v-btn>
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn> -->
 
 			<v-layout no-gutters row wrap justify-center align-center class="ma-2">
 
@@ -31,7 +32,7 @@
 			</v-layout>
 			<div class="masonry-wrapper">
 				<page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
-				<loader v-if="busy" />
+				<loader v-if="busy"/>
 				<masonry v-if="list" :list="list" :isArticle="!isImages" />
 
 				<page-button v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />

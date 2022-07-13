@@ -44,7 +44,7 @@ import { Component, Vue, Prop } from "vue-property-decorator";
         Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60) < 24
       ) {
         return (
-          Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60) +
+          Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60 - 1) +
           " 시간 전 홍보"
         );
       } else {

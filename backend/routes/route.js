@@ -32,12 +32,28 @@ router.options('/error', (req, res) => {
   res.end();
 })
 
-router.post('/error', function (req, res, next) {
+router.post('/error', function (req, res) {
   // query 는 헤더에 붙인거
   // params 는 url 에 들어온거
-  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  console.log('[SPA ERROR] ip ', ip);
-  console.log(req.body);
+
+  const payload = {
+    serviceContext: {
+      service: 'frontend',
+    },
+    message: new Error( req.body.message ),
+    context: {
+      httpRequest: {
+        url: req.originalUrl,
+        method: req.method,
+        referrer: req.header('Referer'),
+        userAgent: req.header('User-Agent'),
+        remoteIp: req.ip,
+        responseStatusCode: 500,
+      },
+    },
+  };
+  console.log( payload );
+
   res.sendStatus(200);
 });
 

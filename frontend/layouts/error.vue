@@ -85,8 +85,7 @@ export default {
     }
   },
   mounted(){
-    console.error(this.error)
-    cmsnService.reportError(this.error.message, this.error.stack)
+    cmsnService.reportError(this.error.message)
   }
 }
 </script>

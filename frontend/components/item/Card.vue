@@ -78,7 +78,9 @@ export default class Card extends Vue {
       return this.item._user.name;
     } else {
       this.item._user = {}
-      this.$axios.post('/1.0/data/error', {message : `no _user on item ${this.item.id}`})
+      if(this.$axios){
+        this.$axios.post('/1.0/data/error', {message : `no _user on item ${this.item.id}`})
+      }
       // throw new Error("no _user on item");
     }
   }

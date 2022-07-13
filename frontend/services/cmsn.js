@@ -2,11 +2,8 @@ import Api from './api'
 let dataUrl = '/1.0/data/';
 
 export default {
-  reportError( err, info ){
-    return Api().post( dataUrl + 'error' , {
-        error: err,
-        info: info
-      }, { timeout: 5000 })
+  reportError( errString ){
+    return Api().post( dataUrl + 'error' , { message: errString } , { timeout: 5000 })
   },
   login() {
     return Api().get('/auth/twitter')

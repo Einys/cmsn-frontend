@@ -130,7 +130,7 @@ export default class Card extends Vue {
   position: relative;
   letter-spacing: 0.3px;
   font-size: medium;
-  padding: 0px 8px 8px 8px;
+  padding: 0px 12px 9px 12px;
   line-height: 150%;
   color: #45454e;
 }

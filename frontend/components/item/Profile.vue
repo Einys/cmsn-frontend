@@ -4,7 +4,7 @@
     target="_blank"
     rel="noopener"
   >
-    <v-row class="profile pa-2 py-3" no-gutters>
+    <v-row class="profile" no-gutters>
       <v-avatar size="34" class="avatar">
         <img v-if="user.profileImg"
           :src="user.profileImg"
@@ -16,7 +16,7 @@
       <v-row no-gutters align="center">
       <span v-if="user.name !== null && user.name !== undefined" class="username">{{ user.name }}&nbsp;</span>
       <span v-else class="caption grey--text"> (유저 확인 오류) &nbsp;</span>
-      <v-icon :size="$vuetify.breakpoint.smAndUp? 14 : 12" color="grey">mdi-twitter</v-icon>
+      <!-- <v-icon :size="$vuetify.breakpoint.smAndUp? 14 : 14" color="blue">mdi-twitter</v-icon> -->
       </v-row>
 
       <span
@@ -77,8 +77,9 @@ $break-large: 1200px;
 $break-small: 720px;
 
 .profile {
-color: #4b4b4b;
-  padding: 10px 8px;
+  color: #4b4b4b;
+  padding: 12px;
+  padding-bottom: 9px;
   font-size: 15px;
   line-height: 16px;
   .avatar{
@@ -140,6 +141,18 @@ color: #4b4b4b;
 
     }
 
+  }
+
+  .article .profile {
+    padding-bottom: 10px;
+    .avatar {
+      height: 40px !important;
+      width: 40px !important;
+      margin-right: 10px;
+    }
+    .username {
+      max-width: none;
+    }
   }
 }
 

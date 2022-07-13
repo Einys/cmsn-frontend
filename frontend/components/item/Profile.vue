@@ -5,7 +5,7 @@
     rel="noopener"
   >
     <v-row class="profile pa-2 py-3" no-gutters>
-      <v-avatar size="32" class="avatar">
+      <v-avatar size="34" class="avatar">
         <img v-if="user.profileImg"
           :src="user.profileImg"
           @error="onProfileImageError($event)"
@@ -81,10 +81,10 @@ color: #4b4b4b;
   padding: 10px 8px;
   font-size: 15px;
   line-height: 16px;
-    .avatar{
-        float: left;
-        margin-right: 8px;
-    }
+  .avatar{
+      float: left;
+      margin-right: 8px;
+  }
   .margin-right {
     margin-right: 8px;
   }
@@ -94,7 +94,7 @@ color: #4b4b4b;
     padding-left: 2px;
   }
   .date {
-    font-size: 12px;
+    font-size: 14px;
     color: rgb(138, 155, 175);
   }
   .username {
@@ -122,12 +122,10 @@ color: #4b4b4b;
   }
 
   .profile {
-    padding: 2px;
-     line-height: 14px;
-    .avatar {
-      width: 28px;
-      height: 28px;
-    }
+
+    font-size: medium;
+    line-height: 18px;
+
     .margin-right {
       margin-right: 6px;
     }
@@ -135,10 +133,10 @@ color: #4b4b4b;
 
     }
     .date {
-      font-size: 11px;
+      font-size: 0.8em;
     }
     .username {
-      max-width: 80px;
+      max-width: 100px;
 
     }
 

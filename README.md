@@ -1,16 +1,12 @@
-# Build Setup
+# Setup
 
 > npm install
-> npm run build
-> npm run pm2
+> npm run dev
 
 # Build Docker ECR (production)
 안 될 경우 ecr 로그인 확인
 
-> npm run docker-build
-> npm run docker-tag
-> npm run docker-push
-
+> npm run docker-make
 
 # env 
 ## production checklist

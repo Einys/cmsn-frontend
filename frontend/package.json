@@ -13,9 +13,9 @@
     "start-local": "HOST=localhost npm start",
     "generate": "nuxt generate",
     "browserslist": "browserslist",
-    "docker-build": "docker build -t cmsn-frontend .",
-    "docker-tag": "docker tag cmsn-frontend:latest 412530390400.dkr.ecr.ap-northeast-2.amazonaws.com/cmsn-frontend:latest",
-    "docker-push": "docker push 412530390400.dkr.ecr.ap-northeast-2.amazonaws.com/cmsn-frontend:latest"
+    "docker-build": "make build",
+    "docker-push": "make push",
+    "docker-make": "make all"
   },
   "browserslist": [
     "last 2 version",

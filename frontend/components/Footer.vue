@@ -30,11 +30,7 @@ export default {};
   margin: 6px;
   margin-top: 10px;
   text-align: center;
-  h3 {
-    font-weight: normal;
-    color: #9b968f;
-    margin-bottom: 10px;
-  }
+
   p {
     color: rgb(169, 172, 177);
     font-size: 14px;

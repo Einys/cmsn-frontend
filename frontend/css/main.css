@@ -40,6 +40,12 @@ a {
   visibility: hidden;
 }
 
+h2 {
+  color: rgb(49, 59, 83);
+  font-size: 22.5px;
+  padding: 0;
+}
+
 h3 {
 color: rgb(55, 66, 94);
 padding: 0;

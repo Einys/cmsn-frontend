@@ -10,9 +10,9 @@
 
 				<v-flex xs12 sm8>
 					<v-row no-gutters align="center" justify="start" v-if="cat!=='all'">
-            <div class="title font-weight-bold" style="vertical-align:middle">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</div>
+            <h2 class="font-weight-bold" style="vertical-align:middle">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h2>
             <div>
-              						<v-btn v-if="cat" class="pa-1" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text small fab color="light-blue">
+              						<v-btn v-if="cat" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text small fab color="light-blue">
 							<v-icon>mdi-twitter</v-icon>
 						</v-btn>
             <v-btn x-small dark fab depressed class="light-blue--text" color="light-blue lighten-4" @click="$router.push('/bot/'+cat )"><v-icon>mdi-poll</v-icon></v-btn>
@@ -43,7 +43,7 @@
 				<loader v-if="busy" />
 				<masonry v-if="!isEmpty" :list="list" :isArticle="!gallery" />
 				<page-button v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
-          <v-layout v-if="isEmpty && !busy" justify-center> <h3>표시할 내용이 없습니다.</h3> </v-layout>
+          <v-layout v-if="isEmpty && !busy" justify-center> <h2>표시할 내용이 없습니다.</h2> </v-layout>
 			</div>
 
 		</div>

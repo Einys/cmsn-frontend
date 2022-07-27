@@ -25,6 +25,11 @@
 				</v-flex>
 				<v-flex xs12 v-if="cat === 'all'">
 					<cat-horiz class="my-3" :cat="cat" :intent="intent" ></cat-horiz>
+          <v-flex xs12>
+					<v-text-field class="search mt-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify"
+          :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..."
+          v-on:keyup.enter="search()" @click:append="search()" />
+				</v-flex>
 				</v-flex>
         <v-flex xs12 class="mt-5" v-if="q">
           <h2>
@@ -38,7 +43,7 @@
 				<loader v-if="busy" />
 				<masonry v-if="!isEmpty" :list="list" :isArticle="!gallery" />
 				<page-button v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
-          <v-layout v-if="isEmpty && !busy" justify-center> <h3>표시할 내용이 없습니다.</h3> </v-layout>
+          <v-layout v-if="isEmpty && !busy" justify-center> <h2>표시할 내용이 없습니다.</h2> </v-layout>
 			</div>
 
 		</div>

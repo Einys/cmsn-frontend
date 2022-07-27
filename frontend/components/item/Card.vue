@@ -129,7 +129,7 @@ export default class Card extends Vue {
   word-break: break-all;
   position: relative;
   letter-spacing: 0.3px;
-  font-size: 1rem;
+  font-size: medium;
   padding: 0px 8px 8px 8px;
   line-height: 150%;
   color: #45454e;
@@ -188,8 +188,14 @@ export default class Card extends Vue {
 
 
 @media screen and (max-width: 550px) {
+  .text {
+    font-size: 18px;
+  }
   .text.unhideable {
     height: 180px;
+  }
+  .item.article{
+    border-radius: 0 !important;
   }
 }
 </style>

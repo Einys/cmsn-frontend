@@ -1,6 +1,7 @@
 # Setup
 
 > npm install
+> export HOST=localhost (로컬 머신에서만 HOST 를 localhost로 설정)
 > npm run dev
 
 # Build Docker ECR (production)

@@ -44,12 +44,20 @@ show-commit-list: ## Show pretty commit list.
 	@git log --pretty=format:"%h - %an, %ar : %s"
 
 build: ## Build the container and tag with git commit's hash.
+ifeq (,$(wildcard .npmrc))
+	make npm-set
+else
 	@docker build -t ${IMG} .
 	@docker tag ${IMG} ${LATEST}
+endif
  
 push: ## Push docker image to ecr repo.
 	@docker push ${IMG}
 	@docker push ${LATEST}
+
+## .env파일 생성
+npm-set: 
+	vi .npmrc
  
 login: ## ECR login.
 	@aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 412530390400.dkr.ecr.ap-northeast-2.amazonaws.com

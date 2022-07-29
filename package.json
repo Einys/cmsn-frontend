@@ -5,10 +5,9 @@
   "author": "einys",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt --dotenv .env.dev",
     "build": "npm run nuxt-build-prod",
-    "nuxt-build-dev": "NODE_ENV=development nuxt build",
-    "nuxt-build-prod": "NODE_ENV=production nuxt build",
+    "nuxt-build-prod": "nuxt build",
     "start": "nuxt start",
     "start-local": "HOST=localhost npm start",
     "generate": "nuxt generate",

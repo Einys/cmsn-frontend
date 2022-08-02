@@ -1,0 +1,45 @@
+{
+    "types": [
+      {
+        "type": "feat",
+        "section": "🚀 Features"
+      },
+      {
+        "type": "design",
+        "section": "🛍 Designs"
+      },
+      {
+        "type": "fix",
+        "section": "🔧 Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "doc",
+        "hidden": true
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "hidden": true
+      },
+      {
+        "type": "test",
+        "hidden": true
+      },
+      {
+        "type": "rename",
+        "hidden": true
+      },
+      {
+        "type": "remove",
+        "hidden": true
+      }
+    ],
+    "releaseCommitMessageFormat": "Chore(release): {{currentTag}}"
+}

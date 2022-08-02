@@ -1,6 +1,6 @@
 {
   "name": "@einys/cmsn-frontend",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "My client",
   "author": "einys",
   "private": true,
@@ -14,7 +14,12 @@
     "browserslist": "browserslist",
     "docker-build": "make build",
     "docker-push": "make push",
-    "docker-make": "make all"
+    "docker-make": "make all",
+    "release": "standard-version",
+    "release:patch": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
+    "release:dry": "standard-version --dry-run"
   },
   "browserslist": [
     "last 2 version",

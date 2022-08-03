@@ -27,9 +27,9 @@
 			<v-btn color="yellow" text @click="errorbar = false">확인</v-btn>
 		</v-snackbar>
 		<!-- 메인 컨텐츠 -->
-		<v-content>
+		<v-main>
 			<nuxt />
-		</v-content>
+		</v-main>
 
 		<!-- 왼쪽 서랍 -->
 		<v-navigation-drawer app v-model="drawer" temporary>

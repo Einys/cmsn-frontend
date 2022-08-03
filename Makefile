@@ -43,7 +43,7 @@ show-commit: ## Show a commit by hash. ex) make show-commit HASH=1q2w3e
 show-commit-list: ## Show pretty commit list.
 	@git log --pretty=format:"%h - %an, %ar : %s"
 
-build: ## Build the container and tag with git commit's hash.
+build: ## Build docker container and tag with git commit's hash.
 ifeq (,$(wildcard .npmrc))
 	make npm-set
 else

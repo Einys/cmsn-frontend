@@ -6,6 +6,6 @@ EXPOSE 3000
 RUN npm i
 
 ENV NODE_ENV production
-RUN npm run build
+RUN npm run nuxt-build
 
 CMD ["npm", "start"]

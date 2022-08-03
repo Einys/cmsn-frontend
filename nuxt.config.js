@@ -107,5 +107,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    babel: {
+      "plugins": process.env.NODE_ENV === 'production' ? ["transform-remove-console"] : []
+    }
   }
 }

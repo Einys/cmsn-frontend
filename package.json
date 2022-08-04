@@ -15,10 +15,10 @@
     "docker-build": "make build",
     "docker-push": "make push",
     "docker-make": "make all",
-    "release": "standard-version",
-    "release:patch": "standard-version --release-as patch",
-    "release:minor": "standard-version --release-as minor",
-    "release:major": "standard-version --release-as major",
+    "release": "standard-version && make all",
+    "release:patch": "standard-version --release-as patch && make all",
+    "release:minor": "standard-version --release-as minor && make all",
+    "release:major": "standard-version --release-as major && make all",
     "release:dry": "standard-version --dry-run"
   },
   "browserslist": [

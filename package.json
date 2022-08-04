@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt --dotenv .env.dev",
-    "build": "npm run nuxt-build-prod",
+    "nuxt-build": "npm run nuxt-build-prod",
     "nuxt-build-prod": "nuxt build",
     "start": "nuxt start",
     "start-local": "HOST=localhost npm start",

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/EinYs/nuxt-sn/compare/v1.3.0...v1.3.1) (2022-08-04)
+
+
+### 🔧 Fixes
+
+* v-context가 depreciated되어 v-main으로 교체 ([462e952](https://github.com/EinYs/nuxt-sn/commit/462e95212a4f5c83595988e81a868de5a597e7cd))
+
 ## 1.3.0 (2022-08-02)
 
 

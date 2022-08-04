@@ -1,4 +1,5 @@
 import Api from './api'
+import axios from 'axios'
 let dataUrl = '/1.0/data/';
 
 export default {
@@ -10,7 +11,14 @@ export default {
   },
 
   getItemlist ( params ) {
-    return Api().get( dataUrl + 'items/list', {
+
+    const url = process.env.SERVER_URL
+    console.log('SERVER_URL:', url)
+    const api = axios.create({
+      baseURL: url
+    })
+
+    return api.get( dataUrl + 'items/list', {
       params: params,
       timeout: 5000 // 5초 이내에 응답이 오지 않으면 에러로 간주
     })

@@ -13,6 +13,9 @@ export default {
     SERVER_URL: process.env.SERVER_URL,
     HOST: process.env.HOST
   },
+  axios: {
+    baseURL: process.env.SERVER_URL,
+  },
   /*
   ** Headers of the page
   */
@@ -57,6 +60,7 @@ export default {
   plugins: [
     { src: '~/plugins/masonry', ssr: false, client:true},
     { src: '~/plugins/main', ssr: false, client:true},
+    { src: '~/plugins/crud', ssr: false, client:true},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -73,6 +77,7 @@ export default {
   ],
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios'
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -110,7 +115,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     babel: {
-      "plugins": process.env.NODE_ENV === 'production' ? ["transform-remove-console"] : []
+      //"plugins": process.env.NODE_ENV === 'production' ? ["transform-remove-console"] : []
     }
   }
 }

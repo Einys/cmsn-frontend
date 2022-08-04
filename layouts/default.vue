@@ -1,6 +1,6 @@
 <template>
 	<v-app :style="{background : $vuetify.theme.themes['light'].background}">
-		<v-app-bar app>
+		<v-app-bar app :style="{background : $vuetify.theme.themes['light'].background, opacity: 0.96}">
 			<span class="blue-grey--text text--darken-2 ma-0" @click="drawer= !drawer" style="cursor:pointer;">
 				<v-layout>
 					<img style=" height: 28px; " :src="this.$vuetify.breakpoint.smAndDown ? '/logo2020.svg' :'/cmsnart.png'" />
@@ -27,9 +27,9 @@
 			<v-btn color="yellow" text @click="errorbar = false">확인</v-btn>
 		</v-snackbar>
 		<!-- 메인 컨텐츠 -->
-		<v-content>
+		<v-main>
 			<nuxt />
-		</v-content>
+		</v-main>
 
 		<!-- 왼쪽 서랍 -->
 		<v-navigation-drawer app v-model="drawer" temporary>
@@ -101,7 +101,7 @@
 			<v-btn v-if="!isRightDrawerPermanent" absolute top right text @click="searchDrawer=false">
 				<v-icon>mdi-close</v-icon>
 			</v-btn>
-      <cat-vert class="mt-3"></cat-vert>
+      <cat-vert style="margin-top:3px"></cat-vert>
 			<br>
 			<ad-vt300></ad-vt300>
 
@@ -181,7 +181,7 @@ export default Vue.extend({
   },
   computed: {
     isRightDrawerPermanent() {
-      return this.$vuetify.breakpoint.mdAndUp;
+      return this.$vuetify.breakpoint.lgAndUp;
     }
   },
   watch: {
@@ -205,7 +205,7 @@ export default Vue.extend({
   padding: 10px 24px;
 }
 .v-app-bar {
-  box-shadow: 0px 0px 5px 2px rgba(26, 23, 23, 0.05) !important;
+  box-shadow: 0px 0px 5px 2px rgba(26, 23, 23, 0.01) !important;
 }
 
 .toolbar-search {
@@ -227,6 +227,15 @@ export default Vue.extend({
   max-width: 1280px !important;
   padding: 24px;
   margin: 0 auto;
+}
+
+// 오른쪽 서랍의 이상한 경계선 제거
+.theme--light.v-navigation-drawer:not(.v-navigation-drawer--floating) .v-navigation-drawer__border {
+  background-color: transparent !important;
+}
+
+.v-btn__content .v-icon.v-icon--left, .v-btn__content .v-icon.v-icon--right{
+  font-size: 24px;
 }
 
 @media screen and (max-width: 720px) {

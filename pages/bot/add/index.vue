@@ -5,7 +5,7 @@
         <h1 class="login-title">Simple Login</h1>
         <button type="submit" value="Lets Go" class="login-button">
           <img
-            src="assets/Twitter_Logo_Black.svg"
+            src="/Twitter_Logo_Black.svg"
             style="display: inline-block; height: 14px"
           />
         </button>

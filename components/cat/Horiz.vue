@@ -5,22 +5,22 @@
 				All
 			</v-btn>
 			<v-btn large rounded class="silver--text" :to="{path: '/t/art/'+ (intent || 'open')}">
-				<v-icon left>mdi-satellite</v-icon>그림
+				<v-icon>mdi-satellite</v-icon>그림
 			</v-btn>
 			<v-btn large rounded class="gold--text" :to="{path: '/t/wri/'+ (intent || 'open')}">
-				<v-icon left>mdi-text</v-icon>글, 타로..
+				<v-icon>mdi-text</v-icon>글, 타로..
 			</v-btn>
 			<v-btn large rounded class="silver--text" :to="{path: '/t/des/'+ (intent || 'open')}">
-				<v-icon left>mdi-shape</v-icon>디자인, 공예..
+				<v-icon >mdi-shape</v-icon>디자인, 공예..
 			</v-btn>
 			<v-btn large rounded class="gold--text" :to="{path: '/t/mus/'+ (intent || 'open')}">
-				<v-icon left>mdi-music-note</v-icon>음악, 보이스..
+				<v-icon>mdi-music-note</v-icon>음악, 보이스..
 			</v-btn>
 			<v-btn v-if="!intent || intent === 'open'" large rounded class="silver--text" :to="{path: '/t/'+(cat || 'all')+'/find'}">
-				<v-icon left>mdi-human-greeting</v-icon>커미션 찾습니다
+				<v-icon>mdi-human-greeting</v-icon>커미션 찾습니다
 			</v-btn>
 			<v-btn v-if="intent === 'find'" large rounded class="silver--text" :to="{path: '/t/'+(cat || 'all')+'/open'}">
-				<v-icon left>mdi-send</v-icon>커미션 열었어요
+				<v-icon>mdi-send</v-icon>커미션 열었어요
 			</v-btn>
 		</v-row>
 
@@ -53,9 +53,10 @@ export default class Card extends Vue {
 
 <style>
 .cat .v-btn{
-	box-shadow: 0px 1px 5px 0px rgba(59, 56, 56, 0.2);
+	box-shadow: 0px 3px 7px 0px rgba(59, 56, 56, 0.08);
 	flex: 1 1 auto;
 	margin: 2px;
 	padding: 0px 10px !important;
+	font-size: 16px;
 }
 </style>

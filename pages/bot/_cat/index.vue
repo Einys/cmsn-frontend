@@ -7,20 +7,29 @@
 					{{ cat | cat }} 커미션 홍보봇
 				</h2>
 
-				<v-progress-circular class="my-5" :size="100" :value="count/3" :color="color">
+				<v-progress-circular class="my-5" :size="110" :value="count/3" :color="color">
+          <v-col>
 					<h1>{{ count }}</h1>
+          <p v-if="count >= 280" class="note body-2" >혼잡</p>
+          <p v-else-if="count >= 300" class="note body-2">리밋</p>
+          <p v-else class="note body-2">원활</p>
+          </v-col>
+
 				</v-progress-circular>
-				<div class="grey--text text--darken-1 mb-3">
-					( 리밋 : 300 )
-				</div>
+				<p class="grey--text text--darken-1" style="display: flex; justify-content: center; align-items: center;">
+					280 이상: 혼잡, &nbsp;<strong class="blue-grey--text text--darken-3" >300: 리밋</strong>
+				</p>
 				<v-row class="caption" justify="center" align="center">
-					<v-icon size=18 :color="color">mdi-information</v-icon>&nbsp;<span :class="`${color}--text`">{{computedDate}}</span>&nbsp;기준 지난 3시간 트윗수
+					<v-icon size=16 :color="color">mdi-information</v-icon>&nbsp;<span :class="`${color}--text`">{{computedDate}}</span>&nbsp;기준 지난 3시간 트윗수
 				</v-row>
+        <v-row class="caption" justify="center">
+          <a class="text-decoration-underline grey--text" href="https://help.twitter.com/ko/rules-and-policies/twitter-limits" target="_blank">리밋이 뭔가요?</a>
+        </v-row>
 			</v-col>
 
-			<v-row style="max-width:800px" class="mx-auto">
+			<v-row style="max-width:800px" class="mx-auto mt-2">
 				<v-col cols="12" >
-          <v-row justify="center" align="center">
+          <v-row justify="center" align="center" class="pb-3" >
 					<v-btn rounded @click="$router.push('/bot/art')">그림</v-btn>
 					<v-btn rounded @click="$router.push('/bot/wri')">글</v-btn>
 					<v-btn rounded @click="$router.push('/bot/des')">디자인</v-btn>
@@ -62,10 +71,12 @@ import collection from '@/plugins/collection'
 
 @Component({
   asyncData({ params, error, app }) {
-    return app.$axios.$get('/1.0/data/bots/limit/'+ params.cat)
-      .then(res => {
-        console.log(res);
-        return { limit: res.limit, count: res.count };
+    return cmsnService.getBotLimit(params.cat).then(res => {
+      return res.data
+    })
+      .then(data => {
+        console.log(data);
+        return { limit: data.limit, count: data.count };
       })
       .catch(err => {
         console.error(err);
@@ -124,8 +135,10 @@ export default class BotStatus extends Vue {
       return "grey";
     } else if (this.count >= 299) {
       return "red";
-    } else if (this.count > 250) {
+    } else if (this.count >= 280) {
       return "deep-orange";
+    } else if (this.count >= 250) {
+      return "orange";
     } else if (this.count > 100) {
       return "green";
     } else if (this.count > 0) {
@@ -153,4 +166,11 @@ div.caption {
 morebox > div {
   height: 100%;
 }
+
+.note {
+  position: absolute; bottom: 18px; left: 0; width: 100%; text-align: center; margin-bottom: 0px;
+}
+
+.material-icons { display: inline-flex;
+    vertical-align: middle !important; }
 </style>

@@ -2,7 +2,7 @@
 
 	<div>
 		<div v-if=" !isAD">
-			<profile :user="item._user" :departedAt="item.departedAt" />
+			<profile :user="item._user || {}" :departedAt="item.departedAt" />
 			<a :href=" 'https://twitter.com/' + computedUsername +'/status/'+ item.id " target="_blank" rel="noopener">
 				<div style='position:relative'>
 					<div :class="['text', {overlay: hideText, unhideable: unhideableText}]" v-if="item.text" :inner-html.prop="item.text | text"></div>
@@ -77,7 +77,11 @@ export default class Card extends Vue {
     if (this.item._user) {
       return this.item._user.name;
     } else {
-      throw new Error("no _user on item");
+      this.item._user = {}
+      if(this.$axios){
+        this.$axios.post('/1.0/data/error', {message : `no _user on item ${this.item.id}`})
+      }
+      // throw new Error("no _user on item");
     }
   }
 
@@ -125,8 +129,8 @@ export default class Card extends Vue {
   word-break: break-all;
   position: relative;
   letter-spacing: 0.3px;
-  font-size: 1rem;
-  padding: 0px 8px 8px 8px;
+  font-size: medium;
+  padding: 0px 12px 9px 12px;
   line-height: 150%;
   color: #45454e;
 }
@@ -184,8 +188,14 @@ export default class Card extends Vue {
 
 
 @media screen and (max-width: 550px) {
+  .text {
+    font-size: 18px;
+  }
   .text.unhideable {
     height: 180px;
+  }
+  .item.article{
+    border-radius: 0 !important;
   }
 }
 </style>

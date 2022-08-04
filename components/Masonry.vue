@@ -72,7 +72,7 @@ $medium-column-width: calc((100% - 12px * 2) / 3);
 $large-column-width: calc((100% - 24px * 3) / 4);
 
 .item {
-    background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   border-radius: 4px;
   margin: 12px 0px;
   text-align: left;
@@ -92,7 +92,7 @@ $large-column-width: calc((100% - 24px * 3) / 4);
   }
   .item {
     width: $medium-column-width;
-    margin: 6px 0px;
+    margin: 0px 0px 12px 0px;
   }
 }
 
@@ -100,7 +100,7 @@ $large-column-width: calc((100% - 24px * 3) / 4);
   .item {
     width: $small-column-width;
     overflow: hidden;
-    margin: 3px 0px;
+    margin: 0px 0px 6px 0px;
   }
 
   .masonry{
@@ -113,7 +113,7 @@ $large-column-width: calc((100% - 24px * 3) / 4);
 @media screen and (max-width: 550px) {
   .item.article {
     width: 100%;
-    margin: 10px 0px;
+    margin-bottom: 20px;
   }
 }
 

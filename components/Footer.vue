@@ -12,7 +12,7 @@
 				</a>
                 <br><br>
                 ⓒ CMSN <br>
-                사이트 내 게시된 예술 작품의 저작권은 아티스트에게 있습니다. 무단 복제는 금지되어 있습니다.
+                사이트 내 게시된 창작물의 저작권은 창작자에게 있습니다. 무단 복제는 금지되어 있습니다.
 			</p>
 			<p>
 
@@ -30,13 +30,7 @@ export default {};
   margin: 6px;
   margin-top: 10px;
   text-align: center;
-  position: absolute;
-  bottom: 0;
-  h3 {
-    font-weight: normal;
-    color: #9b968f;
-    margin-bottom: 10px;
-  }
+
   p {
     color: rgb(169, 172, 177);
     font-size: 14px;

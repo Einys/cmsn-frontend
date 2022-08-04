@@ -1,6 +1,7 @@
 html,
 body {
   margin: 0;
+  font-family: 'Noto Sans KR', "Helvetica Neue", sans-serif;
 }
 
 html {
@@ -27,11 +28,6 @@ a {
   text-align: left;
 }
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
 .spacer {
   flex: 1 1 auto;
 }
@@ -44,9 +40,14 @@ body {
   visibility: hidden;
 }
 
+h2 {
+  color: rgb(49, 59, 83);
+  font-size: 22.5px;
+  padding: 0;
+}
+
 h3 {
 color: rgb(55, 66, 94);
 padding: 0;
 }
-
 

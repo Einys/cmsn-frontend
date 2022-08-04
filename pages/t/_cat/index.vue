@@ -10,9 +10,9 @@
 
 				<v-flex xs12 sm8>
 					<v-row no-gutters align="center" justify="start" v-if="cat!=='all'">
-            <h2 class="font-weight-bold" style="vertical-align:middle">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h2>
+            <div class="title font-weight-bold" style="vertical-align:middle">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</div>
             <div>
-              						<v-btn v-if="cat" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text small fab color="light-blue">
+              						<v-btn v-if="cat" class="pa-1" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text small fab color="light-blue">
 							<v-icon>mdi-twitter</v-icon>
 						</v-btn>
             <v-btn x-small dark fab depressed class="light-blue--text" color="light-blue lighten-4" @click="$router.push('/bot/'+cat )"><v-icon>mdi-poll</v-icon></v-btn>
@@ -23,13 +23,13 @@
 						{{(content||[])[cat]}}
 					</div>
 				</v-flex>
-				<v-flex xs12 sm4>
+				<v-flex xs12 v-if="cat === 'all'">
+					<cat-horiz class="my-3" :cat="cat" :intent="intent" ></cat-horiz>
+          <v-flex xs12>
 					<v-text-field class="search mt-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify"
           :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px;" v-model="keyword" label="검색..."
           v-on:keyup.enter="search()" @click:append="search()" />
 				</v-flex>
-				<v-flex xs12 v-if="cat === 'all'">
-					<cat-horiz class="my-3" :cat="cat" :intent="intent" ></cat-horiz>
 				</v-flex>
         <v-flex xs12 class="mt-5" v-if="q">
           <h2>

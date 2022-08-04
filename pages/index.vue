@@ -2,16 +2,16 @@
 	<div>
 
 		<div class="wrapper">
-			<h3 class="pt-5 pb-1">원하시는 커미션이 있나요?</h3>
+			<h2 class="pt-5 pb-1">원하시는 커미션이 있나요?</h2>
 			<cat-horiz ></cat-horiz>
 			<br>
 			<ad-banner></ad-banner>
-			<h3 class="pt-5 pb-1">세메센 최신 홍보</h3>
+			<h2 class="pt-5 pb-1">세메센 최신 홍보</h2>
 			<loader v-if="busy" />
 			<masonry :list="list" :isArticle="true" />
 			<div v-if="!isEmpty">
 
-				<h3 class="pt-5 pb-1">카테고리 선택하고 더보기</h3>
+				<h2 class="pt-5 pb-1">카테고리 선택하고 더보기</h2>
 				<cat-horiz ></cat-horiz>
 
 			</div>
@@ -49,6 +49,10 @@ export default Vue.extend({
     console.log(
       `[index.vue] asyncData: isClient : ${process.client}, isServer: ${process.server}`
     );
+  },
+  created() {
+    // 환경 변수 출력
+    console.log(process.env, 'env')
   },
   mounted() {
     this.petchList();

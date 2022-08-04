@@ -1,20 +1,22 @@
 <template>
   <a
-    :href=" 'https://twitter.com/'+ user.name"
+    :href=" user.name? 'https://twitter.com/'+ user.name : null "
     target="_blank"
     rel="noopener"
   >
-    <v-row class="profile pa-2 py-3" no-gutters>
-      <v-avatar size="32" class="avatar">
-        <img
+    <v-row class="profile" no-gutters>
+      <v-avatar size="34" class="avatar">
+        <img v-if="user.profileImg"
           :src="user.profileImg"
           @error="onProfileImageError($event)"
         />
+        <img v-else src="/default.jpg"/>
       </v-avatar>
       <v-layout column>
       <v-row no-gutters align="center">
-      <span class="username">{{ user.name }}&nbsp;</span>
-      <v-icon :size="$vuetify.breakpoint.smAndUp? 14 : 12" color="grey">mdi-twitter</v-icon>
+      <span v-if="user.name !== null && user.name !== undefined" class="username">{{ user.name }}&nbsp;</span>
+      <span v-else class="caption grey--text"> (유저 확인 오류) &nbsp;</span>
+      <!-- <v-icon :size="$vuetify.breakpoint.smAndUp? 14 : 14" color="blue">mdi-twitter</v-icon> -->
       </v-row>
 
       <span
@@ -42,7 +44,7 @@ import { Component, Vue, Prop } from "vue-property-decorator";
         Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60) < 24
       ) {
         return (
-          Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60) +
+          Math.ceil((Date.now() - Date.parse(value)) / 1000 / 60 / 60 - 1) +
           " 시간 전 홍보"
         );
       } else {
@@ -64,7 +66,7 @@ export default class Card extends Vue {
   onProfileImageError($event: any) {
     if(!this.error){
       this.error = true;
-      $event.target.src = require('@/assets/default.jpg');
+      $event.target.src = '/default.jpg';
     }
   }
 }
@@ -75,14 +77,15 @@ $break-large: 1200px;
 $break-small: 720px;
 
 .profile {
-color: #4b4b4b;
-  padding: 10px 8px;
+  color: #4b4b4b;
+  padding: 12px;
+  padding-bottom: 9px;
   font-size: 15px;
   line-height: 16px;
-    .avatar{
-        float: left;
-        margin-right: 8px;
-    }
+  .avatar{
+      float: left;
+      margin-right: 8px;
+  }
   .margin-right {
     margin-right: 8px;
   }
@@ -92,7 +95,7 @@ color: #4b4b4b;
     padding-left: 2px;
   }
   .date {
-    font-size: 12px;
+    font-size: 14px;
     color: rgb(138, 155, 175);
   }
   .username {
@@ -120,12 +123,10 @@ color: #4b4b4b;
   }
 
   .profile {
-    padding: 2px;
-     line-height: 14px;
-    .avatar {
-      width: 28px;
-      height: 28px;
-    }
+
+    font-size: medium;
+    line-height: 18px;
+
     .margin-right {
       margin-right: 6px;
     }
@@ -133,13 +134,25 @@ color: #4b4b4b;
 
     }
     .date {
-      font-size: 11px;
+      font-size: 0.8em;
     }
     .username {
-      max-width: 80px;
+      max-width: 100px;
 
     }
 
+  }
+
+  .article .profile {
+    padding-bottom: 10px;
+    .avatar {
+      height: 40px !important;
+      width: 40px !important;
+      margin-right: 10px;
+    }
+    .username {
+      max-width: none;
+    }
   }
 }
 

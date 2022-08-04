@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   bots : {
     art: "cmsn_RT",
     des: "cmsn_d",

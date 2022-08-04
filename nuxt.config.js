@@ -1,16 +1,27 @@
-const colors = require('vuetify/es5/util/colors').default
+import colors from 'vuetify/es5/util/colors'
+require('dotenv').config()
 
-module.exports = {
-  mode: 'spa',
+console.log('server url: ', process.env.SERVER_URL)
+
+export default {
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
   /**
   * env
   */
   env: {
-    SERVER_URL: process.env.SERVER_URL || 'http://127.0.0.1:8080'
+    SERVER_URL: process.env.SERVER_URL,
+    HOST: process.env.HOST
   },
   /*
   ** Headers of the page
   */
+  server: {
+    host: process.env.HOST !== undefined
+      ? process.env.HOST
+      : '0.0.0.0',
+    port: 3000
+  },
   head: {
     titleTemplate: '%s',
     title: '커미션 사이트 세메센(CMSN)',
@@ -21,7 +32,8 @@ module.exports = {
     ],
     noscript: [{ innerHTML: "Art commission site - We're sorry but this site doesn't work properly without JavaScript enabled. Please enable it to continue. 안녕하세요. 창작 예술 커미션 사이트입니다. 그림 글 캘리그라피 공예 시각디자인 작곡 보이스 등 창작 커미션을 홍보하는 사이트입니다. 방문자분의 브라우저에 자바스크립트가 활성화되어 있지 않아 사이트가 정상 작동하지 않습니다. 자바스크립트를 활성화시키고 새로고침 하여 주세요. 감사합니다." }],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap'}
     ],
     script: [
       {src:'https://securepubads.g.doubleclick.net/tag/js/gpt.js', async:'async'},
@@ -44,29 +56,26 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/masonry', ssr: false, client:true},
-    { src: '~/plugins/main', ssr: false, client:true}
+    { src: '~/plugins/main', ssr: false, client:true},
   ],
-  /*
-  ** Nuxt.js dev-modules
-  */
+
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    // https://go.nuxtjs.dev/typescript
+    '@nuxt/typescript-build',
+    // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    ['@nuxt/typescript-build', {
-      typeCheck: false,
-      ignoreNotFoundWarnings: false
-    }],
-    '@nuxtjs/axios',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/google-analytics',
+    '@nuxtjs/dotenv'
   ],
-  /*
-  ** Nuxt.js modules
-  */
+  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
   ],
-  /*
-  ** vuetify module configuration
-  ** https://github.com/nuxt-community/vuetify-module
-  */
+
+  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
@@ -89,13 +98,6 @@ module.exports = {
     }
   },
   /**
-   * axios
-   */
-  axios: {
-    baseURL: process.env.SERVER_URL
-    // proxyHeaders: false
-  },
-  /**
    * google analytics
    */
   googleAnalytics: {
@@ -104,11 +106,11 @@ module.exports = {
   /*
   ** Build configuration
   */
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
+    babel: {
+      "plugins": process.env.NODE_ENV === 'production' ? ["transform-remove-console"] : []
     }
   }
 }

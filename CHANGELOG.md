@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.3](https://github.com/EinYs/nuxt-sn/compare/v1.3.2...v1.3.3) (2022-08-04)
+
+
+### 🛍 Designs
+
+* 이용안내 홍보불가범위 설명 수정 ([511bb24](https://github.com/EinYs/nuxt-sn/commit/511bb246f6dabb4b1b1e208d28bfda396137e37b))
+
 ### [1.3.2](https://github.com/EinYs/nuxt-sn/compare/v1.3.1...v1.3.2) (2022-08-04)
 
 ### [1.3.1](https://github.com/EinYs/nuxt-sn/compare/v1.3.0...v1.3.1) (2022-08-04)

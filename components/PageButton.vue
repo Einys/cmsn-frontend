@@ -1,22 +1,12 @@
 <template>
   <div class="pagenation">
-    <v-btn
-      fab
-      depressed
-      class="orange--text"
-      style="position: absolute; left: 4px"
-
-      @click="toFirst()"
-    >
-      <v-icon>mdi-page-first</v-icon>
-    </v-btn>
-    <v-btn fab depressed @click="toPrevious()" :disabled="!hasPrevious" class="orange--text">
+    <v-btn fab depressed @click="toPrevious()" :disabled="!hasPrevious" class="orange--text text--lighten-1">
       <v-icon>mdi-chevron-left</v-icon>
     </v-btn>
     &nbsp;&nbsp;
     .. {{pageNum}} ..
     &nbsp;&nbsp;
-    <v-btn fab depressed @click="toNext()" :disabled="!hasNext" class="orange--text">
+    <v-btn fab depressed @click="toNext()" :disabled="!hasNext" class="orange--text text--lighten-2">
       <v-icon>mdi-chevron-right</v-icon>
     </v-btn>
 
@@ -37,9 +27,7 @@ export default class Card extends Vue {
   public hasNext! : boolean;
   mounted() {}
 
-  toFirst() {
-    this.$router.push({ query: { ...this.$route.query, page: "1" } });
-  }
+
   toPrevious() {
     let page = parseInt(this.pageNum) - 1;
     this.$router.push({
@@ -55,13 +43,25 @@ export default class Card extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .pagenation {
-  margin: 16px auto;
+  margin: 20px auto;
   font-size: 22px;
   text-align: center;
-  color: #555555;
+  color: #43586b;
   position: relative;
-
 }
+
+.pagenation > button {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 8px !important;
+}
+
+@media screen and (max-width: $break-large) {
+  .pagenation {
+    margin: 12px auto;
+  }
+}
+
 </style>

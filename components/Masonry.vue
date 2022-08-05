@@ -110,7 +110,7 @@ $large-column-width: calc((100% - 24px * 3) / 4);
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: $break-xsmall) {
   .item.article {
     width: 100%;
     margin-bottom: 20px;

@@ -3,7 +3,7 @@
 		<v-col>
 
 			<v-col  class="mb-5" justify="center" align="center">
-				<h2 class="title grey--text text--darken-3 font-weight-bold">
+				<h2 class="font-weight-bold">
 					{{ cat | cat }} 커미션 홍보봇
 				</h2>
 

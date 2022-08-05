@@ -10,7 +10,7 @@
 
 				<v-flex xs12 sm8>
 					<v-row no-gutters align="center" justify="start" v-if="cat!=='all'">
-            <div class="title font-weight-bold" style="vertical-align:middle">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</div>
+            <div class="title font-weight-bold" style="vertical-align:middle; cursor:pointer;" @click="toFirst()">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</div>
             <div>
               						<v-btn v-if="cat" class="pa-1" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text small fab color="light-blue">
 							<v-icon>mdi-twitter</v-icon>
@@ -219,6 +219,9 @@ export default class Card extends Vue {
   toggleGallery() {
     console.log("toggle gallery");
     this.gallery = false;
+  }
+  toFirst() {
+    this.$router.push({ query: { ...this.$route.query, page: "1" } })
   }
   get cat() {
     return this.$route.params.cat;

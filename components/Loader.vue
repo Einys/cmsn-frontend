@@ -28,3 +28,9 @@ export default class Card extends Vue {
 
 </script>
 
+<style scoped>
+  .temp {
+    color: #ffce47;
+  }
+</style>
+

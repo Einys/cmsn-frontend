@@ -6,7 +6,7 @@
 			<!-- <v-btn fab small depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
 				<v-icon>mdi-chevron-up</v-icon>
 			</v-btn> -->
-			<v-layout no-gutters row wrap justify-center align-center class="ma-2">
+			<v-layout no-gutters row wrap justify-center align-center>
 
 				<v-flex xs12 sm8>
 					<v-row no-gutters align="center" justify="start" v-if="cat!=='all'">

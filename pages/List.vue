@@ -9,7 +9,7 @@
         <v-icon>mdi-chevron-up</v-icon>
       </v-btn> -->
 
-			<v-layout no-gutters row wrap justify-center align-center class="ma-2">
+			<v-layout no-gutters row wrap justify-center align-center>
 
 				<v-flex xs12 sm8>
 					<v-row no-gutters align="center">

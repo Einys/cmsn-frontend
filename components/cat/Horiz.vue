@@ -53,10 +53,11 @@ export default class Card extends Vue {
 
 <style>
 .cat .v-btn{
-	box-shadow: 0px 3px 7px 0px rgba(59, 56, 56, 0.08);
+	box-shadow: 0px 2px 3px 0px rgba(23, 23, 23, 0.1);
 	flex: 1 1 auto;
 	margin: 2px;
 	padding: 0px 10px !important;
 	font-size: 16px;
+	border-radius: 8px;
 }
 </style>

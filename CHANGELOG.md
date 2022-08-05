@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/EinYs/nuxt-sn/compare/v1.3.3...v1.4.0) (2022-08-05)
+
+
+### 🚀 Features
+
+* 처음으로 가기 버튼 삭제 ([6a32560](https://github.com/EinYs/nuxt-sn/commit/6a325607017ba0fbd92d2fdc4a312f66db4f82f5))
+* Masonry 아이템 뷰에서 제목을 누르면 맨 처음 목록으로 이동 ([2468c36](https://github.com/EinYs/nuxt-sn/commit/2468c36c7cdb5a189471538b5ecc0c7196eda7cc))
+
+
+### 🛍 Designs
+
+* 가로형 카테고리 버튼 네모나게 변경 ([f30ac82](https://github.com/EinYs/nuxt-sn/commit/f30ac82e97a4b04a7c826b89bf198b51460bba03))
+* 검색 바 약간 네모나게 변경 ([e7a8b3d](https://github.com/EinYs/nuxt-sn/commit/e7a8b3d71d505d26c62d662fd3668842e3a54990))
+* 메인 페이지 타이틀 간격 조정 ([2fb128a](https://github.com/EinYs/nuxt-sn/commit/2fb128ac7052158855486f5b006f16f95f580715))
+* 메인 icon들 변경 ([267d092](https://github.com/EinYs/nuxt-sn/commit/267d092a483114ec6e93c36142fbd65284d6aa17))
+* 봇 상태창 타이틀 폰트 크게 ([76f20c8](https://github.com/EinYs/nuxt-sn/commit/76f20c807b066c7ad439956954d1ba5ff0a94a49))
+* 이용안내 스타일 변경 ([0be034f](https://github.com/EinYs/nuxt-sn/commit/0be034f21bf57ce138b799b8191bf004ef33569c))
+* 카테고리 버튼&검색 등 포함된 레이아웃 박스의 마진 삭제 ([a404438](https://github.com/EinYs/nuxt-sn/commit/a40443849b05d45cc5f1c93ca7b37840e159adae))
+* 페이지 버튼 스타일 변경 ([6dda27a](https://github.com/EinYs/nuxt-sn/commit/6dda27aaa1ce3eca5502d5440551ed5d1e16dd9d))
+* h2 색상 좀더 연하게 ([b56a22a](https://github.com/EinYs/nuxt-sn/commit/b56a22a748eaa78629f75ef879cdd08d6485bb53))
+* Masonry 아이템 뷰의 제목 옆 작은 아이콘 변경 ([9b6998c](https://github.com/EinYs/nuxt-sn/commit/9b6998cb3a14b5fee8bd731b0cfe5b31ad6cc6bb))
+* Masonry 아이템 상하 margin 수정 ([f4a6b78](https://github.com/EinYs/nuxt-sn/commit/f4a6b783bee69bb1d6ec3505a446378a0ea3d563))
+
 ### [1.3.3](https://github.com/EinYs/nuxt-sn/compare/v1.3.2...v1.3.3) (2022-08-04)
 
 

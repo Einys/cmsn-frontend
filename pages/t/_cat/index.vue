@@ -39,7 +39,7 @@
 			</v-layout>
 
 			<div class="masonry-wrapper">
-				<page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
+				<page-button class="py-2" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
 				<loader v-if="busy" />
 				<masonry v-if="!isEmpty" :list="list" :isArticle="!gallery" />
 				<page-button v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />

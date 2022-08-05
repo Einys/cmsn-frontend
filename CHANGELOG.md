@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/EinYs/nuxt-sn/compare/v1.4.0...v1.4.1) (2022-08-05)
+
+
+### 🔧 Fixes
+
+* 메인 아이콘(모바일용) 옆이 잘려보이는 현상 ([c42d8f9](https://github.com/EinYs/nuxt-sn/commit/c42d8f935fcf0b9ed9ba4af351ca8b275fddda23))
+
 ## [1.4.0](https://github.com/EinYs/nuxt-sn/compare/v1.3.3...v1.4.0) (2022-08-05)
 
 

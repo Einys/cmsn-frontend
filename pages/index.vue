@@ -6,7 +6,7 @@
 			<cat-horiz ></cat-horiz>
 			<br>
 			<ad-banner></ad-banner>
-			<h2 class="pt-5 pb-1">세메센 최신 홍보</h2>
+			<h2 class="pt-5 pb-2 mt-3">세메센 최신 홍보</h2>
 			<loader v-if="busy" />
 			<masonry :list="list" :isArticle="true" />
 			<div v-if="!isEmpty">

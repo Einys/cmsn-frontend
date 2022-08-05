@@ -11,11 +11,13 @@
 				<v-flex xs12 sm8>
 					<v-row no-gutters align="center" justify="start" v-if="cat!=='all'">
             <h2 class="font-weight-bold" style="vertical-align:middle; cursor:pointer;" @click="toFirst()">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h2>
-            <div>
-              						<v-btn v-if="cat" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text small fab color="light-blue">
-							<v-icon>mdi-twitter</v-icon>
-						</v-btn>
-            <v-btn x-small dark fab depressed class="light-blue--text" color="light-blue lighten-4" @click="$router.push('/bot/'+cat )"><v-icon>mdi-poll</v-icon></v-btn>
+            <div style="font-size:1px; display:inline-flex">
+              <v-btn x-small text fab depressed class="blue--text text--lighten-1" @click="$router.push('/bot/'+cat )">
+                <v-icon>mdi-poll</v-icon>
+              </v-btn>
+              <v-btn v-if="cat" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text x-small fab color="light-blue lighten-1">
+                <v-icon size="22">mdi-twitter</v-icon>
+              </v-btn>
             </div>
 
 					</v-row>

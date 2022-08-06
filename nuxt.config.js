@@ -25,7 +25,11 @@ export default {
   head: {
     titleTemplate: '%s',
     title: '커미션 사이트 세메센(CMSN)',
+    htmlAttrs: {
+      lang: 'ko'
+    },
     meta: [
+      { "http-equiv": "Content-Language",  content: "ko_KR"},
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'SNS 트위터와 연동되는 커미션 홍보 사이트' }

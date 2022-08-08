@@ -54,7 +54,8 @@ export default class Masonry extends Vue {
   get masonryGutter() {
     if(process.client){
       if (window.innerWidth <= 720) return 6;
-      else if (window.innerWidth <= 1200) return 12;
+      else if (window.innerWidth <= 1200) return 10;
+      else if (window.innerWidth <= 1400) return 18;
       else return 24;
     }else{
 
@@ -84,6 +85,12 @@ $large-column-width: calc((100% - 24px * 3) / 4);
 }
 .item.ad{
   background-color: rgba(134, 134, 134, 0.1);
+}
+
+@media screen and (max-width: 1400px) {
+  .item {
+    margin: 0px 0px 18px 0px;
+  }
 }
 
 @media screen and (max-width: $break-large) {

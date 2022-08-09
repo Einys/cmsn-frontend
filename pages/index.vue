@@ -2,11 +2,11 @@
 	<div>
 
 		<div>
-			<h2 class="pt-5 pb-1">원하시는 커미션이 있나요?</h2>
+			<h2 class="pt-2 pb-2 ml-5">원하시는 커미션이 있나요?</h2>
 			<cat-bar class="ml-5"></cat-bar>
 			<br>
 			<ad-banner></ad-banner>
-			<h2 class="pt-5 pb-2 mt-3">세메센 최신 홍보</h2>
+			<h2 class="pt-4 pb-2 mt-3 ml-5">세메센 최신 홍보</h2>
 			<loader v-if="busy" />
       <div class="wrapper py-0">
 			<masonry :list="list" :isArticle="true" />

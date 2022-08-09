@@ -3,7 +3,7 @@
 
 		<div class="wrapper">
 			<h2 class="pt-5 pb-1">원하시는 커미션이 있나요?</h2>
-			<cat-horiz ></cat-horiz>
+			<cat-bar class="ml-5"></cat-bar>
 			<br>
 			<ad-banner></ad-banner>
 			<h2 class="pt-5 pb-2 mt-3">세메센 최신 홍보</h2>
@@ -12,7 +12,7 @@
 			<div v-if="!isEmpty">
 
 				<h2 class="pt-5 pb-1">카테고리 선택하고 더보기</h2>
-				<cat-horiz ></cat-horiz>
+				<cat-horiz></cat-horiz>
 
 			</div>
 
@@ -23,16 +23,21 @@
 
 <script lang="ts">
 import Vue from "vue";
-import CatHoriz from "@/components/cat/Horiz.vue";
+import CatHoriz from "@/components/cat/Horiz.vue"
+import CatBar from "~/components/cat/IconBar.vue";
 import Masonry from "@/components/Masonry.vue";
 import cmsnService from "@/services/cmsn";
 import Loader from "@/components/Loader.vue";
 import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
+import CatButton from "~/components/cat/IconBtn.vue"
+
 export default Vue.extend({
   components: {
-    CatHoriz,
+    CatBar,
     Masonry,
     Loader,
+    CatButton,
+    CatHoriz,
     "ad-banner": AdLargeBanner
   },
   data: () => {

@@ -31,7 +31,7 @@
           v-on:keyup.enter="search()" @click:append="search()" />
 				</v-flex>
 				<v-flex xs12 v-if="cat === 'all'">
-					<cat-horiz class="my-3" :cat="cat" :intent="intent" ></cat-horiz>
+					<cat-bar class="my-3" :cat="cat" :intent="intent" ></cat-bar>
 				</v-flex>
         <v-flex xs12 class="mt-5" v-if="q">
           <h2>
@@ -55,7 +55,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import cmsnService from "@/services/cmsn";
-import CatHoriz from "@/components/cat/Horiz.vue";
+import CatBar from "~/components/cat/IconBar.vue";
 import Masonry from "@/components/Masonry.vue";
 import PageButton from "@/components/PageButton.vue";
 import Loader from "@/components/Loader.vue";
@@ -72,7 +72,7 @@ import { isArray } from "util";
     "ad-320x100": AdMobileBanner2,
     "ad-lg-banner": AdLargeBanner,
     Loader,
-    CatHoriz
+    CatBar
   },
   data(){
     return {

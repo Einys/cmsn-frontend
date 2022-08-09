@@ -24,7 +24,7 @@
 					</div>
 				</v-flex>
 				<v-flex xs12 v-if="cat === 'all'">
-					<cat-horiz class="my-3" :cat="cat" :intent="intent" ></cat-horiz>
+					<cat-bar class="my-3" :cat="cat" :intent="intent" ></cat-bar>
           <v-flex xs12>
 					<v-text-field class="search mt-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify"
           :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px; border-radius: 8px;" v-model="keyword" label="검색..."
@@ -53,7 +53,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import cmsnService from "@/services/cmsn";
-import CatHoriz from "@/components/cat/Horiz.vue";
+import CatBar from "~/components/cat/IconBar.vue";
 import Masonry from "@/components/Masonry.vue";
 import PageButton from "@/components/PageButton.vue";
 import Loader from "@/components/Loader.vue";
@@ -70,7 +70,7 @@ import { isArray } from "util";
     "ad-320x100": AdMobileBanner2,
     "ad-lg-banner": AdLargeBanner,
     Loader,
-    CatHoriz
+    CatBar
   },
   data(){
     return {

@@ -29,7 +29,7 @@
 </template>
 <script lang="ts">
 	import { Component, Vue, Prop } from "vue-property-decorator";
-	import catIcon from "~/components/cat/CatIcon.vue"
+	import CatBar from "~/components/cat/IconBtn.vue"
 
 	@Component({
 		//
@@ -38,7 +38,7 @@
 			cat: String
 		},
 		components: {
-			catButton: catIcon
+			catButton: CatBar
 		}
 	})
 	export default class Card extends Vue {

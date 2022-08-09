@@ -27,7 +27,7 @@
 					<v-text-field class="search mt-2" solo flat color="orange" prepend-inner-icon="mdi-magnify" style="height:48px;" v-model="keyword" label="검색..." v-on:keyup.enter="search()" />
 				</v-flex>
         <v-flex xs12 v-if="cat === 'all'">
-          <cat-horiz :cat="cat" :intent="intent"></cat-horiz>
+          <cat-bar :cat="cat" :intent="intent"></cat-bar>
         </v-flex>
 			</v-layout>
 			<div class="masonry-wrapper">
@@ -49,7 +49,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import cmsnService from "@/services/cmsn";
-import CatHoriz from "@/components/cat/Horiz.vue";
+import CatBar from "~/components/cat/IconBar.vue";
 import Masonry from "@/components/Masonry.vue";
 import PageButton from "@/components/PageButton.vue";
 import Loader from "@/components/Loader.vue";
@@ -65,7 +65,7 @@ import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
     "ad-320x100": AdMobileBanner2,
     "ad-lg-banner": AdLargeBanner,
     Loader,
-    CatHoriz
+    CatBar
   },
   filters: {
     cat(cat: any) {

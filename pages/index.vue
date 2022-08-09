@@ -1,15 +1,17 @@
 <template>
 	<div>
 
-		<div class="wrapper">
+		<div>
 			<h2 class="pt-5 pb-1">원하시는 커미션이 있나요?</h2>
 			<cat-bar class="ml-5"></cat-bar>
 			<br>
 			<ad-banner></ad-banner>
 			<h2 class="pt-5 pb-2 mt-3">세메센 최신 홍보</h2>
 			<loader v-if="busy" />
+      <div class="wrapper py-0">
 			<masonry :list="list" :isArticle="true" />
-			<div v-if="!isEmpty">
+      </div>
+			<div v-if="!isEmpty" class="wrapper">
 
 				<h2 class="pt-5 pb-1">카테고리 선택하고 더보기</h2>
 				<cat-horiz></cat-horiz>

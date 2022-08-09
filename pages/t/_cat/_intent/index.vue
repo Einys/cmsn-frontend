@@ -8,7 +8,7 @@
 			</v-btn> -->
 			<v-layout no-gutters row wrap justify-center align-center>
 
-				<v-flex xs12 sm8>
+				<v-flex xs12 sm4>
 					<v-row no-gutters align="center" justify="start" v-if="cat!=='all'">
             <h2 class="font-weight-bold" style="vertical-align:middle; cursor:pointer;" @click="toFirst()">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h2>
             <div style="font-size:1px; display:inline-flex">
@@ -25,9 +25,12 @@
 						{{(content||[])[cat]}}
 					</div>
 				</v-flex>
+        <v-flex xs12 sm4>
+          <page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
+        </v-flex>
 				<v-flex xs12 sm4>
-					<v-text-field class="search mt-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify"
-          :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px; border-radius: 8px;" v-model="keyword" label="검색..."
+					<v-text-field class="search mt-2 mb-4" solo flat rounded clearable color="orange darken-2" prepend-inner-icon="mdi-magnify"
+          :append-icon="keyword !== q ? 'mdi-call-made' : undefined" style="height:48px; border-radius: 8px;" v-model="keyword" label="검색..."
           v-on:keyup.enter="search()" @click:append="search()" />
 				</v-flex>
 				<v-flex xs12 v-if="cat === 'all'">
@@ -41,11 +44,11 @@
 			</v-layout>
 
 			<div class="masonry-wrapper">
-				<page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
+
 				<loader v-if="busy" />
 				<masonry v-if="!isEmpty" :list="list" :isArticle="!gallery" />
-				<page-button v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
-          <v-layout v-if="isEmpty && !busy" justify-center> <h2>표시할 내용이 없습니다.</h2> </v-layout>
+				<page-button class="pb-5" v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
+        <v-layout v-if="isEmpty && !busy" justify-center> <h2>표시할 내용이 없습니다.</h2> </v-layout>
 			</div>
 
 		</div>
@@ -263,9 +266,13 @@ export default class Card extends Vue {
 
 <style>
 .search .v-input__slot {
-  background-color: #ffffff !important;
+  background-color: #e5e5e6 !important;
 }
 .search .v-text-field__details {
   display: none;
+}
+.search .v-input__slot {
+  padding-left: 0.8rem !important;
+  padding-right: 0.8rem !important;
 }
 </style>

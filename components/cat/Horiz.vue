@@ -58,6 +58,6 @@ export default class Card extends Vue {
 	margin: 2px;
 	padding: 0px 10px !important;
 	font-size: 16px;
-	border-radius: 8px;
+	border-radius: 16px;
 }
 </style>

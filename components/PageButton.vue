@@ -53,9 +53,9 @@ export default class Card extends Vue {
 }
 
 .pagenation > button {
-  width: 48px !important;
-  height: 48px !important;
-  border-radius: 8px !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 12px !important;
 }
 
 @media screen and (max-width: $break-large) {

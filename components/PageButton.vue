@@ -60,7 +60,7 @@ export default class Card extends Vue {
 
 @media screen and (max-width: $break-large) {
   .pagenation {
-    margin: 12px auto;
+    margin: 10px auto;
   }
 }
 

@@ -42,7 +42,7 @@
 				<page-button class="py-2" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
 				<loader v-if="busy" />
 				<masonry v-if="!isEmpty" :list="list" :isArticle="!gallery" />
-				<page-button class="pb-5" v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
+				<page-button style="padding-bottom:36px" v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
           <v-layout v-if="isEmpty && !busy" justify-center> <h2>표시할 내용이 없습니다.</h2> </v-layout>
 			</div>
 

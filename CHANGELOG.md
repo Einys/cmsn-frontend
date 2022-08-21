@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/EinYs/nuxt-sn/compare/v1.4.1...v1.4.2) (2022-08-21)
+
+
+### 🔧 Fixes
+
+* 언어가 영어로 인식되어 번역창이 계속 뜨는 문제 ([c434df7](https://github.com/EinYs/nuxt-sn/commit/c434df7b52162b59786b4ae80f71c132779275f3))
+
+
+### 🛍 Designs
+
+* 카테고리 버튼 약간 더 동그랗게 ([4f1cf02](https://github.com/EinYs/nuxt-sn/commit/4f1cf02215737e0d505ec23ef940e2835f35df6b))
+* 페이지버튼 약간 더 동그랗게 ([0c0e9d8](https://github.com/EinYs/nuxt-sn/commit/0c0e9d8afa14ed1385baa0d97dbc95ff0faef88d))
+* 하단 페이지 넘김버튼의 하단 여백 늘림 ([8d177e5](https://github.com/EinYs/nuxt-sn/commit/8d177e543bb99df7dc2a46fc6d650b5a7989d281))
+* 하단 페이지 넘김버튼의 하단 여백 더 늘림 ([301a02f](https://github.com/EinYs/nuxt-sn/commit/301a02fd2c39a0d0f1df36a16ac9aa2c36ba00da))
+* Masonry 간격 더 작게 조정 ([e0bd85a](https://github.com/EinYs/nuxt-sn/commit/e0bd85a78191f43ac1369b407ea337e424a4f8f9))
+* search바 좀더 동그랗게 하고 여백 조정 ([2fd1d1e](https://github.com/EinYs/nuxt-sn/commit/2fd1d1e44176c23cc32d5d8ba8335b4ff79d5903))
+* wrapper 패딩 더 작게 조정 ([9f2c3e1](https://github.com/EinYs/nuxt-sn/commit/9f2c3e1ad8fb22a3e47659021e2ae53af195e4a2))
+
 ### [1.4.1](https://github.com/EinYs/nuxt-sn/compare/v1.4.0...v1.4.1) (2022-08-05)
 
 

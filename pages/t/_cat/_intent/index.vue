@@ -27,7 +27,7 @@
 				</v-flex>
 				<v-flex xs12 sm4>
 					<v-text-field class="search mt-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify"
-          :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px; border-radius: 8px;" v-model="keyword" label="검색..."
+          :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px; border-radius: 12px;" v-model="keyword" label="검색..."
           v-on:keyup.enter="search()" @click:append="search()" />
 				</v-flex>
 				<v-flex xs12 v-if="cat === 'all'">
@@ -264,6 +264,7 @@ export default class Card extends Vue {
 <style>
 .search .v-input__slot {
   background-color: #ffffff !important;
+  padding: 0px 14px !important;
 }
 .search .v-text-field__details {
   display: none;

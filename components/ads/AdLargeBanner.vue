@@ -1,9 +1,9 @@
 <template>
 
-  <!-- /21750020995/lg-banner -->
-  <div id='div-gpt-ad-1571325317379-0' style="margin:0 auto; text-align:center">
+<!-- /21750020995/lg-banner -->
+<div id='div-gpt-ad-1663198654757-0' style='min-width: 320px; min-height: 50px;'>
 
-  </div>
+</div>
 
 </template>
 
@@ -12,9 +12,9 @@
 export default {
   props: {},
   mounted() {
-    googletag.cmd.push(function() {
-      googletag.display("div-gpt-ad-1571325317379-0");
-    });
+
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1663198654757-0'); });
+
   },
   updated() {
     console.log("Large Banner Ad Updated");
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style>
-#div-gpt-ad-1538279860075-0 {
+#div-gpt-ad-1663198654757-0 {
   margin: 0 auto;
 }
 </style>

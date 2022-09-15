@@ -186,12 +186,12 @@ export default Vue.extend({
   },
   watch: {
     $route(to, from) {
-      console.log("Route change detected. Reload Ad ");
-
+      // 페이지 이동 시 광고 새로고침
+      // console.log("Route change detected. Reload Ad ");
       //@ts-ignore
-      if (googletag && typeof googletag.pubads === "function") {
-        googletag.pubads().refresh();
-      }
+      // if (googletag && typeof googletag.pubads === "function") {
+      //   googletag.pubads().refresh();
+      // }
     }
   }
 });

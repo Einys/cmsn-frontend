@@ -144,6 +144,7 @@ export default Vue.extend({
   },
   data: () => ({
     //
+    lastAdRefresh: Date.now(),
     snackbar: false,
     errorbar: false,
     drawer: false,
@@ -186,12 +187,18 @@ export default Vue.extend({
   },
   watch: {
     $route(to, from) {
-      // 페이지 이동 시 광고 새로고침
-      // console.log("Route change detected. Reload Ad ");
-      //@ts-ignore
-      // if (googletag && typeof googletag.pubads === "function") {
-      //   googletag.pubads().refresh();
-      // }
+      const currentTime = Date.now()
+      if( (currentTime - this.lastAdRefresh) > 30000 ){
+        //@ts-ignore
+        if (googletag && typeof googletag.pubads === "function") {
+          //페이지 이동 시 광고 새로고침
+          console.log("Route change detected. Reload Ad ");
+          this.lastAdRefresh = currentTime
+          googletag.pubads().refresh();
+        } else {
+          console.error('cannot find googletag.pubads()')
+        }
+      }
     }
   }
 });

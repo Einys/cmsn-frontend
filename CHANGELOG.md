@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.5](https://github.com/EinYs/nuxt-sn/compare/v1.4.4...v1.4.5) (2022-09-16)
+
+
+### 🛍 Designs
+
+* 광고 상단배너 가운데정렬 ([d503234](https://github.com/EinYs/nuxt-sn/commit/d5032345327f34e529a6ab77ec12baeb1087a83a))
+
 ### [1.4.4](https://github.com/EinYs/nuxt-sn/compare/v1.4.3...v1.4.4) (2022-09-16)
 
 ### [1.4.3](https://github.com/EinYs/nuxt-sn/compare/v1.4.2...v1.4.3) (2022-09-16)

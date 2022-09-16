@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/EinYs/nuxt-sn/compare/v1.4.2...v1.4.3) (2022-09-16)
+
+
+### 🚀 Features
+
+* 광고 슬롯 사이즈 추가, 페이지 이동 시 새로고침 없음 ([71bb14f](https://github.com/EinYs/nuxt-sn/commit/71bb14fe496a97491da1c2ad9b66d01b41f9912b))
+
 ### [1.4.2](https://github.com/EinYs/nuxt-sn/compare/v1.4.1...v1.4.2) (2022-08-21)
 
 

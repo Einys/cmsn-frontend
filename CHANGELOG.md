@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.6](https://github.com/EinYs/nuxt-sn/compare/v1.4.5...v1.4.6) (2022-09-16)
+
+
+### 🚀 Features
+
+* 광고 자동 새로고침 ([7e6084e](https://github.com/EinYs/nuxt-sn/commit/7e6084e0ed8fb5a7653a8fa03b85db88a0a3fc48))
+
 ### [1.4.5](https://github.com/EinYs/nuxt-sn/compare/v1.4.4...v1.4.5) (2022-09-16)
 
 

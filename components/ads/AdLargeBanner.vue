@@ -1,7 +1,7 @@
 <template>
 
 <!-- /21750020995/lg-banner -->
-<div id='div-gpt-ad-1663198654757-0' style='min-width: 320px; min-height: 50px; margin: 0 auto; text-align:center; '>
+<div id='div-gpt-ad-1663319531450-0' style='min-width: 320px; min-height: 50px; margin: 0 auto; text-align:center; '>
 
 </div>
 
@@ -13,7 +13,7 @@ export default {
   props: {},
   mounted() {
 
-    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1663198654757-0'); });
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1663319531450-0'); });
 
   },
   updated() {

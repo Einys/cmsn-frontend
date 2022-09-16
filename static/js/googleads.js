@@ -38,6 +38,12 @@
     googletag.enableServices();
   });
 
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/21750020995/lg-banner', [[970, 90], [970, 250], [728, 90], [320, 50], [320, 100], [1180, 150]], 'div-gpt-ad-1663319531450-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+
   googletag.cmd.push(function () {
     googletag.defineSlot('/21750020995/xs-banner2', [320, 100], 'div-gpt-ad-1571327001291-0').addService(googletag.pubads());
   });

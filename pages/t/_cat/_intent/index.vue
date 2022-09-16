@@ -6,34 +6,33 @@
 			<!-- <v-btn fab small depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
 				<v-icon>mdi-chevron-up</v-icon>
 			</v-btn> -->
-			<v-layout no-gutters row wrap justify-center align-center>
+			<v-layout no-gutters row wrap justify-center align-center class="mb-2">
 
-				<v-flex xs12 sm8>
+				<v-flex>
 					<v-row no-gutters align="center" justify="start" v-if="cat!=='all'">
-            <h2 class="font-weight-bold" style="vertical-align:middle; cursor:pointer;" @click="toFirst()">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h2>
-            <div style="font-size:1px; display:inline-flex">
-              <v-btn x-small text fab depressed class="blue--text text--lighten-1" @click="$router.push('/bot/'+cat )">
+            <h2 class="font-weight-bold headline" style="vertical-align:middle; cursor:pointer;" @click="toFirst()">{{cat|cat}} 커미션 {{intent | intent}}&nbsp;</h2>
+            <div style="font-size:1px; display:inline-flex" class="mr-2">
+              <v-btn x-small text fab depressed class="blue--text text--lighten-1" @click="$router.push('/bot/'+cat )" style="margin-left: -6px;">
                 <v-icon>mdi-poll</v-icon>
               </v-btn>
-              <v-btn v-if="cat" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text x-small fab color="light-blue lighten-1">
+              <v-btn v-if="cat" :href="'https://twitter.com/'+ (bots ||[])[cat]" target="_blank" text x-small fab color="light-blue lighten-1" style="margin-left: -4px;">
                 <v-icon size="22">mdi-twitter</v-icon>
               </v-btn>
             </div>
+            <v-text-field class="search my-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify"
+            :append-icon="keyword !== q ? 'mdi-send' : undefined" style="max-width:360px; border-radius: 16px;" v-model="keyword" label="검색..."
+            v-on:keyup.enter="search()" @click:append="search()" />
 
 					</v-row>
 					<div class="body grey--text text--darken-2">
 						{{(content||[])[cat]}}
 					</div>
 				</v-flex>
-				<v-flex xs12 sm4>
-					<v-text-field class="search mt-2" solo flat rounded clearable color="orange" prepend-inner-icon="mdi-magnify"
-          :append-icon="keyword !== q ? 'mdi-send' : undefined" style="height:48px; border-radius: 12px;" v-model="keyword" label="검색..."
-          v-on:keyup.enter="search()" @click:append="search()" />
-				</v-flex>
-				<v-flex xs12 v-if="cat === 'all'">
-					<cat-horiz class="my-3" :cat="cat" :intent="intent" ></cat-horiz>
-				</v-flex>
-        <v-flex xs12 class="mt-5" v-if="q">
+        <v-spacer></v-spacer>
+        <v-flex xs12 sm3 justify=right>
+          <page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
+        </v-flex>
+        <v-flex xs12 class="mt-5 mb-2" v-if="q">
           <h2>
             검색 : {{q}}
           </h2>
@@ -41,10 +40,9 @@
 			</v-layout>
 
 			<div class="masonry-wrapper">
-				<page-button class="py-2" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
 				<loader v-if="busy" />
-				<masonry v-if="!isEmpty" :list="list" :isArticle="!gallery" />
-				<page-button style="padding-bottom:36px" v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
+				<masonry class="mt-1" v-if="!isEmpty" :list="list" :isArticle="!gallery" />
+				<page-button class="mt-4" style="padding-bottom:36px" v-if="!isEmpty && !busy" :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
           <v-layout v-if="isEmpty && !busy" justify-center> <h2>표시할 내용이 없습니다.</h2> </v-layout>
 			</div>
 
@@ -264,9 +262,17 @@ export default class Card extends Vue {
 <style>
 .search .v-input__slot {
   background-color: #ffffff !important;
-  padding: 0px 14px !important;
+  padding: 0px 6px 0px 10px !important;
 }
 .search .v-text-field__details {
   display: none;
+}
+
+.v-text-field.v-text-field--solo .v-input__control  {
+  min-height: unset !important;
+}
+.v-input__slot {
+  margin-bottom: 0px !important;
+  height: 36px;
 }
 </style>

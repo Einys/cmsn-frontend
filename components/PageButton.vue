@@ -1,12 +1,12 @@
 <template>
   <div class="pagenation">
-    <v-btn fab depressed @click="toPrevious()" :disabled="!hasPrevious" class="orange--text text--lighten-1">
+    <v-btn fab depressed @click="toPrevious()" :disabled="!hasPrevious" class="amber--text text--darken-4">
       <v-icon>mdi-chevron-left</v-icon>
     </v-btn>
     &nbsp;&nbsp;
     .. {{pageNum}} ..
     &nbsp;&nbsp;
-    <v-btn fab depressed @click="toNext()" :disabled="!hasNext" class="orange--text text--lighten-2">
+    <v-btn fab depressed @click="toNext()" :disabled="!hasNext" class="amber--text text--darken-4">
       <v-icon>mdi-chevron-right</v-icon>
     </v-btn>
 
@@ -45,7 +45,7 @@ export default class Card extends Vue {
 
 <style lang="scss" scoped>
 .pagenation {
-  margin: 20px auto;
+  margin: 6px auto;
   font-size: 22px;
   text-align: center;
   color: #43586b;
@@ -53,14 +53,14 @@ export default class Card extends Vue {
 }
 
 .pagenation > button {
-  width: 50px !important;
-  height: 50px !important;
-  border-radius: 12px !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 16px !important;
 }
 
 @media screen and (max-width: $break-large) {
   .pagenation {
-    margin: 10px auto;
+
   }
 }
 

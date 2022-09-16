@@ -1,9 +1,7 @@
 <template>
 	<v-container fluid class="pa-0">
 		<v-row class="cat" justify="space-between" no-gutters>
-			<v-btn large rounded class="gold--text" :to="{path: '/t/all'}">
-				All
-			</v-btn>
+
 			<v-btn large rounded class="silver--text" :to="{path: '/t/art/'+ (intent || 'open')}">
 				<v-icon>mdi-satellite</v-icon>그림
 			</v-btn>

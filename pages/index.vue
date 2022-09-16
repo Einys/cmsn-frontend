@@ -11,7 +11,7 @@
 			<masonry :list="list" :isArticle="true" />
 			<div v-if="!isEmpty">
 
-				<h2 class="pt-5 pb-1">카테고리 선택하고 더보기</h2>
+				<h2 class="pt-5 pb-2 headline font-weight-bold">카테고리 선택하고 더보기</h2>
 				<cat-horiz ></cat-horiz>
 
 			</div>

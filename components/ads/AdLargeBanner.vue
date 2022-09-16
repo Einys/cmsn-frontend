@@ -1,7 +1,7 @@
 <template>
 
 <!-- /21750020995/lg-banner -->
-<div id='div-gpt-ad-1663198654757-0' style='min-width: 320px; min-height: 50px;'>
+<div id='div-gpt-ad-1663198654757-0' style='min-width: 320px; min-height: 50px; margin: 0 auto; text-align:center; '>
 
 </div>
 

@@ -42,7 +42,8 @@ export default {
     script: [
       {src:'https://securepubads.g.doubleclick.net/tag/js/gpt.js', async:'async'},
       {src:'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', async:'async'},
-      {src:'/js/googleads.js'} // static/js
+      {src:'/js/googleads.js'}, // static/js
+      {src:'//t1.daumcdn.net/kas/static/ba.min.js', async:'async'} // adfit
     ]
   },
   /*

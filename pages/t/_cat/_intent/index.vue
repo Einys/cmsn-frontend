@@ -2,6 +2,7 @@
 	<div>
 		<!-- ad banner -->
 		<ad-lg-banner></ad-lg-banner>
+    <!-- <Adfit></Adfit> -->
 		<div class="wrapper">
 			<!-- <v-btn fab small depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
 				<v-icon>mdi-chevron-up</v-icon>
@@ -60,7 +61,10 @@ import Loader from "@/components/Loader.vue";
 import AdMobileBanner from "@/components/ads/AdMobileBanner.vue";
 import AdMobileBanner2 from "@/components/ads/AdMobileBanner2.vue";
 import AdLargeBanner from "@/components/ads/AdLargeBanner.vue";
+import Adfit from "@/components/ads/Adfit.vue";
+
 import { isArray } from "util";
+
 @Component({
   //
   components: {
@@ -70,7 +74,8 @@ import { isArray } from "util";
     "ad-320x100": AdMobileBanner2,
     "ad-lg-banner": AdLargeBanner,
     Loader,
-    CatHoriz
+    CatHoriz,
+    Adfit
   },
   data(){
     return {

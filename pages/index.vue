@@ -2,7 +2,8 @@
 	<div>
 
 		<div class="wrapper">
-			<h2 class="pt-5 pb-1 headline font-weight-bold">원하시는 커미션이 있나요?</h2>
+      <Adfit></Adfit>
+			<h2 class="pt-5 pb-2 headline font-weight-bold">원하시는 커미션이 있나요?</h2>
 			<cat-horiz ></cat-horiz>
 			<br>
 			<ad-banner></ad-banner>

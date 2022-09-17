@@ -1,6 +1,6 @@
 <template>
 	<v-container justify-center style="text-align:center; max-width:320px; padding:0; border-radius:4px;">
-		<v-col class="mb-4">
+		<v-col>
 
 			<h2>커미션 열었어요</h2>
 			<v-row no-gutters align="center" justify="space-around">

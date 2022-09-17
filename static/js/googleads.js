@@ -31,11 +31,10 @@
     googletag.defineSlot('/21750020995/vert-w300', [[300, 600], [160, 600], [120, 600], [300, 250] ], 'div-gpt-ad-1573237100486-0').defineSizeMapping(sideAdSizes).addService(googletag.pubads());
   });
 
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/21750020995/lg-banner', [[1180, 150], [320, 50], [320, 100], [728, 90], [970, 90], [970, 250]], 'div-gpt-ad-1663198654757-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.pubads().collapseEmptyDivs();
-    googletag.enableServices();
+  googletag.cmd.push(function () {
+    var bannerAdSizes = googletag.sizeMapping().addSize([1280, 768], [970, 90]).addSize([728, 300], [728, 90]).addSize([0, 0], [320, 100]).build();
+    googletag.defineSlot('/21750020995/lg-banner', [[970, 90],[728, 90],[320, 100]], 'div-gpt-ad-1571325317379-0').defineSizeMapping(bannerAdSizes).addService(googletag.pubads());
+
   });
 
   googletag.cmd.push(function() {

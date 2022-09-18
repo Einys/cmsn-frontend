@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/EinYs/nuxt-sn/compare/v1.4.6...v1.5.0) (2022-09-18)
+
+
+### 🛍 Designs
+
+* 메인 헤드라인 크기 키움 ([435b4f6](https://github.com/EinYs/nuxt-sn/commit/435b4f66e6555d72824ff842000291cb1ba925ac))
+* 아이템뷰 pagebutton 정렬 한 줄로 ([bf365bb](https://github.com/EinYs/nuxt-sn/commit/bf365bbb90a78feea88b6ee58dba19f7b0a9c744))
+* Vert 카테고리 마진 줄임 ([97ed078](https://github.com/EinYs/nuxt-sn/commit/97ed078f35792917dc7c3aacd817949d0ffb81e9))
+
+
+### 🚀 Features
+
+* 뭔지 정확히 모르겠는 googleads 스크립트 삭제 ([2c8c38a](https://github.com/EinYs/nuxt-sn/commit/2c8c38aa1e6011fd713d1dfa6e53ba84669b35a0))
+* 최소 30초가 지나고 페이지 이동을 하는 경우에만 광고 새로고침 ([754e161](https://github.com/EinYs/nuxt-sn/commit/754e1617179a8119354c0b0e4092c6bef23a75df))
+* Kakao adfit 추가 ([9c72ae4](https://github.com/EinYs/nuxt-sn/commit/9c72ae43d52a66f0a1bea2c40777a10b03c91f96))
+
 ### [1.4.6](https://github.com/EinYs/nuxt-sn/compare/v1.4.5...v1.4.6) (2022-09-16)
 
 

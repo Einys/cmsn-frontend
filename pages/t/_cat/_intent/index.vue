@@ -1,7 +1,12 @@
 <template>
 	<div>
+    <!-- ad banner large -->
+    <ad-lg-banner v-if=" ! this.$vuetify.breakpoint.smAndDown "></ad-lg-banner>
 		<!-- ad banner -->
-		<ad-lg-banner></ad-lg-banner>
+		<Adsense v-if=" this.$vuetify.breakpoint.smAndDown "
+        data-ad-client="ca-pub-9523902096267561"
+        data-ad-slot="4952472534">
+    </Adsense>
     <!-- <Adfit></Adfit> -->
 		<div class="wrapper">
 			<!-- <v-btn fab small depressed dark color="orange" style="z-index:50; position: fixed; bottom: 10px; right: 10px; opacity: 0.7;" @click="scrollToTop()">
@@ -30,7 +35,7 @@
 					</div>
 				</v-flex>
         <v-spacer></v-spacer>
-        <v-flex xs12 sm3 justify=right>
+        <v-flex xs12 md3>
           <page-button :pageNum="page" :hasPrevious=" page > 1 " :hasNext="next && next[0]" />
         </v-flex>
         <v-flex xs12 class="mt-5 mb-2" v-if="q">
@@ -125,7 +130,7 @@ export default class Card extends Vue {
   next = null;
   list: any[] = [];
 
-  count = 24;
+  count = 30;
 
   busy = false;
   gallery: boolean;

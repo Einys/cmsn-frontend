@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/EinYs/nuxt-sn/compare/v1.5.0...v1.5.1) (2023-01-11)
+
+
+### 🔧 Fixes
+
+* 모바일뷰(sm and down) 광고 출력 ([8a41f6e](https://github.com/EinYs/nuxt-sn/commit/8a41f6eea90efd7e8e32f4e30be2eac44b7cf5d5))
+
 ## [1.5.0](https://github.com/EinYs/nuxt-sn/compare/v1.4.6...v1.5.0) (2022-09-18)
 
 

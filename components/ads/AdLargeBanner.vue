@@ -14,6 +14,7 @@ export default {
   mounted() {
     googletag.cmd.push(function() {
       googletag.display("div-gpt-ad-1571325317379-0");
+      console.log('Large Banner Ad Mounted');
     });
   },
   updated() {

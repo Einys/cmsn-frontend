@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.3](https://github.com/EinYs/nuxt-sn/compare/v1.5.2...v1.5.3) (2023-01-12)
+
+
+### 🔧 Fixes
+
+* 광고 안나오는 현상 관련 ([f39b839](https://github.com/EinYs/nuxt-sn/commit/f39b8391d870d03b54bf12c48f5ec626f02ded60))
+
 ### [1.5.2](https://github.com/EinYs/nuxt-sn/compare/v1.5.1...v1.5.2) (2023-01-12)
 
 

@@ -11,10 +11,14 @@
 
 export default {
   props: {},
+  created() {
+    console.log('Large Banner Ad Created');
+  },
   mounted() {
+    console.log('Large Banner Ad Mounted');
     googletag.cmd.push(function() {
       googletag.display("div-gpt-ad-1673492649944-0");
-      console.log('Large Banner Ad Mounted');
+      console.log('Large Banner googletag pushed');
     });
   },
   updated() {
